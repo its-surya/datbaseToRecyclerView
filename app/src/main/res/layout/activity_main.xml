@@ -27,9 +27,13 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:text="Project Details"
-                    android:layout_margin="5dp"/>
+                    android:background="#f49b17"
+                    android:backgroundTint="#F49B17"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
 
 
 
@@ -55,6 +59,61 @@
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:padding="5dp"
+                        android:text="Category"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <ScrollView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="20sp">
+
+                            <ImageView
+                                android:layout_width="80sp"
+                                android:layout_height="80sp"
+                                android:src="@drawable/img_2"
+                                android:padding="5dp"
+                                android:id="@+id/scroll1" />
+
+                            <ImageView
+                                android:layout_width="80sp"
+                                android:layout_height="80sp"
+                                android:src="@drawable/img_3"
+                                android:padding="5dp"
+                                android:id="@+id/scroll2" />
+
+                            <ImageView
+                                android:layout_width="80sp"
+                                android:layout_height="80sp"
+                                android:src="@drawable/agri"
+                                android:padding="5dp"
+                                android:id="@+id/scroll3" />
+
+                            <ImageView
+                                android:id="@+id/scroll4"
+                                android:layout_width="73dp"
+                                android:layout_height="80sp"
+                                android:padding="5dp"
+                                android:src="@drawable/img_5" />
+
+
+                        </LinearLayout>
+
+                    </ScrollView>
 
 
 
@@ -116,7 +175,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:text="next" />
+                        android:text="Next" />
 
                 </LinearLayout>
 
@@ -134,9 +193,13 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:text="Technical Details"
-                    android:layout_margin="5dp"/>
+                    android:background="#f49b17"
+                    android:backgroundTint="#F49B17"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
 
 
@@ -219,9 +282,13 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:text="BackUp Details"
-                    android:layout_margin="5dp"/>
+                    android:background="#f49b17"
+                    android:backgroundTint="#F49B17"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
 
                 <LinearLayout
                     android:id="@+id/backupdetailslayout"
