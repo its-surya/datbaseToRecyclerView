@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "estimation_details")
  data class estimation (
-//aman
+//aman1953
     @PrimaryKey(autoGenerate = true)
     val id : Int?,
 
