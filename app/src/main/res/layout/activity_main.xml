@@ -29,8 +29,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#f49b17"
-                    android:backgroundTint="#F49B17"
+                    android:background="#f9b11f"
                     android:padding="10dp"
                     android:text="Project Details"
                     android:textColor="@color/white"
@@ -194,8 +193,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#f49b17"
-                    android:backgroundTint="#F49B17"
+                    android:background="#f9b11f"
+                    android:backgroundTint="#f9b11f"
                     android:padding="10dp"
                     android:text="Technical Details"
                     android:textColor="@color/white"
@@ -221,7 +220,7 @@
                             android:layout_marginRight="10dp"
                             android:layout_marginBottom="5dp"
                             android:hint="Total Rooftop Area*"
-                            android:inputType="text" />
+                            android:inputType="number" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -282,8 +281,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#f49b17"
-                    android:backgroundTint="#F49B17"
+                    android:background="#f9b11f"
+                    android:backgroundTint="#f9b11f"
                     android:padding="10dp"
                     android:text="BackUp Details"
                     android:textColor="@color/white"
