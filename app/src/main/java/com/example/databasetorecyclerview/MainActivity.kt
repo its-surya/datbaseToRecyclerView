@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
 
             }else{
 
+
                 Toast.makeText(this@MainActivity, "Data should be entered" , Toast.LENGTH_SHORT).show()
 
             }

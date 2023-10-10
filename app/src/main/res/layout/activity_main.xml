@@ -29,8 +29,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Project Details"
-                    android:background="#f49b17"
-                    android:backgroundTint="#F49B17"
+                    android:background="#f9b11f"
+                    android:backgroundTint="#f9b11f"
                     android:padding="10dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
@@ -191,8 +191,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Technical Details"
-                    android:background="#f49b17"
-                    android:backgroundTint="#F49B17"
+                    android:background="#f9b11f"
+                    android:backgroundTint="#f9b11f"
                     android:padding="10dp"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
@@ -280,8 +280,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="BackUp Details"
-                    android:background="#f49b17"
-                    android:backgroundTint="#F49B17"
+                    android:background="#f9b11f"
+                    android:backgroundTint="#f9b11f"
                     android:padding="10dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
