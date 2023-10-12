@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         var rooftoparea : String
         var backuptype : String
-// hello
+
         binding.next1.setOnClickListener {
             customerName = binding.customerName.text.toString()
             mobileNumber = binding.mobileNumber.text.toString()
