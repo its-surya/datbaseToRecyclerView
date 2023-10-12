@@ -9,10 +9,12 @@
     <TextView
         android:id="@+id/heading"
         android:text="Estimation Details"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
+        android:textSize="30sp"
         />
 
     <androidx.recyclerview.widget.RecyclerView

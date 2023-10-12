@@ -3,6 +3,7 @@ package com.example.databasetorecyclerview
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.LiveData
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.databasetorecyclerview.databinding.ActivityMain2Binding
 import com.example.databasetorecyclerview.databinding.ActivityMainBinding
 
@@ -14,8 +15,10 @@ class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMain2Binding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main2)
+        setContentView(binding.root)
+        appdatabase = estimationDatabase.getDataBase(this)
 
+        updateRecyclerView()
 
     }
 
@@ -24,6 +27,7 @@ class MainActivity2 : AppCompatActivity() {
         allTime!!.observe(this@MainActivity2){
             if(!it.isNullOrEmpty()){
                 binding?.recyclerView?.adapter = estimationAdapter(it)
+                binding.recyclerView.layoutManager = LinearLayoutManager(this)
             }
         }
     }

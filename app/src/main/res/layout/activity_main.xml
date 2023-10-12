@@ -71,6 +71,7 @@
                         android:textStyle="bold" />
 
                     <HorizontalScrollView
+                        android:layout_marginHorizontal="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp">
@@ -81,37 +82,101 @@
                             android:layout_marginStart="20sp"
                             android:orientation="horizontal">
 
-                            <ImageView
-                                android:layout_marginHorizontal="20dp"
-                                android:id="@+id/scroll1"
-                                android:layout_width="80sp"
-                                android:layout_height="80sp"
-                                android:padding="5dp"
-                                android:src="@drawable/img_2" />
+                            <LinearLayout
+                                android:clickable="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_margin="5dp"
+                                android:tag="Residential"
+                                android:id="@+id/scroll1">
+                                <ImageView
+                                    android:layout_width="80sp"
+                                    android:layout_height="80sp"
+                                    android:padding="5dp"
+                                    android:src="@drawable/img_2" />
 
-                            <ImageView
-                                android:layout_marginHorizontal="20dp"
-                                android:id="@+id/scroll2"
-                                android:layout_width="80sp"
-                                android:layout_height="80sp"
-                                android:padding="5dp"
-                                android:src="@drawable/img_3" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Residential"
+                                    android:layout_marginLeft="9dp"
+                                    android:textStyle="bold"/>
 
-                            <ImageView
-                                android:layout_marginHorizontal="20dp"
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:clickable="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_margin="5dp"
+                                android:tag="Industrial"
+                                android:id="@+id/scroll2">
+                                <ImageView
+                                    android:layout_marginHorizontal="20dp"
+                                    android:layout_width="80sp"
+                                    android:layout_height="80sp"
+                                    android:padding="5dp"
+                                    android:src="@drawable/img_3" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Industrial"
+                                    android:layout_marginLeft="28dp"
+                                    android:textStyle="bold"/>
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
                                 android:id="@+id/scroll3"
-                                android:layout_width="80sp"
-                                android:layout_height="80sp"
-                                android:padding="5dp"
-                                android:src="@drawable/agri" />
+                                android:clickable="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_margin="5dp"
+                                android:tag="Agricultural">
+                                <ImageView
+                                    android:layout_marginHorizontal="20dp"
+                                    android:layout_width="80sp"
+                                    android:layout_height="80sp"
+                                    android:padding="5dp"
+                                    android:src="@drawable/agri" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Agricultural"
+                                    android:layout_marginLeft="28dp"
+                                    android:textStyle="bold"/>
 
-                            <ImageView
-                                android:layout_marginHorizontal="20dp"
+                            </LinearLayout>
+
+
+                            <LinearLayout
                                 android:id="@+id/scroll4"
-                                android:layout_width="80dp"
-                                android:layout_height="80sp"
-                                android:padding="5dp"
-                                android:src="@drawable/img_5" />
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_margin="5dp"
+                                android:clickable="true"
+                                android:tag="Government">
+
+                                <ImageView
+                                    android:layout_marginHorizontal="20dp"
+                                    android:layout_width="80sp"
+                                    android:layout_height="80sp"
+                                    android:padding="5dp"
+                                    android:src="@drawable/img_5" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Government"
+                                    android:layout_marginLeft="28dp"
+                                    android:textStyle="bold"/>
+
+                            </LinearLayout>
 
 
                         </LinearLayout>

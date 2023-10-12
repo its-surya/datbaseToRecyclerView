@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "estimation_details")
  data class estimation (
-//aman
+
     @PrimaryKey(autoGenerate = true)
     val id : Int?,
 
@@ -21,6 +21,9 @@ import androidx.room.PrimaryKey
     val customeraddress : String?,
 
     @ColumnInfo(name = "project_name")
-    val projectname : String?
+    val projectname : String?,
+
+//    @ColumnInfo(name = "category")
+//    val category : String
 
 )
