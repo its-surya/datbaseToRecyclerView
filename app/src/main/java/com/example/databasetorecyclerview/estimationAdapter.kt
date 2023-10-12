@@ -13,7 +13,9 @@ class estimationAdapter(
         var id : TextView = itemView.findViewById(R.id.textview1)
         var customername : TextView = itemView.findViewById(R.id.textview2)
         var customernumber : TextView = itemView.findViewById(R.id.textview3)
-
+        var address : TextView = itemView.findViewById(R.id.textview4)
+        var projectname : TextView = itemView.findViewById(R.id.textview5)
+//        var category : TextView = itemView.findViewById(R.id.textview6)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): estimationViewHolder {
@@ -29,11 +31,13 @@ class estimationAdapter(
         holder.id.text = estimate[position].id.toString()
         holder.customername.text = estimate[position].customername
         holder.customernumber.text = estimate[position].customermobile
+        holder.address.text = estimate[position].customeraddress
+        holder.projectname.text = estimate[position].projectname
 
     }
 
-    fun setData(newData: List<estimation>) {
-        estimate = newData
-        notifyDataSetChanged()
-    }
+//    fun setData(newData: List<estimation>) {
+//        estimate = newData
+//        notifyDataSetChanged()
+//    }
 }

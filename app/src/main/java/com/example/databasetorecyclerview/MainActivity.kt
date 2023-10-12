@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         var rooftoparea : String
         var backuptype : String
-// hello
+
         binding.next1.setOnClickListener {
             customerName = binding.customerName.text.toString()
             mobileNumber = binding.mobileNumber.text.toString()
@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
                 layoutsecond.visibility = View.VISIBLE
 
             }else{
-
                 Toast.makeText(this@MainActivity, "Data should be entered" , Toast.LENGTH_SHORT).show()
 
             }
@@ -80,6 +79,8 @@ class MainActivity : AppCompatActivity() {
                 layoutthird.visibility = View.GONE
                 layoutfirst.visibility = View.VISIBLE
                 writeData()
+                var intent = Intent(this , MainActivity2::class.java)
+                startActivity(intent)
 
             }else{
                 Toast.makeText(this@MainActivity, "Data should be entered" , Toast.LENGTH_SHORT).show()
@@ -87,8 +88,6 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-//            var intent  = Intent(this,MainActivity2::class.java)
-//            startActivity(intent)
 
         }
 
@@ -116,9 +115,7 @@ class MainActivity : AppCompatActivity() {
 
 
             Toast.makeText(this@MainActivity, "Data inserted" , Toast.LENGTH_SHORT).show()
-
-
-
+        
 
     }
 
