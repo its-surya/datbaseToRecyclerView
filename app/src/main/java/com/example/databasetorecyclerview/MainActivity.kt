@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.databasetorecyclerview.databinding.ActivityMainBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -24,9 +26,11 @@ class MainActivity : AppCompatActivity() {
         val layoutfirst = binding.projectdetailslayout
         val layoutsecond = binding.technicaldetailslayout
         val layoutthird = binding.backupdetailslayout
+        val hoursofuse = binding.hoursofuse
 
         layoutsecond.visibility = View.GONE
         layoutthird.visibility = View.GONE
+        hoursofuse.visibility = View.GONE
 
         appdatabase = estimationDatabase.getDataBase(this)
 
@@ -34,9 +38,8 @@ class MainActivity : AppCompatActivity() {
         var mobileNumber : String
         var customeraddress : String
         var projectname : String
-
         var rooftoparea : String
-        var backuptype : String
+        var backuptype  = "None"
 
         binding.next1.setOnClickListener {
             customerName = binding.customerName.text.toString()
@@ -44,7 +47,12 @@ class MainActivity : AppCompatActivity() {
             customeraddress = binding.customerAddress.text.toString()
             projectname = binding.projectName.text.toString()
 
-            if(customerName.isNotEmpty() && mobileNumber.isNotEmpty() && customeraddress.isNotEmpty()
+            if( !checkMobile(mobileNumber) ){
+                Toast.makeText(this, "Plaese Enter 10 numbers", Toast.LENGTH_SHORT).show()
+            }
+            //
+
+            if(customerName.isNotEmpty()  && customeraddress.isNotEmpty()
                 && projectname.isNotEmpty()){
                 layoutfirst.visibility = View.GONE
                 layoutsecond.visibility = View.VISIBLE
@@ -67,15 +75,61 @@ class MainActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this@MainActivity, "Data should be entered" , Toast.LENGTH_SHORT).show()
 
-
             }
 
         }
 
-        binding.submit.setOnClickListener {
-            backuptype = binding.rooftoparea.text.toString()
 
-            if(backuptype.isNotEmpty()){
+        binding.backuptype.setOnClickListener {
+
+            val dialog = BottomSheetDialog(this)
+
+
+            val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
+
+            val btnNone = view.findViewById<Button>(R.id.None)
+            val btnDeisal = view.findViewById<Button>(R.id.Deisal)
+            val btnInverter = view.findViewById<Button>(R.id.Inverter)
+            
+
+            btnNone.setOnClickListener {
+                backuptype  = "None"
+                binding.backuptype.setText(backuptype)
+                hoursofuse.visibility = View.GONE
+                dialog.dismiss()
+            }
+
+            btnDeisal.setOnClickListener {
+                backuptype = "Deisal"
+                binding.backuptype.setText(backuptype)
+                hoursofuse.visibility = View.VISIBLE
+
+                dialog.dismiss()
+            }
+
+            btnInverter.setOnClickListener {
+                backuptype = "Inverter"
+                binding.backuptype.setText(backuptype)
+                hoursofuse.visibility = View.VISIBLE
+
+                dialog.dismiss()
+
+            }
+
+            dialog.setCancelable(false)
+
+            dialog.setContentView(view)
+
+            dialog.show()
+
+        }
+
+        binding.submit.setOnClickListener {
+
+
+            var hoursofuse = binding.hoursofuse.text.toString()
+
+            if( backuptype.isNotEmpty() && hoursofuse.isNotEmpty() ){
                 layoutthird.visibility = View.GONE
                 layoutfirst.visibility = View.VISIBLE
                 writeData()
@@ -85,12 +139,19 @@ class MainActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this@MainActivity, "Data should be entered" , Toast.LENGTH_SHORT).show()
 
-
             }
 
 
         }
 
+
+    }
+
+    private fun checkMobile(mobileNumber: String): Boolean {
+        if(mobileNumber.length < 10 ){
+            return false
+        }
+        return true
     }
 
 
@@ -113,10 +174,7 @@ class MainActivity : AppCompatActivity() {
             binding.projectName.text?.clear()
             binding.customerAddress.text?.clear()
 
-
             Toast.makeText(this@MainActivity, "Data inserted" , Toast.LENGTH_SHORT).show()
-        
-
     }
 
 }
