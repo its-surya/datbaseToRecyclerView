@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
             if( !checkMobile(mobileNumber) ){
                 Toast.makeText(this, "Plaese Enter 10 numbers", Toast.LENGTH_SHORT).show()
             }
-            //
 
             if(customerName.isNotEmpty()  && customeraddress.isNotEmpty()
                 && projectname.isNotEmpty()){
