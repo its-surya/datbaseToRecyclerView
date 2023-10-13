@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import com.example.databasetorecyclerview.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
@@ -44,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             mobileNumber = binding.mobileNumber.text.toString()
             customeraddress = binding.customerAddress.text.toString()
             projectname = binding.projectName.text.toString()
+
             if(customerName.isNotEmpty() && mobileNumber.isNotEmpty() && customeraddress.isNotEmpty()
                 && projectname.isNotEmpty()){
                 layoutfirst.visibility = View.GONE
@@ -115,7 +115,6 @@ class MainActivity : AppCompatActivity() {
 
 
             Toast.makeText(this@MainActivity, "Data inserted" , Toast.LENGTH_SHORT).show()
-
         
 
     }
