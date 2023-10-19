@@ -33,6 +33,7 @@
                     android:padding="10dp"
                     android:text="Project Details"
                     android:textColor="@color/white"
+                    android:id="@+id/pd_textView"
                     android:textStyle="bold" />
 
 
@@ -269,6 +270,7 @@
                     android:backgroundTint="#f9b11f"
                     android:padding="10dp"
                     android:text="Technical Details"
+                    android:id="@+id/td_textView"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
@@ -357,6 +359,7 @@
                     android:backgroundTint="#f9b11f"
                     android:padding="10dp"
                     android:text="BackUp Details"
+                    android:id="@+id/bd_textView"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
