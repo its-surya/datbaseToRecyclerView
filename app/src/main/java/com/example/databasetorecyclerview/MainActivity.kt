@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import com.example.databasetorecyclerview.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.Dispatchers
@@ -47,21 +49,19 @@ class MainActivity : AppCompatActivity() {
             customeraddress = binding.customerAddress.text.toString()
             projectname = binding.projectName.text.toString()
 
+            var check1 : Boolean = false
             if( !checkMobile(mobileNumber) ){
-                Toast.makeText(this, "Plaese Enter 10 numbers", Toast.LENGTH_SHORT).show()
+                check1 = true
+                binding.mobileNumber.error="Enter a valid mobile number"
+//                Toast.makeText(this, "Enter a valid mobile number", Toast.LENGTH_SHORT).show()
             }
 
-            if(customerName.isNotEmpty()  && customeraddress.isNotEmpty()
-                && projectname.isNotEmpty()){
+            if((customerName.isNotEmpty()  && customeraddress.isNotEmpty()
+                        && projectname.isNotEmpty()) && !check1
+            ){
                 layoutfirst.visibility = View.GONE
                 layoutsecond.visibility = View.VISIBLE
-
-            }else{
-                Toast.makeText(this@MainActivity, "Data should be entered" , Toast.LENGTH_SHORT).show()
-
             }
-
-
         }
 
         binding.next2.setOnClickListener {
@@ -72,8 +72,7 @@ class MainActivity : AppCompatActivity() {
                 layoutthird.visibility = View.VISIBLE
 
             }else{
-                Toast.makeText(this@MainActivity, "Data should be entered" , Toast.LENGTH_SHORT).show()
-
+                binding.rooftoparea.error="Enter the data"
             }
 
         }
@@ -143,8 +142,31 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        binding.pdTextView.setOnClickListener{
+            if (layoutfirst.isVisible)
+            layoutfirst.visibility=View.GONE
+            else
+                layoutfirst.visibility = View.VISIBLE
+        }
+
+        binding.tdTextView.setOnClickListener{
+            if (layoutsecond.isVisible)
+                layoutsecond.visibility=View.GONE
+            else
+                layoutsecond.visibility=View.VISIBLE
+        }
+
+        binding.bdTextView.setOnClickListener{
+            if (layoutthird.isVisible)
+                layoutthird.visibility=View.GONE
+            else
+                layoutthird.visibility=View.VISIBLE
+        }
+
 
     }
+
+
 
     private fun checkMobile(mobileNumber: String): Boolean {
         if(mobileNumber.length < 10 ){
