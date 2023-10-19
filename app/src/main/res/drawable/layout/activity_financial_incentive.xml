@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="stateName"
+            type="String" />
+
+        <variable
+            name="incentiveDetails"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="left"
+        android:background="@color/white">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+        <LinearLayout
+            style="@style/llVerticalMatchMatch"
+            android:paddingHorizontal="@dimen/_10mdp">
+
+
+            <LinearLayout style="@style/llEditText">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:gravity="center">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:hint="@string/hint_state"
+                        app:endIconDrawable="@drawable/ic_drop_down"
+                        app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtState"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:text="@{stateName}" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llStateIncentiveDetails"
+                style="@style/llVerticalMatchMatch"
+                visibilityOnString="@{incentiveDetails}">
+
+                <TextView
+                    style="@style/textViewStyleBoldRegular"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    android:gravity="left"
+                    android:text="@string/str_details_incentives" />
+
+                <WebView
+                    android:id="@+id/webView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5mdp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

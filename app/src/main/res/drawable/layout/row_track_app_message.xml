@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.AllCommentList" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8mdp"
+            android:layout_marginVertical="@dimen/_4mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_2mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_marginTop="@dimen/_2mdp"
+                android:layout_marginBottom="@dimen/_2mdp"
+                android:gravity="top">
+
+                <LinearLayout style="@style/llHorizontalMatchWrap">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_8mdp"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:layout_marginBottom="@dimen/_5mdp"
+                        android:layout_weight="1"
+                        android:gravity="top">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:gravity="top"
+                            android:weightSum="10">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="3"
+                                android:text="Message" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="7"
+                                android:maxLines="5"
+                                android:text="@{model.message}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_4mdp"
+                            android:gravity="top"
+                            android:weightSum="10">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="3"
+                                android:text="Message From" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="7"
+                                android:maxLines="2"
+                                android:text="@{model.commentBy}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_4mdp"
+                            android:gravity="top"
+                            android:weightSum="10">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="3"
+                                android:text="@string/str_date" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="7"
+                                android:maxLines="2"
+                                android:text="@{model.created}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_4mdp"
+                            android:gravity="top"
+                            android:weightSum="10">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="3"
+                                android:text="Ip Address" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="7"
+                                android:maxLines="1"
+                                android:text="@{model.ipAddress}" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="filter"
+            type="com.energy.ahasolar.dataservice.model.common.FilterItem" />
+
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="center">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#e8e8e8">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewMainOptions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_common_main_option" />
+
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="@dimen/_20mdp"
+                android:background="@color/divider" />
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                setVisibility="@{filter.fieldType==1 || filter.fieldType==2}"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:visibility="visible">
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewOptions"
+                    setVisibility="@{filter.fieldType==1}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/row_common_option" />
+
+                <LinearLayout
+                    style="@style/llVerticalMatchMatch"
+                    setVisibility="@{filter.fieldType==2}"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/_5mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_weight="1">
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@{filter.labelTitle}"
+                            app:endIconDrawable="@drawable/ic_calendar"
+                            app:endIconMode="custom">
+
+
+                            <EditText
+                                android:id="@+id/edtSelectDateField"
+                                style="@style/edtStyle"
+                                android:clickable="true"
+                                android:focusable="false"
+                                android:text="@{filter.value}" />
+
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                setVisibility="@{filter.fieldType==0}"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:paddingHorizontal="@dimen/_5mdp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    android:layout_weight="1">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:hint="@{filter.labelTitle}">
+
+                        <EditText
+                            android:id="@+id/edtField"
+                            style="@style/edtStyleNumeric"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:text="@{filter.value}" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <TextView
+                android:id="@+id/btnClearFilter"
+                style="@style/textViewStyleBoldRegular"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:padding="@dimen/_10mdp"
+                android:text="Clear All"
+                android:textAllCaps="true"
+                android:textColor="@color/gray" />
+
+
+            <TextView
+                android:id="@+id/btnApplyFilter"
+                style="@style/textViewStyleBoldRegular"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:padding="@dimen/_10mdp"
+                android:text="Apply"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</layout>

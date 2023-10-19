@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isLoadMore"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="center"
+        android:background="@color/white"
+        >
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <FrameLayout
+            style="@style/llVerticalMatchMatch"
+            android:layout_weight="1">
+
+            <include
+                android:id="@+id/layoutNoResultFound"
+                layout="@layout/layout_no_data_found" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewAssigneeList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:fadeScrollbars="true"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_20mdp"
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_enquiry_assignee_member" />
+
+
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAssign"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_120mdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_20mdp"
+            android:text="@string/btn_assign" />
+    </LinearLayout>
+
+
+</layout>

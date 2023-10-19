@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.common.InspectionModulePowerInfoModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:layout_marginHorizontal="@dimen/_5mdp"
+            android:gravity="top"
+            android:padding="@dimen/_5mdp">
+
+            <FrameLayout
+                style="@style/llHorizontalMatchWrap"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/textViewStyleLarge"
+                    android:layout_width="@dimen/_25mdp"
+                    android:layout_height="@dimen/_25mdp"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="@dimen/_5mdp"
+                    android:background="@drawable/shape_round_yellow"
+                    android:gravity="center"
+                    android:text="@{``+model.id}"
+                    android:textColor="@color/white" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewRemoveView"
+                    setVisibility="@{model.id>1}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20mdp"
+                    android:layout_gravity="center|end"
+                    android:padding="@dimen/_5mdp"
+                    app:cardBackgroundColor="@color/colorRed"
+                    app:cardCornerRadius="@dimen/_10mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="@dimen/_10mdp"
+                        android:text="Remove"
+                        android:textColor="@color/white" />
+                </androidx.cardview.widget.CardView>
+
+            </FrameLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_2mdp"
+                android:layout_marginTop="@dimen/_8mdp"
+                app:cardCornerRadius="@dimen/_5mdp">
+
+                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                    <TextView
+                        style="@style/headerTextStyle"
+                        android:layout_height="@dimen/_35mdp"
+                        android:background="@color/headerBackgroundColor"
+                        android:gravity="left|center_vertical"
+                        android:paddingHorizontal="@dimen/_8mdp"
+                        android:paddingVertical="@dimen/_5mdp"
+                        android:text="@{`String `+model.id}" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/_5mdp"
+                        android:paddingStart="@dimen/_10mdp">
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/radioButtonYes"
+                            style="@style/myRadioButton"
+                            android:checked="@{model.strings.empty?false : model.strings.equals(`1`)?true:false}"
+                            android:text="@string/str_ok" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/radioButtonNo"
+                            style="@style/myRadioButton"
+                            android:layout_marginLeft="@dimen/_20mdp"
+                            android:checked="@{model.strings.empty?false : model.strings.equals(`0`)?true:false}"
+                            android:text="@string/str_not_ok" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                android:hint="@string/hint_v_volts">
+
+
+                <EditText
+                    android:id="@+id/edtVolt"
+                    style="@style/edtStyleNumeric"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="100"
+                    android:text="@{model.volt}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                android:hint="@string/hint_i_amps">
+
+                <EditText
+                    android:id="@+id/edtAmps"
+                    style="@style/edtStyleNumeric"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="100"
+                    android:text="@{model.amps}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                android:hint="@string/hint_power_watt">
+
+                <EditText
+                    android:id="@+id/edtPowerWatt"
+                    style="@style/edtStyle"
+                    android:enabled="false"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="100"
+                    android:text="@{model.powerWatt}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                android:hint="@string/hint_remarks">
+
+                <EditText
+                    android:id="@+id/edtRemarks"
+                    style="@style/edtStyle"
+                    android:singleLine="false"
+                    android:inputType="textMultiLine"
+                    android:maxLines="3"
+                    android:text="@{model.remarks}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

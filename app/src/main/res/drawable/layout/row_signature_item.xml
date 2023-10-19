@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.SignatureModel" />
+
+    </data>
+
+    <LinearLayout
+        style="@style/llHorizontalMatchWrap"
+        android:background="@color/white"
+        android:padding="@dimen/_5mdp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_2mdp"
+            android:layout_marginStart="@dimen/_2mdp"
+            android:layout_marginEnd="@dimen/_5mdp"
+            android:background="@color/white"
+            android:elevation="@dimen/_3mdp"
+            app:cardCornerRadius="@dimen/_5mdp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgItem"
+                    loadImage="@{model.documentUrl}"
+                    android:layout_width="@dimen/_60mdp"
+                    android:layout_height="@dimen/_60mdp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_launcher" />
+
+
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:layout_weight="1">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtNameLayout"
+                style="@style/textInputLayoutStyle"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                android:hint="Name">
+
+                <EditText
+                    android:id="@+id/edtName"
+                    style="@style/edtStyle"
+                    android:enabled="@{model.documentUrl.startsWith(`http`)? false : true}"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"
+                    android:text="@{model.name}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtDesignationLayout"
+                style="@style/textInputLayoutStyle"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                android:hint="Designation">
+
+                <EditText
+                    android:id="@+id/edtDesignation"
+                    style="@style/edtStyle"
+                    android:enabled="@{model.documentUrl.startsWith(`http`)? false : true}"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"
+                    android:text="@{model.designation}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgDelete"
+            setVisibility="@{model.documentUrl.startsWith(`http`)? false : true}"
+            android:layout_width="@dimen/_16mdp"
+            android:layout_height="@dimen/_16mdp"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/_10mdp"
+            android:src="@drawable/ic_delete" />
+    </LinearLayout>
+</layout>

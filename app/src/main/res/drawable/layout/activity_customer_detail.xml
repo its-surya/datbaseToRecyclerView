@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.CustomerDetailsModel" />
+
+        <variable
+            name="CustomerInfoModel"
+            type="com.energy.ahasolar.dataservice.model.CustomerInfoModel" />
+
+        <variable
+            name="cancledCheque"
+            type="String" />
+
+        <variable
+            name="adapter"
+            type="com.energy.ahasolar.ui.adapter.MediaAdapter" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="left">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout style="@style/llVerticalMatchMatch">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:background="@color/headerBackgroundColor"
+                            android:paddingHorizontal="@dimen/_10mdp"
+                            android:paddingVertical="@dimen/_8mdp"
+                            android:text="Customer Detail"
+                            android:textColor="@color/black" />
+
+                        <LinearLayout
+                            style="@style/llEditText"
+                            android:paddingHorizontal="@dimen/_10mdp"
+                            android:visibility="visible">
+
+                            <RelativeLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_5mdp">
+
+                                <TextView
+                                    android:id="@+id/tvProjectName"
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_toLeftOf="@+id/tvSrn"
+                                    android:text="@{``+CustomerInfoModel.projectName+` (`+CustomerInfoModel.capacityKw+` kW) `}"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/tvSrn"
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@{``+model.id}"
+                                    android:textColor="@color/black" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:gravity="center">
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="3"
+                                    android:text="@string/str_contact_no"
+                                    android:textColor="@color/black" />
+
+                                <LinearLayout
+                                    android:id="@+id/llContactNo"
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="7">
+
+                                    <TextView
+                                        android:id="@+id/txtContactNo"
+                                        style="@style/textViewStyleRegular"
+                                        android:layout_width="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:text="@{``+model.mobile}"
+                                        android:textColor="@color/black" />
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_20mdp"
+                                        android:layout_height="@dimen/_20mdp"
+                                        android:layout_marginHorizontal="@dimen/_5mdp"
+                                        android:src="@drawable/ic_phone_call" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:gravity="center">
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="3"
+                                    android:text="@string/str_email_id"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="7"
+                                    android:text="@{``+model.email}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilGetAddress"
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_address"
+                                app:endIconDrawable="@drawable/ic_location_small"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtAddress"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxEms="500"
+                                    android:maxLines="5"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.address}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:gravity="center"
+                                android:visibility="gone">
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="3"
+                                    android:text="@string/city"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/edtCity"
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="7"
+                                    android:text="@{``+model.city}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:gravity="center"
+                                android:visibility="gone">
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="3"
+                                    android:text="@string/hint_state"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/edtState"
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="7"
+                                    android:text="@{``+model.state}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:gravity="center"
+                                android:visibility="gone">
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="3"
+                                    android:text="@string/hint_country"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/edtCountry"
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="7"
+                                    android:text="@{``+model.country}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:gravity="center">
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="3"
+                                    android:text="@string/hint_pincode1"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/edtPincode"
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="7"
+                                    android:text="@{``+model.pincode}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_2mdp"
+                                android:layout_marginTop="@dimen/_8mdp"
+                                android:layout_marginBottom="@dimen/_5mdp"
+                                app:cardCornerRadius="@dimen/_5mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_height="@dimen/_35mdp"
+                                        android:background="@color/headerBackgroundColor"
+                                        android:gravity="left|center_vertical"
+                                        android:paddingHorizontal="@dimen/_8mdp"
+                                        android:paddingVertical="@dimen/_5mdp"
+                                        android:text="@string/hint_solar_loan" />
+
+                                    <RadioGroup
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:paddingVertical="@dimen/_5mdp"
+                                        android:paddingStart="@dimen/_10mdp">
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/rbNeedSolarLoanYes"
+                                            style="@style/myRadioButton"
+                                            android:text="@string/str_yes" />
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/rbNeedSolarLoanNo"
+                                            style="@style/myRadioButton"
+                                            android:layout_marginLeft="@dimen/_20mdp"
+                                            android:checked="true"
+                                            android:text="@string/str_no" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            android:id="@+id/llConsumerInfoTitle"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_height="@dimen/_35mdp"
+                                android:layout_weight="1"
+                                android:gravity="left|center_vertical"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                android:text="@string/update_consumer_info" />
+
+                            <ImageView
+                                android:id="@+id/ivDownArrow"
+                                android:layout_width="@dimen/_25mdp"
+                                android:layout_height="@dimen/_25mdp"
+                                android:layout_gravity="center"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_down"
+                                app:tint="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llConsumerlInfo"
+                            style="@style/llEditText"
+                            android:padding="@dimen/_10mdp"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_3mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/str_aaplication_no">
+
+                                    <EditText
+                                        android:id="@+id/edtApplicationNo"
+                                        style="@style/edtStyle"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="text"
+                                        android:maxLength="100"
+                                        android:text="@{`` +CustomerInfoModel.applicationNo}" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginStart="@dimen/_3mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/consumer_no">
+
+                                    <EditText
+                                        android:id="@+id/edtConsumerNo"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="100"
+                                        android:text="@{`` +CustomerInfoModel.consumerno}" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilProjectPvCapacity"
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/str_project_capacity_kw">
+
+                                <EditText
+                                    android:id="@+id/edtProjectCapacity"
+                                    style="@style/edtStyleNumeric"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="15"
+                                    android:text="@{`` +CustomerInfoModel.existingCapacity}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_select_state"
+                                app:endIconDrawable="@drawable/ic_drop_down"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtCustomerState"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:focusable="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_select_discom"
+                                app:endIconDrawable="@drawable/ic_drop_down"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtDiscom"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:focusable="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_8mdp">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/_2mdp"
+                                    android:layout_marginVertical="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    app:cardCornerRadius="@dimen/_5mdp">
+
+                                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                        <TextView
+                                            style="@style/headerTextStyle"
+                                            android:layout_height="@dimen/_35mdp"
+                                            android:background="@color/headerBackgroundColor"
+                                            android:gravity="left|center_vertical"
+                                            android:paddingHorizontal="@dimen/_8mdp"
+                                            android:paddingVertical="@dimen/_5mdp"
+                                            android:text="Project Enhancement" />
+
+                                        <RadioGroup
+                                            android:id="@+id/rgProjectEnhancement"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal"
+                                            android:paddingVertical="@dimen/_5mdp"
+                                            android:paddingStart="@dimen/_10mdp">
+
+                                            <androidx.appcompat.widget.AppCompatRadioButton
+                                                android:id="@+id/rbProjectenhancementYes"
+                                                style="@style/myRadioButton"
+                                                android:checked="true"
+                                                android:text="@string/str_yes" />
+
+                                            <androidx.appcompat.widget.AppCompatRadioButton
+                                                android:id="@+id/rbProjectenhancementNo"
+                                                style="@style/myRadioButton"
+                                                android:layout_marginLeft="@dimen/_20mdp"
+                                                android:text="@string/str_no" />
+                                        </RadioGroup>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilProjectEnhancementValue"
+                                style="@style/textInputLayoutStyle"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:hint="@string/pv_capacity_enhancement">
+
+                                <EditText
+                                    android:id="@+id/edtPVCapacity"
+                                    style="@style/edtStyleNumeric"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="100"
+                                    android:text="@{`` +CustomerInfoModel.existingCapacity}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_2mdp"
+                                android:layout_marginVertical="@dimen/_5mdp"
+                                android:layout_weight="1"
+                                app:cardCornerRadius="@dimen/_5mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_height="@dimen/_35mdp"
+                                        android:background="@color/headerBackgroundColor"
+                                        android:gravity="left|center_vertical"
+                                        android:paddingHorizontal="@dimen/_8mdp"
+                                        android:paddingVertical="@dimen/_5mdp"
+                                        android:text="@string/str_network" />
+
+
+                                    <RadioGroup
+                                        android:id="@+id/rgNetwork"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:padding="@dimen/_5mdp">
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/radioNetworkRural"
+                                            style="@style/myRadioButton"
+                                            android:layout_weight="1"
+                                            android:text="@string/rural" />
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/radioNetworkCity"
+                                            style="@style/myRadioButton"
+                                            android:layout_marginLeft="@dimen/_5mdp"
+                                            android:layout_weight="1"
+                                            android:checked="true"
+                                            android:text="@string/city" />
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/radioNationalPortal"
+                                            style="@style/myRadioButton"
+                                            android:layout_marginLeft="@dimen/_5mdp"
+                                            android:layout_weight="1"
+                                            android:text="@string/national_portal" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_3mdp"
+                                android:layout_marginVertical="@dimen/_5mdp"
+                                android:elevation="@dimen/_2mdp"
+                                android:visibility="visible"
+                                app:cardCornerRadius="@dimen/_8mdp">
+
+                                <LinearLayout
+                                    style="@style/llVerticalMatchWrap"
+                                    android:gravity="top">
+
+                                    <LinearLayout
+                                        style="@style/llHorizontalMatchWrap"
+                                        android:background="@color/colorPrimary">
+
+                                        <TextView
+                                            style="@style/textViewStyleRegular"
+                                            android:layout_weight="1"
+                                            android:paddingHorizontal="@dimen/_10mdp"
+                                            android:paddingVertical="@dimen/_8mdp"
+                                            android:text="@string/hint_select_category"
+                                            android:textColor="@color/white" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        style="@style/llVerticalMatchWrap"
+                                        android:layout_margin="@dimen/_1mdp">
+
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/rvCategory"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal"
+                                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                            tools:listitem="@layout/row_category_item" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/str_application_submit_date"
+                                app:endIconDrawable="@drawable/ic_calendar"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtDate"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:focusable="false"
+                                    android:text="@{`` +CustomerInfoModel.submbitedDate}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            android:id="@+id/llBankDetailTitle"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_height="@dimen/_35mdp"
+                                android:layout_weight="1"
+                                android:gravity="left|center_vertical"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                android:text="@string/str_bank_detail" />
+
+                            <ImageView
+                                android:id="@+id/ivBankDetailDownArrow"
+                                android:layout_width="@dimen/_25mdp"
+                                android:layout_height="@dimen/_25mdp"
+                                android:layout_gravity="center"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_down"
+                                app:tint="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llBankDetail"
+                            style="@style/llEditText"
+                            android:padding="@dimen/_10mdp"
+                            android:visibility="gone">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_1mdp"
+                                app:cardCornerRadius="@dimen/_5mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_height="@dimen/_35mdp"
+                                        android:background="@color/headerBackgroundColor"
+                                        android:gravity="left|center_vertical"
+                                        android:paddingHorizontal="@dimen/_8mdp"
+                                        android:paddingVertical="@dimen/_5mdp"
+                                        android:text="Account Type" />
+
+                                    <RadioGroup
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:paddingVertical="@dimen/_5mdp"
+                                        android:paddingStart="@dimen/_10mdp">
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/rbSavingAccount"
+                                            style="@style/myRadioButton"
+                                            android:checked="true"
+                                            android:text="@string/str_saving" />
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/rbCurrentAccount"
+                                            style="@style/myRadioButton"
+                                            android:layout_marginLeft="@dimen/_20mdp"
+                                            android:text="@string/str_current" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/str_bank_account_no">
+
+                                <EditText
+                                    android:id="@+id/edtBankAccountNo"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="number"
+                                    android:maxLength="16"
+                                    android:text="@{``+CustomerInfoModel.bankAcNo}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/str_bank_account_holder_name">
+
+                                <EditText
+                                    android:id="@+id/edtBankAccountHolderName"
+                                    style="@style/edtStyle"
+                                    android:digits="@string/contact_name_char_allowed"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:text="@{`` +CustomerInfoModel.acHolderName}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/str_ifsc_code">
+
+                                <EditText
+                                    android:id="@+id/edtIFSCCode"
+                                    style="@style/edtStyle"
+                                    android:digits="1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapCharacters"
+                                    android:maxLength="11"
+                                    android:text="@{``+CustomerInfoModel.ifscCode}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/str_micr_code">
+
+                                <EditText
+                                    android:id="@+id/edtMicrCode"
+                                    style="@style/edtStyleNumeric"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="9"
+                                    android:text="@{`` +CustomerInfoModel.micrCode}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/str_bank_name">
+
+                                <EditText
+                                    android:id="@+id/edtBankName"
+                                    style="@style/edtStyle"
+                                    android:digits="@string/contact_name_char_allowed"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapSentences"
+                                    android:maxLength="200"
+                                    android:text="@{`` +CustomerInfoModel.bankName}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/str_bank_branch">
+
+                                <EditText
+                                    android:id="@+id/edtBankBranch"
+                                    style="@style/edtStyle"
+                                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxLength="200"
+                                    android:text="@{`` +CustomerInfoModel.branchName}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/str_bank_address">
+
+                                <EditText
+                                    android:id="@+id/edtBankAddress"
+                                    style="@style/edtStyle"
+                                    android:digits="1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-:, "
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxLength="100"
+                                    android:text="@{`` +CustomerInfoModel.bankAddress}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/str_mobile_no">
+
+                                <EditText
+                                    android:id="@+id/edtCustomerMobileNo"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="phone"
+                                    android:maxLength="10" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/str_email_id">
+
+                                <EditText
+                                    android:id="@+id/edtCustomerEmailId"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLength="150"
+                                    android:text="@{`` +CustomerInfoModel.email}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/str_pan_card_no">
+
+                                <EditText
+                                    android:id="@+id/edtPanCardNo"
+                                    style="@style/edtStyle"
+                                    android:digits="@string/alphaNumeric"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapCharacters"
+                                    android:maxLength="10"
+                                    android:text="@{`` +CustomerInfoModel.pan}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_1mdp"
+                                android:layout_marginTop="@dimen/_8mdp"
+                                android:layout_marginBottom="@dimen/_2mdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/_8mdp"
+                                app:cardElevation="@dimen/_1mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <LinearLayout
+                                        android:id="@+id/llCanceledCheque"
+                                        style="@style/llHorizontalMatchWrap"
+                                        android:background="@color/headerBackgroundColor">
+
+                                        <TextView
+                                            style="@style/headerTextStyle"
+                                            android:layout_marginLeft="@dimen/_8mdp"
+                                            android:layout_weight="1"
+                                            android:maxLines="1"
+                                            android:paddingVertical="@dimen/_8mdp"
+                                            android:text="@string/canceled_cheque" />
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_30mdp"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center_vertical"
+                                            android:background="?selectableItemBackgroundBorderless"
+                                            android:padding="@dimen/_6mdp"
+                                            android:src="@drawable/ic_add" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/colorDivider" />
+
+                                    <LinearLayout
+                                        style="@style/llHorizontalWrapWrap"
+                                        visibilityOnString="@{cancledCheque}">
+
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/rvDocument"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adapter="@{adapter}"
+                                            android:orientation="horizontal"
+                                            android:paddingHorizontal="@dimen/_5mdp"
+                                            android:paddingVertical="@dimen/_5mdp"
+                                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                            tools:listitem="@layout/row_media_item" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSubmit"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_150mdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_5mdp"
+            android:gravity="center"
+            android:text="@string/str_submit" />
+    </LinearLayout>
+</layout>

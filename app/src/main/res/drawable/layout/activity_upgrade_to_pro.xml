@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isDocumentAvailable"
+            type="Boolean" />
+    </data>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back"
+            app:layout_constraintBottom_toTopOf="@id/llMain"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/llMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10mdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_8mdp"
+                app:cardElevation="@dimen/_5mdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/toolbar"
+                app:layout_constraintStart_toEndOf="@+id/toolbar"
+                app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginBottom="@dimen/_5mdp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/_50mdp"
+                        android:layout_height="@dimen/_50mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="@dimen/_15mdp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_5mdp"
+                        android:src="@drawable/ic_side_menu_upgrade_to_pro"
+                        android:visibility="visible" />
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_mark" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginStart="@dimen/_10mdp"
+                            android:layout_weight="1"
+                            android:text="Lead Management" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_mark" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginStart="@dimen/_10mdp"
+                            android:layout_weight="1"
+                            android:text="Site Survey (Offline-Online)" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_mark" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginStart="@dimen/_10mdp"
+                            android:layout_weight="1"
+                            android:text="Drawing" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_mark" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginStart="@dimen/_10mdp"
+                            android:layout_weight="1"
+                            android:text="T&amp;C" />
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_mark" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginStart="@dimen/_10mdp"
+                            android:layout_weight="1"
+                            android:text="Workorder" />
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_mark" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginStart="@dimen/_10mdp"
+                            android:layout_weight="1"
+                            android:text="Commissioning" />
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_mark" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginStart="@dimen/_10mdp"
+                            android:layout_weight="1"
+                            android:text="Inventory" />
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_mark" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginStart="@dimen/_10mdp"
+                            android:layout_weight="1"
+                            android:text="Followup" />
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_mark" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginStart="@dimen/_10mdp"
+                            android:layout_weight="1"
+                            android:text="Route Map - PAID" />
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_mark" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginStart="@dimen/_10mdp"
+                            android:layout_weight="1"
+                            android:text="Execution - PAID" />
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_mark" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginStart="@dimen/_10mdp"
+                            android:layout_weight="1"
+                            android:text="Coworker Assign" />
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_mark" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginStart="@dimen/_10mdp"
+                            android:layout_weight="1"
+                            android:text="A/C Created Roles, Rights" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_15mdp"
+                        android:text="Upgrade to professional version click on Upgrade Button" />
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_margin="@dimen/_15mdp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/textViewVersion"
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/textViewTermsAndCondition"
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:text="@string/str_terms_and_condition" />
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnUpgrade"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_150mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_20mdp"
+                        android:text="@string/str_upgrade" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </androidx.core.widget.NestedScrollView>
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</layout>

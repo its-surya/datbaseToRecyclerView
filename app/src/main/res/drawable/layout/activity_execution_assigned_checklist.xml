@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.activity.ProjectDetailsBasicUserActivity">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+        <LinearLayout
+            style="@style/llVerticalMatchMatch"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewAssignedChecklist"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_20mdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_execution_assign_check_list_item" />
+
+            <include
+                android:id="@+id/layoutNoResultFound"
+                layout="@layout/layout_no_data_found"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

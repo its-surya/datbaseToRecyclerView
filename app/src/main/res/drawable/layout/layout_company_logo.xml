@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:padding="@dimen/_10mdp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100mdp"
+        android:src="@drawable/ic_app_logo"
+        android:paddingHorizontal="@dimen/_25mdp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewCompanyName"
+        style="@style/textViewStyleRegular"
+        android:layout_width="wrap_content"
+        android:layout_gravity="start"
+        android:text="@string/company_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/textViewStyleExtraSmall"
+        android:layout_width="wrap_content"
+        android:text="@string/company_tag_line"
+        android:textColor="@color/colorTextHint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCompanyName"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

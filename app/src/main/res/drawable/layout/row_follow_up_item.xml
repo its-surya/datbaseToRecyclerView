@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.R.string" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.FollowUpModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10mdp"
+            android:layout_marginTop="@dimen/_8mdp"
+            android:layout_marginBottom="@dimen/_2mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_2mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="top">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/headerBackgroundColor">
+
+                    <TextView
+                        style="@style/headerTextStyle"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_15mdp"
+                        android:paddingVertical="@dimen/_10mdp"
+                        android:text="@{model.contactName}" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="@dimen/_100mdp"
+                        android:layout_height="@dimen/_20mdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/_10mdp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_10mdp"
+                        app:cardElevation="@dimen/_1mdp">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchMatch"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:id="@+id/imageViewStatus"
+                                setStatus="@{model.status.toLowerCase().equals(`open`)?1:model.status.toLowerCase().equals(`rescheduled`)?2:0}"
+                                android:layout_width="@dimen/_12mdp"
+                                android:layout_height="@dimen/_12mdp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="@dimen/_5mdp" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_marginEnd="@dimen/_2mdp"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:maxLines="1"
+                                android:text="@{model.status}"
+                                android:textAllCaps="true" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:gravity="top">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_weight="1"
+                        android:gravity="top"
+                        android:padding="@dimen/_10mdp">
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                           >
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:text="@{model.category}" />
+
+                            <LinearLayout
+                                style="@style/llHorizontalWrapWrap"
+                                >
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:text="@{model.stage}" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:gravity="end|top"
+                                android:text="@{` `+model.SRN}" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp">
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/_10mdp"
+                                android:layout_height="@dimen/_10mdp"
+                                android:src="@drawable/ic_remarks_filled"
+                                android:layout_marginTop="@dimen/_3mdp"
+
+                                />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_5mdp"
+                                android:ellipsize="end"
+                                android:maxLines="3"
+                                android:text="@{model.remarks}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.7"
+                                android:gravity="end"
+                                android:text="@{model.activityBy}" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:text="@{` `+model.scheduleDate+`, `+model.scheduleTimeSlot}" />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageViewCall"
+                        android:layout_width="@dimen/_25mdp"
+                        android:layout_height="@dimen/_25mdp"
+                        android:layout_gravity="end|bottom"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:layout_marginBottom="@dimen/_5mdp"
+                        android:src="@drawable/ic_phone_call" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

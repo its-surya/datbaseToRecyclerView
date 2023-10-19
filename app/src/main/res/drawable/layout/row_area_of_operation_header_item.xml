@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.CompanyProfileModel.RegionState" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10mdp"
+            android:layout_marginTop="@dimen/_5mdp"
+            android:layout_marginBottom="@dimen/_5mdp"
+            android:background="@color/white"
+            android:elevation="@dimen/_3mdp"
+            app:cardCornerRadius="@dimen/_5mdp">
+
+            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                <LinearLayout
+                    android:id="@+id/llHeader"
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/headerBackgroundColor"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/headerTextStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="@dimen/_10mdp"
+                        android:text="@{model.region}" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_15mdp"
+                        android:layout_height="@dimen/_15mdp"
+                        android:layout_marginHorizontal="@dimen/_8mdp"
+                        app:tint="#BCBCBC"
+                        android:src="@{model.expand?@drawable/ic_arrow_up:@drawable/ic_arrow_down}" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAreaOfOperationInnverView"
+                    setVisibility="@{model.expand}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/row_area_of_operation_inner_item" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

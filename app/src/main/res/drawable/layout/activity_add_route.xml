@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isTyping"
+            type="Boolean" />
+
+
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:layout_margin="@dimen/_10mdp">
+
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/start_point_name">
+
+                        <EditText
+                            android:id="@+id/edtStartPointName"
+                            style="@style/edtStyle"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/start_point_address"
+                            app:endIconMode="custom"
+                            app:endIconDrawable="@drawable/ic_location_small"
+                            >
+                            <EditText
+                                android:id="@+id/edtStartPointAddress"
+                                style="@style/edtStyle"
+                                android:clickable="true"
+                                android:focusable="false"
+                                android:maxLines="5"
+                                android:singleLine="false" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1mdp"
+            android:background="@color/colorDivider" />
+
+        <FrameLayout
+            style="@style/llVerticalMatchMatch"
+            android:layout_weight="1"
+            android:padding="@dimen/_10mdp">
+
+            <include
+                android:id="@+id/layoutNoResultFound"
+                layout="@layout/layout_no_data_found" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewProjectOrLeadList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:fadeScrollbars="true"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_route_project_or_lead_item" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1mdp"
+            android:background="@color/colorDivider" />
+
+
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:layout_margin="@dimen/_10mdp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:hint="@string/end_point_name">
+
+                <EditText
+                    android:id="@+id/edtEndPointName"
+                    style="@style/edtStyle"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:hint="@string/end_point_address"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/ic_location_small"
+                >
+                <EditText
+                    android:id="@+id/edtEndPointAddress"
+                    style="@style/edtStyle"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:maxLines="5"
+                    android:singleLine="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCreateRoute"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_150mdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_10mdp"
+            android:text="@string/create_route" />
+    </LinearLayout>
+
+
+</layout>

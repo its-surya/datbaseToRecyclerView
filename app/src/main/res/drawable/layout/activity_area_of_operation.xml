@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.CompanyProfileModel" />
+
+    </data>
+
+    <RelativeLayout style="@style/llVerticalMatchMatch">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAreaOfOperationHeader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/llBottomLayout"
+            android:layout_below="@+id/toolbar"
+            android:nestedScrollingEnabled="false"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/row_area_of_operation_header_item" />
+
+        <LinearLayout
+            android:id="@+id/llBottomLayout"
+            style="@style/llVerticalMatchWrap"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/_5mdp"
+            android:layout_marginRight="@dimen/_5mdp"
+            android:gravity="center"
+            android:paddingTop="@dimen/_5mdp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnNext"
+                style="@style/ButtonStyle"
+                android:layout_width="@dimen/_150mdp"
+                android:text="@string/str_next" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

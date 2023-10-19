@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.common.SpinnerOptionModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:gravity="top"
+            android:padding="@dimen/_5mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_weight="1"
+                android:gravity="top">
+
+                <TextView
+                    style="@style/textViewStyleRegular"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:padding="@dimen/_5mdp"
+                    android:text="@{model.name}" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageViewIsSelected"
+                isSelected="@{model.isSelected}"
+                android:layout_width="@dimen/_15mdp"
+                android:layout_height="@dimen/_15mdp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_5mdp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_check_mark"
+
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1mdp"
+            android:layout_marginHorizontal="@dimen/_10mdp"
+            android:background="@color/colorDivider" />
+    </LinearLayout>
+</layout>

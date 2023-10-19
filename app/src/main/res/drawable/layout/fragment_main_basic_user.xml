@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="userName"
+            type="String" />
+    </data>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="false"
+            tools:openDrawer="end">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout style="@style/llVerticalMatchWrap">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/dashboard_top_background"
+                                android:orientation="vertical">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_16mdp"
+                                    android:orientation="vertical"
+                                    android:visibility="visible">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/textViewUserName"
+                                        style="@style/textViewStyleLarge"
+                                        android:layout_width="wrap_content"
+                                        android:layout_marginVertical="@dimen/_10mdp"
+                                        android:layout_marginStart="@dimen/_40mdp"
+                                        android:gravity="center"
+                                        android:text="@{userName}"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold" />
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/recycleFirstMenu"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginHorizontal="@dimen/_20mdp"
+                                        android:layout_marginBottom="@dimen/_10mdp"
+                                        android:orientation="horizontal"
+                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        tools:listitem="@layout/home_top_menu_item" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recycleOptionMenu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:spanCount="3"
+                                    tools:itemCount="6"
+                                    tools:listitem="@layout/home_menu_item" />
+
+                                <com.energy.ahasolar.utility.SmoothPager
+                                    android:id="@+id/homeBannerImageViewpager"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_150mdp" />
+
+                                <FrameLayout
+                                    android:id="@+id/llUserRecentActivity"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:visibility="gone">
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="bottom"
+                                        android:layout_marginHorizontal="@dimen/_20mdp"
+                                        android:layout_marginBottom="@dimen/_5mdp">
+
+                                        <androidx.cardview.widget.CardView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/_60mdp"
+                                            android:layout_margin="@dimen/_2mdp"
+                                            app:cardBackgroundColor="@color/white"
+                                            app:cardCornerRadius="@dimen/_10mdp"
+                                            app:cardElevation="@dimen/_1mdp"
+                                            app:cardUseCompatPadding="false" />
+                                    </FrameLayout>
+
+                                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                        <TextView
+                                            style="@style/textViewStyleRegular"
+                                            android:layout_marginHorizontal="@dimen/_10mdp"
+                                            android:text="@string/last_activity" />
+
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/recycleLastActivity"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="@dimen/_5mdp"
+                                            android:layout_marginBottom="@dimen/_10mdp"
+                                            android:layoutAnimation="@anim/layout_animation"
+                                            android:orientation="vertical"
+                                            android:padding="@dimen/_2mdp"
+                                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                            tools:itemCount="1"
+                                            tools:listitem="@layout/row_user_last_activity_item" />
+                                    </LinearLayout>
+                                </FrameLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_80mdp" />
+                            </LinearLayout>
+                        </ScrollView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabUpgradeToPro"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="@dimen/_20mdp"
+                    android:layout_marginBottom="@dimen/_60mdp"
+                    android:src="@drawable/ic_side_menu_upgrade_to_pro"
+                    app:backgroundTint="@color/colorPrimary"
+                    app:fabCustomSize="48dp"
+                    app:layout_constraintBottom_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:tint="@color/white" />
+            </FrameLayout>
+
+        </androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

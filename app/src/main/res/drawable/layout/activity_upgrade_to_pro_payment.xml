@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isApiCalling"
+            type="Boolean" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back"
+            app:layout_constraintBottom_toTopOf="@id/cardView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_5mdp"
+            app:layout_constraintEnd_toStartOf="@+id/toolbar"
+            app:layout_constraintStart_toEndOf="@+id/toolbar"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_marginBottom="@dimen/_5mdp"
+                android:gravity="center">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false">
+
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@color/headerBackgroundColor"
+                        app:tabBackground="@drawable/tab_selected"
+                        app:tabGravity="fill"
+                        app:tabIndicatorColor="@null"
+                        app:tabMode="fixed"
+                        app:tabRippleColor="@null"
+                        app:tabSelectedTextColor="#ffffff"
+                        app:tabTextAppearance="@style/AppTabTextAppearance">
+
+                        <com.google.android.material.tabs.TabItem
+                            android:id="@+id/tabNewUpgrade"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/new_upgrade" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:id="@+id/tabLinkCode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/link_code" />
+
+                    </com.google.android.material.tabs.TabLayout>
+
+                </FrameLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llNewUpgrade"
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginHorizontal="@dimen/_15mdp"
+                    android:layout_marginTop="@dimen/_20mdp"
+                    android:gravity="center_vertical">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:endIconMode="none"
+                        android:hint="@string/hint_company_name"
+                        app:hintTextAppearance="@style/TextLabel">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edtCompanyName"
+                            style="@style/edtStyle"
+                            android:digits="@string/alphaNumeric"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:hint="@string/users"
+                        app:endIconDrawable="@drawable/ic_drop_down"
+                        app:endIconMode="custom">
+
+                        <EditText
+                            android:id="@+id/edtUsers"
+                            style="@style/edtStyle"
+                            android:clickable="true"
+
+                            android:focusable="false" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:hint="@string/str_duration"
+                        app:endIconDrawable="@drawable/ic_drop_down"
+                        app:endIconMode="custom">
+
+                        <EditText
+                            android:id="@+id/edtDuration"
+                            style="@style/edtStyle"
+                            android:clickable="true"
+                            android:focusable="false" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:gravity="center">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_weight="1"
+                            android:hint="@string/str_promo_code">
+
+                            <EditText
+                                android:id="@+id/edtPromoCode"
+                                style="@style/edtStyle"
+                                android:inputType="text" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:visibility="gone"
+                            android:id="@+id/btnApply"
+                            style="@style/ButtonGrayStyle"
+                            android:layout_width="@dimen/_80mdp"
+                            android:layout_gravity="center"
+                            android:layout_marginVertical="0dp"
+                            android:text="Apply" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:text="Amount" />
+
+                        <TextView
+                            android:id="@+id/textViewAmount"
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="₹ 0.0" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:text="Discount Amount" />
+
+                        <TextView
+                            android:id="@+id/textViewDiscountAmount"
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="₹ 0.0" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:text="Total Amount" />
+
+                        <TextView
+                            android:id="@+id/textViewTotalAmount"
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="₹ 0.0" />
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnPayNow"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_150mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="@dimen/_20mdp"
+                        android:text="@string/btn_pay_now" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llLinkCode"
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginHorizontal="@dimen/_15mdp"
+                    android:layout_marginTop="@dimen/_20mdp"
+                    android:gravity="center_vertical"
+                    android:visibility="gone">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:hint="@string/link_code">
+
+                        <EditText
+                            android:id="@+id/edtLinkCode"
+                            style="@style/edtStyle"
+                            android:imeOptions="actionDone"
+                            android:inputType="text" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnConfirm"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_150mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="@dimen/_20mdp"
+                        android:text="@string/btn_confirm" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.common.HomeOption" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/llHomeButtonMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_22mdp"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgHomeIcon"
+                bindImage="@{model.icon}"
+                android:layout_width="@dimen/_50mdp"
+                android:layout_height="@dimen/_50mdp"
+                android:padding="@dimen/_5mdp"
+                android:background="@drawable/shape_round_lightgray"
+                />
+
+            <TextView
+                android:id="@+id/txtHomeTitle"
+                style="@style/textViewStyleRegular"
+                android:layout_marginTop="@dimen/_5mdp"
+                android:ellipsize="end"
+                android:gravity="top|center"
+                android:textSize="@dimen/_11mdp"
+                android:lines="2"
+                android:maxLines="2"
+                android:minLines="1"
+                android:text="@{model.title}" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,1330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="surveyStep"
+            type="com.energy.ahasolar.dataservice.model.response.SiteSurveyStep2Response" />
+
+        <variable
+            name="isPlaceForInverterAvailable"
+            type="Boolean" />
+
+        <variable
+            name="addInverterImageVisible"
+            type="Boolean" />
+
+        <variable
+            name="isPlaceForBatteryAvailable"
+            type="Boolean" />
+
+        <variable
+            name="addBatteryImageVisible"
+            type="Boolean" />
+
+        <variable
+            name="isPlaceForACDistributionBoxAvailable"
+            type="Boolean" />
+
+        <variable
+            name="addACDistributionImageVisible"
+            type="Boolean" />
+
+        <variable
+            name="isPlaceForMeteringPlaceAvailable"
+            type="Boolean" />
+
+        <variable
+            name="addMeteringPlaceImageVisible"
+            type="Boolean" />
+
+        <variable
+            name="isPhotographOfInstallationAreaAvailable"
+            type="Boolean" />
+
+        <variable
+            name="addInstallationAreaImageVisible"
+            type="Boolean" />
+
+        <variable
+            name="isAdditionalDetailVisible"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="left">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+        <ScrollView
+            android:id="@+id/scrollStep2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:padding="@dimen/_5mdp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="@dimen/_2mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_weight="1"
+                                android:paddingHorizontal="@dimen/_10mdp"
+                                android:paddingVertical="@dimen/_8mdp"
+                                android:text="@string/hint_roof_details"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_margin="@dimen/_1mdp"
+                            android:padding="@dimen/_10mdp">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_type_of_roof"
+                                android:visibility="gone"
+                                app:endIconDrawable="@drawable/ic_drop_down"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtRoofType"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:focusable="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/cvSelectTypeOfRoof"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_2mdp"
+                                android:layout_marginTop="@dimen/_8mdp"
+                                android:layout_marginBottom="@dimen/_2mdp"
+                                app:cardCornerRadius="@dimen/_5mdp"
+                                app:cardElevation="@dimen/_3mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_height="@dimen/_35mdp"
+                                        android:background="@color/headerBackgroundColor"
+                                        android:gravity="left|center_vertical"
+                                        android:paddingHorizontal="@dimen/_8mdp"
+                                        android:paddingVertical="@dimen/_5mdp"
+                                        android:text="@string/hint_type_of_roof" />
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/rvRoofType"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="140sp"
+                                        android:layout_marginVertical="@dimen/_2mdp"
+                                        android:orientation="horizontal"
+                                        android:paddingHorizontal="@dimen/_5mdp"
+                                        android:paddingBottom="@dimen/_10mdp"
+                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                        tools:listitem="@layout/row_category_item" />
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/tilOtherRoofType"
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:hint="@string/hint_roof_type"
+                                        android:visibility="gone">
+
+                                        <EditText
+                                            android:id="@+id/edtOtherRoofType"
+                                            style="@style/edtStyle"
+                                            android:imeOptions="actionDone"
+                                            android:inputType="textCapWords"
+                                            android:maxLength="100"
+                                            android:text='@{surveyStep.otherRoofType != null ? surveyStep.otherRoofType : ""}' />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/tilAngleOfRoof"
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_marginHorizontal="@dimen/_10mdp"
+                                        android:layout_marginBottom="@dimen/_10mdp"
+                                        android:hint="@string/tilt_angle_of_roof"
+                                        android:visibility="gone">
+
+                                        <EditText
+                                            android:id="@+id/edtTilAngleOfRoof"
+                                            style="@style/edtStyleNumeric"
+                                            android:digits="0123456789."
+                                            android:imeOptions="actionDone"
+                                            android:inputType="number"
+                                            android:maxLength="10"
+                                            android:text='@{surveyStep.inclinationOfRoof != null ? surveyStep.inclinationOfRoof : ""}' />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/cvSelectPriority"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_2mdp"
+                                android:layout_marginTop="@dimen/_8mdp"
+                                android:layout_marginBottom="@dimen/_2mdp"
+                                app:cardCornerRadius="@dimen/_5mdp"
+                                app:cardElevation="@dimen/_3mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_height="@dimen/_35mdp"
+                                        android:background="@color/headerBackgroundColor"
+                                        android:gravity="left|center_vertical"
+                                        android:paddingHorizontal="@dimen/_8mdp"
+                                        android:paddingVertical="@dimen/_5mdp"
+                                        android:text="@string/hint_roof_strength" />
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/rvRoofStrength"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginVertical="@dimen/_2mdp"
+                                        android:orientation="horizontal"
+                                        android:paddingHorizontal="@dimen/_5mdp"
+                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                        tools:listitem="@layout/row_common_tag_selection_item" />
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    android:elevation="@dimen/_2mdp"
+                    android:visibility="visible"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_weight="1"
+                                android:paddingHorizontal="@dimen/_10mdp"
+                                android:paddingVertical="@dimen/_8mdp"
+                                android:text="@string/hint_approx_roof_area"
+                                android:textColor="@color/black" />
+
+                            <ImageView
+                                android:id="@+id/imageViewGetAreaFromMap"
+                                android:layout_width="@dimen/_15mdp"
+                                android:layout_height="@dimen/_15mdp"
+                                android:layout_marginHorizontal="@dimen/_15mdp"
+                                android:src="@drawable/ic_location_small"
+                                android:visibility="gone" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_margin="@dimen/_1mdp"
+                            android:paddingHorizontal="@dimen/_10mdp"
+                            android:paddingBottom="@dimen/_10mdp">
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_overall">
+
+                                    <EditText
+                                        android:id="@+id/edtOverallArea"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="15"
+                                        android:text='@{surveyStep.overall != null ? surveyStep.overall : ""}' />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    android:id="@+id/txtOverallAreaInMeter"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:layout_marginRight="@dimen/_5mdp"
+                                    android:background="@drawable/bg_textview_default"
+                                    android:gravity="center"
+                                    android:text="@string/m2"
+                                    android:textColor="@color/colorTextHint"
+                                    android:textSize="@dimen/_11font_mdp" />
+
+                                <TextView
+                                    android:id="@+id/txtOverallAreaInFeet"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:background="@drawable/bg_textview_selected"
+                                    android:gravity="center"
+                                    android:text="@string/ft2"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_11font_mdp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_shadow_free">
+
+                                    <EditText
+                                        android:id="@+id/edtShadowFreeArea"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="15"
+                                        android:text='@{surveyStep.shadowFree != null ? surveyStep.shadowFree : ""}' />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    android:id="@+id/txtShadowFreeAreaInMeter"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:layout_marginRight="@dimen/_5mdp"
+                                    android:background="@drawable/bg_textview_default"
+                                    android:gravity="center"
+                                    android:text="@string/m2"
+                                    android:textColor="@color/colorTextHint"
+                                    android:textSize="@dimen/_11font_mdp" />
+
+                                <TextView
+                                    android:id="@+id/txtShadowFreeAreaInFeet"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:background="@drawable/bg_textview_selected"
+                                    android:gravity="center"
+                                    android:text="@string/ft2"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_11font_mdp" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_1mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:elevation="@dimen/_1mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_weight="1"
+                                android:paddingHorizontal="@dimen/_10mdp"
+                                android:paddingVertical="@dimen/_8mdp"
+                                android:text="@string/hint_site_accessibility"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:padding="@dimen/_10mdp">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_marginTop="@dimen/_4mdp"
+                                android:gravity="left"
+                                android:hint="@string/str_road_to_site"
+                                android:textColor="@color/black" />
+
+                            <LinearLayout style="@style/llEditText">
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:gravity="center">
+
+                                    <RadioGroup
+                                        android:id="@+id/rgRoadToSite"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/radioYesRoadToSite"
+                                            style="@style/myRadioButton"
+
+                                            android:text="@string/str_yes" />
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/radioNoRoadToSite"
+                                            style="@style/myRadioButton"
+                                            android:layout_marginLeft="@dimen/_15mdp"
+                                            android:checked="true"
+                                            android:text="@string/str_no" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_marginTop="@dimen/_8mdp"
+                                android:gravity="left"
+                                android:hint="@string/str_ladder_to_roof"
+                                android:textColor="@color/black" />
+
+                            <LinearLayout style="@style/llEditText">
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:gravity="center">
+
+                                    <RadioGroup
+                                        android:id="@+id/rgLadderToRoof"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/radioYesLadderToRoof"
+                                            style="@style/myRadioButton"
+                                            android:text="@string/str_yes" />
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/radioNoLadderToRoof"
+                                            style="@style/myRadioButton"
+                                            android:layout_marginLeft="@dimen/_10mdp"
+                                            android:checked="true"
+                                            android:text="@string/str_no" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    android:elevation="@dimen/_2mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <LinearLayout
+                            android:id="@+id/llSiteInformationTitle"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_weight="1"
+                                android:paddingHorizontal="@dimen/_10mdp"
+                                android:paddingVertical="@dimen/_8mdp"
+                                android:text="@string/site_information"
+                                android:textColor="@color/black" />
+
+                            <ImageView
+                                android:id="@+id/ivDownArrow"
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_down"
+                                app:tint="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llSiteInformation"
+                            style="@style/llEditText"
+                            android:padding="@dimen/_10mdp"
+                            android:visibility="gone">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_age_of_building">
+
+                                <EditText
+                                    android:id="@+id/edtAgeOfBuilding"
+                                    style="@style/edtStyleNumeric"
+                                    android:digits="0123456789."
+                                    android:imeOptions="actionNext"
+                                    android:inputType="number"
+                                    android:maxLength="6"
+                                    android:text='@{surveyStep.ageOfBuilding != null ? surveyStep.ageOfBuilding : ""}' />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/azimuth">
+
+                                <EditText
+                                    android:id="@+id/edtAzimuth"
+                                    style="@style/edtStyleNumeric"
+                                    android:digits="0123456789."
+                                    android:imeOptions="actionNext"
+                                    android:inputType="number"
+                                    android:maxLength="6"
+                                    android:text='@{surveyStep.azimuth != null ? surveyStep.azimuth : ""}' />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_major_shadow">
+
+                                <EditText
+                                    android:id="@+id/edtMajorShadowCastingObject"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxLength="100"
+                                    android:paddingBottom="@dimen/_5mdp"
+                                    android:text='@{surveyStep.objectOnRoof != null ? surveyStep.objectOnRoof : ""}' />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_height_of_parapet">
+
+                                    <EditText
+                                        android:id="@+id/edtHeightOfParapet"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="15"
+                                        android:text='@{surveyStep.heightOfParapet != null ? surveyStep.heightOfParapet : ""}' />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    android:id="@+id/txtParapetInMeter"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:layout_marginRight="@dimen/_5mdp"
+                                    android:background="@drawable/bg_textview_selected"
+                                    android:gravity="center"
+                                    android:text="@string/m"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_11font_mdp" />
+
+                                <TextView
+                                    android:id="@+id/txtParapetInFeet"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:background="@drawable/bg_textview_default"
+                                    android:gravity="center"
+                                    android:text="@string/ft"
+                                    android:textColor="@color/colorTextHint"
+                                    android:textSize="@dimen/_11font_mdp" />
+                            </LinearLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_floor_below_terrace">
+
+                                <EditText
+                                    android:id="@+id/edtNoOfFloor"
+                                    style="@style/edtStyleNumeric"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="number"
+                                    android:maxLength="3"
+                                    android:text='@{surveyStep.floorBelowTarrace != null ? surveyStep.floorBelowTarrace : ""}' />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_distance_of_dc_cable">
+
+                                    <EditText
+                                        android:id="@+id/edtDistanceOfDCCable"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="15"
+                                        android:text='@{surveyStep.dcCabelDistance != null ? surveyStep.dcCabelDistance : ""}' />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    android:id="@+id/txtDCCableInMeter"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:layout_marginRight="@dimen/_5mdp"
+                                    android:background="@drawable/bg_textview_selected"
+                                    android:gravity="center"
+                                    android:text="@string/m"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_11font_mdp" />
+
+                                <TextView
+
+                                    android:id="@+id/txtDCCableInFeet"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:background="@drawable/bg_textview_default"
+                                    android:gravity="center"
+                                    android:text="@string/ft"
+                                    android:textColor="@color/colorTextHint"
+                                    android:textSize="@dimen/_11font_mdp" />
+                            </LinearLayout>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_2mdp"
+                                android:layout_marginTop="@dimen/_8mdp"
+                                android:layout_marginBottom="@dimen/_2mdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/_8mdp"
+                                app:cardElevation="@dimen/_1mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <LinearLayout
+                                        style="@style/llHorizontalMatchWrap"
+                                        android:background="@color/headerBackgroundColor">
+
+                                        <TextView
+                                            style="@style/headerTextStyle"
+                                            android:layout_weight="1"
+                                            android:maxLines="1"
+                                            android:paddingVertical="@dimen/_8mdp"
+                                            android:paddingStart="@dimen/_10mdp"
+                                            android:text="@string/str_place_for_inverter" />
+
+                                        <ImageView
+                                            android:id="@+id/imgAddPlaceForInverter"
+                                            setVisibility="@{addInverterImageVisible}"
+                                            android:layout_width="@dimen/_30mdp"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center_vertical"
+                                            android:background="?selectableItemBackgroundBorderless"
+                                            android:padding="@dimen/_5mdp"
+                                            android:src="@drawable/ic_add" />
+                                    </LinearLayout>
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/rvPlaceForInverter"
+                                        setVisibility="@{isPlaceForInverterAvailable}"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="horizontal"
+                                        android:padding="@dimen/_4mdp"
+                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                        tools:listitem="@layout/row_media_item" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_2mdp"
+                                android:layout_marginTop="@dimen/_8mdp"
+                                android:layout_marginBottom="@dimen/_2mdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/_8mdp"
+                                app:cardElevation="@dimen/_1mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <LinearLayout
+                                        style="@style/llHorizontalMatchWrap"
+                                        android:background="@color/headerBackgroundColor">
+
+                                        <TextView
+                                            style="@style/headerTextStyle"
+                                            android:layout_weight="1"
+                                            android:maxLines="1"
+                                            android:paddingVertical="@dimen/_8mdp"
+                                            android:paddingStart="@dimen/_10mdp"
+                                            android:text="@string/str_place_for_battery" />
+
+                                        <ImageView
+                                            android:id="@+id/imgAddPlaceForBattery"
+                                            setVisibility="@{addBatteryImageVisible}"
+                                            android:layout_width="@dimen/_30mdp"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center_vertical"
+                                            android:background="?selectableItemBackgroundBorderless"
+                                            android:padding="@dimen/_5mdp"
+                                            android:src="@drawable/ic_add" />
+                                    </LinearLayout>
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/rvPlaceForBattery"
+                                        setVisibility="@{isPlaceForBatteryAvailable}"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="horizontal"
+                                        android:padding="@dimen/_4mdp"
+                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                        tools:listitem="@layout/row_media_item" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_2mdp"
+                                android:layout_marginTop="@dimen/_8mdp"
+                                android:layout_marginBottom="@dimen/_2mdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/_8mdp"
+                                app:cardElevation="@dimen/_1mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <LinearLayout
+                                        style="@style/llHorizontalMatchWrap"
+                                        android:background="@color/headerBackgroundColor">
+
+                                        <TextView
+                                            style="@style/headerTextStyle"
+                                            android:layout_weight="1"
+                                            android:maxLines="1"
+                                            android:paddingVertical="@dimen/_8mdp"
+                                            android:paddingStart="@dimen/_10mdp"
+                                            android:text="@string/str_place_for_ac_distribution_box" />
+
+                                        <ImageView
+                                            android:id="@+id/imgAddPlaceForACDistributionBox"
+                                            setVisibility="@{addACDistributionImageVisible}"
+                                            android:layout_width="@dimen/_30mdp"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center_vertical"
+                                            android:background="?selectableItemBackgroundBorderless"
+                                            android:padding="@dimen/_5mdp"
+                                            android:src="@drawable/ic_add" />
+                                    </LinearLayout>
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/rvPlaceForACDistributionBox"
+                                        setVisibility="@{isPlaceForACDistributionBoxAvailable}"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="horizontal"
+                                        android:padding="@dimen/_4mdp"
+                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                        tools:listitem="@layout/row_media_item" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_2mdp"
+                                android:layout_marginTop="@dimen/_8mdp"
+                                android:layout_marginBottom="@dimen/_2mdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/_8mdp"
+                                app:cardElevation="@dimen/_1mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <LinearLayout
+                                        style="@style/llHorizontalMatchWrap"
+                                        android:background="@color/headerBackgroundColor">
+
+                                        <TextView
+                                            style="@style/headerTextStyle"
+                                            android:layout_weight="1"
+                                            android:maxLines="1"
+                                            android:paddingVertical="@dimen/_8mdp"
+                                            android:paddingStart="@dimen/_10mdp"
+                                            android:text="@string/str_place_for_metering_place" />
+
+                                        <ImageView
+                                            android:id="@+id/imgAddPlaceForMeteringPlace"
+                                            setVisibility="@{addMeteringPlaceImageVisible}"
+                                            android:layout_width="@dimen/_30mdp"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center_vertical"
+                                            android:background="?selectableItemBackgroundBorderless"
+                                            android:padding="@dimen/_5mdp"
+                                            android:src="@drawable/ic_add" />
+                                    </LinearLayout>
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/rvPlaceForMeteringPlace"
+                                        setVisibility="@{isPlaceForMeteringPlaceAvailable}"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="horizontal"
+                                        android:padding="@dimen/_4mdp"
+                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                        tools:listitem="@layout/row_media_item" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_2mdp"
+                                android:layout_marginTop="@dimen/_8mdp"
+                                android:layout_marginBottom="@dimen/_2mdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/_8mdp"
+                                app:cardElevation="@dimen/_1mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <LinearLayout
+                                        style="@style/llHorizontalMatchWrap"
+                                        android:background="@color/headerBackgroundColor">
+
+                                        <LinearLayout
+                                            style="@style/llHorizontalMatchWrap"
+                                            android:layout_weight="1"
+                                            android:gravity="center_vertical">
+
+                                            <TextView
+                                                style="@style/headerTextStyle"
+                                                android:layout_width="wrap_content"
+                                                android:maxLines="1"
+                                                android:paddingVertical="@dimen/_8mdp"
+                                                android:paddingStart="@dimen/_10mdp"
+                                                android:text="@string/str_photograph_of_installation_area" />
+
+                                            <ImageView
+                                                android:id="@+id/imgInfoInstallation"
+                                                android:layout_width="@dimen/_30mdp"
+                                                android:layout_height="match_parent"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="?selectableItemBackgroundBorderless"
+                                                android:paddingHorizontal="@dimen/_7mdp"
+                                                android:src="@drawable/ic_info"
+                                                app:tint="@color/colorYellow" />
+                                        </LinearLayout>
+
+                                        <ImageView
+                                            android:id="@+id/imgAddPhotographOfInstallationArea"
+                                            setVisibility="@{addInstallationAreaImageVisible}"
+                                            android:layout_width="@dimen/_30mdp"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center_vertical"
+                                            android:background="?selectableItemBackgroundBorderless"
+                                            android:padding="@dimen/_5mdp"
+                                            android:src="@drawable/ic_add" />
+                                    </LinearLayout>
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/rvPhotographOfInstallationArea"
+                                        setVisibility="@{isPhotographOfInstallationAreaAvailable}"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="horizontal"
+                                        android:padding="@dimen/_4mdp"
+                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                        tools:listitem="@layout/row_media_item" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    android:elevation="@dimen/_2mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/txtAdditionalDetail"
+                                style="@style/headerTextStyle"
+                                android:layout_weight="1"
+                                android:paddingHorizontal="@dimen/_10mdp"
+                                android:paddingVertical="@dimen/_8mdp"
+                                android:text="@string/str_additional_site_detail"
+                                android:textColor="@color/black" />
+
+                            <ImageView
+                                android:id="@+id/imgAdditionalDetail"
+                                isVisibleUpDownArrow="@{isAdditionalDetailVisible}"
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_down"
+                                app:tint="#000000" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llAdditionalDetail"
+                            style="@style/llVerticalMatchWrap"
+                            setVisibility="@{isAdditionalDetailVisible}"
+                            android:layout_margin="@dimen/_1mdp"
+                            android:padding="@dimen/_10mdp"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_height_of_front_leg">
+
+                                    <EditText
+                                        android:id="@+id/edtHeightOfFrontLeg"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="15"
+                                        android:text='@{surveyStep.heightOfFrontLeg != null ? surveyStep.heightOfFrontLeg : ""}' />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    android:id="@+id/txtHeightFrontLegInMeter"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:layout_marginRight="@dimen/_5mdp"
+                                    android:background="@drawable/bg_textview_selected"
+                                    android:gravity="center"
+                                    android:text="@string/m"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_11font_mdp" />
+
+                                <TextView
+                                    android:id="@+id/txtHeightFrontLegInFeet"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:background="@drawable/bg_textview_default"
+                                    android:gravity="center"
+                                    android:text="@string/ft"
+                                    android:textColor="@color/colorTextHint"
+                                    android:textSize="@dimen/_11font_mdp" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_height_of_rear_leg">
+
+                                    <EditText
+                                        android:id="@+id/edtHeightOfRearLeg"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="15"
+                                        android:text='@{surveyStep.heightOfRearLeg != null ? surveyStep.heightOfRearLeg : ""}' />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    android:id="@+id/txtHeightRearLegInMeter"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:layout_marginRight="@dimen/_5mdp"
+                                    android:background="@drawable/bg_textview_selected"
+                                    android:gravity="center"
+                                    android:text="@string/m"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_11font_mdp" />
+
+                                <TextView
+                                    android:id="@+id/txtHeightRearLegInFeet"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:background="@drawable/bg_textview_default"
+                                    android:gravity="center"
+                                    android:text="@string/ft"
+                                    android:textColor="@color/colorTextHint"
+                                    android:textSize="@dimen/_11font_mdp" />
+                            </LinearLayout>
+
+                            <TextView
+                                style="@style/textViewStyleRegular"
+                                android:layout_marginTop="@dimen/_8mdp"
+                                android:gravity="left"
+                                android:hint="@string/str_place_for_inverter"
+                                android:textColor="@color/black" />
+
+                            <LinearLayout style="@style/llEditText">
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:gravity="center">
+
+                                    <RadioGroup
+                                        android:id="@+id/rgPlaceForInverter"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/radioGround"
+                                            style="@style/myRadioButton"
+                                            android:checked="true"
+                                            android:text="@string/str_ground" />
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/radioTerrace"
+                                            style="@style/myRadioButton"
+                                            android:layout_marginLeft="@dimen/_15mdp"
+                                            android:text="@string/str_terrace" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_distance_of_ac_cable">
+
+                                    <EditText
+                                        android:id="@+id/edtDistanceACCable"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="15"
+                                        android:text='@{surveyStep.distanceOfAcCable != null ? surveyStep.distanceOfAcCable : ""}' />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    android:id="@+id/txtDistanceACCableInMeter"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:layout_marginRight="@dimen/_5mdp"
+                                    android:background="@drawable/bg_textview_selected"
+                                    android:gravity="center"
+                                    android:text="@string/m"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_11font_mdp" />
+
+                                <TextView
+                                    android:id="@+id/txtDistanceACCableInFeet"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:background="@drawable/bg_textview_default"
+                                    android:gravity="center"
+                                    android:text="@string/ft"
+                                    android:textColor="@color/colorTextHint"
+                                    android:textSize="@dimen/_11font_mdp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_distance_of_dc_earthing">
+
+                                    <EditText
+                                        android:id="@+id/edtDistanceDCEarthing"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="15"
+                                        android:text='@{surveyStep.distanceOfDcEarthing != null ? surveyStep.distanceOfDcEarthing : ""}' />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    android:id="@+id/txtDistanceDCEarthingInMeter"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:layout_marginRight="@dimen/_5mdp"
+                                    android:background="@drawable/bg_textview_selected"
+                                    android:gravity="center"
+                                    android:text="@string/m"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_11font_mdp" />
+
+                                <TextView
+                                    android:id="@+id/txtDistanceDCEarthingInFeet"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:background="@drawable/bg_textview_default"
+                                    android:gravity="center"
+                                    android:text="@string/ft"
+                                    android:textColor="@color/colorTextHint"
+                                    android:textSize="@dimen/_11font_mdp" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_distance_of_la_earthing">
+
+                                    <EditText
+                                        android:id="@+id/edtDistanceLAEarthing"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="15"
+                                        android:text='@{surveyStep.distanceOfLaEarthing != null ? surveyStep.distanceOfLaEarthing : ""}' />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    android:id="@+id/txtDistanceLAInMeter"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:layout_marginRight="@dimen/_5mdp"
+                                    android:background="@drawable/bg_textview_selected"
+                                    android:gravity="center"
+                                    android:text="@string/m"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_11font_mdp" />
+
+                                <TextView
+                                    android:id="@+id/txtDistanceLAInFeet"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:background="@drawable/bg_textview_default"
+                                    android:gravity="center"
+                                    android:text="@string/ft"
+                                    android:textColor="@color/colorTextHint"
+                                    android:textSize="@dimen/_11font_mdp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_distance_of_ac_earthing">
+
+                                    <EditText
+                                        android:id="@+id/edtDistanceACEarthing"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="15"
+                                        android:text='@{surveyStep.distanceOfAcEarthing != null ? surveyStep.distanceOfAcEarthing : ""}' />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    android:id="@+id/txtDistanceACInMeter"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:layout_marginRight="@dimen/_5mdp"
+                                    android:background="@drawable/bg_textview_selected"
+                                    android:gravity="center"
+                                    android:text="@string/m"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_11font_mdp" />
+
+                                <TextView
+                                    android:id="@+id/txtDistanceACInFeet"
+                                    style="@style/textViewStyleBoldRegular"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:background="@drawable/bg_textview_default"
+                                    android:gravity="center"
+                                    android:text="@string/ft"
+                                    android:textColor="@color/colorTextHint"
+                                    android:textSize="@dimen/_11font_mdp" />
+                            </LinearLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_structure_type">
+
+                                <EditText
+                                    android:id="@+id/edtStructureType"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxLength="75"
+                                    android:text='@{surveyStep.structureType != null ? surveyStep.structureType : ""}' />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_structure_height">
+
+                                <EditText
+                                    android:id="@+id/edtStructureHeight"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="15"
+                                    android:text='@{surveyStep.structureHeight != null ? surveyStep.structureHeight : ""}' />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_5mdp"
+                    android:visibility="visible"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:padding="@dimen/_10mdp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_notes">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edtNotes"
+                                style="@style/edtStyle"
+                                android:imeOptions="actionSend"
+                                android:singleLine="false"
+                                android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
+                                android:text='@{surveyStep.notes2 != null ? surveyStep.notes2 : ""}'
+                                />
+
+
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnNext"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_150mdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_5mdp"
+            android:text="@string/str_next"
+            android:visibility="gone" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isDocumentAvailable"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewMessages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_100mdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:listitem="@layout/row_chat_item_left" />
+
+        <LinearLayout
+            android:id="@+id/llMessageView"
+            style="@style/llHorizontalMatchWrap"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_3mdp"
+                android:layout_weight="1"
+                app:cardCornerRadius="@dimen/_20mdp"
+                app:cardElevation="@dimen/_3mdp">
+
+                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewAttachedDocuments"
+                        setVisibility="@{!isDocumentAvailable}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_5mdp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_3mdp">
+
+                        <EditText
+                            android:id="@+id/editTextMessageInput"
+                            style="@style/edtStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/type_a_message"
+                            android:inputType="textMultiLine"
+                            android:maxLines="3"
+                            android:paddingStart="@dimen/_15mdp" />
+
+                        <ImageView
+                            android:id="@+id/addVideo"
+                            android:layout_width="@dimen/_30mdp"
+                            android:layout_height="@dimen/_30mdp"
+                            android:layout_marginEnd="@dimen/_5mdp"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:padding="@dimen/_5mdp"
+                            android:src="@drawable/ic_video_camera"
+                            android:visibility="gone" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="@dimen/_20mdp"
+                            android:background="@color/colorDivider" />
+
+                        <ImageView
+                            android:id="@+id/addAttachment"
+                            android:layout_width="@dimen/_30mdp"
+                            android:layout_height="@dimen/_30mdp"
+                            android:layout_marginEnd="@dimen/_5mdp"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:padding="@dimen/_5mdp"
+                            android:src="@drawable/ic_attachment" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/sendMessage"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="6dp"
+                android:src="@drawable/ic_msg_send"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabCustomSize="48dp"
+                app:tint="@color/white" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

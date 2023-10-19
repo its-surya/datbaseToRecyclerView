@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.ProjectAssumptionResponse" />
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.activity.ProjectDetailsBasicUserActivity">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            setVisibility="@{model!=null?true:false}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginHorizontal="@dimen/_15mdp"
+                    android:layout_marginTop="@dimen/_10mdp">
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="1"
+                            android:text="@string/str_om_cost" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="1"
+                            android:text="@{model.omCost+` ₹/Year`}" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="1"
+                            android:text="@string/str_escalation_om" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="1"
+                            android:text="@{model.escalationOm+` %`}" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="1"
+                            android:text="@string/str_debt" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="1"
+                            android:text="@{`₹ `+model.debt}" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="1"
+                            android:text="@string/str_intrest_rate" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="1"
+                            android:text="@{``+model.interestRate+`%`}" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="1"
+                            android:text="@string/str_insurance_cost" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="1"
+                            android:text="@{`₹ `+model.insuranceCost}" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="1"
+                            android:text="@string/str_rate_depreciation" />
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_weight="1">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@{model.rateOfDesp10+`% for First 10 years`}" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:layout_marginTop="@dimen/_3mdp"
+                                android:background="@color/colorDivider" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@{model.rateOfDesp15+`% for Next 15 years`}" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="1"
+                            android:text="@string/str_rate_accelerated_dept" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="1"
+                            android:text="@{model.rateOfAccDesp+` %`}" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/llNote"
+                        style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_10mdp">
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:text="NOTE"
+                                android:layout_width="wrap_content"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                style="@style/llVerticalWrapWrap"
+                                android:layout_marginStart="@dimen/_10mdp"
+                                >
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_weight="1"
+                                android:text="@string/assumption_can_be_modified" />
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_weight="1"
+                                android:text="@string/professional_version" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginTop="@dimen/_20mdp"
+                            android:layout_marginRight="@dimen/_5mdp"
+                            android:layout_marginBottom="@dimen/_5mdp"
+                            android:gravity="center">
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btnUpgrade"
+                                style="@style/ButtonStyle"
+                                android:layout_width="@dimen/_150mdp"
+                                android:text="@string/str_upgrade" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

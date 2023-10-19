@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.InspectionDetailsDataModel" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        <LinearLayout
+            style="@style/llVerticalMatchMatch"
+            android:layout_margin="@dimen/_10mdp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_2mdp"
+                android:layout_marginTop="@dimen/_8mdp"
+                app:cardCornerRadius="@dimen/_5mdp">
+
+                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                    <TextView
+                        style="@style/headerTextStyle"
+                        android:layout_height="@dimen/_35mdp"
+                        android:background="@color/headerBackgroundColor"
+                        android:gravity="left|center_vertical"
+                        android:paddingHorizontal="@dimen/_8mdp"
+                        android:paddingVertical="@dimen/_5mdp"
+                        android:text="@string/earth_conductor_material" />
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingVertical="@dimen/_5mdp"
+                        android:paddingStart="@dimen/_10mdp">
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/radioButtonCopper"
+                            style="@style/myRadioButton"
+                            android:checked="@{model.earthingData.earthConductor.equals(`1`)}"
+                            android:text="Copper" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/radioButtonGalvanized"
+                            style="@style/myRadioButton"
+                            android:checked="@{model.earthingData.earthConductor.equals(`2`)}"
+                            android:text="Galvanized" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/radioButtonMs"
+                            style="@style/myRadioButton"
+                            android:checked="@{model.earthingData.earthConductor.equals(`3`)}"
+                            android:text="MS" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/radioButtonAluminium"
+                            style="@style/myRadioButton"
+                            android:checked="@{model.earthingData.earthConductor.equals(`4`)}"
+                            android:text="Aluminium" />
+                    </RadioGroup>
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_2mdp"
+                android:layout_marginTop="@dimen/_8mdp"
+                app:cardCornerRadius="@dimen/_5mdp">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:layout_margin="@dimen/_5mdp"
+                    android:hint="@string/total_number_of_earthing">
+
+                    <EditText
+                        android:id="@+id/edtTotalNumberOfEarthing"
+                        style="@style/edtStyleNumeric"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:text="@{model.earthingData.noEarthing}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+        <LinearLayout style="@style/llHorizontalMatchWrap">
+
+            <TextView
+                style="@style/textViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_35mdp"
+                android:gravity="left|center_vertical"
+                android:paddingHorizontal="@dimen/_8mdp"
+                android:text="Earthing Conductor" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_35mdp"
+                android:layout_weight="1" />
+
+            <TextView
+                style="@style/textViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_35mdp"
+                android:gravity="left|center_vertical"
+                android:paddingHorizontal="@dimen/_8mdp"
+                android:text="As per IS 3043/IEEE80" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_2mdp"
+            android:layout_marginTop="@dimen/_8mdp"
+            app:cardCornerRadius="@dimen/_5mdp">
+
+            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                <TextView
+                    style="@style/headerTextStyle"
+                    android:layout_height="@dimen/_35mdp"
+                    android:background="@color/headerBackgroundColor"
+                    android:gravity="left|center_vertical"
+                    android:paddingHorizontal="@dimen/_8mdp"
+                    android:paddingVertical="@dimen/_5mdp"
+                    android:text="@string/earthpit_construction" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_5mdp"
+                    android:paddingStart="@dimen/_10mdp">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radioButtonChemical"
+                        style="@style/myRadioButton"
+                        android:checked="@{model.earthingData.earthpitConstructor.equals(`1`)}"
+                        android:text="@string/chemical" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radioButtonCharcoalSalt"
+                        style="@style/myRadioButton"
+                        android:layout_marginLeft="@dimen/_10mdp"
+                        android:checked="@{!model.earthingData.earthpitConstructor.equals(`0`)}"
+                        android:text="@string/charcoal_salt" />
+                </RadioGroup>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_2mdp"
+            android:layout_marginTop="@dimen/_8mdp"
+            app:cardCornerRadius="@dimen/_5mdp">
+
+            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                <TextView
+                    style="@style/headerTextStyle"
+                    android:layout_height="@dimen/_35mdp"
+                    android:background="@color/headerBackgroundColor"
+                    android:gravity="left|center_vertical"
+                    android:paddingHorizontal="@dimen/_8mdp"
+                    android:paddingVertical="@dimen/_5mdp"
+                    android:text="@string/lightning_arrester_la" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupLightingArrester"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_5mdp"
+                    android:paddingStart="@dimen/_10mdp">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radioButtonFranklin"
+                        style="@style/myRadioButton"
+                        android:checked="@{model.earthingData.lightningArrester.equals(`1`)}"
+                        android:text="@string/franklin_rode" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radioButtonES"
+                        style="@style/myRadioButton"
+                        android:layout_marginLeft="@dimen/_10mdp"
+                        android:checked="@{model.earthingData.lightningArrester.equals(`2`)}"
+                        android:text="@string/es" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radioButtonLANA"
+                        style="@style/myRadioButton"
+                        android:layout_marginLeft="@dimen/_10mdp"
+                        android:checked="@{model.earthingData.lightningArrester.equals(`3`)}"
+                        android:text="@string/n_a_if_10_kw" />
+                </RadioGroup>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewLightningArresterLa"
+            setVisibility="@{model.earthingData.lightningArrester.equals(`3`)}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_2mdp"
+            android:layout_marginVertical="@dimen/_8mdp"
+            android:visibility="gone"
+            app:cardCornerRadius="@dimen/_5mdp">
+
+            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                <TextView
+                    style="@style/headerTextStyle"
+                    android:layout_height="@dimen/_35mdp"
+                    android:background="@color/headerBackgroundColor"
+                    android:gravity="left|center_vertical"
+                    android:paddingHorizontal="@dimen/_8mdp"
+                    android:paddingVertical="@dimen/_5mdp"
+                    android:text="@string/lightning_arrester_iec_62305" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_5mdp"
+                    android:paddingStart="@dimen/_10mdp">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radioButtonOk"
+                        style="@style/myRadioButton"
+                        android:checked="@{model.earthingData.lightningArrester2.equals(`1`)}"
+                        android:text="@string/str_ok" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radioButtonNotOk"
+                        style="@style/myRadioButton"
+                        android:layout_marginLeft="@dimen/_10mdp"
+                        android:checked="@{model.earthingData.lightningArrester2.equals(`2`)}"
+                        android:text="@string/str_not_ok" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radioButtonLAIECNA"
+                        style="@style/myRadioButton"
+                        android:layout_marginLeft="@dimen/_10mdp"
+                        android:checked="@{model.earthingData.lightningArrester2.equals(`3`)}"
+                        android:text="@string/n_a_if_10_kw" />
+                </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginBottom="@dimen/_10mdp"
+                    android:hint="@string/la_height_from_installation_in_m">
+
+                    <EditText
+                        android:id="@+id/edtLAHeight"
+                        style="@style/edtStyleNumeric"
+                        android:hint="@string/hint_enter_value"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:text="@{model.earthingData.laInst}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewBuildings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_10mdp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="3"
+            tools:listitem="@layout/row_inspection_earthing_buildings" />
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+
+<androidx.appcompat.widget.AppCompatButton
+style="@style/ButtonStyle"
+android:gravity="center"
+android:id="@+id/btnSave"
+android:layout_marginVertical="@dimen/_10mdp"
+android:layout_width="@dimen/_120mdp"
+android:text="@string/btn_save"
+setVisibility="@{model.isEditable()>-1 &amp;&amp; model.isEditable()==1}" /></LinearLayout></layout>

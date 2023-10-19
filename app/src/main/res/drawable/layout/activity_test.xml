@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="center">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:gravity="center|top"
+                android:padding="@dimen/_15mdp">
+
+                <LinearLayout style="@style/llVerticalMatchWrap">
+
+
+                    <LinearLayout style="@style/llEditText">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:gravity="center">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                app:hintTextAppearance="@style/TextLabel"
+                                android:hint="@string/hint_enter_name_of_the_client">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtNameOfTheClient"
+                                    style="@style/edtStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:hint="@string/hint_select_item_code"
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                   >
+
+                    <LinearLayout style="@style/llEditText">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:gravity="center">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                app:hintTextAppearance="@style/TextLabel"
+                                android:hint="@string/hint_mobile_number_with_at_risk">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtClientMobileNo"
+                                    style="@style/edtStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="10"
+                                    android:paddingHorizontal="0dp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                   >
+
+
+                    <LinearLayout style="@style/llEditText">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:gravity="center">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                app:hintTextAppearance="@style/TextLabel"
+                                android:hint="@string/hint_alternate_mobile_number">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtClientAlternateMobileNo"
+                                    style="@style/edtStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="10"
+                                    android:paddingHorizontal="0dp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                   >
+
+                    <LinearLayout style="@style/llEditText">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:gravity="center">
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_email">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtEmailAddress"
+                                    style="@style/edtStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textEmailAddress"
+                                    android:paddingHorizontal="0dp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:endIconDrawable="@drawable/ic_calendar"
+                    android:hint="@string/hint_category">
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/edtStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

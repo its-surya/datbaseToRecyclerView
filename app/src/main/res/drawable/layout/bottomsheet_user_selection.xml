@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorCardBack"
+            app:cardCornerRadius="@dimen/_10mdp"
+            app:cardElevation="@dimen/_10mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="center">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center">
+
+                    <TextView
+                        style="@style/textViewStyleLarge"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/_8mdp"
+                        android:text="Are you a"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:padding="@dimen/_15mdp">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"/>
+
+                    <Button
+                        android:id="@+id/btnBasicUser"
+                        style="@style/ButtonGrayStyle"
+                        android:layout_width="@dimen/_130mdp"
+                        android:layout_gravity="center"
+                        android:text="Consumer" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"/>
+
+
+                    <Button
+                        android:id="@+id/btnInstaller"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_130mdp"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+                        android:text="@string/installer" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"/>
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:gravity="center"
+                        android:layout_marginVertical="10dp"
+                        android:hint="Select one for the better experience of the App."/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

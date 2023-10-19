@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.InspectionDetailsResponse.InspectionStatus" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30mdp"
+            android:layout_marginHorizontal="@dimen/_5mdp"
+            android:layout_marginVertical="@dimen/_8mdp"
+            app:cardCornerRadius="@dimen/_15mdp"
+            app:cardElevation="@dimen/_1mdp">
+
+            <LinearLayout style="@style/llHorizontalMatchMatch">
+
+                <ImageView
+                    isSelected="@{model.status==1?true:false}"
+                    android:layout_width="@dimen/_18mdp"
+                    android:layout_height="@dimen/_18mdp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_7mdp"
+                    android:src="@drawable/ic_check_mark" />
+
+
+
+                <TextView
+                    style="@style/textViewStyleRegular"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_7mdp"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/_13mdp"
+                    android:gravity="start|center_vertical"
+                    android:text="@{model.name}" />
+
+
+               <!-- <ImageView
+                    setVisibility="@{model.executionAllowed == 1 || (model.permissions.canAdd &amp;&amp; model.permissions.canEdit &amp;&amp; model.permissions.canRead) ? false : true }"
+                    android:layout_width="@dimen/_18mdp"
+                    android:layout_height="@dimen/_18mdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_8mdp"
+                    android:src="@drawable/ic_padlock" />-->
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</layout>

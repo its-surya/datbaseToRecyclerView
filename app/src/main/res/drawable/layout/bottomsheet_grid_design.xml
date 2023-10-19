@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorCardBack"
+            app:cardCornerRadius="@dimen/_10mdp"
+            app:cardElevation="@dimen/_10mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="center">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center">
+
+                    <TextView
+                        style="@style/textViewStyleLarge"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/_8mdp"
+                        android:text="Grid Design"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:background="@color/white"
+                    android:padding="@dimen/_15mdp">
+
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="@dimen/_20mdp"
+                            android:gravity="left"
+                            android:text="Layout Type"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/edtNumberOfPanelX"
+                            style="@style/edtStyleNumeric"
+                            android:layout_width="@dimen/_60mdp"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@drawable/edittext_bg_box_gray"
+                            android:digits="1234567890"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:maxLength="5" />
+
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:gravity="left"
+                            android:text="X"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_20mdp" />
+
+
+                        <EditText
+                            android:id="@+id/edtNumberOfPanelY"
+                            style="@style/edtStyleNumeric"
+                            android:layout_width="@dimen/_60mdp"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@drawable/edittext_bg_box_gray"
+                            android:digits="1234567890"
+                            android:gravity="center"
+                            android:imeOptions="actionDone"
+                            android:inputType="numberDecimal"
+                            android:maxLength="5" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout style="@style/llEditText">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                style="@style/textViewStyleRegular"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="@dimen/_20mdp"
+                                android:gravity="left"
+                                android:text="Panel Type"
+                                android:textColor="@color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/rgPanelType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <androidx.appcompat.widget.AppCompatRadioButton
+                                    android:id="@+id/radioHorizontal"
+                                    style="@style/myRadioButton"
+                                    android:checked="true"
+                                    android:text="Horizontal" />
+
+                                <androidx.appcompat.widget.AppCompatRadioButton
+                                    android:id="@+id/radioVertical"
+                                    style="@style/myRadioButton"
+                                    android:layout_marginLeft="@dimen/_15mdp"
+                                    android:text="Vertical" />
+                            </RadioGroup>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/buttonSubmit"
+                        style="@style/ButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_15mdp"
+                        android:text="Set" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

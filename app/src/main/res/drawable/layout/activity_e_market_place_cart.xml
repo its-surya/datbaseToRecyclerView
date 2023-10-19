@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isLoadMore"
+            type="Boolean" />
+
+        <variable
+            name="isTyping"
+            type="Boolean" />
+
+        <variable
+            name="isDataFound"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout style="@style/llVerticalMatchMatch">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <LinearLayout style="@style/llVerticalMatchMatch">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+                <include
+                    android:id="@+id/layoutNoResultFound"
+                    layout="@layout/layout_no_data_found"
+                    setVisibility="@{!isDataFound}" />
+
+
+                <LinearLayout style="@style/llVerticalMatchMatch">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewCart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        setVisibility="@{isDataFound}"
+                        android:layout_margin="@dimen/_4mdp"
+                        android:clipToPadding="false"
+                        android:fadeScrollbars="true"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/_50mdp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:spanCount="2"
+                        tools:listitem="@layout/row_e_market_place_cart_item" />
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+            <androidx.cardview.widget.CardView
+                setVisibility="@{isDataFound}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="-1dp"
+                android:layout_marginTop="@dimen/_5mdp"
+                android:layout_marginBottom="-1dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="@dimen/_2mdp">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/_8mdp">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSendRequest"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_140mdp"
+                        android:text="@string/request_quote" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

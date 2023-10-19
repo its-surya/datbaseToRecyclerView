@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorCardBack"
+            app:cardCornerRadius="@dimen/_10mdp"
+            app:cardElevation="@dimen/_10mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="center">
+
+                <FrameLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="?attr/actionBarSize"
+                    android:gravity="center">
+
+                    <TextView
+                        style="@style/textViewStyleLarge"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/_8mdp"
+                        android:text="Azimuth Angle "
+                        android:layout_gravity="center"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textViewSkip"
+                        android:layout_width="wrap_content"
+                        style="@style/textViewStyleLarge"
+                        android:layout_gravity="end|center"
+                        android:paddingVertical="@dimen/_8mdp"
+                        android:layout_marginEnd="@dimen/_10mdp"
+                        android:text="Skip"
+                        android:textColor="@color/white" />
+                </FrameLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/white"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:id="@+id/llSelectPoint"
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/_25mdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_30mdp"
+                            android:layout_height="@dimen/_30mdp"
+                            android:src="@drawable/ic_select_point" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginTop="@dimen/_5mdp"
+                            android:gravity="center"
+                            android:hint="Select Point" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0.5dp"
+                        android:layout_height="@dimen/_50mdp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/llSetTrueSouth"
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/_25mdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_30mdp"
+                            android:layout_height="@dimen/_30mdp"
+                            android:src="@drawable/ic_true_south"
+                            app:tint="@color/colorYellow" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginTop="@dimen/_5mdp"
+                            android:gravity="center"
+                            android:hint="Set True South" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

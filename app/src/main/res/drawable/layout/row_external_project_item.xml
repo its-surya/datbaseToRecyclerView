@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.R.string" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.ExternalProjectModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10mdp"
+            android:layout_marginTop="@dimen/_8mdp"
+            android:layout_marginBottom="@dimen/_2mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_2mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+
+                android:gravity="top">
+
+
+                <TextView
+                    style="@style/headerTextStyle"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:background="@color/headerBackgroundColor"
+                    android:padding="@dimen/_10mdp"
+                    android:text="@{model.name}" />
+
+                <LinearLayout
+                    style="@style/llVerticalMatchMatch"
+                   >
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        android:padding="@dimen/_5mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.7"
+                            android:text="Address" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.3"
+                            android:text="@{model.address+` `+model.city+` `+model.state}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        android:padding="@dimen/_5mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.7"
+                            android:text="Status" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.3"
+                            android:text="@{model.status.empty?`-`:model.status}" />
+                        />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

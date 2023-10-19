@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.ReadingDetailModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/llMainImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_4mdp"
+        android:layout_marginVertical="@dimen/_2mdp"
+        app:cardBackgroundColor="@color/colorCardBack"
+        app:cardCornerRadius="@dimen/_8mdp"
+        app:cardElevation="@dimen/_2mdp">
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:paddingHorizontal="@dimen/_4mdp"
+            android:paddingVertical="@dimen/_4mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rphase" />
+
+                        <EditText
+                            android:id="@+id/edtPhaseRA"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_1mdp"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginRight="@dimen/_1mdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edt_phase"
+                            android:gravity="center_horizontal"
+                            android:inputType="numberDecimal"
+                            android:maxLength="10"
+                            android:padding="@dimen/_5mdp"
+                            android:text="@{model.RPhase}" />
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Amp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        android:layout_weight="3"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="RY" />
+
+                        <EditText
+                            android:id="@+id/edtPhaseRY"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_1mdp"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginRight="@dimen/_1mdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edt_phase"
+                            android:gravity="center_horizontal"
+                            android:inputType="numberDecimal"
+                            android:maxLength="10"
+                            android:padding="@dimen/_5mdp"
+                            android:text="@{model.ry}" />
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="V" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="RN" />
+
+                        <EditText
+                            android:id="@+id/edtPhaseRN"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_1mdp"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginRight="@dimen/_1mdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edt_phase"
+                            android:gravity="center_horizontal"
+                            android:inputType="numberDecimal"
+                            android:maxLength="10"
+                            android:padding="@dimen/_5mdp"
+                            android:text="@{model.rn}" />
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="V" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/yphase" />
+
+                        <EditText
+                            android:id="@+id/edtPhaseYA"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_1mdp"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginRight="@dimen/_1mdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edt_phase"
+                            android:gravity="center_horizontal"
+                            android:inputType="numberDecimal"
+                            android:maxLength="10"
+                            android:padding="@dimen/_5mdp"
+                            android:text="@{model.YPhase}" />
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Amp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        android:layout_weight="3"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="YB" />
+
+                        <EditText
+                            android:id="@+id/edtPhaseYB"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_1mdp"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginRight="@dimen/_1mdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edt_phase"
+                            android:gravity="center_horizontal"
+                            android:inputType="numberDecimal"
+                            android:maxLength="10"
+                            android:padding="@dimen/_5mdp"
+                            android:text="@{model.yb}" />
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="V" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="YN" />
+
+                        <EditText
+                            android:id="@+id/edtPhaseYN"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_1mdp"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginRight="@dimen/_1mdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edt_phase"
+                            android:gravity="center_horizontal"
+                            android:inputType="numberDecimal"
+                            android:maxLength="10"
+                            android:padding="@dimen/_5mdp"
+                            android:text="@{model.yn}" />
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="V" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/bphase" />
+
+                        <EditText
+                            android:id="@+id/edtPhaseBA"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_1mdp"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginRight="@dimen/_1mdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edt_phase"
+                            android:gravity="center_horizontal"
+                            android:inputType="numberDecimal"
+                            android:maxLength="10"
+                            android:padding="@dimen/_5mdp"
+                            android:text="@{model.BPhase}" />
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Amp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        android:layout_weight="3"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="RB" />
+
+                        <EditText
+                            android:id="@+id/edtPhaseRB"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_1mdp"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginRight="@dimen/_1mdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edt_phase"
+                            android:gravity="center_horizontal"
+                            android:inputType="numberDecimal"
+                            android:maxLength="10"
+                            android:padding="@dimen/_5mdp"
+                            android:text="@{model.rb}" />
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="V" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BN" />
+
+                        <EditText
+                            android:id="@+id/edtPhaseBN"
+                            android:layout_width="67dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_1mdp"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginRight="@dimen/_1mdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edt_phase"
+                            android:gravity="center_horizontal"
+                            android:inputType="numberDecimal"
+                            android:maxLength="10"
+                            android:padding="@dimen/_5mdp"
+                            android:text="@{model.bn}" />
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="V" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imgDelete"
+                android:layout_width="@dimen/_20mdp"
+                android:layout_height="@dimen/_20mdp"
+                android:layout_marginLeft="@dimen/_5mdp"
+                android:layout_marginTop="@dimen/_5mdp"
+                android:padding="@dimen/_2mdp"
+                android:src="@drawable/ic_cross_rounded"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

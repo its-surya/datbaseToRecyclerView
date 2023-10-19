@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="isLoadMore"
+            type="Boolean" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@drawable/bg_bottomsheet">
+
+                    <TextView
+                        android:id="@+id/txtTitleDialog"
+                        style="@style/textViewStyleLarge"
+                        android:gravity="center"
+                        android:padding="@dimen/_10mdp"
+                        android:text="Serial Number"
+                        android:textColor="@color/buttonTextColor" />
+
+                    <LinearLayout
+                        android:id="@+id/llScan"
+                        style="@style/llHorizontalWrapMatch"
+                        android:layout_width="?android:attr/actionBarSize"
+                        android:layout_height="?android:attr/actionBarSize"
+                        android:layout_alignParentEnd="true"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:padding="@dimen/_5mdp"
+                            android:src="@drawable/ic_scan"
+                            app:tint="@color/white" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/layoutMainContains"
+                    style="@style/llVerticalMatchWrap"
+                    android:padding="@dimen/_10mdp">
+
+
+                    <androidx.cardview.widget.CardView
+                        setVisibility="@{!isLoadMore}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_1mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginBottom="@dimen/_2mdp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_8mdp"
+                        app:cardElevation="@dimen/_1mdp">
+
+                        <LinearLayout style="@style/llVerticalMatchWrap">
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:background="@color/headerBackgroundColor">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_weight="0.8"
+                                    android:paddingVertical="@dimen/_8mdp"
+                                    android:paddingStart="@dimen/_10mdp"
+                                    android:text="Sr.No" />
+
+                                <TextView
+                                    android:id="@+id/tvTitle"
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_weight="0.2"
+                                    android:paddingVertical="@dimen/_8mdp"
+                                    android:paddingStart="@dimen/_10mdp"
+                                    android:text="PV Module Sr.No." />
+
+
+                            </LinearLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewSerialNumberList"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <include
+                        android:id="@+id/layoutProgressBar"
+                        layout="@layout/layout_load_more_progress_bar"
+                        setVisibility="@{isLoadMore}"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100mdp"
+                        android:layout_gravity="bottom" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

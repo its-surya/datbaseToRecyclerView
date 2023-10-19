@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isShowTechnicalReason"
+            type="Boolean" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.InspectionDetailsDataModel" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:layout_margin="@dimen/_10mdp">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchMatch"
+                        android:layout_margin="@dimen/_5mdp"
+                        >
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/instantaneous_ac_power_in_watt_at_inverter">
+
+                            <EditText
+                                android:id="@+id/edtAcPowerAtInverter"
+                                style="@style/edtStyleNumeric"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:text="@{model.performanceData.actualEnergyGen}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/instantaneous_irradiance_kw_m">
+
+
+                            <EditText
+                                android:id="@+id/edtIrradianceKw"
+                                style="@style/edtStyleNumeric"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:text="@{model.performanceData.irradiance}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/module_area_m">
+
+
+                            <EditText
+                                android:id="@+id/edtModuleArea"
+                                style="@style/edtStyleNumeric"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:text="@{model.performanceData.moduleArea}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/total_number_of_modules">
+
+                            <EditText
+                                android:id="@+id/edtTotalNUmberOfModule"
+                                style="@style/edtStyleNumeric"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:text="@{model.performanceData.totalPvModules}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/module_efficiency_in">
+
+                            <EditText
+                                android:id="@+id/edtModuleEfficiency"
+                                style="@style/edtStyleNumeric"
+
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:maxLength="5"
+
+                                android:text="@{model.performanceData.moduleEfficiency}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/performance_ratio_of_the_system_instantaneous">
+
+                            <EditText
+                                android:id="@+id/edtPerformanceRaioOfTheSystem"
+                                style="@style/edtStyleNumeric"
+                                android:enabled="false"
+                                android:gravity="center_vertical"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:text="@{model.performanceData.performanceRatioSys}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{isShowTechnicalReason}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/technical_reason" />
+
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/checkboxTechnicalReason1"
+                            style="@style/checkboxWrapWrap"
+                            android:checked="@{!model.performanceData.technicalReason1.empty}"
+                            android:text="@string/modules_are_not_cleaned"
+                            android:textSize="@dimen/_10mdp" />
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/checkboxTechnicalReason2"
+                            style="@style/checkboxWrapWrap"
+                            android:checked="@{!model.performanceData.technicalReason2.empty}"
+                            android:text="@string/inverter_efficiency_is_low"
+                            android:textSize="@dimen/_10mdp" />
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/checkboxTechnicalReason3"
+                            style="@style/checkboxWrapWrap"
+                            android:checked="@{!model.performanceData.technicalReason3.empty}"
+                            android:text="@string/modules_are_damaged"
+                            android:textSize="@dimen/_10mdp" />
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/checkboxTechnicalReason4"
+                            style="@style/checkboxWrapWrap"
+                            android:checked="@{!model.performanceData.technicalReason4.empty}"
+                            android:text="@string/system_loss_is_high"
+                            android:textSize="@dimen/_10mdp" />
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/checkboxTechnicalReason5"
+                            style="@style/checkboxWrapWrap"
+                            android:checked="@{!model.performanceData.technicalReason5.empty}"
+                            android:text="@string/pv_area_under_shadow"
+                            android:textSize="@dimen/_10mdp" />
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/checkboxTechnicalReason6"
+                            style="@style/checkboxWrapWrap"
+                            android:checked="@{!model.performanceData.technicalReason6.empty}"
+                            android:text="@string/system_loss_is_high"
+                            android:textSize="@dimen/_10mdp" />
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/checkboxTechnicalReason7"
+                            style="@style/checkboxWrapWrap"
+                            android:checked="@{model.performanceData.technicalReason7.equals(`7`)}"
+                            android:text="@string/other"
+                            android:textSize="@dimen/_10mdp" />
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/llOtherTechnicalReason"
+                            style="@style/textInputLayoutStyle"
+                            setVisibility="@{model.performanceData.technicalReason7.equals(`7`)}"
+                            android:layout_margin="@dimen/_10mdp"
+                            android:hint="@string/hint_reason">
+
+                            <EditText
+                                android:id="@+id/edtOtherReason"
+                                style="@style/edtStyle"
+                                android:inputType="textMultiLine"
+                                android:maxLines="3"
+                                android:singleLine="false"
+                                android:text="@{model.performanceData.otherText}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSave"
+            style="@style/ButtonStyle"
+            setVisibility="@{model.isEditable()>-1 &amp;&amp; model.isEditable()==1}"
+            android:layout_width="@dimen/_120mdp"
+            android:layout_marginVertical="@dimen/_10mdp"
+            android:gravity="center"
+            android:text="@string/btn_save" />
+    </LinearLayout>
+</layout>

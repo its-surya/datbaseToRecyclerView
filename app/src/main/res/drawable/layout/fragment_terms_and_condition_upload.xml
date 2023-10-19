@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="strTc1"
+            type="String" />
+
+        <variable
+            name="strTc2"
+            type="String" />
+
+        <variable
+            name="strTc3"
+            type="String" />
+
+        <variable
+            name="strTc4"
+            type="String" />
+
+        <variable
+            name="adaptertc1"
+            type="com.energy.ahasolar.ui.adapter.MediaAdapter" />
+
+        <variable
+            name="adaptertc2"
+            type="com.energy.ahasolar.ui.adapter.MediaAdapter" />
+
+        <variable
+            name="adaptertc3"
+            type="com.energy.ahasolar.ui.adapter.MediaAdapter" />
+
+        <variable
+            name="adaptertc4"
+            type="com.energy.ahasolar.ui.adapter.MediaAdapter" />
+    </data>
+
+    <RelativeLayout style="@style/llVerticalMatchMatch">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="visible">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:layout_marginTop="@dimen/_10mdp"
+                android:layout_weight="1"
+                android:padding="@dimen/_10mdp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_8mdp"
+                    app:cardElevation="@dimen/_1mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            android:id="@+id/llTC1Add"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_marginLeft="@dimen/_8mdp"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:paddingVertical="@dimen/_8mdp"
+                                android:text="T &amp; C 1" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:padding="@dimen/_6mdp"
+                                android:src="@drawable/ic_add" />
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            style="@style/llHorizontalWrapWrap"
+                            setVisibility="@{!strTc1.empty}"
+                            android:padding="@dimen/_2mdp">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvTc1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toLeftOf="@+id/btnTc1"
+                                android:adapter="@{adaptertc1}"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_5mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/row_media_item" />
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btnTc1"
+                                style="@style/ButtonStyle"
+                                android:layout_width="@dimen/_100mdp"
+                                android:layout_height="@dimen/_22mdp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_gravity="center"
+                                android:layout_marginVertical="@dimen/_5mdp"
+                                android:backgroundTint="@color/green"
+                                android:text="Make  Default"
+                                android:textSize="@dimen/_10mdp"
+                                android:visibility="visible" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_8mdp"
+                    app:cardElevation="@dimen/_1mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            android:id="@+id/llTC2Add"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_marginLeft="@dimen/_8mdp"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:paddingVertical="@dimen/_8mdp"
+                                android:text="T &amp; C 2" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:padding="@dimen/_6mdp"
+                                android:src="@drawable/ic_add" />
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            style="@style/llHorizontalWrapWrap"
+                            setVisibility="@{!strTc2.empty}"
+                            android:padding="@dimen/_2mdp">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvTc2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toLeftOf="@+id/btnTc2"
+                                android:adapter="@{adaptertc2}"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_5mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/row_media_item" />
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btnTc2"
+                                style="@style/ButtonStyle"
+                                android:layout_width="@dimen/_100mdp"
+                                android:layout_height="@dimen/_22mdp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_gravity="center"
+                                android:layout_marginVertical="@dimen/_5mdp"
+                                android:backgroundTint="@color/green"
+                                android:text="Make  Default"
+                                android:textSize="@dimen/_10mdp"
+                                android:visibility="visible" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_8mdp"
+                    app:cardElevation="@dimen/_1mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            android:id="@+id/llTC3Add"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_marginLeft="@dimen/_8mdp"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:paddingVertical="@dimen/_8mdp"
+                                android:text="T &amp; C 3" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:padding="@dimen/_6mdp"
+                                android:src="@drawable/ic_add" />
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            style="@style/llHorizontalWrapWrap"
+                            setVisibility="@{!strTc3.empty}"
+                            android:padding="@dimen/_2mdp">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvTc3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toLeftOf="@+id/btnTc3"
+                                android:adapter="@{adaptertc3}"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_5mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/row_media_item" />
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btnTc3"
+                                style="@style/ButtonStyle"
+                                android:layout_width="@dimen/_100mdp"
+                                android:layout_height="@dimen/_22mdp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_gravity="center"
+                                android:layout_marginVertical="@dimen/_5mdp"
+                                android:backgroundTint="@color/green"
+                                android:text="Make  Default"
+                                android:textSize="@dimen/_10mdp"
+                                android:visibility="visible" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_8mdp"
+                    app:cardElevation="@dimen/_1mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            android:id="@+id/llTC4Add"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_marginLeft="@dimen/_8mdp"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:paddingVertical="@dimen/_8mdp"
+                                android:text="T &amp; C 4" />
+
+                            <ImageView
+                                android:id="@+id/imgAddVisitingCard"
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:padding="@dimen/_6mdp"
+                                android:src="@drawable/ic_add" />
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            style="@style/llHorizontalWrapWrap"
+                            setVisibility="@{!strTc4.empty}"
+                            android:padding="@dimen/_2mdp">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvTc4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toLeftOf="@+id/btnTc4"
+                                android:adapter="@{adaptertc4}"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_5mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/row_media_item" />
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btnTc4"
+                                style="@style/ButtonStyle"
+                                android:layout_width="@dimen/_100mdp"
+                                android:layout_height="@dimen/_22mdp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_gravity="center"
+                                android:layout_marginVertical="@dimen/_5mdp"
+                                android:backgroundTint="@color/green"
+                                android:text="Make  Default"
+                                android:textSize="@dimen/_10mdp"
+                                android:visibility="visible" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewNote"
+                    style="@style/textViewStyleSmall"
+                    android:layout_marginVertical="@dimen/_10mdp"
+                    android:padding="@dimen/_5mdp"
+                    android:text="@string/str_terms_and_condition_notes" />
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</layout>

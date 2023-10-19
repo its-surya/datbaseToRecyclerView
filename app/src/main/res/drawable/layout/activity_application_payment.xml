@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isChild"
+            type="Boolean" />
+
+        <variable
+            name="isSectionVisible"
+            type="Boolean" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back"
+            app:layout_constraintBottom_toTopOf="@id/cardView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_5mdp"
+            app:layout_constraintEnd_toStartOf="@+id/toolbar"
+            app:layout_constraintStart_toEndOf="@+id/toolbar"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+
+            <LinearLayout
+                android:id="@+id/llNewUpgrade"
+                style="@style/llVerticalMatchWrap"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_10mdp">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/payment_mode"
+                    app:endIconDrawable="@drawable/ic_drop_down"
+                    app:endIconMode="custom">
+
+
+                    <EditText
+                        android:id="@+id/edtPaymentMode"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:gravity="center_vertical" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    setVisibility="@{isChild}"
+                    android:hint="@string/str_bank"
+                    android:visibility="gone"
+                    app:endIconDrawable="@drawable/ic_drop_down"
+                    app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtSelectBank"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:gravity="center_vertical" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/amount">
+
+                    <EditText
+                        android:id="@+id/edtAmount"
+                        style="@style/edtStyleNumeric"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="8" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_remarks">
+
+                    <EditText
+                        android:id="@+id/edtRemarks"
+                        style="@style/edtStyle"
+                        android:inputType="textMultiLine"
+                        android:maxLines="3"
+                        android:singleLine="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    setVisibility="@{isSectionVisible}"
+                    android:layout_marginTop="@dimen/_20mdp">
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1.2"
+                            android:text="@string/convenience_fee" />
+
+                        <ImageView
+                            android:id="@+id/imageViewInfoConvenienceFee"
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:src="@drawable/ic_info"
+                            app:tint="@color/colorYellow" />
+
+                        <TextView
+                            android:id="@+id/textViewConvenienceFee"
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="0.0" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:text="@string/transaction_charge" />
+
+                        <TextView
+                            android:id="@+id/textViewTransactionCharge"
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="0.0" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/textViewGSTLbl"
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:text="@string/gst" />
+
+                        <TextView
+                            android:id="@+id/textViewGST"
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="0.0" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:text="@string/str_total_amount" />
+
+                        <TextView
+                            android:id="@+id/textViewTotalAmount"
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="0.0" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/checkboxProceedToPayment"
+                    style="@style/checkboxWrapWrap"
+                    android:layout_marginVertical="@dimen/_10mdp"
+                    android:buttonTint="@color/buttonBgColor"
+                    android:text="@string/proceed_to_payment" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPayNow"
+                    style="@style/ButtonStyle"
+                    android:layout_width="@dimen/_150mdp"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="@dimen/_20mdp"
+                    android:text="@string/btn_pay_now" />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

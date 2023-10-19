@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.ProcurementListResponse.ProcurementModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10mdp"
+            android:layout_marginVertical="@dimen/_5mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_2mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="top">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/headerBackgroundColor">
+
+                    <LinearLayout
+                        style="@style/llVerticalWrapWrap"
+                        android:layout_weight="1"
+                        android:paddingHorizontal="@dimen/_10mdp"
+                        android:paddingVertical="@dimen/_10mdp">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:maxLines="1"
+                            android:text="@{`Serial No.: `+model.srno}" />
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/imageViewOption"
+                        android:layout_width="@dimen/_30mdp"
+                        android:layout_height="@dimen/_30mdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_8mdp"
+                        android:src="@drawable/ic_three_dot_horizontal"
+                        android:visibility="gone"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Category"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@{model.milestone.empty?`-`:model.milestone}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Manufacturer"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@{model.manufacturer.empty?`-`:model.manufacturer}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Rating"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@{model.rating.empty?`-`:model.rating}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Quantity"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@{model.quantity==0?`-`:``+model.quantity}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.showMore}"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Total Box"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@{model.totalBox==0?`-`:``+model.totalBox}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.showMore}"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Unit"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@{model.units.empty||model.units==null?`-`:``+model.units}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.showMore}"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Due Date"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@{model.dueDate.empty?`-`:``+model.dueDate}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.showMore}"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Actual Date"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@{model.receiptDate.empty?`-`:``+model.receiptDate}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.showMore}"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Payment Completed?"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@{model.paymentMethod.empty?`-`:``+model.paymentMethod}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.showMore}"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Description"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@{model.description.empty?`-`:``+model.description}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llViewMore"
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/headerBackgroundColor"
+                    android:gravity="center">
+
+
+                    <ImageView
+                        android:id="@+id/imageViewViewMore"
+                        android:layout_width="@dimen/_30mdp"
+                        android:layout_height="@dimen/_30mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_5mdp"
+                        android:src="@{model.showMore?@drawable/ic_arrow_up:@drawable/ic_arrow_down}"
+                        app:tint="#808080" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</layout>

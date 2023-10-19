@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.ApplicationDataList" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/llVerticalMatchWrap">
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:layout_marginVertical="@dimen/_5mdp">
+
+            <LinearLayout
+                style="@style/llHorizontalMatchWrap"
+                android:gravity="top"
+                android:paddingHorizontal="@dimen/_10mdp"
+                android:weightSum="10">
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:text="@{model.key}" />
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="@dimen/_5mdp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:text="@{model.myText}" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

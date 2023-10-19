@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="srno"
+            type="String" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.ScannedBarcode.Inverter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        >
+
+        <LinearLayout style="@style/llVerticalMatchWrap">
+
+            <LinearLayout
+                style="@style/llHorizontalMatchWrap"
+                android:gravity="center|left">
+
+                <TextView
+                    android:id="@+id/txtSrNo"
+                    style="@style/textViewStyleSmall"
+                    android:layout_width="@dimen/_50mdp"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/_8mdp"
+                    android:text="@{srno}" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorDivider" />
+
+                <TextView
+                    android:id="@+id/txtBarcodeNo"
+                    style="@style/textViewStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingVertical="@dimen/_8mdp"
+                    android:paddingStart="@dimen/_10mdp"
+                    android:text="@{model.barcodeNumber.empty?``:model.barcodeNumber}" />
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="@dimen/_5mdp"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_width="@dimen/_25mdp"
+                    android:layout_height="@dimen/_25mdp"
+                    android:padding="@dimen/_5mdp"
+                    android:src="@drawable/ic_check_mark"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ivBarcodeImage"
+                    android:layout_width="@dimen/_25mdp"
+                    android:layout_height="@dimen/_25mdp"
+                    android:padding="@dimen/_5mdp"
+                   setVisibility="@{!model.serialPhoto.empty}"
+                    android:src="@drawable/ic_gallery"
+                    app:tint="@color/green" />
+
+                <ImageView
+                    android:layout_width="@dimen/_25mdp"
+                    android:layout_height="@dimen/_25mdp"
+                    android:padding="@dimen/_5mdp"
+                    android:src="@drawable/ic_close"
+                    android:visibility="gone"
+                    app:tint="@color/red" />
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="@dimen/_5mdp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="isInMeter"
+            type="Boolean" />
+
+
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="left">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:padding="@dimen/_5mdp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_3mdp"
+                    app:cardCornerRadius="@dimen/_5mdp"
+                    app:cardElevation="@dimen/_3mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <com.energy.ahasolar.utility.CircularSeekBar
+                            android:id="@+id/circulerSeekBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_20mdp"
+                            app:detectTouchInside="true"
+                            app:endAngle="280"
+                            app:maxValue="100"
+                            app:minValue="0"
+                            app:primaryColor="@color/colorAccent"
+                            app:progress="100"
+                            app:rotateAngle="120"
+                            app:secondaryColor="#E1E1E1"
+                            app:secondaryProgress="50"
+                            app:seekDirection="clockwise"
+                            app:startAngle="20"
+                            app:textColor="@android:color/darker_gray"
+                            app:textProgressEnabled="false" />
+
+                        <TextView
+                            style="@style/textViewStyleBoldRegular"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Usable Area" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/txtTotalArea"
+                                style="@style/textViewStyleBoldRegular"
+                                android:layout_width="wrap_content"
+                                android:textSize="@dimen/_25mdp" />
+
+                            <TextView
+                                style="@style/textViewStyleRegular"
+                                setVisibility="@{isInMeter}"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:padding="@dimen/_3mdp"
+                                android:text="@string/m2" />
+
+                            <TextView
+                                style="@style/textViewStyleRegular"
+                                setVisibility="@{!isInMeter}"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:padding="@dimen/_3mdp"
+                                android:text="@string/ft2" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/txtPercentageOfShadowFreeArea"
+                                style="@style/textViewStyleRegular"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:paddingVertical="@dimen/_3mdp"
+                                android:text="100" />
+
+                            <TextView
+                                style="@style/textViewStyleRegular"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:paddingVertical="@dimen/_3mdp"
+                                android:text="% of Total Area" />
+
+                            <TextView
+                                android:id="@+id/txtTotalAreaStaticLable"
+                                style="@style/textViewStyleRegular"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginStart="@dimen/_5mdp"
+                                android:paddingVertical="@dimen/_3mdp" />
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_width="wrap_content"
+                                android:gravity="center">
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    setVisibility="@{isInMeter}"
+                                    android:layout_width="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:padding="@dimen/_3mdp"
+                                    android:text="@string/m2" />
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    setVisibility="@{!isInMeter}"
+                                    android:layout_width="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:padding="@dimen/_3mdp"
+                                    android:text="@string/ft2" />
+                            </LinearLayout>
+
+                            <TextView
+                                style="@style/textViewStyleRegular"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:paddingVertical="@dimen/_3mdp"
+                                android:text=")" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvSelectTypeOfRoof"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    app:cardCornerRadius="@dimen/_5mdp"
+                    app:cardElevation="@dimen/_3mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/hint_type_of_roof_with_at_risk_mark" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvRoofType"
+                            android:layout_width="match_parent"
+                            android:layout_height="140sp"
+                            android:layout_marginVertical="@dimen/_2mdp"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="@dimen/_5mdp"
+                            android:paddingBottom="@dimen/_10mdp"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_category_item" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilOtherRoofType"
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/hint_roof_type"
+                            android:visibility="gone">
+
+                            <EditText
+                                android:id="@+id/edtOtherRoofType"
+                                style="@style/edtStyle"
+                                android:imeOptions="actionDone"
+                                android:inputType="textCapWords"
+                                android:maxLength="100"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilAngleOfRoof"
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/tilt_angle_of_roof"
+                            android:visibility="gone">
+
+                            <EditText
+                                android:id="@+id/edtTilAngleOfRoof"
+                                style="@style/edtStyleNumeric"
+                                android:digits="0123456789."
+                                android:imeOptions="actionDone"
+                                android:inputType="number"
+                                android:maxLength="10" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    android:elevation="@dimen/_2mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <LinearLayout
+                            android:id="@+id/llSiteInformationTitle"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_weight="1"
+                                android:paddingHorizontal="@dimen/_10mdp"
+                                android:paddingVertical="@dimen/_8mdp"
+                                android:text="@string/site_information"
+                                android:textColor="@color/black" />
+
+                            <ImageView
+                                android:id="@+id/ivDownArrow"
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_down"
+                                app:tint="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llSiteInformation"
+                            style="@style/llEditText"
+                            android:padding="@dimen/_10mdp"
+                            android:visibility="gone">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:layout_weight="1"
+                                android:hint="@string/hint_building_name">
+
+                                <EditText
+                                    android:id="@+id/edtBuildingName"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:text="Building 1" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <LinearLayout style="@style/llHorizontalMatchWrap">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_height_of_parapet"
+                                    android:text="@string/m">
+
+                                    <EditText
+                                        android:id="@+id/edtHeightOfParapet"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                         />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    setVisibility="@{isInMeter}"
+                                    android:layout_width="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:padding="@dimen/_3mdp"
+                                    android:text="@string/m" />
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    setVisibility="@{!isInMeter}"
+                                    android:layout_width="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:padding="@dimen/_3mdp"
+                                    android:text="@string/ft" />
+
+                                <View
+                                    android:layout_width="@dimen/_10mdp"
+                                    android:layout_height="match_parent" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_weight="1"
+                                    android:hint="No. of floors">
+
+                                    <EditText
+                                        android:id="@+id/edtNoOfFloor"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="number"
+                                        android:maxLength="3"
+                                        />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_2mdp"
+                                android:layout_marginTop="@dimen/_8mdp"
+                                android:layout_marginBottom="@dimen/_2mdp"
+                                app:cardCornerRadius="@dimen/_5mdp"
+                                app:cardElevation="@dimen/_3mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_height="@dimen/_35mdp"
+                                        android:background="@color/headerBackgroundColor"
+                                        android:gravity="left|center_vertical"
+                                        android:paddingHorizontal="@dimen/_8mdp"
+                                        android:paddingVertical="@dimen/_5mdp"
+                                        android:text="@string/hint_age_of_building" />
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/rvAgeOfBuilding"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginVertical="@dimen/_2mdp"
+                                        android:orientation="horizontal"
+                                        android:paddingHorizontal="@dimen/_5mdp"
+                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                        tools:listitem="@layout/row_common_tag_selection_item" />
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center"
+                                android:visibility="gone">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    android:hint="Height of roof from ground">
+
+                                    <EditText
+                                        android:id="@+id/edtHeightOfRoofFromGround"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="numberDecimal" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_marginHorizontal="@dimen/_10mdp"
+                                    android:gravity="center" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llVerticalMatchWrap"
+                                android:layout_marginTop="@dimen/_10mdp">
+
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:gravity="left"
+                                    android:hint="@string/str_ladder_to_roof"
+                                    android:textColor="@color/black" />
+
+                                <LinearLayout style="@style/llEditText">
+
+                                    <LinearLayout
+                                        style="@style/llHorizontalMatchWrap"
+                                        android:gravity="center">
+
+                                        <RadioGroup
+                                            android:id="@+id/rgLadderToRoof"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+                                            <androidx.appcompat.widget.AppCompatRadioButton
+                                                android:id="@+id/radioYesLadderToRoof"
+                                                style="@style/myRadioButton"
+                                                android:checked="true"
+                                                android:text="@string/str_yes" />
+
+                                            <androidx.appcompat.widget.AppCompatRadioButton
+                                                android:id="@+id/radioNoLadderToRoof"
+                                                style="@style/myRadioButton"
+                                                android:layout_marginLeft="@dimen/_10mdp"
+                                                android:text="@string/str_no" />
+                                        </RadioGroup>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_1mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+                    android:elevation="@dimen/_1mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <LinearLayout
+                            android:id="@+id/llEnergyDetailsTitle"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_10mdp"
+                                android:text="@string/energy_details"
+                                android:textColor="@color/black" />
+
+                            <ImageView
+                                android:id="@+id/imageViewInfo"
+                                android:layout_width="@dimen/_20mdp"
+                                android:layout_height="@dimen/_20mdp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginHorizontal="@dimen/_10mdp"
+                                android:src="@drawable/ic_info"
+                                app:tint="@color/yellow"
+                                />
+
+                            <ImageView
+                                android:id="@+id/ivEnergyDownArrow"
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_down"
+                                app:tint="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llEnergyDetails"
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_margin="@dimen/_10mdp"
+                            android:gravity="top"
+                            android:visibility="gone">
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:layout_weight="1"
+                                android:hint="@string/energy_consumption_kwh_month">
+
+                                <EditText
+                                    android:id="@+id/edtEnergyConsumption"
+                                    style="@style/edtStyleNumeric"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:text="1" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:layout_weight="1"
+                                android:hint="@string/hint_monthly_bill_with_star">
+
+                                <EditText
+                                    android:id="@+id/edtMonthlyBill"
+                                    style="@style/edtStyleNumeric"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:text="1" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:layout_weight="1"
+                                android:hint="Contract Load (kW)">
+
+                                <EditText
+                                    android:id="@+id/edtSanctionedLoad"
+                                    style="@style/edtStyleNumeric"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:layout_weight="1"
+                                android:hint="@string/recommended_capacity">
+
+                                <EditText
+                                    android:id="@+id/edtRecommendedCapacity"
+                                    style="@style/edtStyleNumeric"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <LinearLayout
+                                style="@style/llVerticalMatchWrap"
+                                android:layout_marginTop="@dimen/_10mdp">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:gravity="left"
+                                    android:hint="@string/str_voltage_level_phase"
+                                    android:textColor="@color/black" />
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:layout_marginTop="@dimen/_10mdp"
+                                    android:gravity="center">
+
+                                    <RadioGroup
+                                        android:id="@+id/rgVoltageLevelPhase"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/radioThreePhase"
+                                            style="@style/myRadioButton"
+                                            android:checked="true"
+                                            android:text="@string/str_three_phase" />
+
+                                        <androidx.appcompat.widget.AppCompatRadioButton
+                                            android:id="@+id/radioOnePhase"
+                                            style="@style/myRadioButton"
+                                            android:layout_marginLeft="@dimen/_10mdp"
+                                            android:text="@string/str_one_phase" />
+                                    </RadioGroup>
+                                </LinearLayout>
+
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_8mdp"
+                    app:cardElevation="@dimen/_1mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_width="wrap_content"
+                                    android:maxLines="1"
+                                    android:paddingVertical="@dimen/_8mdp"
+                                    android:paddingStart="@dimen/_10mdp"
+                                    android:text="Photos" />
+
+                            </LinearLayout>
+
+                            <ImageView
+                                android:id="@+id/imageViewPhotoInfo"
+                                android:layout_width="@dimen/_20mdp"
+                                android:layout_height="@dimen/_20mdp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginHorizontal="@dimen/_10mdp"
+                                android:src="@drawable/ic_info"
+                                app:tint="@color/yellow"
+                                />
+
+                            <ImageView
+                                android:id="@+id/imgAddPhotographOfInstallationArea"
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_add" />
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvPhotographOfInstallationArea"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:nestedScrollingEnabled="false"
+                            android:orientation="vertical"
+                            tools:itemCount="2"
+                            android:padding="@dimen/_4mdp"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_quick_site_survey_media_item" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_8mdp"
+                    app:cardElevation="@dimen/_1mdp">
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:layout_margin="@dimen/_10mdp"
+                        android:hint="Any other specific requirement from customer">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtNotes"
+                            style="@style/edtStyle"
+                            android:imeOptions="actionSend"
+                            android:singleLine="false"
+                            android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
+                   />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnNext"
+                style="@style/ButtonStyle"
+                android:layout_width="@dimen/_100mdp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/_5mdp"
+                android:text="@string/str_next"
+                android:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSave"
+                style="@style/ButtonStyle"
+                android:layout_width="@dimen/_100mdp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/_5mdp"
+                android:text="@string/str_update"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

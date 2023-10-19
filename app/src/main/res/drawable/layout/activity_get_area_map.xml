@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout style="@style/llVerticalMatchMatch">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewSearchPlaces"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                android:layout_marginVertical="@dimen/_5mdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_20mdp"
+                app:cardElevation="@dimen/_5mdp"
+                app:layout_constraintEnd_toStartOf="@+id/map"
+                app:layout_constraintStart_toEndOf="@+id/map"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view1"
+                    android:orientation="vertical">
+
+                    <fragment
+                        android:id="@+id/place_autocomplete"
+                        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35mdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleExtraOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardViewSearchPlaces"
+                android:layout_alignStart="@+id/cardViewSearchPlaces"
+                android:layout_alignEnd="@+id/cardViewSearchPlaces"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewSearchPlaces"
+                app:layout_constraintStart_toStartOf="@+id/cardViewSearchPlaces"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewSearchPlaces">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <com.github.clans.fab.FloatingActionMenu
+                android:id="@+id/fabMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/map"
+                fab:menu_animationDelayPerItem="50"
+                fab:menu_backgroundColor="@android:color/transparent"
+                fab:menu_buttonSpacing="0dp"
+                fab:menu_colorNormal="@color/colorPrimary"
+                fab:menu_colorPressed="@color/colorPrimary"
+                fab:menu_colorRipple="#99FFFFFF"
+                fab:menu_fab_label=""
+                fab:menu_fab_size="normal"
+                fab:menu_icon="@drawable/fab_add"
+                fab:menu_labels_colorNormal="#333333"
+                fab:menu_labels_colorPressed="#444444"
+                fab:menu_labels_colorRipple="#66FFFFFF"
+                fab:menu_labels_cornerRadius="3dp"
+                fab:menu_labels_ellipsize="none"
+                fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+                fab:menu_labels_margin="0dp"
+                fab:menu_labels_maxLines="-1"
+                fab:menu_labels_paddingBottom="2dp"
+                fab:menu_labels_paddingLeft="8dp"
+                fab:menu_labels_paddingRight="8dp"
+                fab:menu_labels_paddingTop="2dp"
+                fab:menu_labels_position="left"
+                fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+                fab:menu_labels_showShadow="true"
+                fab:menu_labels_singleLine="false"
+                fab:menu_labels_style="@style/MenuLabelsStyle"
+                fab:menu_labels_textColor="#000"
+                fab:menu_labels_textSize="14sp"
+                fab:menu_openDirection="up"
+                fab:menu_shadowColor="#66000000"
+                fab:menu_shadowRadius="5dp"
+                fab:menu_shadowXOffset="1dp"
+                fab:menu_shadowYOffset="3dp"
+                fab:menu_showShadow="true">
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/fabDrawArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_map_area"
+                    app:fab_colorNormal="@color/colorPrimary"
+                    app:fab_colorPressed="@color/colorPrimary"
+                    app:rippleColor="@color/colorPrimary"
+                    fab:fab_label="Draw Area"
+                    fab:fab_size="normal" />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/fabDrawDistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_map_distance"
+                    app:fab_colorNormal="@color/colorPrimary"
+                    app:fab_colorPressed="@color/colorPrimary"
+                    app:rippleColor="@color/colorPrimary"
+                    fab:fab_label="Measure Distance"
+                    fab:fab_size="normal" />
+
+            </com.github.clans.fab.FloatingActionMenu>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabSaveArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/_20mdp"
+                android:src="@drawable/ic_check_mark_white"
+                android:visibility="gone"
+                app:backgroundTint="@color/colorGreen"
+                app:fabCustomSize="60dp"
+                app:layout_constraintBottom_toBottomOf="@+id/fabMenu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/fabMenu"
+                app:layout_constraintTop_toTopOf="@+id/fabMenu"
+                app:layout_constraintVertical_bias="1.0"
+                app:tint="@color/white" />
+
+            <ImageView
+                android:id="@+id/imgCenterPoint"
+                android:layout_width="@dimen/_40mdp"
+                android:layout_height="@dimen/_40mdp"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="@dimen/_30mdp"
+                android:src="@drawable/ic_aha_marker"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <LinearLayout style="@style/llVerticalMatchMatch">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPhotos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    />
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/_20mdp"
+                    android:paddingVertical="@dimen/_10mdp">
+
+                    <TextView
+                        android:id="@+id/txtMeasurementType"
+                        style="@style/textViewStyleRegular"
+                        android:layout_width="wrap_content"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:text="Select Measurement Unit" />
+
+                    <TextView
+                        android:id="@+id/txtArea"
+                        style="@style/textViewStyleBoldRegular"
+                        android:layout_width="@dimen/_100mdp"
+                        android:layout_marginEnd="@dimen/_20mdp"
+                        android:layout_weight="1" />
+
+
+                    <TextView
+                        android:id="@+id/txtAreaInMeter"
+                        style="@style/textViewStyleBoldRegular"
+                        android:layout_width="@dimen/_30mdp"
+                        android:layout_height="@dimen/_30mdp"
+                        android:layout_marginRight="@dimen/_5mdp"
+                        android:background="@drawable/bg_textview_selected"
+                        android:gravity="center"
+                        android:text="@string/m2"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11font_mdp" />
+
+                    <TextView
+                        android:id="@+id/txtAreaInFeet"
+                        style="@style/textViewStyleBoldRegular"
+                        android:layout_width="@dimen/_30mdp"
+                        android:layout_height="@dimen/_30mdp"
+                        android:background="@drawable/bg_textview_default"
+                        android:gravity="center"
+                        android:text="@string/ft2"
+                        android:textColor="@color/colorTextHint"
+                        android:textSize="@dimen/_11font_mdp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</layout>

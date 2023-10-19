@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.ProjectEstimationModel" />
+
+        <variable
+            name="isVisibleLayout"
+            type="Boolean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.activity.ProjectDetailsBasicUserActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            setVisibility="@{isVisibleLayout}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginHorizontal="@dimen/_15mdp"
+                    android:layout_marginTop="@dimen/_10mdp">
+
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_3mdp"
+                        android:gravity="top">
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_weight="1"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleLarge"
+                                android:text="@{Double.toString(model.capacity)+` kW Solar PV`}" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                setVisibility="@{model.inverterAcCapacity>0}"
+                                android:text="@{Double.toString(model.inverterAcCapacity)+` kW (AC)`}" />
+
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/imageViewEmailReport"
+                            android:layout_width="@dimen/_22mdp"
+                            android:layout_height="@dimen/_22mdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_email_rounded" />
+
+                        <ImageView
+                            android:id="@+id/imageViewShareReport"
+                            android:layout_width="@dimen/_22mdp"
+                            android:layout_height="@dimen/_22mdp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_5mdp"
+                            android:src="@drawable/ic_share_rounded" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_marginTop="@dimen/_20mdp">
+
+                        <LinearLayout style="@style/llHorizontalMatchWrap">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_2mdp"
+                                android:layout_weight="1"
+                                app:cardCornerRadius="@dimen/_5mdp"
+                                app:cardElevation="@dimen/_2mdp">
+
+                                <LinearLayout
+                                    style="@style/llVerticalMatchWrap"
+                                    android:background="@drawable/shape_gray_stroke_rounded_square">
+
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_22mdp"
+                                        android:layout_height="@dimen/_22mdp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginVertical="@dimen/_10mdp"
+                                        android:gravity="center"
+                                        android:src="@drawable/ic_rupee_line_icon"
+                                        app:tint="@color/colorBlue" />
+
+                                    <TextView
+                                        style="@style/textViewStyleBoldRegular"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:gravity="center"
+                                        android:text="@{`₹ `+model.estCost}" />
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:background="@color/headerBackgroundColor"
+                                        android:gravity="center"
+                                        android:paddingVertical="@dimen/_5mdp"
+                                        android:text="Estimated Cost" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <Space
+                                android:layout_width="@dimen/_20mdp"
+                                android:layout_height="match_parent" />
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_2mdp"
+
+                                android:layout_weight="1"
+                                app:cardCornerRadius="@dimen/_5mdp"
+                                app:cardElevation="@dimen/_2mdp">
+
+                                <LinearLayout
+                                    style="@style/llVerticalMatchWrap"
+                                    android:background="@drawable/shape_gray_stroke_rounded_square">
+
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_22mdp"
+                                        android:layout_height="@dimen/_22mdp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginVertical="@dimen/_10mdp"
+                                        android:gravity="center"
+                                        android:src="@drawable/ic_sun" />
+
+                                    <TextView
+                                        style="@style/textViewStyleBoldRegular"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:gravity="center"
+                                        android:text="@{model.avgGen+` kWh/M`}" />
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:background="@color/headerBackgroundColor"
+                                        android:gravity="center"
+                                        android:paddingVertical="@dimen/_5mdp"
+                                        android:text="Avg. Generation" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_marginTop="@dimen/_20mdp">
+
+                        <LinearLayout style="@style/llHorizontalMatchWrap">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_2mdp"
+                                android:layout_weight="1"
+                                app:cardCornerRadius="@dimen/_5mdp"
+                                app:cardElevation="@dimen/_2mdp">
+
+                                <LinearLayout
+                                    style="@style/llVerticalMatchWrap"
+                                    android:background="@drawable/shape_gray_stroke_rounded_square">
+
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_22mdp"
+                                        android:layout_height="@dimen/_22mdp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginVertical="@dimen/_10mdp"
+                                        android:gravity="center"
+                                        android:src="@drawable/ic_rupee_payback" />
+
+                                    <TextView
+                                        style="@style/textViewStyleBoldRegular"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:gravity="center"
+                                        android:text="@{Double.toString(model.payback)+` Years`}" />
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:background="@color/headerBackgroundColor"
+                                        android:gravity="center"
+                                        android:paddingVertical="@dimen/_5mdp"
+                                        android:text="Payback" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <Space
+                                android:layout_width="@dimen/_20mdp"
+                                android:layout_height="match_parent" />
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_2mdp"
+
+                                android:layout_weight="1"
+                                app:cardCornerRadius="@dimen/_5mdp"
+                                app:cardElevation="@dimen/_2mdp">
+
+                                <LinearLayout
+                                    style="@style/llVerticalMatchWrap"
+                                    android:background="@drawable/shape_gray_stroke_rounded_square">
+
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_22mdp"
+                                        android:layout_height="@dimen/_22mdp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginVertical="@dimen/_10mdp"
+                                        android:gravity="center"
+                                        android:src="@drawable/ic_savings" />
+
+                                    <TextView
+                                        style="@style/textViewStyleBoldRegular"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:gravity="center"
+                                        android:text="@{` ₹ `+model.savingMonth+` /Month`}" />
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:background="@color/headerBackgroundColor"
+                                        android:gravity="center"
+                                        android:paddingVertical="@dimen/_5mdp"
+                                        android:text="Saving" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_20mdp"
+                        android:gravity="top">
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_weight="1"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Subsidy Amount" />
+
+                            <TextView
+                                style="@style/textViewStyleBoldRegular"
+                                android:text="@{`₹ `+model.estCostSubsidy}" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:text="Cost of system after subsidy" />
+
+                            <TextView
+                                style="@style/textViewStyleBoldRegular"
+                                android:text="@{`₹ `+model.costSystemAfterSubsidy}" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/imageViewFinancialIncentive"
+                            android:layout_width="@dimen/_22mdp"
+                            android:layout_height="@dimen/_22mdp"
+                            android:layout_gravity="bottom"
+                            android:src="@drawable/ic_rupee"
+                            app:tint="@color/colorPrimary" />
+
+                        <ImageView
+                            android:id="@+id/imageViewProjectAssumption"
+                            android:layout_width="@dimen/_22mdp"
+                            android:layout_height="@dimen/_22mdp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginStart="@dimen/_5mdp"
+                            android:src="@drawable/ic_info"
+                            app:tint="@color/black" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="@dimen/_10mdp"
+                        android:background="@color/colorDivider" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewPointer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_2mdp"
+                        app:cardCornerRadius="@dimen/_5mdp"
+                        app:cardElevation="@dimen/_2mdp">
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:padding="@dimen/_5mdp">
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_marginTop="@dimen/_10mdp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="@string/str_customize_solar_pointer" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.warkiz.widget.IndicatorStayLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_5mdp"
+                                    android:layout_marginBottom="@dimen/_15mdp">
+
+                                    <com.warkiz.widget.IndicatorSeekBar
+                                        android:id="@+id/seekBarCapacity"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        app:isb_indicator_color="@color/colorPrimary"
+                                        app:isb_indicator_top_content_layout="@layout/custom_seekbar_indicator"
+                                        app:isb_min="1"
+                                        app:isb_progress="0"
+                                        app:isb_show_indicator="rounded_rectangle"
+                                        app:isb_show_tick_marks_type="divider"
+                                        app:isb_show_tick_texts="false"
+                                        app:isb_thumb_color="@color/colorGreen"
+                                        app:isb_thumb_size="@dimen/_13mdp"
+                                        app:isb_tick_marks_color="@color/colorPrimary"
+                                        app:isb_tick_texts_color="@color/black"
+                                        app:isb_ticks_count="5"
+                                        app:isb_track_background_color="@color/colorPrimary"
+                                        app:isb_track_background_size="@dimen/_3mdp"
+                                        app:isb_track_progress_color="@color/colorPrimary"
+                                        app:isb_track_progress_size="@dimen/_3mdp"
+                                        app:isb_track_rounded_corners="true" />
+                                </com.warkiz.widget.IndicatorStayLayout>
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginHorizontal="@dimen/_10mdp"
+                                    android:layout_marginTop="@dimen/_3mdp"
+                                    android:gravity="top">
+
+                                    <TextView
+                                        android:id="@+id/txtSeekStart"
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_weight="1"
+                                        android:text="1" />
+
+                                    <TextView
+                                        android:id="@+id/txtSeekEnd"
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_weight="1"
+                                        android:gravity="right"
+                                        android:text="@{``+Double.toString(model.highcapacity)}"
+                                      />
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:padding="@dimen/_5mdp">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_weight="1"
+                                    android:hint="@string/str_capacity_kw">
+
+                                    <EditText
+                                        android:id="@+id/edtCapacity"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="10" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    style="@style/llVerticalWrapWrap"
+                                    android:layout_width="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_marginLeft="@dimen/_5mdp"
+                                    android:layout_marginRight="@dimen/_5mdp">
+
+                                    <androidx.appcompat.widget.AppCompatButton
+                                        android:id="@+id/btnUpdateCapacity"
+                                        style="@style/ButtonStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="@dimen/_25mdp"
+                                        android:paddingHorizontal="@dimen/_15mdp"
+                                        android:text="@string/str_update" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center">
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:text="@string/size_will_cover" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:text="@{` `+model.solarRatio+`% `}"
+                            android:textColor="@color/colorGreen" />
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:text="@string/of_your_electricity_usage" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        style="@style/textViewStyleExtraSmall"
+                        android:layout_marginTop="@dimen/_2mdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/solar_inst_size_kw" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginBottom="@dimen/_5mdp"
+                    android:gravity="top">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_180mdp"
+                        android:paddingHorizontal="@dimen/_20mdp"
+                        android:paddingVertical="@dimen/_10mdp">
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+                            android:rotation="-90"
+                            android:text="kWh" />
+
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/barChartMonth"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_above="@+id/seekBar1" />
+                    </LinearLayout>
+                    <TextView
+                        style="@style/textViewStyleExtraSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Month" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_180mdp"
+                        android:paddingHorizontal="@dimen/_20mdp"
+                        android:paddingVertical="@dimen/_10mdp">
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+                            android:rotation="-90"
+                            android:text="Rs. " />
+
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/barChartYear"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_above="@+id/seekBar1" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/textViewStyleExtraSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Year" />
+                    <TextView
+                        style="@style/textViewStyleExtraSmall"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/free_email_text" />
+
+                    <TextView
+                        style="@style/textViewStyleExtraSmall"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/cust_report_txt" />
+
+                    <TextView
+                        style="@style/textViewStyleExtraSmall"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginVertical="@dimen/_5mdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/contact_installer" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnFindInstallerForQuote"
+                    style="@style/ButtonStyle"
+                    android:layout_width="@dimen/_210mdp"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="@dimen/_10mdp"
+                    android:text="@string/find_installer_for_quote" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <include
+            layout="@layout/layout_no_data_found"
+            bind:isVisible="@{!isVisibleLayout}" />
+    </LinearLayout>
+</layout>

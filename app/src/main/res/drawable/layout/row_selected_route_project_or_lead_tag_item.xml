@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.RouteProjectOrLeadModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_26mdp"
+            android:layout_marginStart="@dimen/_5mdp"
+            android:layout_marginBottom="@dimen/_2mdp"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="@dimen/_13mdp"
+            app:cardElevation="@dimen/_1mdp">
+
+            <LinearLayout
+                style="@style/llHorizontalMatchWrap"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_2mdp">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_weight="1"
+                    android:gravity="top">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_marginStart="@dimen/_10mdp"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:text="@{model.name}"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageViewDelete"
+                    android:layout_width="@dimen/_20mdp"
+                    android:layout_height="@dimen/_20mdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_10mdp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:padding="@dimen/_2mdp"
+                    android:src="@drawable/ic_cross_rounded" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.PaymentMilestoneResponse.PaymentMilestoneDetails.MilestoneData.PaymentMilestoneDetail" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8mdp"
+            android:layout_marginTop="@dimen/_8mdp"
+            android:layout_marginBottom="@dimen/_2mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_2mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_marginBottom="@dimen/_5mdp"
+                android:gravity="top">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/headerBackgroundColor">
+
+                    <TextView
+                        style="@style/headerTextStyle"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_10mdp"
+                        android:paddingVertical="@dimen/_10mdp"
+                        android:text="@{model.milestoneDropdownName}" />
+
+                    <ImageView
+                        android:id="@+id/imageViewDownload"
+                        android:layout_width="@dimen/_30mdp"
+                        android:layout_height="@dimen/_30mdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_7mdp"
+                        android:src="@drawable/ic_download"
+                        app:tint="#808080" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/llHorizontalMatchWrap"
+
+                    >
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_10mdp"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:layout_marginBottom="@dimen/_3mdp"
+                        android:layout_weight="1"
+                        android:gravity="top">
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Received Amount" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                formatPrice="@{model.receiveAmount>0.0?``+model.receiveAmount:``}"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorGreen" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Receipt Date" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@{model.receiptDate}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Payment Method" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@{model.selectedPaymentMethodname.empty?`-`:model.selectedPaymentMethodname}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Reference No." />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@{model.referenceNo.empty?`-`:model.referenceNo}" />
+                        </LinearLayout>
+
+                        <androidx.cardview.widget.CardView
+                            setVisibility="@{!model.fileName.empty}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5mdp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="@dimen/_8mdp"
+                            app:cardElevation="@dimen/_1mdp">
+
+                            <ImageView
+                                loadImage="@{model.fileName}"
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="@dimen/_30mdp"
+                                android:scaleType="centerCrop" />
+
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</layout>

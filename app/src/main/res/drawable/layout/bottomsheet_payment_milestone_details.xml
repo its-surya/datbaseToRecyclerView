@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="isDataFound"
+            type="Boolean" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="center">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:background="@drawable/bg_bottomsheet"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textViewTitle"
+                        style="@style/textViewStyleLarge"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/_8mdp"
+                        android:text="MileStone"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <FrameLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:background="@color/white"
+                    android:padding="@dimen/_8mdp">
+
+                    <include
+                        android:id="@+id/layoutNoResultFound"
+                        layout="@layout/layout_no_data_found"
+                        bind:isVisible="@{isDataFound}" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewPaymentMilestoneDetails"
+                        setVisibility="@{!isDataFound}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/_20mdp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/row_payment_milestone_item" />
+
+
+                </FrameLayout>
+            </LinearLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

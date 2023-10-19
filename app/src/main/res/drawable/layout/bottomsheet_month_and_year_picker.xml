@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:background="@color/white"
+            android:gravity="center">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/textViewStyleLarge"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/_8mdp"
+                    android:background="@drawable/bg_bottomsheet"
+                    android:text="Select Month-Year"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:background="@color/white"
+                android:padding="@dimen/_15mdp">
+
+                <TextView
+                    android:id="@+id/textviewDate"
+                    style="@style/textViewStyleRegular" />
+
+                <LinearLayout style="@style/llHorizontalWrapWrap">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <NumberPicker
+                        android:id="@+id/numberPickerMonth"
+                        style="@style/numberPickerTheme"
+                        android:layout_width="@dimen/_100mdp"
+                        android:layout_height="wrap_content" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <NumberPicker
+                        android:id="@+id/numberPickerYear"
+                        style="@style/numberPickerTheme"
+                        android:layout_width="@dimen/_100mdp"
+                        android:layout_height="wrap_content" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/buttonSubmit"
+                    style="@style/ButtonStyle"
+                    android:layout_width="@dimen/_150mdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_15mdp"
+                    android:text="@string/select" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

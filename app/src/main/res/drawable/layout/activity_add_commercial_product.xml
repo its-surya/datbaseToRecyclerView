@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.CommercialStep1Data" />
+
+        <variable
+            name="itemDetails"
+            type="com.energy.ahasolar.dataservice.model.response.CommercialCategoryItemDetail" />
+
+        <variable
+            name="isShowField"
+            type="Boolean" />
+
+        <import type="android.view.inputmethod.EditorInfo" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10mdp"
+                app:cardCornerRadius="@dimen/_8mdp"
+                app:cardElevation="@dimen/_3mdp">
+
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_5mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_marginTop="@dimen/_8mdp">
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_category"
+                            app:endIconDrawable="@drawable/ic_drop_down"
+                            app:endIconMode="custom">
+
+                            <EditText
+                                android:id="@+id/edtCategory"
+                                style="@style/edtStyle"
+                                android:clickable="true"
+                                android:focusable="false" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/item_code"
+                            app:endIconDrawable="@drawable/ic_drop_down"
+                            app:endIconMode="custom">
+
+                            <EditText
+                                android:id="@+id/edtItemCode"
+                                style="@style/edtStyle"
+                                android:layout_weight="1"
+                                android:clickable="true"
+                                android:focusable="false" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_equipment_name">
+
+                            <EditText
+                                android:id="@+id/edtEquipmentName"
+                                style="@style/edtStyle"
+                                setVisibility="@{!itemDetails.itemName.empty}"
+                                android:enabled="false"
+                                android:imeOptions="actionNext"
+                                android:inputType="textCapWords"
+                                android:maxLength="150"
+                                android:text="@{itemDetails.makeName.empty?itemDetails.itemName:itemDetails.makeName}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_description">
+
+
+                            <EditText
+                                android:id="@+id/edtDescription"
+                                style="@style/edtStyle"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:inputType="textCapSentences|textMultiLine"
+                                android:maxLength="250" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <LinearLayout style="@style/llHorizontalMatchMatch">
+
+                            <LinearLayout
+                                android:id="@+id/llQuantity"
+                                style="@style/llVerticalMatchWrap"
+                                android:layout_marginEnd="@dimen/_8mdp"
+                                android:layout_weight="1">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:hint="@string/hint_quantity">
+
+                                    <EditText
+                                        android:id="@+id/edtQuantity"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="10"
+                                        android:text="0" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llRating"
+                                style="@style/llVerticalMatchWrap"
+                                android:layout_marginEnd="@dimen/_8mdp"
+                                android:layout_weight="1">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:hint="@string/hint_rating">
+
+                                    <EditText
+                                        android:id="@+id/edtRating"
+                                        style="@style/edtStyle"
+                                        android:enabled="false"
+                                        android:gravity="center_vertical" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                style="@style/llVerticalMatchWrap"
+                                setVisibility="@{isShowField}"
+                                android:layout_weight="1">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:hint="@string/hint_unit_price">
+
+                                    <EditText
+                                        android:id="@+id/edtUnitPrice"
+                                        style="@style/edtStyleNumeric"
+
+                                        android:gravity="center_vertical"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="12"
+                                        android:text="@{itemDetails.rate>0?``+itemDetails.rate:``}" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/llHorizontalMatchMatch">
+
+                            <LinearLayout
+                                style="@style/llVerticalMatchWrap"
+                                android:layout_weight="1">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:hint="@string/hint_unit_of_measurement">
+
+
+                                    <EditText
+                                        android:id="@+id/edtUnitOfMeasurement"
+                                        style="@style/edtStyle"
+                                        android:layout_weight="1"
+                                        android:enabled="false"
+                                        android:text="@{itemDetails.unitOfMeasureName}" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                            <Space
+                                setVisibility="@{isShowField}"
+                                android:layout_width="@dimen/_8mdp"
+                                android:layout_height="@dimen/_1mdp" />
+
+                            <LinearLayout
+                                style="@style/llVerticalMatchWrap"
+                                setVisibility="@{isShowField}"
+                                android:layout_weight="1">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:hint="@string/hint_hsn_code">
+
+
+                                    <EditText
+                                        android:id="@+id/edtHSNCode"
+                                        style="@style/edtStyle"
+                                        android:enabled="false"
+                                        android:gravity="center_vertical"
+                                        android:text="@{itemDetails.hsncode}" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchMatch"
+                            setVisibility="@{isShowField}">
+
+                            <LinearLayout
+                                style="@style/llVerticalMatchWrap"
+                                android:layout_weight="1">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:hint="@string/hint_tax_in_per">
+
+
+                                    <EditText
+                                        android:id="@+id/edtTax"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:text="0"
+                                        android:maxLength="5" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                            <Space
+                                android:layout_width="@dimen/_8mdp"
+                                android:layout_height="@dimen/_1mdp" />
+
+                            <LinearLayout
+                                style="@style/llVerticalMatchWrap"
+                                android:layout_weight="1">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:hint="@string/hint_tax_type"
+                                    app:endIconDrawable="@drawable/ic_drop_down"
+                                    app:endIconMode="custom">
+
+
+                                    <EditText
+                                        android:id="@+id/edtTaxType"
+                                        style="@style/edtStyle"
+                                        android:layout_weight="1"
+                                        android:clickable="true"
+                                        android:focusable="false"
+                                        android:gravity="center_vertical" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchMatch"
+                            setVisibility="@{isShowField}">
+
+                            <LinearLayout
+                                style="@style/llVerticalMatchWrap"
+                                android:layout_weight="1">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:hint="@string/hint_discount">
+
+                                    <EditText
+                                        android:id="@+id/edtDiscount"
+                                        style="@style/edtStyleNumeric"
+                                        android:gravity="center_vertical"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="8" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                            <Space
+                                android:layout_width="@dimen/_8mdp"
+                                android:layout_height="@dimen/_1mdp" />
+
+                            <LinearLayout
+                                style="@style/llVerticalMatchWrap"
+                                android:layout_weight="1">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:hint="@string/hint_discount_type"
+                                    app:endIconDrawable="@drawable/ic_drop_down"
+                                    app:endIconMode="custom">
+
+                                    <EditText
+                                        android:id="@+id/edtDiscountType"
+                                        style="@style/edtStyle"
+                                        android:layout_weight="1"
+                                        android:clickable="true"
+                                        android:focusable="false"
+                                        android:gravity="center_vertical" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            setVisibility="@{isShowField}"                            >
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:gravity="center">
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="wrap_content"
+                                    android:gravity="left"
+                                    android:text="@string/hint_base_price_with_discount"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/edtBasePriceWithDiscount"
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:gravity="center">
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="wrap_content"
+                                    android:gravity="left"
+                                    android:text="@string/hint_tax_price"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/edtTaxPrice"
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:gravity="center">
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="wrap_content"
+                                    android:gravity="left"
+                                    android:text="@string/hint_total_price"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/edtTotalPrice"
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:layout_marginVertical="@dimen/_10mdp"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnDelete"
+                style="@style/ButtonGrayStyle"
+                android:layout_width="@dimen/_120mdp"
+                android:layout_marginEnd="@dimen/_10mdp"
+                android:text="@string/delete" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAdd"
+                style="@style/ButtonStyle"
+                android:layout_width="@dimen/_120mdp"
+                android:text="@string/str_add" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

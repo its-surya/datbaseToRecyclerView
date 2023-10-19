@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="isShowCustomDate"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <include android:id="@+id/toolbar" layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_margin="@dimen/_10mdp">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/application_no">
+
+                    <EditText
+                        android:id="@+id/edtApplicationNo"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:maxLength="50" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_consumer_no">
+
+                    <EditText
+                        android:id="@+id/edtConsumerNo"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="50" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_consumer_mobile_no">
+
+                    <EditText
+                        android:id="@+id/edtConsumerMobileNo"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:maxLength="10" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    android:gravity="center">
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnClear"
+                        style="@style/ButtonGrayStyle"
+                        android:layout_width="@dimen/_120mdp"
+                        android:text="@string/clear" />
+
+                    <Space
+                        android:layout_width="@dimen/_20mdp"
+                        android:layout_height="match_parent" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSearch"
+                        style="@style/ButtonStyle"
+                        android:visibility="gone"
+                        android:layout_width="@dimen/_120mdp"
+                        android:text="@string/str_search" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/textViewStyleRegular"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    android:gravity="left"
+                    android:text="@string/str_desc_track_application"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

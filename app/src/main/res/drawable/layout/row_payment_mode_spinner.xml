@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.ApplicationPaymentDetailResponse.PaymentMode" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/llMainImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30mdp"
+        android:layout_marginHorizontal="@dimen/_4mdp"
+        android:layout_marginVertical="@dimen/_2mdp"
+        app:cardBackgroundColor="@color/colorCardBack"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_10mdp"
+            android:paddingVertical="@dimen/_7mdp">
+
+            <TextView
+                android:id="@+id/txtName"
+                style="@style/textViewStyleRegular"
+                android:layout_weight="1"
+                android:text="@{model.label}" />
+
+            <ImageView
+                android:id="@+id/imgSelect"
+                visibilityOnFlag="@{model.isSelected}"
+                android:layout_width="@dimen/_15mdp"
+                android:layout_height="@dimen/_15mdp"
+                android:src="@drawable/ic_check_mark" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

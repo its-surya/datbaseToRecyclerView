@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.InspectionDetailsDataModel" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:layout_margin="@dimen/_10mdp">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/solar_dc_cable" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_height="@dimen/_30mdp"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:text="@string/uv_protected" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkSolarCablesUV"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.cablesData.solarDcCableUv.equals(`1`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkSolarCablesUV"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_10mdp"
+                                android:checked="@{model.cablesData.solarDcCableUv.equals(`0`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/solar_dc_cable" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_height="@dimen/_30mdp"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:text="@string/multi_stranded_tined_copper" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkSolarDcCableMulti"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.cablesData.solarDcCableMulti.equals(`1`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkSolarDcCableMulti"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_10mdp"
+                                android:checked="@{model.cablesData.solarDcCableMulti.equals(`0`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/voltage_grade" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_height="@dimen/_30mdp"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:text="@string/_600_1000_v" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkVoltageGrade"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.cablesData.voltageGrade.equals(`1`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkVoltageGrade"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_10mdp"
+                                android:checked="@{model.cablesData.voltageGrade.equals(`0`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/ac_cable_insulation" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkAcCableInsulation"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.cablesData.acCableInsulation.equals(`1`)}"
+                                android:text="PVC" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkAcCableInsulation"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_10mdp"
+                                android:checked="@{model.cablesData.acCableInsulation.equals(`0`)}"
+                                android:text="XLPE" />
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_margin="@dimen/_5mdp">
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:hint="@string/string_cable_size_mm2">
+
+
+                            <EditText
+                                android:id="@+id/edtStringCableSize"
+                                style="@style/edtStyleNumeric"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:text="@{model.cablesData.stringCabSize}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:hint="@string/ac_cable_sizes_mm2">
+
+                            <EditText
+                                android:id="@+id/edtAcCablesSize1"
+                                style="@style/edtStyleNumeric"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:text="@{model.cablesData.stringAcCab1}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:hint="@string/ac_cable_sizes_mm2">
+
+                            <EditText
+                                android:id="@+id/edtAcCablesSize2"
+                                style="@style/edtStyleNumeric"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:text="@{model.cablesData.stringAcCab2}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_1mdp"
+                    android:layout_marginTop="@dimen/_20mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_8mdp"
+                    app:cardElevation="@dimen/_1mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:paddingVertical="@dimen/_8mdp"
+                                android:paddingStart="@dimen/_10mdp"
+                                android:text="@string/site_image_1_pv_plant_photo" />
+
+                            <ImageView
+                                android:id="@+id/imgAddDocumentPvPlant"
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_add" />
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewSiteImagePvPlantPhoto"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_media_item" />
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_1mdp"
+                    android:layout_marginTop="@dimen/_20mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_8mdp"
+                    app:cardElevation="@dimen/_1mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:paddingVertical="@dimen/_8mdp"
+                                android:paddingStart="@dimen/_10mdp"
+                                android:text="@string/site_image_2_with_consumer" />
+
+                            <ImageView
+                                android:id="@+id/imgAddDocumentWithConsumer"
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_add" />
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewSiteImageWithConsumer"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_media_item" />
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    style="@style/textViewStyleRegular"
+                    android:layout_height="@dimen/_30mdp"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    android:gravity="left|center_vertical"
+                    android:paddingHorizontal="@dimen/_8mdp"
+                    android:text="@string/observation" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/is_system_installed" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonYesSystemInstalled"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.cablesData.isInstalled().equals(`1`)}"
+                                android:text="@string/str_yes" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNoSystemInstalled"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_10mdp"
+                                android:checked="@{model.cablesData.isInstalled().equals(`0`)}"
+                                android:text="@string/str_no" />
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/specification" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonYesSpecification"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.cablesData.isPerSpecification().equals(`1`)}"
+                                android:text="@string/str_yes" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNoSpecification"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_10mdp"
+                                android:checked="@{model.cablesData.isPerSpecification().equals(`0`)}"
+                                android:text="@string/str_no" />
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:layout_margin="@dimen/_5mdp"
+                        android:hint="@string/hint_remarks">
+
+                        <EditText
+                            android:id="@+id/edtRemarks"
+                            style="@style/edtStyle"
+                            android:inputType="textMultiLine"
+                            android:maxLines="3"
+                            android:singleLine="false"
+                            android:text="@{model.cablesData.noteTab9}" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSave"
+            style="@style/ButtonStyle"
+            setVisibility="@{model.isEditable()>-1 &amp;&amp; model.isEditable()==1}"
+            android:layout_width="@dimen/_120mdp"
+            android:layout_marginVertical="@dimen/_10mdp"
+            android:gravity="center"
+            android:text="@string/btn_save" />
+    </LinearLayout>
+</layout>

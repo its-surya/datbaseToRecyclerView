@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:background="@color/white"
+            android:gravity="center">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:background="@drawable/bg_bottomsheet"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/textViewStyleLarge"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/_8mdp"
+                    android:text="@string/update_status_of_inspection"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:background="@color/white"
+                android:padding="@dimen/_15mdp">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_select_status"
+                    app:endIconDrawable="@drawable/ic_drop_down"
+                    app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtStatus"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_remarks">
+
+                    <EditText
+                        android:id="@+id/edtRemarks"
+                        style="@style/edtStyle"
+                        android:singleLine="false"
+                        android:inputType="textMultiLine"
+                        android:maxLines="3" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <Button
+                    android:id="@+id/buttonUpdate"
+                    style="@style/ButtonStyle"
+                    android:layout_width="@dimen/_150mdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_15mdp"
+                    android:text="@string/str_update" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

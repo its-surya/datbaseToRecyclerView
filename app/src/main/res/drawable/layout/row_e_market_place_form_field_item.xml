@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.common.EMarketPlaceEnquiryForm.FormField" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            style="@style/llVerticalMatchMatch"
+            android:gravity="top">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                setVisibility="@{model.inputType.equals(`dropdown`)}"
+                android:hint="@{model.displayName}"
+                app:endIconDrawable="@drawable/ic_drop_down"
+                app:endIconMode="custom">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtSelectOption"
+                    style="@style/edtStyle"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:text="@{model.value}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                setVisibility="@{model.inputType.equals(`dropdown`)&amp;&amp;model.selectedId==1&amp;&amp;model.inputName.equals(`contact_person`)}"                android:hint="Other">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtOtherField"
+                    style="@style/edtStyle" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                setVisibility="@{model.inputType.equals(`text`)||model.inputType.equals(`textarea`)||model.inputType.equals(`email`)||model.inputType.equals(`number`)}"
+                android:hint="@{model.displayName}">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtField"
+                    style="@style/edtStyle"
+                    android:text="@{model.value}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/textViewStyleRegular"
+                android:layout_marginVertical="@dimen/_5mdp"
+                setVisibility="@{model.inputType.equals(`radio`)||model.inputType.equals(`checkbox`)}"
+                android:text="@{model.displayName}" />
+
+            <RadioGroup
+                android:id="@+id/radioButtons"
+                setVisibility="@{model.inputType.equals(`radio`)}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10mdp"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:id="@+id/llCheckBox"
+                style="@style/llVerticalMatchWrap"
+                setVisibility="@{model.inputType.equals(`checkbox`)}"
+                android:layout_marginStart="@dimen/_10mdp"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvSelectPriority"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_2mdp"
+                android:layout_marginTop="@dimen/_8mdp"
+                setVisibility="@{model.inputType.equals(`select_tag`)}"
+                android:layout_marginBottom="@dimen/_2mdp"
+                app:cardCornerRadius="@dimen/_5mdp"
+                app:cardElevation="@dimen/_3mdp">
+
+                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                    <TextView
+                        android:id="@+id/tvTagName"
+                        style="@style/headerTextStyle"
+                        android:layout_height="@dimen/_35mdp"
+                        android:background="@color/headerBackgroundColor"
+                        android:gravity="left|center_vertical"
+                        android:paddingHorizontal="@dimen/_8mdp"
+                        android:paddingVertical="@dimen/_5mdp"
+                        android:text="@string/hint_roof_strength" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvDuration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_2mdp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/_5mdp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/row_common_tag_selection_item" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

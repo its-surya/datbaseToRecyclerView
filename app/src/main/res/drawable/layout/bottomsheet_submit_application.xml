@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="amount"
+            type="String" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:gravity="center">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/textViewStyleLarge"
+                    android:background="@drawable/bg_bottomsheet"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/_8mdp"
+                    android:text="Application Submit"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:background="@color/white"
+                android:padding="@dimen/_15mdp">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/application_submitted_date"
+                    app:endIconDrawable="@drawable/ic_calendar"
+                    app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtApplicationSubmittedDate"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/str_total_amount_with_rs_symbol">
+
+                    <EditText
+                        android:id="@+id/edtAmount"
+                        style="@style/edtStyleNumeric"
+                        formatPrice="@{amount}"
+                        android:enabled="false" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:layout_marginTop="@dimen/_15mdp">
+
+                    <Button
+                        android:id="@+id/buttonCancel"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_100mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_15mdp"
+                        android:text="@string/str_cancel" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/buttonSubmit"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_100mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/_15mdp"
+                        android:text="@string/str_submit" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

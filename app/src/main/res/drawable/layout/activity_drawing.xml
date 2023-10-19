@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isDataFound"
+            type="Boolean" />
+        <variable
+            name="isUploadedDocumentCount"
+            type="Boolean" />
+        <variable
+            name="uploadedDocument"
+            type="String" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.activity.ProjectDetailsBasicUserActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <LinearLayout
+            style="@style/llVerticalMatchMatch"
+            android:layout_below="@+id/toolbar"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvDocumentUploaded"
+                style="@style/textViewStyleExtraSmall"
+                android:layout_width="wrap_content"
+                android:paddingVertical="@dimen/_2mdp"
+                android:layout_gravity="end"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                setVisibility="@{isUploadedDocumentCount}"
+                tools:text="@{uploadedDocument}" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewDocumentReceived"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/_20mdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/row_drawing_item" />
+
+                <include
+                    layout="@layout/layout_no_data_found"
+                    bind:isVisible="@{!isDataFound}" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddDocument"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="@dimen/_10mdp"
+            android:layout_marginBottom="@dimen/_10mdp"
+            android:src="@drawable/ic_add_unfilled"
+            app:backgroundTint="@color/colorPrimary"
+            app:fabCustomSize="48dp"
+            app:tint="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSubmit"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_120mdp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/upload"
+            android:visibility="gone" />
+    </RelativeLayout>
+</layout>

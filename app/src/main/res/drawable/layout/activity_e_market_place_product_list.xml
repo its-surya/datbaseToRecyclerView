@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isLoadMore"
+            type="Boolean" />
+
+        <variable
+            name="isTyping"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout style="@style/llVerticalMatchMatch">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <include
+            android:id="@+id/layoutSearchBar"
+            layout="@layout/layout_search_bar"
+            bind:isTyping="@{isTyping}" />
+
+
+        <LinearLayout style="@style/llVerticalMatchMatch">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+                <include
+                    android:id="@+id/layoutNoResultFound"
+                    layout="@layout/layout_no_data_found" />
+
+                <include
+                    android:id="@+id/layoutProgressBar"
+                    layout="@layout/layout_load_more_progress_bar"
+                    setVisibility="@{isLoadMore}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:visibility="visible" />
+
+                <LinearLayout style="@style/llVerticalMatchMatch">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_4mdp"
+                        android:clipToPadding="false"
+                        android:fadeScrollbars="true"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/_50mdp"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="2"
+                        tools:listitem="@layout/row_e_market_place_product_item" />
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

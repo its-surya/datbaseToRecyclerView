@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/llVerticalMatchMatch">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10mdp"
+            android:background="@color/white"
+            android:elevation="@dimen/_3mdp"
+            app:cardCornerRadius="@dimen/_8mdp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/textInputLayoutStyle"
+            android:layout_margin="@dimen/_10mdp"
+            android:hint="@string/hint_default_template"
+            app:endIconDrawable="@drawable/ic_drop_down"
+            app:endIconMode="custom">
+
+
+            <EditText
+                android:id="@+id/edtSelectDefaultTemplete"
+                style="@style/edtStyle"
+                android:clickable="true"
+                android:focusable="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.cardview.widget.CardView>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewInstallationList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_50mdp"
+                tools:listitem="@layout/row_installation_header_item"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <include
+                android:id="@+id/layoutNoResultFound"
+                layout="@layout/layout_no_data_found" />
+        </FrameLayout>
+    </LinearLayout>
+</layout>

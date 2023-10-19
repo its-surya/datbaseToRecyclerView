@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isTyping"
+            type="Boolean" />
+
+        <variable
+            name="isLoadMore"
+            type="Boolean" />
+
+        <variable
+            name="isCategoryLoad"
+            type="Boolean" />
+
+        <variable
+            name="isShowCounter"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout style="@style/llVerticalMatchMatch">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout style="@style/llVerticalMatchMatch">
+
+                <com.energy.ahasolar.utility.SmoothPager
+                    android:id="@+id/homeBannerImageViewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150mdp" />
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            android:id="@+id/llMarketEnquiry"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_height="@dimen/_35mdp"
+                                android:layout_weight="1"
+                                android:gravity="left|center_vertical"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                android:text="@string/enquiry_history" />
+
+                            <ImageView
+                                android:id="@+id/ivDownArrow"
+                                android:layout_width="@dimen/_25mdp"
+                                android:layout_height="@dimen/_25mdp"
+                                android:layout_gravity="center"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="@color/black" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    style="@style/headerTextStyle"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:text="Browse By Category"
+
+                    />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8mdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_5mdp"
+                    app:cardElevation="@dimen/_2mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchMatch"
+                        android:layout_margin="@dimen/_5mdp">
+
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewBrowsByCategory"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fadeScrollbars="true"
+                                android:orientation="horizontal"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/row_category_dark_bg_item" />
+
+                            <include
+                                layout="@layout/layout_load_more_progress_bar"
+                                setVisibility="@{isCategoryLoad}"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:visibility="visible" />
+                        </FrameLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    style="@style/headerTextStyle"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:text="Best Selling Products" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+
+                    <include
+                        android:id="@+id/layoutNoResultFound"
+                        layout="@layout/layout_no_data_found" />
+
+                    <include
+                        android:id="@+id/layoutProgressBar"
+                        layout="@layout/layout_load_more_progress_bar"
+                        setVisibility="@{isLoadMore}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:visibility="visible" />
+
+                    <LinearLayout style="@style/llVerticalMatchMatch">
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewProduct"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_4mdp"
+                            android:clipToPadding="false"
+                            android:fadeScrollbars="true"
+                            android:nestedScrollingEnabled="false"
+                            android:orientation="vertical"
+                            android:paddingBottom="@dimen/_50mdp"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                            app:spanCount="2"
+                            tools:listitem="@layout/row_e_market_place_product_item" />
+                    </LinearLayout>
+
+
+                </FrameLayout>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

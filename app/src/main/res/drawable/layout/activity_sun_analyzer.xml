@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout style="@style/llVerticalMatchMatch">
+
+        <include
+            android:id="@+id/toolbarView"
+            layout="@layout/toolbar_simple_back" />
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:background="@color/white"
+            android:gravity="center"
+            android:padding="@dimen/_5mdp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:hint="Date"
+                app:endIconDrawable="@drawable/ic_calendar"
+                app:endIconMode="custom">
+
+
+                <EditText
+                    android:id="@+id/edtDate"
+                    style="@style/edtStyle"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:text="21-12-2021" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_weight="0.85"
+                android:layout_marginHorizontal="@dimen/_5mdp"
+                android:hint="Start Time"
+                app:endIconDrawable="@drawable/ic_clock_time"
+                app:endIconMode="custom">
+
+
+                <EditText
+                    android:id="@+id/edtStartTime"
+                    style="@style/edtStyle"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:text="08:30" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_weight="0.85"
+                android:hint="End Time"
+                app:endIconDrawable="@drawable/ic_clock_time"
+                app:endIconMode="custom">
+
+
+                <EditText
+                    android:id="@+id/edtEndTime"
+                    style="@style/edtStyle"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:text="16:30" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_gravity="bottom">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewAzimuthAngle"
+                    android:layout_width="@dimen/_200mdp"
+                    android:layout_height="@dimen/_50mdp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/_10mdp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/colorYellow"
+                    app:cardCornerRadius="@dimen/_25mdp">
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchMatch"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/txtAzimuthAngle"
+                            style="@style/textViewStyleRegular"
+                            android:layout_width="@dimen/_40mdp"
+                            android:layout_height="@dimen/_40mdp"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:background="@drawable/circle"
+                            android:gravity="center"
+                            android:padding="@dimen/_7mdp"
+                            android:textSize="@dimen/_11mdp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Azimuth Angle"
+                            android:textSize="@dimen/_13mdp" />
+
+                        <ImageView
+                            android:id="@+id/imgSetAzimuthAngle"
+                            android:layout_width="@dimen/_40mdp"
+                            android:layout_height="@dimen/_40mdp"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:background="@drawable/circle"
+                            android:gravity="center"
+                            android:padding="@dimen/_1mdp"
+                            android:src="@drawable/ic_check_mark" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleViewMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#66000000"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_10mdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/row_menu_option" />
+
+
+
+                   <!-- <me.ibrahimsn.lib.SmoothBottomBar
+                        android:visibility="gone"
+                        android:id="@+id/bottomBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_60mdp"
+                        app:backgroundColor="@color/colorPrimary"
+                        app:iconSize="@dimen/_20mdp"
+                        app:indicatorRadius="@dimen/_5mdp"
+                        app:sideMargins="10dp"
+                        app:itemFontFamily="@font/roboto_regular"
+                        app:itemPadding="@dimen/_5mdp"
+                        app:cornerRadius="@dimen/_10mdp"
+                        app:menu="@menu/menu_sun_analyzer_bottom" />-->
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+</layout>

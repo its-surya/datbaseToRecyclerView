@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="imageUrl"
+            type="String" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:background="@color/blackTransparent"
+        android:padding="@dimen/_1mdp">
+
+        <ImageView
+            android:id="@+id/row_touch_imageview"
+            app:loadImage="@{imageUrl}"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_5mdp"
+            android:adjustViewBounds="true" />
+
+    </FrameLayout>
+</layout>

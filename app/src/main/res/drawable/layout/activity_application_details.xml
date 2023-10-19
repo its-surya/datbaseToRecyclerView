@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.Html" />
+
+        <variable
+            name="isDocumentAvailable"
+            type="Boolean" />
+
+        <variable
+            name="paymentDate"
+            type="String" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.MyApplicationDetailsResponse.ApplyOnlinesData" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.activity.ProjectDetailsBasicUserActivity">
+
+        <include android:id="@+id/toolbar" layout="@layout/toolbar_simple_back" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                setVisibility="@{model!=null?true:false}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:background="@color/headerBackgroundColor"
+                            android:paddingHorizontal="@dimen/_10mdp"
+                            android:paddingVertical="@dimen/_8mdp"
+                            android:text="@string/solar_pv_plan_details"
+                            android:textColor="@color/black" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:padding="@dimen/_10mdp">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:text="@string/pv_capacity" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:text="@{model.pvCapacity.empty ? `-` :model.pvCapacity+` kW`}" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:background="@color/headerBackgroundColor"
+                            android:paddingHorizontal="@dimen/_10mdp"
+                            android:paddingVertical="@dimen/_8mdp"
+                            android:text="@string/installer_channel_partner"
+                            android:textColor="@color/black" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:padding="@dimen/_10mdp">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:text="@string/installer" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:text="@{model.installer.installerName.empty ? `-` :model.installer.installerName}" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:background="@color/headerBackgroundColor"
+                            android:paddingHorizontal="@dimen/_10mdp"
+                            android:paddingVertical="@dimen/_8mdp"
+                            android:text="@string/contact_details"
+                            android:textColor="@color/black" />
+
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:padding="@dimen/_10mdp">
+
+                            <LinearLayout style="@style/llHorizontalMatchWrap">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="Customer Name" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.customerNamePrefixed+` `+model.nameOfConsumerApplicant+` `+model.lastName+` `+model.thirdName}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/mobile_number" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.mobile.empty ? `-` :model.mobile}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/email_address" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.email.empty ? `-` :model.email}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/address" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.address1.empty ? `-` :model.address1}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/city" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.city.empty ? `-` :model.city}" />
+                            </LinearLayout>
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/state" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.state.empty ? `-` :model.state}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/pincode" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{``+model.pincode}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/communication_address" />
+
+                                <TextView
+                                    android:id="@+id/tvComunicationAddress"
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginTop="@dimen/_10mdp"
+
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:background="@color/headerBackgroundColor"
+                            android:paddingHorizontal="@dimen/_10mdp"
+                            android:paddingVertical="@dimen/_8mdp"
+                            android:text="@string/bill_details"
+                            android:textColor="@color/black" />
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:padding="@dimen/_10mdp">
+
+                            <LinearLayout style="@style/llHorizontalMatchWrap">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/discom_name" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.discomName.empty ? `-` :model.discomName}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/consumer_number" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.consumerNo.empty ? `-` :model.consumerNo}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/sanction_load_contract_demand" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.sanctionLoadContractDemand.empty ? `-` :model.sanctionLoadContractDemand+` kW`}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/category" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.category.empty ? `-` :model.category}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                setVisibility="@{model.categoryId.equals(`3001`)? true: false }"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/aadhaar_no" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.aadharNoOrPanCardNo.empty ? `-` :model.aadharNoOrPanCardNo}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                setVisibility="@{model.categoryId.equals(`3001`)? false: true }"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/pan_no" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.panCardNo.empty ? `-` :model.panCardNo}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/permises_ownership_details_no" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.houseTaxHoldingNo.empty ? `-` :model.houseTaxHoldingNo}" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:background="@color/headerBackgroundColor"
+                            android:paddingHorizontal="@dimen/_10mdp"
+                            android:paddingVertical="@dimen/_8mdp"
+                            android:text="@string/payment_details"
+                            android:textColor="@color/black" />
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:padding="@dimen/_10mdp">
+
+                            <LinearLayout style="@style/llHorizontalMatchWrap">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/application_status" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.applicationStatus.empty ? `-` :model.applicationStatus}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/payment_date"
+                                    tools:ignore="HardcodedText" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{paymentDate.empty ? `-` :paymentDate}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/payment_status" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.paymentStatus==1?`PAID`:`NOT PAID`}" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:background="@color/headerBackgroundColor"
+                            android:paddingHorizontal="@dimen/_10mdp"
+                            android:paddingVertical="@dimen/_8mdp"
+                            android:text="@string/application_fee_and_subsidy_details"
+                            android:textColor="@color/black" />
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:padding="@dimen/_10mdp">
+
+                            <LinearLayout style="@style/llHorizontalMatchWrap">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/consumer_bank_a_c_no" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.bankAcNo.empty ? `-` :model.bankAcNo}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/name_of_account_holder" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.acHolderName.empty ? `-` :model.acHolderName}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/bank_name" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.bankName.empty ? `-` :model.bankName}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/ifsc_code" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@{model.ifscCode.empty ? `-` :model.ifscCode}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/installer_s_fee" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    formatPrice="@{``+model.totalFee}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:text="@string/total_fee" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    formatPrice="@{``+model.applicationTotalFee}"
+                                   />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginVertical="@dimen/_10mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:background="@color/headerBackgroundColor"
+                            android:paddingHorizontal="@dimen/_10mdp"
+                            android:paddingVertical="@dimen/_8mdp"
+                            android:text="@string/attached_document"
+                            android:textColor="@color/black" />
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:padding="@dimen/_10mdp">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewAttechedDocumnets"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/row_media_item" />
+
+                            <include
+                                android:id="@+id/layoutNoResultFound"
+                                layout="@layout/layout_no_data_found"
+                                bind:isVisible="@{!isDocumentAvailable}" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPayNow"
+                    style="@style/ButtonStyle"
+                    setVisibility="@{model.isPaymentRequired().equals(`1`)?true:false}"
+                    android:layout_width="@dimen/_150mdp"
+                    android:layout_gravity="center"
+                    android:text="@string/btn_pay_now" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

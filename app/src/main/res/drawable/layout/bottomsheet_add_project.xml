@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorCardBack"
+            app:cardCornerRadius="@dimen/_10mdp"
+            app:cardElevation="@dimen/_10mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="center">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:background="@drawable/bg_bottomsheet"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/_35mdp"
+                        android:layout_height="@dimen/_30mdp"
+                        android:src="@drawable/ic_minus" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:background="@color/colorPrimary"
+                    android:padding="@dimen/_15mdp">
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        style="@style/textViewStyleExtraLarge"
+                        android:gravity="center"
+                        tools:text="@string/create_new_project"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_20mdp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/textViewStyleLarge"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:gravity="center"
+                        android:text="Select any one option from below " />
+
+
+                    <LinearLayout
+                        android:id="@+id/llAddLead"
+                        style="@style/llVerticalWrapWrap"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center"
+                        android:padding="@dimen/_5mdp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="@dimen/_60mdp"
+                            android:layout_height="@dimen/_60mdp"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_2mdp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="@dimen/_30mdp"
+                            app:cardElevation="@dimen/_1mdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_margin="@dimen/_3mdp"
+                                android:background="@drawable/shape_round_lightgray"
+                                android:gravity="center_horizontal"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="@dimen/_8mdp"
+                                    android:src="@drawable/ic_manage_lead" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            style="@style/textViewStyleLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:text="By Lead"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llSiteSurvey"
+                        style="@style/llVerticalWrapWrap"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center"
+                        android:padding="@dimen/_5mdp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="@dimen/_60mdp"
+                            android:layout_height="@dimen/_60mdp"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_2mdp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="@dimen/_30mdp"
+                            app:cardElevation="@dimen/_1mdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_margin="@dimen/_3mdp"
+                                android:background="@drawable/shape_round_lightgray"
+                                android:gravity="center_horizontal"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="@dimen/_8mdp"
+                                    android:src="@drawable/ic_site_survey" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            style="@style/textViewStyleLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:text="By Site Survey"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llSolarCalculator"
+                        style="@style/llVerticalWrapWrap"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:gravity="center"
+                        android:padding="@dimen/_5mdp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="@dimen/_60mdp"
+                            android:layout_height="@dimen/_60mdp"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_2mdp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="@dimen/_30mdp"
+                            app:cardElevation="@dimen/_1mdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_margin="@dimen/_3mdp"
+                                android:background="@drawable/shape_round_lightgray"
+                                android:gravity="center_horizontal"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/ic_get_free_quote" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/tvSolarCalc"
+                            style="@style/textViewStyleLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            tools:text="@string/by_solar_calculator"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

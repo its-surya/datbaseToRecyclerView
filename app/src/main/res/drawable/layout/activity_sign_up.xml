@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:background="@color/white"
+        android:paddingHorizontal="@dimen/_20mdp">
+
+        <LinearLayout
+            style="@style/llVerticalMatchMatch"
+            android:gravity="center|top">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:layout_weight="1"
+                android:gravity="center|top">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30mdp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/layout_company_logo" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/textViewStyleExtraLarge"
+                    android:layout_marginVertical="@dimen/_20mdp"
+                    android:gravity="left"
+                    android:text="Sign Up"
+                    android:textStyle="bold" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_full_name">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/editTextFullName"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:digits="@string/contact_name_char_allowed"
+                        android:inputType="textCapWords"
+                        android:maxLength="100" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_email">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/editTextEmail"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="100" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_password"
+                    app:helperText="Password length must be more than 6 characters long"
+                    app:endIconMode="password_toggle">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edittextPassword"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword"
+                        android:maxLength="50" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_mobile_number">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/editTextMobileNumber"
+                        style="@style/edtStyleNumeric"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:digits="1234567890"
+                        android:maxLength="10" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_state"
+                    app:endIconDrawable="@drawable/ic_drop_down"
+                    app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtState"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:maxLines="1" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalWrapWrap"
+                    android:layout_gravity="start">
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/checkboxTermsAndCondition"
+                        style="@style/checkboxWrapWrap"
+                        android:text="@string/i_agree_to_the" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewTermsAndCondition"
+                        style="@style/textViewStyleRegular"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:gravity="left"
+                        android:hint="@string/str_terms_and_condition"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginLeft="@dimen/_5mdp"
+                    android:layout_marginTop="@dimen/_30mdp"
+                    android:layout_marginRight="@dimen/_5mdp"
+                    android:layout_marginBottom="@dimen/_5mdp"
+                    android:gravity="center">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSignUp"
+                        style="@style/ButtonStyle"
+                        android:enabled="false"
+                        android:layout_width="@dimen/_150mdp"
+                        android:text="@string/sign_up" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

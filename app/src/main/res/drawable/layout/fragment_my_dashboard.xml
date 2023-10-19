@@ -1,0 +1,2430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.MyDashboard" />
+
+    </data>
+
+    <RelativeLayout style="@style/llVerticalMatchMatch">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar">
+
+            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:visibility="visible">
+
+                    <TextView
+                        style="@style/textViewStyleLarge"
+                        android:background="#DDDDDD"
+                        android:padding="@dimen/_5mdp"
+                        android:text="@string/str_enquiry_and_leads"
+                        android:textColor="@color/black"
+                        android:visibility="visible" />
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:id="@+id/llEnq"
+                            style="@style/llVerticalMatchWrap"
+                            android:background="@drawable/green_gradient"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_5mdp"
+                            android:weightSum="2">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:singleLine="false"
+                                android:text="@string/str_enquiries"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvEnquriesKw"
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:singleLine="false"
+                                android:text="@{``+model.enquiry.totalInqueryCount+`(`+model.enquiry.inqueryPVCount+`)`}"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0.5dp"
+                            android:background="@drawable/green_gradient"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <LinearLayout
+                                android:id="@+id/llEnqNotAssign"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:singleLine="false"
+                                    android:text="@string/str_not_assigned"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/llEnqAssign"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:singleLine="false"
+                                    android:text="@string/str_assigned"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/llEnqTotal"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:singleLine="false"
+                                    android:text="@string/str_total"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_three_side"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <LinearLayout
+                                android:id="@+id/llEnqNotAssign2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:id="@+id/tvEnquriesNotAssign"
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.enquiry.inqueryNotAssignedCount}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorTextHint" />
+
+                            <LinearLayout
+                                android:id="@+id/llEnqAssign2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:id="@+id/tvEnquriesAssign"
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.enquiry.inqueryAssignedCount}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorTextHint" />
+
+                            <LinearLayout
+                                android:id="@+id/llEnqTotal2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:id="@+id/tvTotalEnquries"
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.enquiry.totalInqueryCount}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:id="@+id/llAhaLeads"
+                            style="@style/llVerticalMatchWrap"
+                            android:background="@drawable/blue_gradient"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_5mdp"
+                            android:weightSum="2">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:singleLine="false"
+                                android:text="@string/tab_aha_leads"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:singleLine="false"
+                                android:text="@{``+model.leads.AHATotalLeads+`(`+model.leads.AHATotalCapacity+`)`}"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0.5dp"
+                            android:background="@drawable/blue_gradient"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                            <LinearLayout
+                                android:id="@+id/llPending1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:singleLine="false"
+                                    android:text="@string/str_pending"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/llAccept1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:singleLine="false"
+                                    android:text="@string/str_accept"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/llReject1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:singleLine="false"
+                                    android:text="@string/str_reject"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/llForward1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:singleLine="false"
+                                    android:text="@string/str_forward"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_three_side"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                            <LinearLayout
+                                android:id="@+id/llPending2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.leads.pendingCount}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorTextHint" />
+
+                            <LinearLayout
+                                android:id="@+id/llAccept2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.leads.acceptCount}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorTextHint" />
+
+                            <LinearLayout
+                                android:id="@+id/llReject2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.leads.rejectCount}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorTextHint" />
+
+                            <LinearLayout
+                                android:id="@+id/llForward2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.leads.forwardCount}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:visibility="visible">
+
+                    <TextView
+                        style="@style/textViewStyleLarge"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:background="#DDDDDD"
+                        android:padding="@dimen/_5mdp"
+                        android:text="@string/str_my_leads"
+                        android:textColor="@color/black"
+                        android:visibility="visible" />
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:id="@+id/llMyLead"
+                            style="@style/llVerticalMatchWrap"
+                            android:background="@drawable/green_gradient"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_5mdp"
+                            android:weightSum="2">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:singleLine="false"
+                                android:text="@string/str_my_leads"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:singleLine="false"
+                                android:text="@{``+model.myLeads.totalLeads}"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0.5dp"
+                            android:background="@drawable/green_gradient"
+                            android:orientation="horizontal"
+                            android:weightSum="5">
+
+                            <LinearLayout
+                                android:id="@+id/llStillLead1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:singleLine="false"
+                                    android:text="@string/str_still_lead"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/llLeadConverted1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:singleLine="false"
+                                    android:text="@string/str_lead_converted"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/llLeadLost1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:singleLine="false"
+                                    android:text="@string/str_lead_lost"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/llNotIntrested1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:singleLine="false"
+                                    android:text="@string/str_not_interested"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/llNotQualified1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_5mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:singleLine="false"
+                                    android:text="@string/str_not_qualified"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_three_side"
+                            android:orientation="horizontal"
+                            android:weightSum="5">
+
+                            <LinearLayout
+                                android:id="@+id/llStillLead2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.myLeads.stillALead}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorTextHint" />
+
+                            <LinearLayout
+                                android:id="@+id/llLeadConverted2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.myLeads.convertEnquiry}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorTextHint" />
+
+                            <LinearLayout
+                                android:id="@+id/llLeadLost2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.myLeads.archived}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorTextHint" />
+
+                            <LinearLayout
+                                android:id="@+id/llNotIntrested2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.myLeads.notIntrested}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorTextHint" />
+
+                            <LinearLayout
+                                android:id="@+id/llNotQualified2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.myLeads.notQualified}"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:visibility="visible">
+
+                    <TextView
+                        style="@style/textViewStyleLarge"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:background="#DDDDDD"
+                        android:padding="@dimen/_5mdp"
+                        android:text="@string/str_project_statistics"
+                        android:textColor="@color/black"
+                        android:visibility="visible" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <LinearLayout
+                                android:id="@+id/llMyProject"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/black_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvMyProjectCount"
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.myprojects.totalProjectCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="My Projects"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/tvMyProjectCapacity"
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.myprojects.totalProjectCapacityKW}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2" />
+
+                            <LinearLayout
+                                android:id="@+id/llSiteSurvey"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/green_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvSiteSurveyCount"
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.siteSurvey.totalSitesurveyCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Site survey"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/tvSiteSurveyCapacity"
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.siteSurvey.totalSitesurveyCapacityKW}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <LinearLayout
+                                android:id="@+id/llProposal"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/pink_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.proposal.totalProposalCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Proposal"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.proposal.totalProposalCapacityKW}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2" />
+
+                            <LinearLayout
+                                android:id="@+id/llOrderConfirmed"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/green_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.orderConfirm.totalOrderConfirmCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Order Confirmed"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.orderConfirm.totalOrderConfirmCapacityKW}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <LinearLayout
+                                android:id="@+id/llEstimatedCost"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/brawn_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.estimatedAmount.totalEstimatedCost}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_5mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Estimated Cost"
+                                    android:textColor="@color/white" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2" />
+
+                            <LinearLayout
+                                android:id="@+id/llPaymentReceived"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/brawn_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.paymentReceived.totalPaymentReceivedCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_5mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Payment Received"
+                                    android:textColor="@color/white" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/gray_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.PPADownload.totalPPADownloadCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="PPA Uploaded"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.PPADownload.totalPPADownloadCapacityKW}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2" />
+
+                            <LinearLayout
+                                android:id="@+id/llCommissioning"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/sky_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.commissioing.totalCommissioningCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Commissioning"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.commissioing.totalCommissioningCapacityKW}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+                            <LinearLayout
+                                android:id="@+id/llDataLogger"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@color/colorPrimary"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.dataLogger.totalDataLoggerCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Data Logger"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.dataLogger.totalDataLoggerCapacity}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2" />
+
+                            <!--<LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/brawn_gradient"
+                                android:orientation="vertical"
+                                android:visibility="visible">
+
+
+                            </LinearLayout>-->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/brawn_gradient"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/red_orange_gradient"
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_5mdp">
+
+                                    <TextView
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="false"
+                                        android:text="Material Dispatch"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0.5dp"
+                                    android:background="@drawable/red_orange_gradient"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/_5mdp">
+
+                                        <TextView
+                                            style="@style/textViewStyleSmall"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="PV"
+                                            android:textColor="@color/white" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="0.5dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/_5mdp">
+
+                                        <TextView
+                                            style="@style/textViewStyleSmall"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="Inverter"
+                                            android:textColor="@color/white" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/border_three_side"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="@{``+model.materialDispatch.pvModuleCount}"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="0.5dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/colorTextHint" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            android:id="@+id/tvInverterCount"
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="@{``+model.materialDispatch.inverterCount}"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/border_three_side"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="@{``+model.materialDispatch.pvModuleCapacity}"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="0.5dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/colorTextHint" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            android:id="@+id/tvInverterCapacity"
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="@{``+model.materialDispatch.inverterCapacity}"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:visibility="visible">
+
+                    <TextView
+                        style="@style/textViewStyleLarge"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:background="#DDDDDD"
+                        android:padding="@dimen/_5mdp"
+                        android:text="@string/str_project_activities"
+                        android:textColor="@color/black"
+                        android:visibility="visible" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5mdp"
+                                android:layout_marginTop="@dimen/_10mdp"
+                                android:layout_marginEnd="@dimen/_5mdp"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/steel_blue_gradient"
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_5mdp">
+
+                                    <TextView
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="false"
+                                        android:text="External Project"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0.5dp"
+                                    android:background="@drawable/steel_blue_gradient"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/_5mdp">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="Assigned"
+                                            android:textColor="@color/white" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="0.5dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/_5mdp">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="Completed"
+                                            android:textColor="@color/white" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/border_three_side"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="@{``+model.externalProject.totalAssignedCount}"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="0.5dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/colorTextHint" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="@{``+model.externalProject.totalCompletedCount}"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5mdp"
+                                android:layout_marginTop="@dimen/_10mdp"
+                                android:layout_marginEnd="@dimen/_5mdp"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/steel_blue_gradient"
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_5mdp">
+
+                                    <TextView
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="false"
+                                        android:text="Civil Activities"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0.5dp"
+                                    android:background="@drawable/steel_blue_gradient"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/_5mdp">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="Assigned"
+                                            android:textColor="@color/white" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="0.5dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/_5mdp">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="Completed"
+                                            android:textColor="@color/white" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/border_three_side"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="@{``+model.civilActivities.totalAssignedCount}"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="0.5dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/colorTextHint" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="@{``+model.civilActivities.totalCompletedCount}"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5mdp"
+                                android:layout_marginTop="@dimen/_10mdp"
+                                android:layout_marginEnd="@dimen/_5mdp"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/steel_blue_gradient"
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_5mdp">
+
+                                    <TextView
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="false"
+                                        android:text="Electrical"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0.5dp"
+                                    android:background="@drawable/steel_blue_gradient"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/_5mdp">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="Assigned"
+                                            android:textColor="@color/white" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="0.5dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/_5mdp">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="Completed"
+                                            android:textColor="@color/white" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/border_three_side"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="@{``+model.electrical.totalAssignedCount}"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="0.5dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/colorTextHint" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="@{``+model.electrical.totalCompletedCount}"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5mdp"
+                                android:layout_marginTop="@dimen/_10mdp"
+                                android:layout_marginEnd="@dimen/_5mdp"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/steel_blue_gradient"
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_5mdp">
+
+                                    <TextView
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="false"
+                                        android:text="Installation Of System"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0.5dp"
+                                    android:background="@drawable/steel_blue_gradient"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/_5mdp">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="Assigned"
+                                            android:textColor="@color/white" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="0.5dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/_5mdp">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="Completed"
+                                            android:textColor="@color/white" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/border_three_side"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="@{``+model.installationOfSystem.totalAssignedCount}"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="0.5dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/colorTextHint" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            style="@style/textViewStyleExtraSmall"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:singleLine="false"
+                                            android:text="@{``+model.installationOfSystem.totalCompletedCount}"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginBottom="@dimen/_50mdp">
+
+                    <TextView
+                        style="@style/textViewStyleLarge"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:background="#DDDDDD"
+                        android:padding="@dimen/_5mdp"
+                        android:text="@string/str_application_statistics"
+                        android:textColor="@color/black"
+                        android:visibility="visible" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <LinearLayout
+                                android:id="@+id/llApplicationSubmitted"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/pink_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.applicationSubmitted.totalApplicationSubmittedCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Application Submitted"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.applicationSubmitted.totalApplicationSubmittedCapacityKW}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2" />
+
+                            <LinearLayout
+                                android:id="@+id/llDocumentVerified"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/sky_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.documentVerified.applicationCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Document Verified"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.documentVerified.capacity}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <LinearLayout
+                                android:id="@+id/llDiscomLetter"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/brawn_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.discomLetter.applicationCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Discom Letter"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.discomLetter.capacity}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2" />
+
+                            <LinearLayout
+                                android:id="@+id/llFeasibilityApproval"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/green_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.feasibilityApproved.applicationCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Feasibility Approved"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.feasibilityApproved.capacity}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <LinearLayout
+                                android:id="@+id/llceiApproval"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/black_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.CEIApproval.applicationCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="CEI Approval"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.CEIApproval.capacity}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2" />
+
+                            <LinearLayout
+                                android:id="@+id/llWorkExecution"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/gray_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.WorkExecution.applicationCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Work Execution"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.WorkExecution.capacity}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <LinearLayout
+                                android:id="@+id/llCeiInspection"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/red_orange_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.CEIInspection.applicationCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="CEI Inspection"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.CEIInspection.capacity}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2" />
+
+                            <LinearLayout
+                                android:id="@+id/llMeterInstallation"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/pink_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.MeterInstallation.applicationCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Meter Installation"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.MeterInstallation.capacity}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <LinearLayout
+                                android:id="@+id/llSubsidyClaimed"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/steel_blue_gradient"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{``+model.SubsidyClaimed.applicationCount}"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Subsidy Claimed"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:text="@{``+model.SubsidyClaimed.capacity}"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.9"
+                                android:background="@drawable/sky_gradient"
+                                android:orientation="vertical"
+                                android:visibility="invisible">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5mdp"
+                                    android:textColor="@color/white"
+                                    tools:text="0" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_2mdp"
+                                    android:paddingTop="0dp"
+                                    android:singleLine="false"
+                                    android:text="Site survey"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    android:padding="@dimen/_2mdp"
+                                    android:singleLine="false"
+                                    android:textColor="@color/white"
+                                    tools:text="0.0 kWp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</layout>

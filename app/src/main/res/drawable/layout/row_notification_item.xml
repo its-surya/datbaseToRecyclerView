@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.NotificationModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10mdp"
+            android:layout_marginTop="@dimen/_8mdp"
+            android:layout_marginBottom="@dimen/_2mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_1mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_marginBottom="@dimen/_5mdp"
+                android:gravity="top">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/headerBackgroundColor">
+
+                    <TextView
+                        style="@style/headerTextStyle"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_15mdp"
+                        android:paddingVertical="@dimen/_10mdp"
+                        android:text="@{model.title}" />
+
+                    <ImageView
+                        android:id="@+id/imageViewNotificationDot"
+                        setVisibility="@{model.isRead()==1?false:true}"
+                        android:layout_width="@dimen/_8mdp"
+                        android:layout_height="@dimen/_8mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/_10mdp"
+                        android:src="@drawable/shape_round_red" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:padding="@dimen/_5mdp">
+
+                    <TextView
+                        android:id="@+id/textViewBody"
+                        style="@style/textViewStyleSmall"
+                        android:paddingHorizontal="@dimen/_10mdp"
+                        android:text="@{model.body}" />
+
+                    <TextView
+                        style="@style/textViewStyleExtraSmall"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:gravity="end"
+                        android:text="@{model.created}" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</layout>

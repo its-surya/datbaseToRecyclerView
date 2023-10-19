@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.LeadModel.AllNote" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:layout_marginHorizontal="@dimen/_10mdp"
+            android:gravity="top"
+            android:padding="@dimen/_5mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_weight="1"
+                android:gravity="top">
+
+                <TextView
+                    style="@style/textViewStyleRegular"
+                    android:layout_weight="1"
+                    android:text="@{model.notes}" />
+
+                <TextView
+                    style="@style/textViewStyleExtraSmall"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:text="@{`On `+model.createdDate+` By `+model.createdName}"
+                    android:textColor="@color/colorDivider" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

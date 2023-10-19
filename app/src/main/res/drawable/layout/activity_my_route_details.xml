@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isTyping"
+            type="Boolean" />
+
+        <variable
+            name="isLoadMore"
+            type="Boolean" />
+
+        <variable
+            name="totalTime"
+            type="Integer" />
+
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+
+        <FrameLayout
+            style="@style/llVerticalMatchMatch"
+            android:layout_weight="1">
+
+            <include
+                android:id="@+id/layoutNoResultFound"
+                layout="@layout/layout_no_data_found" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewRoutePointList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:fadeScrollbars="true"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/_10mdp"
+                android:paddingBottom="@dimen/_10mdp"
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_my_route_item" />
+
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/llBottomLayout"
+            android:visibility="gone"
+            style="@style/llVerticalMatchWrap"
+            android:layout_marginBottom="@dimen/_10mdp"
+            android:gravity="center">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/headerBackgroundColor" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                android:layout_marginBottom="@dimen/_10mdp"
+                android:layout_marginTop="@dimen/_5mdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_8mdp"
+                app:cardElevation="@dimen/_2mdp">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:gravity="top"
+                    android:padding="@dimen/_5mdp">
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:paddingHorizontal="@dimen/_10mdp"
+                        android:paddingVertical="@dimen/_3mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.7"
+                            android:gravity="start"
+                            android:text="@string/total_distance"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewTotalDistance"
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.3"
+                            android:gravity="start"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:paddingHorizontal="@dimen/_10mdp"
+                        android:paddingVertical="@dimen/_3mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.7"
+                            android:gravity="start"
+                            android:text="@string/total_time"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewTotalTime"
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.3"
+                            android:gravity="start"
+                             durationInWord="@{totalTime}"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnReOrganise"
+                style="@style/ButtonStyle"
+                android:visibility="gone"
+                android:layout_width="@dimen/_120mdp"
+                android:text="Re-Organize" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</layout>

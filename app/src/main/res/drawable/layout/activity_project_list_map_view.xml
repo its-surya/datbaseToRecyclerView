@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout style="@style/llVerticalMatchMatch">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10mdp"
+                app:cardBackgroundColor="@color/colorGreen"
+                app:cardCornerRadius="@dimen/_5mdp">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginVertical="@dimen/_5mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:text="Total Projects"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/textViewTotalProjectCount"
+                        style="@style/textViewStyleExtraSmall"
+                        android:text="0"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewListView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_26mdp"
+                android:layout_gravity="center|bottom"
+                android:layout_marginBottom="@dimen/_20mdp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/_13mdp"
+                app:cardElevation="@dimen/_5mdp">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchMatch"
+                    android:layout_marginHorizontal="@dimen/_5mdp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/_15mdp"
+                        android:layout_height="@dimen/_15mdp"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:src="@drawable/ic_list"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        android:text="@string/list_view"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_26mdp"
+                android:layout_gravity="end|bottom"
+                android:layout_marginBottom="@dimen/_20mdp"
+                android:layout_marginEnd="@dimen/_5mdp"
+                app:cardCornerRadius="@dimen/_13mdp"
+                app:cardElevation="@dimen/_5mdp">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchMatch"
+                    android:layout_marginHorizontal="@dimen/_5mdp"
+                    android:gravity="center">
+
+
+
+                    <CheckBox
+                        android:id="@+id/checkboxSatellite"
+                        style="@style/checkboxMatchWrap"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        android:layout_marginTop="0dp"
+                        android:paddingStart="@dimen/_5mdp"
+                        android:text="@string/satellite"
+                         />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+        <variable
+            name="model"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_1mdp"
+        android:layout_marginTop="@dimen/_5mdp"
+        android:layout_marginRight="@dimen/_5mdp"
+        android:layout_marginBottom="@dimen/_5mdp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="@dimen/_95mdp"
+            android:layout_height="@dimen/_95mdp"
+            android:layout_above="@+id/txtTitleHome">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_80mdp"
+                android:layout_height="@dimen/_80mdp"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/_2mdp"
+                app:cardBackgroundColor="@color/colorCardBack"
+                app:cardCornerRadius="@dimen/_4mdp"
+                app:cardElevation="@dimen/_1mdp">
+
+                <ImageView
+                    android:id="@+id/imgCollection"
+                    android:layout_width="@dimen/_80mdp"
+                    android:layout_height="@dimen/_80mdp"
+                    android:scaleType="centerCrop" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardDelete"
+                android:layout_width="@dimen/_22mdp"
+                android:layout_height="@dimen/_22mdp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="@dimen/_3mdp"
+                android:layout_marginTop="@dimen/_3mdp"
+                android:layout_marginRight="@dimen/_3mdp"
+                android:layout_marginBottom="@dimen/_3mdp"
+                app:cardBackgroundColor="@color/colorOTPGrey"
+                app:cardCornerRadius="@dimen/_11mdp"
+                app:cardElevation="@dimen/_2mdp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_8mdp"
+                    android:src="@drawable/ic_close_dialog"
+                    app:tint="@color/black" />
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

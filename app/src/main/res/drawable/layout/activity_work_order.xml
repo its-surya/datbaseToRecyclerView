@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.WorkOrderResponse" />
+
+        <variable
+            name="paymentReceipt"
+            type="String" />
+
+        <variable
+            name="adapter"
+            type="com.energy.ahasolar.ui.adapter.MediaAdapter" />
+
+        <variable
+            name="isAdvanceZero"
+            type="Boolean" />
+
+        <variable
+            name="isOtherPaymentMethod"
+            type="Boolean" />
+
+    </data>
+
+    <LinearLayout style="@style/llVerticalMatchMatch">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:layout_weight="1">
+
+            <LinearLayout style="@style/llVerticalMatchMatch">
+
+                <LinearLayout
+                    style="@style/llEditText"
+                    android:padding="@dimen/_10mdp"
+                    android:visibility="visible">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:layout_marginBottom="@dimen/_2mdp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_8mdp">
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_margin="@dimen/_5mdp">
+
+
+                            <RelativeLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_5mdp">
+
+                                <TextView
+                                    android:id="@+id/tvProjectName"
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_toLeftOf="@+id/tvSrn"
+                                    android:text="@{model.projectName+` (`+model.capacity+` kW) `}"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/tvSrn"
+                                    style="@style/textViewStyleRegular"
+                                    android:layout_width="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:text="@{model.projId>0?``+model.projId:``}"
+                                    android:textColor="@color/black" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_10mdp">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_3mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_select_financial_year"
+                                    app:endIconDrawable="@drawable/ic_drop_down"
+                                    app:endIconMode="custom">
+
+                                    <EditText
+                                        android:id="@+id/edtFinancialYear"
+                                        style="@style/edtStyle"
+                                        android:clickable="true"
+                                        android:focusable="false" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginStart="@dimen/_3mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/str_total_amount_after_subsidy">
+
+                                    <EditText
+                                        style="@style/edtStyle"
+                                        android:enabled="false"
+                                        android:text="@{model.totalMilestoneAmount}" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_3mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/work_order_no">
+
+                                    <EditText
+                                        android:id="@+id/edtWorkOrderNo"
+                                        style="@style/edtStyle"
+                                        android:digits="@string/document_digit"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="text"
+                                        android:maxLength="100"
+                                        android:text="@{model.woNumber}" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginStart="@dimen/_3mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/str_date"
+                                    app:endIconDrawable="@drawable/ic_calendar"
+                                    app:endIconMode="custom">
+
+                                    <EditText
+                                        android:id="@+id/edtDate"
+                                        style="@style/edtStyle"
+                                        android:clickable="true"
+                                        android:focusable="false"
+                                        android:text="@{model.woDate}" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:hint="@string/str_applicant_name">
+
+                                <EditText
+                                    android:id="@+id/edtApplicantName"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxLength="100"
+                                    android:text="@{model.applicantName}" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_3mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/str_application_submited_date"
+                                    app:endIconDrawable="@drawable/ic_calendar"
+                                    app:endIconMode="custom">
+
+                                    <EditText
+                                        android:id="@+id/edtApplicationSubmitedDate"
+                                        style="@style/edtStyle"
+                                        android:clickable="true"
+                                        android:focusable="false"
+                                        android:text="@{model.submbitedDate}" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginStart="@dimen/_3mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/str_warranty_in_month">
+
+                                    <EditText
+                                        android:id="@+id/edtWarrantyInMonth"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="10"
+                                        android:text="@{model.warrantyTime}" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_3mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/str_advanced_received">
+
+                                    <EditText
+                                        android:id="@+id/edtAdvancedReceived"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="100"
+                                        android:text="@{model.advancedAmount}" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginStart="@dimen/_3mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/str_net_payable">
+
+                                    <EditText
+                                        android:id="@+id/edtNetPayable"
+                                        style="@style/edtStyle"
+                                        android:enabled="false"
+                                        android:text="@{model.netpayableAmount}" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                setVisibility="@{isAdvanceZero}"
+                                android:layout_marginTop="@dimen/_5mdp">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_3mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_payment_method"
+                                    app:endIconDrawable="@drawable/ic_drop_down"
+                                    app:endIconMode="custom">
+
+                                    <EditText
+                                        android:id="@+id/edtPaymentMethod"
+                                        style="@style/edtStyle"
+                                        android:clickable="true"
+                                        android:focusable="false" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginStart="@dimen/_3mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/str_reference_no">
+
+                                    <EditText
+                                        android:id="@+id/edtReferenceNo"
+                                        style="@style/edtStyle"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="text"
+                                        android:maxLength="100"
+                                        android:text="@{model.referenceNo}" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                setVisibility="@{isOtherPaymentMethod}"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:hint="@string/str_other_payment_method">
+
+                                <EditText
+                                    android:id="@+id/edtOtherPaymentMethod"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxLength="100"
+                                    android:text="@{model.otherPayment}" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <androidx.cardview.widget.CardView
+                                setVisibility="@{isAdvanceZero}"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_2mdp"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:layout_marginBottom="@dimen/_2mdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/_8mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <LinearLayout
+                                        android:id="@+id/llPaymentReceipt"
+                                        style="@style/llHorizontalMatchWrap"
+                                        android:background="@color/white">
+
+                                        <TextView
+                                            style="@style/headerTextStyle"
+                                            android:layout_marginLeft="@dimen/_8mdp"
+                                            android:layout_weight="1"
+                                            android:maxLines="1"
+                                            android:paddingVertical="@dimen/_8mdp"
+                                            android:text="@string/str_payment_receipt" />
+
+                                        <ImageView
+                                            android:id="@+id/imgAddVisitingCard"
+                                            android:layout_width="@dimen/_30mdp"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center_vertical"
+                                            android:background="?selectableItemBackgroundBorderless"
+                                            android:padding="@dimen/_6mdp"
+                                            android:src="@drawable/ic_add" />
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/colorDivider" />
+
+                                    <LinearLayout
+                                        style="@style/llHorizontalWrapWrap"
+                                        visibilityOnString="@{paymentReceipt}">
+
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/rvDocument"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adapter="@{adapter}"
+                                            android:orientation="horizontal"
+                                            android:paddingHorizontal="@dimen/_5mdp"
+                                            android:paddingVertical="@dimen/_5mdp"
+                                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                            tools:listitem="@layout/row_media_item" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginTop="@dimen/_3mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    android:visibility="visible"
+                    app:cardCornerRadius="@dimen/_8mdp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:background="@color/white"
+                            android:paddingHorizontal="@dimen/_10mdp"
+                            android:paddingVertical="@dimen/_8mdp"
+                            android:text="@string/order_confirmed"
+                            android:textColor="@color/black"
+                            android:visibility="visible" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider"
+                            android:visibility="visible" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_margin="@dimen/_10mdp">
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" />
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/cardViewCancel"
+                                setVisibility="@{model.displayCancelbutton==1}"
+                                android:layout_width="@dimen/_100mdp"
+                                android:layout_height="@dimen/_26mdp"
+                                android:layout_gravity="center|end"
+                                app:cardBackgroundColor="@color/colorRed"
+                                app:cardCornerRadius="@dimen/_13mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{model.orderConfirmed==-1?`Cancel`:model.orderConfirmed==0?`Cancelled`:`Cancel`}"
+                                    android:textColor="@color/white" />
+                            </androidx.cardview.widget.CardView>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" />
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/cardViewConfirm"
+                                android:layout_width="@dimen/_100mdp"
+                                android:layout_height="@dimen/_26mdp"
+                                android:layout_gravity="center|end"
+                                app:cardBackgroundColor="@color/colorGreen"
+                                app:cardCornerRadius="@dimen/_13mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleRegular"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_5mdp"
+                                    android:text="@{model.orderConfirmed==-1?`Confirm`:model.orderConfirmed==0?`Confirm`:`Confirmed`}"
+                                    android:textColor="@color/white" />
+                            </androidx.cardview.widget.CardView>
+
+
+                            <View
+                                setVisibility="@{model.displayCancelbutton==1}"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchMatch"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewDocumentReceived"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:clipToPadding="false"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/_20mdp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/row_document_upload_item" />
+
+                    <include
+                        android:id="@+id/layoutNoResultFound"
+                        layout="@layout/layout_no_data_found"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/_5mdp"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    android:layout_marginRight="@dimen/_5mdp"
+                    android:layout_marginBottom="@dimen/_10mdp"
+                    android:gravity="center">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnPaymentReminder"
+                        style="@style/ButtonGrayStyle"
+                        android:layout_width="@dimen/_130mdp"
+                        android:layout_marginEnd="@dimen/_2mdp"
+                        android:text="@string/str_payment"
+                        android:visibility="gone" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSave"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_130mdp"
+                        android:layout_marginStart="@dimen/_2mdp"
+                        android:text="@string/str_submit" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

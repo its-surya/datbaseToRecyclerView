@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="notificationCount"
+            type="String" />
+
+        <variable
+            name="logoUrl"
+            type="String" />
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="false"
+        tools:openDrawer="end">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/dashboard_top_background"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.Toolbar
+                            android:id="@+id/toolbar"
+                            android:layout_width="match_parent"
+                            android:layout_height="?actionBarSize"
+                            app:navigationIcon="@drawable/ic_menu_icon">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|start"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="start|center"
+                                    android:text="@string/app_name"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_14mdp"
+                                    android:visibility="invisible" />
+
+                                <Space
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+
+                                <FrameLayout
+                                    android:id="@+id/frameLayoutNotification"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:layout_marginEnd="@dimen/_20mdp"
+                                    android:background="?selectableItemBackgroundBorderless">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_22mdp"
+                                        android:layout_height="@dimen/_22mdp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_notifications" />
+
+                                    <TextView
+                                        android:id="@+id/textViewNotificationCount"
+                                        style="@style/textViewStyleExtraSmall"
+                                        android:layout_width="@dimen/_17mdp"
+                                        android:layout_height="@dimen/_17mdp"
+                                        android:layout_gravity="top|end"
+                                        android:background="@drawable/shape_round_red"
+                                        android:gravity="center"
+                                        android:maxLength="2"
+                                        android:text="@{notificationCount}"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold"
+                                        android:visibility="gone" />
+                                </FrameLayout>
+
+
+                            </LinearLayout>
+
+
+                        </androidx.appcompat.widget.Toolbar>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_16mdp"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/textViewStyleExtraLarge"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="AHA! Solar"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+
+                                />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/textViewStyleRegular"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="Digitalizing Solar"
+                                android:textColor="@color/white" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35mdp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35mdp" />
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/_70mdp"
+                    android:layout_height="@dimen/_70mdp"
+                    android:layout_gravity="center|bottom"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    app:cardBackgroundColor="@color/white"
+                    android:padding="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_35mdp">
+
+                    <ImageView
+                        loadImage="@{logoUrl}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_10mdp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_app_logo" />
+
+                </androidx.cardview.widget.CardView>
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleOptionMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_2mdp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:spanCount="3"
+                    tools:listitem="@layout/home_menu_item" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true">
+
+            <include
+                android:id="@+id/navigationBar"
+                layout="@layout/layout_naviagation_view" />
+        </com.google.android.material.navigation.NavigationView>
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>

@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.SurveySummaryModel" />
+
+        <variable
+            name="isVisibleLayout"
+            type="Boolean" />
+
+        <variable
+            name="isImageAvailable"
+            type="Boolean" />
+
+        <variable
+            name="isBuildingAvailable"
+            type="Boolean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            setVisibility="@{isVisibleLayout}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btnFinish"
+            android:layout_below="@+id/toolbar"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginHorizontal="@dimen/_15mdp"
+                    android:layout_marginTop="@dimen/_10mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            setVisibility="@{isBuildingAvailable}"
+                            android:hint="@string/hint_building"
+                            android:visibility="gone"
+                            app:endIconDrawable="@drawable/ic_drop_down"
+                            app:endIconMode="custom">
+
+                            <EditText
+                                android:id="@+id/edtBuilding"
+                                style="@style/edtStyle"
+                                android:clickable="true"
+                                android:focusable="false" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Recommended Capacity" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4"
+                                android:text="@{String.valueOf(model.capacity)+` kW`}" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Area" />
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_weight="1.4">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="wrap_content"
+                                    android:text="@{String.valueOf(model.overall)+` `}" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="wrap_content"
+                                    android:paddingTop="@dimen/_2mdp"
+                                    android:text="@string/m2" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Shadow Free Area" />
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_weight="1.4">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="wrap_content"
+                                    android:text="@{String.valueOf(model.shadow)+` `}" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_width="wrap_content"
+                                    android:paddingTop="@dimen/_2mdp"
+                                    android:text="@string/m2" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Average Monthly Bill" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4"
+                                android:text="@{String.valueOf(model.bill)+` ₹`}" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Sanction Load" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4"
+                                android:text="@{String.valueOf(model.sanctionLoad)+` kW`}" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Avg. Monthly Unit Consumption" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4"
+                                android:text="@{String.valueOf(model.avgMonthlyUnitConsumed)+` kWh`}" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Roof Type" />
+
+                            <TextView
+                                android:id="@+id/txtRoofTop"
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Road to Site" />
+
+                            <TextView
+                                android:id="@+id/txtRoadToSite"
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Ladder to Roof" />
+
+                            <TextView
+                                android:id="@+id/txtLadderToRoof"
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Place for Inverter" />
+
+                            <TextView
+                                android:id="@+id/txtPLaceInverter"
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Place for Battery" />
+
+                            <TextView
+                                android:id="@+id/txtPlaceBattery"
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Place for ACDB" />
+
+                            <TextView
+                                android:id="@+id/txtACDB"
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Place for Metering Point" />
+
+                            <TextView
+                                android:id="@+id/txtMeteringPoint"
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:background="@color/colorDivider" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/textViewStyleExtraSmall"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/str_recommended_capacity_pointer" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.warkiz.widget.IndicatorStayLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5mdp"
+                            android:layout_marginBottom="@dimen/_15mdp">
+
+                            <com.warkiz.widget.IndicatorSeekBar
+                                android:id="@+id/seekBarCapacity"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:scrollIndicators="top"
+                                app:isb_indicator_color="@color/colorPrimary"
+                                app:isb_indicator_top_content_layout="@layout/custom_seekbar_indicator"
+                                app:isb_min="1"
+                                app:isb_progress="0"
+                                app:isb_show_indicator="rounded_rectangle"
+                                app:isb_show_tick_marks_type="divider"
+                                app:isb_show_tick_texts="false"
+                                app:isb_thumb_color="@color/colorGreen"
+                                app:isb_thumb_size="@dimen/_13mdp"
+                                app:isb_tick_marks_color="@color/colorPrimary"
+                                app:isb_tick_texts_color="@color/black"
+                                app:isb_ticks_count="5"
+                                app:isb_track_background_color="@color/colorPrimary"
+                                app:isb_track_background_size="@dimen/_3mdp"
+                                app:isb_track_progress_color="@color/colorPrimary"
+                                app:isb_track_progress_size="@dimen/_3mdp"
+                                app:isb_track_rounded_corners="true" />
+                        </com.warkiz.widget.IndicatorStayLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/txtSeekStart"
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="1" />
+
+                            <TextView
+                                android:id="@+id/txtSeekEnd"
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="100" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginBottom="@dimen/_5mdp"
+                    android:gravity="top">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_180mdp"
+                        android:paddingVertical="@dimen/_10mdp"
+                        android:paddingStart="@dimen/_5mdp"
+                        android:paddingEnd="@dimen/_20mdp">
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+                            android:rotation="-90"
+                            android:text="kWh" />
+
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/barChartMonth"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/textViewStyleExtraSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Month" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_180mdp"
+                        android:paddingVertical="@dimen/_10mdp"
+                        android:paddingStart="@dimen/_5mdp"
+                        android:paddingEnd="@dimen/_20mdp">
+
+                        <TextView
+                            style="@style/textViewStyleExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+                            android:rotation="-90"
+                            android:text="Rs. " />
+
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/barChartYear"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/textViewStyleExtraSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Year" />
+
+                    <androidx.cardview.widget.CardView
+                        setVisibility="@{isImageAvailable}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_8mdp"
+                        android:layout_marginBottom="@dimen/_12mdp"
+                        android:visibility="gone"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_8mdp"
+                        app:cardElevation="@dimen/_1mdp">
+
+                        <LinearLayout style="@style/llVerticalMatchWrap">
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:background="@color/headerBackgroundColor">
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical">
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_width="wrap_content"
+                                        android:maxLines="1"
+                                        android:paddingVertical="@dimen/_8mdp"
+                                        android:paddingStart="@dimen/_10mdp"
+                                        android:text="@string/str_show_photos" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvImages"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/_4mdp"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/row_media_item" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            layout="@layout/layout_no_data_found"
+            bind:isVisible="@{!isVisibleLayout}" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnFinish"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_100mdp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginVertical="@dimen/_5mdp"
+            android:text="@string/str_finish" />
+
+    </RelativeLayout>
+</layout>

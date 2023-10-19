@@ -1,0 +1,1630 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.EnquiryHistoryResponse" />
+
+        <variable
+            name="isVisible"
+            type="Boolean" />
+
+        <variable
+            name="isEnquiryShow"
+            type="Boolean" />
+
+        <variable
+            name="isProformaInvoice"
+            type="Boolean" />
+
+        <variable
+            name="isPiApprove"
+            type="Boolean" />
+
+        <variable
+            name="isOrderConfirm"
+            type="Boolean" />
+
+        <variable
+            name="isDispatch"
+            type="Boolean" />
+
+        <variable
+            name="isDeliveryContact"
+            type="Boolean" />
+
+        <variable
+            name="isPaymentReceive"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout style="@style/llVerticalMatchMatch">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/llMain"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="visible">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:layout_margin="@dimen/_10mdp">
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.enquiryDetailFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_35mdp"
+                                android:gravity="start|center_vertical"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                android:text="Enquiry" />
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/_100mdp"
+                                android:layout_height="@dimen/_20mdp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginHorizontal="@dimen/_5mdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/_10mdp"
+                                app:cardElevation="@dimen/_1mdp">
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchMatch"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical">
+
+                                    <ImageView
+                                        android:id="@+id/imageViewStatus"
+                                        setStatusEMarketEnquiry="@{String.valueOf(model.statusId)}"
+                                        android:layout_width="@dimen/_12mdp"
+                                        android:layout_height="@dimen/_12mdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:src="@drawable/ic_status_close" />
+
+                                    <TextView
+                                        style="@style/textViewStyleExtraSmall"
+                                        android:layout_width="0dp"
+                                        android:layout_marginEnd="@dimen/_2mdp"
+                                        android:layout_weight="1"
+                                        android:ellipsize="end"
+                                        android:gravity="start"
+                                        android:maxLines="1"
+                                        android:text="@{model.status}" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+
+                            <LinearLayout
+                                style="@style/llVerticalMatchWrap"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_weight="1"
+                                    android:gravity="end|center_vertical"
+                                    android:paddingHorizontal="@dimen/_8mdp"
+                                    android:text="@{`EID: `+model.EID}" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_marginEnd="@dimen/_8mdp"
+                                    android:layout_weight="1"
+                                    android:gravity="end|center_vertical"
+                                    android:text="@{model.enquiryDetail.created}"
+                                    android:textSize="@dimen/_8mdp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            setVisibility="@{isEnquiryShow}"
+                            android:paddingHorizontal="@dimen/_10mdp">
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_3mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="Buyer Name" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="@{model.EnquiryDetail.buyerName.empty?`-`:model.EnquiryDetail.buyerName}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center"
+                                android:paddingVertical="@dimen/_3mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+
+                                    android:gravity="start|center_vertical"
+                                    android:text="Mobile" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1.19"
+                                    android:gravity="start|center_vertical"
+                                    android:text="@{model.EnquiryDetail.mobile}" />
+
+                                <ImageView
+                                    android:id="@+id/imageViewCallEnquiry"
+                                    setVisibility="@{!model.EnquiryDetail.mobile.empty}"
+                                    android:layout_width="@dimen/_20mdp"
+                                    android:layout_height="@dimen/_20mdp"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:src="@drawable/ic_phone_call" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_3mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="Email" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="@{model.EnquiryDetail.email}" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_3mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="State" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="@{model.EnquiryDetail.state.empty?`-`:model.EnquiryDetail.state}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_3mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="Time" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="@{model.EnquiryDetail.time.empty?`-`:model.EnquiryDetail.time}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_3mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="Remarks" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="@{model.EnquiryDetail.remarks.empty?`-`:model.EnquiryDetail.remarks}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_3mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="Source" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+
+                                    android:gravity="start|center_vertical"
+                                    android:text="@{model.EnquiryDetail.source.empty?`-`:model.EnquiryDetail.source}" />
+                            </LinearLayout>
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_marginVertical="@dimen/_8mdp"
+                                android:gravity="end|center_vertical"
+                                android:hint="@{model.enquiryDetail.modified}"
+                                android:textColorHint="@color/colorFlatIcon"
+                                android:textSize="@dimen/_8mdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/llVerticalMatchWrap">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="@color/colorDivider" />
+
+                            <ImageView
+                                android:id="@+id/imageViewHideShowEnquiry"
+                                isDownOrUp="@{isEnquiryShow}"
+                                android:layout_width="@dimen/_25mdp"
+                                android:layout_height="@dimen/_25mdp"
+                                android:layout_gravity="center"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_down"
+                                app:tint="@color/colorFlatIcon" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.piDetailFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:gravity="center_vertical">
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_35mdp"
+                                    android:gravity="start|center_vertical"
+                                    android:paddingHorizontal="@dimen/_8mdp"
+                                    android:paddingVertical="@dimen/_5mdp"
+                                    android:text="Proforma Invoice" />
+
+                                <ImageView
+                                    android:id="@+id/imageViewDownloadPI"
+                                    setVisibility="@{!model.pIDocumentUrl.empty}"
+                                    android:layout_width="@dimen/_25mdp"
+                                    android:layout_height="@dimen/_25mdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:padding="@dimen/_6mdp"
+                                    android:src="@drawable/ic_download"
+                                    app:tint="@color/colorPrimary" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llVerticalMatchWrap"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_weight="1"
+                                    android:gravity="end|center_vertical"
+                                    android:paddingHorizontal="@dimen/_8mdp"
+                                    android:text="@{model.PINo.empty?`PI No:-`:`PI No: `+model.PINo}" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_marginEnd="@dimen/_8mdp"
+                                    android:layout_weight="1"
+                                    android:gravity="end|center_vertical"
+                                    android:text="@{model.piDetail.created}"
+                                    android:textSize="@dimen/_8mdp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            setVisibility="@{isProformaInvoice}"
+                            android:paddingHorizontal="@dimen/_10mdp">
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycleViewPiDetails"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                setVisibility="@{!model.piDetail.modified.empty}"
+                                android:layout_width="wrap_content"
+                                android:layout_marginVertical="@dimen/_8mdp"
+                                android:layout_gravity="end"
+                                android:hint="@{model.piDetail.modified}"
+                                android:textColorHint="@color/colorFlatIcon"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/llVerticalMatchWrap">
+
+                            <ImageView
+                                android:id="@+id/imageViewHideShowProformaInvoice"
+                                isDownOrUp="@{isProformaInvoice}"
+                                android:layout_width="@dimen/_25mdp"
+                                android:layout_height="@dimen/_25mdp"
+                                android:layout_gravity="center"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_down"
+                                app:tint="@color/colorFlatIcon" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.piApproveDetailFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_35mdp"
+                                android:gravity="start|center_vertical"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                android:text="PI Approve" />
+
+                            <ImageView
+                                setVisibility="@{model.piApproveCheckedIconFlag}"
+                                android:layout_width="@dimen/_12mdp"
+                                android:layout_height="@dimen/_12mdp"
+                                android:layout_marginStart="@dimen/_10mdp"
+                                android:src="@drawable/ic_check_mark" />
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_marginEnd="@dimen/_8mdp"
+                                android:layout_weight="1"
+                                android:gravity="end|center_vertical"
+                                android:text="@{model.piApproveDetail.created}"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            setVisibility="@{isPiApprove}"
+                            android:paddingHorizontal="@dimen/_10mdp">
+
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:text="@{`Approved `+model.piApproveDetail.approvedBy+` `+model.piApproveDetail.approvedDate}" />
+
+                            <androidx.cardview.widget.CardView
+                                setVisibility="@{!model.piApproveDetail.piRevisionDetailsFiles.empty}"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_3mdp"
+                                android:layout_marginTop="@dimen/_5mdp"
+                                android:background="@color/white"
+                                android:elevation="@dimen/_3mdp"
+                                app:cardCornerRadius="@dimen/_5mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:padding="@dimen/_10mdp"
+                                        android:text="PI Revision" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/colorDivider" />
+
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/recyclerViewPIRevisionDetail"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                        tools:listitem="@layout/row_media_item" />
+
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_marginVertical="@dimen/_8mdp"
+                                android:gravity="end|center_vertical"
+                                android:hint="@{model.piApproveDetail.modified}"
+                                android:textColorHint="@color/colorFlatIcon"
+                                android:textSize="@dimen/_8mdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/llVerticalMatchWrap">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="@color/colorDivider" />
+
+                            <ImageView
+                                android:id="@+id/imageViewHideShowPiApprove"
+                                isDownOrUp="@{isPiApprove}"
+                                android:layout_width="@dimen/_25mdp"
+                                android:layout_height="@dimen/_25mdp"
+                                android:layout_gravity="center"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_down"
+                                app:tint="@color/colorFlatIcon" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.orderConfirmDetailFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_35mdp"
+                                android:gravity="start|center_vertical"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                android:text="Order Confirm" />
+
+                            <ImageView
+                                setVisibility="@{model.orderConfirmCheckedIconFlag}"
+                                android:layout_width="@dimen/_12mdp"
+                                android:layout_height="@dimen/_12mdp"
+                                android:layout_marginStart="@dimen/_10mdp"
+                                android:src="@drawable/ic_check_mark"
+                                android:visibility="visible" />
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_marginEnd="@dimen/_8mdp"
+                                android:layout_weight="1"
+                                android:gravity="end|center_vertical"
+                                android:text="@{model.orderConfirmDetail.created}"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            setVisibility="@{isOrderConfirm}"
+                            android:paddingHorizontal="@dimen/_10mdp">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:paddingVertical="@dimen/_3mdp"
+                                android:text="@{`Confirmed `+model.orderConfirmDetail.confirmedBy+` `+model.orderConfirmDetail.confirmedDate}" />
+
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_3mdp"
+                                android:layout_marginTop="@dimen/_8mdp"
+                                android:background="@color/white"
+                                android:elevation="@dimen/_3mdp"
+                                app:cardCornerRadius="@dimen/_5mdp">
+
+                                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:padding="@dimen/_10mdp"
+                                        android:text="Uploaded Files" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/colorDivider" />
+
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/recyclerViewDocuments"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                        tools:listitem="@layout/row_media_item" />
+
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_marginVertical="@dimen/_8mdp"
+                                android:gravity="end|center_vertical"
+                                android:hint="@{model.orderConfirmDetail.modified}"
+                                android:textColorHint="@color/colorFlatIcon"
+                                android:textSize="@dimen/_8mdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/llVerticalMatchWrap">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="@color/colorDivider" />
+
+                            <ImageView
+                                android:id="@+id/imageViewHideShowOrderConfirm"
+                                isDownOrUp="@{isOrderConfirm}"
+                                android:layout_width="@dimen/_25mdp"
+                                android:layout_height="@dimen/_25mdp"
+                                android:layout_gravity="center"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_down"
+                                app:tint="@color/colorFlatIcon" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.dispatchDetailFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout style="@style/llHorizontalMatchWrap">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_height="@dimen/_35mdp"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                android:text="Dispatch" />
+
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_marginEnd="@dimen/_8mdp"
+                                android:layout_weight="1"
+                                android:gravity="end|center_vertical"
+                                android:text="@{model.dispatchDetail.created}"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            setVisibility="@{isDispatch}"
+                            android:paddingHorizontal="@dimen/_10mdp">
+
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_3mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="Booking Amount Receipt Date" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="@{model.dispatchDetail.bookingAmountReceiptDate}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_3mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="Tentative Date of Dispatch" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="@{model.dispatchDetail.dispatchDate}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_3mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="Final Payment Date" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="@{model.dispatchDetail.finalPaymentDate}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_3mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="Time Slot" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="@{model.dispatchDetail.timeSlot}" />
+                            </LinearLayout>
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_marginVertical="@dimen/_5mdp"
+                                android:gravity="end|center_vertical"
+                                android:hint="@{model.dispatchDetail.modified}"
+                                android:textColorHint="@color/colorFlatIcon"
+                                android:textSize="@dimen/_8mdp" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout style="@style/llVerticalMatchWrap">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="@color/colorDivider" />
+
+                            <ImageView
+                                android:id="@+id/imageViewHideShowDispatch"
+                                isDownOrUp="@{isDispatch}"
+                                android:layout_width="@dimen/_25mdp"
+                                android:layout_height="@dimen/_25mdp"
+                                android:layout_gravity="center"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_down"
+                                app:tint="@color/colorFlatIcon" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.deliveryContactDetailFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+
+                        <LinearLayout style="@style/llHorizontalMatchWrap">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_height="@dimen/_35mdp"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                android:text="Delivery Contact" />
+
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_marginEnd="@dimen/_8mdp"
+                                android:layout_weight="1"
+                                android:gravity="end|center_vertical"
+                                android:text="@{model.deliveryContactDetail.created}"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            setVisibility="@{isDeliveryContact}"
+                            android:paddingHorizontal="@dimen/_10mdp">
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_10mdp">
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="Contact Name" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="Mobile No" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/_20mdp"
+                                    android:layout_height="@dimen/_20mdp"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:src="@drawable/ic_phone_call"
+                                    android:visibility="invisible" />
+                            </LinearLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewDeliveryDetails"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/llVerticalMatchWrap">
+
+                            <ImageView
+                                android:id="@+id/imageViewHideShowDeliveryContact"
+                                isDownOrUp="@{isDeliveryContact}"
+                                android:layout_width="@dimen/_25mdp"
+                                android:layout_height="@dimen/_25mdp"
+                                android:layout_gravity="center"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_down"
+                                app:tint="@color/colorFlatIcon" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.paymentReceiveDetailFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_35mdp"
+                                android:gravity="start|center_vertical"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                android:text="Payment Receive" />
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_marginEnd="@dimen/_8mdp"
+                                android:layout_weight="1"
+                                android:gravity="end|center_vertical"
+                                android:text="@{model.paymentReceive.created.empty?`-`:model.paymentReceive.created}"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            setVisibility="@{isPaymentReceive}"
+                            android:paddingHorizontal="@dimen/_10mdp">
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewPaymentHistory"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:paddingVertical="@dimen/_5mdp">
+
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:text="@{`₹ `+model.paymentReceive.totalPayment}"
+                                    android:textColor="@color/colorGreen"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    style="@style/textViewStyleSmall"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Total Payment" />
+
+                                <TextView
+                                    style="@style/textViewStyleExtraSmall"
+                                    android:layout_width="wrap_content"
+                                    android:gravity="end|center_vertical"
+                                    android:hint="@{model.paymentReceive.modified.empty?`-`:model.paymentReceive.modified}"
+                                    android:textColorHint="@color/colorFlatIcon"
+                                    android:textSize="@dimen/_8mdp" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/llVerticalMatchWrap">
+
+
+                            <ImageView
+                                android:id="@+id/imageViewHideShowPaymentReceive"
+                                isDownOrUp="@{isPaymentReceive}"
+                                android:layout_width="@dimen/_25mdp"
+                                android:layout_height="@dimen/_25mdp"
+                                android:layout_gravity="center"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@drawable/ic_arrow_down"
+                                app:tint="@color/colorFlatIcon" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.deliveredDetailFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_35mdp"
+                                android:gravity="start|center_vertical"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                android:text="Delivered" />
+
+                            <ImageView
+                                setVisibility="@{model.deliveredCheckedIconFlag}"
+                                android:layout_width="@dimen/_12mdp"
+                                android:layout_height="@dimen/_12mdp"
+                                android:layout_marginStart="@dimen/_10mdp"
+                                android:src="@drawable/ic_check_mark" />
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_marginEnd="@dimen/_8mdp"
+                                android:layout_weight="1"
+                                android:gravity="end|center_vertical"
+                                android:text="@{model.deliveredDetails.created}"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:paddingHorizontal="@dimen/_10mdp">
+
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:paddingVertical="@dimen/_3mdp"
+                                android:text="@{`Delivered `+model.deliveredDetails.deliveredBy+` `+model.deliveredDetails.deliveredDate}" />
+
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_marginVertical="@dimen/_5mdp"
+                                android:gravity="end|center_vertical"
+                                android:hint="@{model.deliveredDetails.modified}"
+                                android:textColorHint="@color/colorFlatIcon"
+                                android:textSize="@dimen/_8mdp" />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.filesFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10mdp"
+                    android:background="@color/white"
+                    android:elevation="@dimen/_2mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_10mdp"
+                            android:text="Files" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewFiles"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_media_item" />
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp"
+                            android:visibility="gone">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+
+                                android:gravity="start|center_vertical"
+                                android:text="Created" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:text="@{model.files.created.empty?`-`:model.files.created}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:text="Modified"
+                                android:visibility="gone" />
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_weight="1"
+                                android:gravity="end|center_vertical"
+                                android:hint="@{model.files.modified.empty?`-`:model.files.modified}"
+                                android:textColorHint="@color/colorFlatIcon"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.ewayFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10mdp"
+                    android:background="@color/white"
+                    android:elevation="@dimen/_2mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_10mdp"
+                            android:text="E-way" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewEWay"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_media_item" />
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp"
+                            android:visibility="gone">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+
+                                android:gravity="start|center_vertical"
+                                android:text="Created" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:text="@{model.eway.created.empty?`-`:model.eway.created}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:text="Modified"
+                                android:visibility="gone" />
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_weight="1"
+                                android:gravity="end|center_vertical"
+                                android:hint="@{model.eway.modified.empty?`-`:model.eway.modified}"
+                                android:textColorHint="@color/colorFlatIcon"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.invoiceFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10mdp"
+                    android:background="@color/white"
+                    android:elevation="@dimen/_2mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_10mdp"
+                            android:text="Invoice" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewInvoice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_media_item" />
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp"
+                            android:visibility="gone">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+
+                                android:gravity="start|center_vertical"
+                                android:text="Created" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:hint="@{model.invoice.created.empty?`-`:model.invoice.created}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:text="Modified"
+                                android:visibility="gone" />
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_weight="1"
+                                android:gravity="end|center_vertical"
+                                android:hint="@{model.invoice.modified.empty?`-`:model.invoice.modified}"
+                                android:textColorHint="@color/colorFlatIcon"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.lrFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10mdp"
+                    android:background="@color/white"
+                    android:elevation="@dimen/_2mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_10mdp"
+                            android:text="LR" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewLR"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_media_item" />
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp"
+                            android:visibility="gone">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+
+                                android:gravity="start|center_vertical"
+                                android:text="Created" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:text="@{model.lr.created.empty?`-`:model.lr.created}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:text="Modified"
+                                android:visibility="gone" />
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_weight="1"
+                                android:gravity="end|center_vertical"
+                                android:hint="@{model.lr.modified.empty?`-`:model.lr.modified}"
+                                android:textColorHint="@color/colorFlatIcon"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.ftrFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10mdp"
+                    android:background="@color/white"
+                    android:elevation="@dimen/_2mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_10mdp"
+                            android:text="FTR" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewFTR"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_media_item" />
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp"
+                            android:visibility="gone">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+
+                                android:gravity="start|center_vertical"
+                                android:text="Created" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:text="@{model.ftr.created.empty?`-`:model.ftr.created}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:text="Modified"
+                                android:visibility="gone" />
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_weight="1"
+                                android:gravity="end|center_vertical"
+                                android:hint="@{model.ftr.modified.empty?`-`:model.ftr.modified}"
+                                android:textColorHint="@color/colorFlatIcon"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.warrantyFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10mdp"
+                    android:background="@color/white"
+                    android:elevation="@dimen/_2mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_10mdp"
+                            android:text="Warranty" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewWarranty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_media_item" />
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp"
+                            android:visibility="gone">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+
+                                android:gravity="start|center_vertical"
+                                android:text="Created" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:text="@{model.warranty.created.empty?`-`:model.warranty.created}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+
+                                android:text="Modified"
+                                android:visibility="gone" />
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_weight="1"
+                                android:gravity="end|center_vertical"
+                                android:hint="@{model.warranty.modified.empty?`-`:model.warranty.modified}"
+                                android:textColorHint="@color/colorFlatIcon"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.insuranceFlag}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10mdp"
+                    android:background="@color/white"
+                    android:elevation="@dimen/_2mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_10mdp"
+                            android:text="Insurance" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewInsurance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_media_item" />
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp"
+                            android:visibility="gone">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+
+                                android:gravity="start|center_vertical"
+                                android:text="Created" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:text="@{model.insurance.created.empty?`-`:model.insurance.created}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:paddingVertical="@dimen/_3mdp">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:gravity="start|center_vertical"
+                                android:text="Modified"
+                                android:visibility="gone" />
+
+                            <TextView
+                                style="@style/textViewStyleExtraSmall"
+                                android:layout_weight="1"
+                                android:gravity="end|center_vertical"
+                                android:hint="@{model.insurance.modified.empty?`-`:model.insurance.modified}"
+                                android:textColorHint="@color/colorFlatIcon"
+                                android:textSize="@dimen/_8mdp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <include
+            android:id="@+id/layoutNoResultFound"
+            layout="@layout/layout_no_data_found"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</layout>

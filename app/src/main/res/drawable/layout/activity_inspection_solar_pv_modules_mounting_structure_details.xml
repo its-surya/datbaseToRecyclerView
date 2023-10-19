@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.InspectionDetailsDataModel" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:layout_margin="@dimen/_10mdp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/structure_material" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/hot_dip_galvanized_iron" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkStructureMaterial"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.mmsData.structureMaterial.equals(`1`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkStructureMaterial"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_20mdp"
+                                android:checked="@{model.mmsData.structureMaterial.equals(`0`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/hint_remarks">
+
+                            <EditText
+                                android:id="@+id/edtRemarksStructureMaterial"
+                                style="@style/edtStyle"
+                                android:inputType="textMultiLine"
+                                android:maxLines="3"
+                                android:singleLine="false"
+                                android:text="@{model.mmsData.structureMaterialRemark}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/fastners" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/stainless_steel" />
+
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkFastners"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.mmsData.stainless.equals(`1`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkFastners"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_20mdp"
+                                android:checked="@{model.mmsData.stainless.equals(`0`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/hint_remarks">
+
+                            <EditText
+                                android:id="@+id/edtRemarksFastners"
+                                style="@style/edtStyle"
+                                android:inputType="textMultiLine"
+                                android:maxLines="3"
+                                android:singleLine="false"
+                                android:text="@{model.mmsData.stainlessRemark}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="wrap_content"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/structure_steel_thickness" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/min_2_5_mm" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkStructureSteelThikness"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.mmsData.thickness.equals(`1`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkStructureSteelThikness"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_20mdp"
+                                android:checked="@{model.mmsData.thickness.equals(`0`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/hint_remarks">
+
+
+                            <EditText
+                                android:id="@+id/edtRemarksStructureSteelThikness"
+                                style="@style/edtStyle"
+                                android:inputType="textMultiLine"
+                                android:maxLines="3"
+                                android:singleLine="false"
+                                android:text="@{model.mmsData.thicknessRemark}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/structure_properly_installed" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkStructureProperlyInstalled"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.mmsData.structureIns.equals(`1`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkStructureProperlyInstalled"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_20mdp"
+                                android:checked="@{model.mmsData.structureIns.equals(`0`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/hint_remarks">
+
+
+                            <EditText
+                                android:id="@+id/edtRemarksStructureProperlyInstalled"
+                                style="@style/edtStyle"
+                                android:inputType="textMultiLine"
+                                android:maxLines="3"
+                                android:singleLine="false"
+                                android:text="@{model.mmsData.structureInsRemark}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="wrap_content"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/structure_grouting_foundation" />
+
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkStructureGrountingFoundation"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.mmsData.structureFound.equals(`1`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkStructureGrountingFoundation"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_20mdp"
+                                android:checked="@{model.mmsData.structureFound.equals(`0`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/hint_remarks">
+
+
+                            <EditText
+                                android:id="@+id/edtRemarksStructureGrountingFoundation"
+                                style="@style/edtStyle"
+                                android:inputType="textMultiLine"
+                                android:maxLines="3"
+                                android:singleLine="false"
+                                android:text="@{model.mmsData.structureFoundRemark}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="wrap_content"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/minimum_height_of_pv_modules_from_roof_level_in_meter" />
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/minimum_height_in_meter">
+
+                            <EditText
+                                android:id="@+id/edtMinimumHeightOfPvModules"
+                                style="@style/edtStyleNumeric"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:maxLines="1"
+                                android:text="@{model.mmsData.mmsMinHeight}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/hint_remarks">
+
+
+                            <EditText
+                                android:id="@+id/edtRemarksMinimumHeightOfPvModules"
+                                style="@style/edtStyle"
+                                android:inputType="textMultiLine"
+                                android:maxLines="3"
+                                android:singleLine="false"
+                                android:text="@{model.mmsData.mmsMinHeightRemark}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="wrap_content"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/maximum_height_of_pv_modules_from_roof_level_in_meter" />
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/maximum_height_in_meter">
+
+                            <EditText
+                                android:id="@+id/edtMaximumHeightOfPvModules"
+                                style="@style/edtStyleNumeric"
+                                android:hint="@string/enter_height_in_meter"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:text="@{model.mmsData.mmsMaxHeight}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/hint_remarks">
+
+                            <EditText
+                                android:id="@+id/edtRemarksMaximumHeightOfPvModules"
+                                style="@style/edtStyle"
+                                android:inputType="textMultiLine"
+                                android:maxLines="3"
+                                android:singleLine="false"
+                                android:text="@{model.mmsData.mmsMaxHeightRemark}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginVertical="@dimen/_10mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:layout_margin="@dimen/_5mdp"
+                        android:hint="@string/hint_notes">
+
+                        <EditText
+                            android:id="@+id/edtNotes"
+                            style="@style/edtStyle"
+                            android:inputType="textMultiLine"
+                            android:maxLines="3"
+                            android:singleLine="false"
+                            android:text="@{model.mmsData.note}" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSave"
+            style="@style/ButtonStyle"
+            setVisibility="@{model.isEditable()>-1 &amp;&amp; model.isEditable()==1}"
+            android:layout_width="@dimen/_120mdp"
+            android:layout_marginVertical="@dimen/_10mdp"
+            android:gravity="center"
+            android:text="@string/btn_save" />
+    </LinearLayout>
+</layout>

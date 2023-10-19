@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.CheckList.Checklist" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:padding="@dimen/_5mdp">
+
+            <TextView
+                style="@style/textViewStyleRegular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_10mdp"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:padding="@dimen/_10mdp"
+                android:text="@{model.text}" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:hint="@string/hint_quantity">
+
+
+                <EditText
+                    android:id="@+id/edtQty"
+                    style="@style/edtStyleNumeric"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:digits="1234567890"
+                    android:text="@{``+model.quantity}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

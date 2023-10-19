@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isDebug"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:gravity="center|top">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchMatch"
+                    android:layout_weight="1"
+                    android:gravity="center|top">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_40mdp"
+                        android:layout_marginHorizontal="@dimen/_20mdp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/layout_company_logo" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_20mdp">
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginTop="@dimen/_30mdp"
+                            android:gravity="left"
+                            android:text="@string/str_login_desc" />
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginTop="@dimen/_40mdp"
+                            android:hint="@string/hint_mobile_number"
+                            app:helperText="@string/hint_otp_desc">
+
+                            <EditText
+                                android:id="@+id/edtPhoneNumber"
+                                style="@style/edtStyleNumeric"
+                                android:imeOptions="actionDone"
+                                android:digits="1234567890"
+                                android:inputType="numberDecimal"
+                                android:maxLength="10" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginTop="@dimen/_40mdp"
+                            android:layout_marginRight="@dimen/_5mdp"
+                            android:layout_marginBottom="@dimen/_5mdp"
+                            android:gravity="center">
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btnContinueWithMobile"
+                                style="@style/ButtonStyle"
+                                android:layout_width="@dimen/_150mdp"
+                                android:enabled="false"
+                                android:text="@string/send_otp" />
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible">
+
+                            <View
+                                style="@style/dividerStyleHorizontal"
+                                android:layout_marginTop="@dimen/_20mdp"
+                                android:layout_marginBottom="@dimen/_20mdp"
+                                android:visibility="invisible"
+                                android:layout_toLeftOf="@+id/txtOr" />
+
+                            <TextView
+                                android:id="@+id/txtOr"
+                                style="@style/textViewStyleRegular"
+                                android:layout_width="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:background="@color/colorTransparent"
+                                android:gravity="center"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:text="@string/str_or" />
+
+                            <View
+                                style="@style/dividerStyleHorizontal"
+                                android:layout_marginTop="@dimen/_20mdp"
+                                android:layout_marginBottom="@dimen/_20mdp"
+                                android:visibility="invisible"
+                                android:layout_toRightOf="@+id/txtOr" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:layout_marginRight="@dimen/_5mdp"
+                            android:layout_marginBottom="@dimen/_5mdp"
+                            android:gravity="center">
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btnEmail"
+                                style="@style/ButtonGrayStyle"
+                                android:layout_width="@dimen/_150mdp"
+                                android:text="@string/hint_email" />
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible">
+
+                            <View
+                                style="@style/dividerStyleHorizontal"
+                                android:layout_marginTop="@dimen/_20mdp"
+                                android:layout_marginBottom="@dimen/_20mdp"
+                                android:layout_toLeftOf="@+id/textDontHaveAccount" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/textDontHaveAccount"
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:background="@color/colorTransparent"
+                                android:gravity="center"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:text="@string/don_t_have_account" />
+
+                            <View
+                                style="@style/dividerStyleHorizontal"
+                                android:layout_marginTop="@dimen/_20mdp"
+                                android:layout_marginBottom="@dimen/_20mdp"
+                                android:layout_toRightOf="@+id/textDontHaveAccount" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginTop="@dimen/_5mdp"
+                            android:layout_marginRight="@dimen/_5mdp"
+                            android:layout_marginBottom="@dimen/_5mdp"
+                            android:gravity="center"
+                            android:visibility="visible">
+
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/textViewSignUp"
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:text="@string/sign_up" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginTop="@dimen/_5mdp"
+                            android:layout_marginRight="@dimen/_5mdp"
+                            android:layout_marginBottom="@dimen/_5mdp"
+                            android:gravity="center"
+                            android:visibility="visible">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvSkipLogin"
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="end"
+                                android:visibility="invisible"
+                                android:paddingHorizontal="@dimen/_15mdp"
+                                android:text="@string/str_skip" />
+                        </LinearLayout>
+
+                        <androidx.cardview.widget.CardView
+                            setVisibility="@{isDebug}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_2mdp"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_2mdp"
+                            app:cardCornerRadius="@dimen/_5mdp">
+
+                            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:background="@color/headerBackgroundColor"
+                                    android:paddingHorizontal="@dimen/_10mdp">
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:text="Switch to Live URL" />
+
+                                    <com.google.android.material.switchmaterial.SwitchMaterial
+                                        android:id="@+id/switchLiveUrl"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/textViewUrl"
+                                    style="@style/textViewStyleRegular"
+                                    android:padding="@dimen/_10mdp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

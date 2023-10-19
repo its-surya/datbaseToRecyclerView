@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isLoadMore"
+            type="Boolean" />
+
+        <variable
+            name="isShowPayNow"
+            type="Boolean" />
+
+        <variable
+            name="payableAmount"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <FrameLayout
+            style="@style/llVerticalMatchMatch"
+            android:layout_weight="1">
+
+            <include
+                android:id="@+id/layoutNoResultFound"
+                layout="@layout/layout_no_data_found" />
+
+            <include
+                android:id="@+id/layoutProgressBar"
+                layout="@layout/layout_load_more_progress_bar"
+                setVisibility="@{isLoadMore}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewReceivePayment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:fadeScrollbars="true"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_50mdp"
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_payment_request" />
+
+
+        </FrameLayout>
+
+        <androidx.cardview.widget.CardView
+            setVisibility="@{isShowPayNow}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="-2dp"
+            android:visibility="gone"
+            app:cardElevation="@dimen/_1mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:padding="@dimen/_10mdp">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchMatch"
+                    android:gravity="end">
+
+                    <TextView
+                        style="@style/textViewStyleRegular"
+                        android:layout_width="wrap_content"
+                        android:text="Total:  " />
+
+                    <TextView
+                        android:id="@+id/textViewTotalAmount"
+                        style="@style/textViewStyleRegular"
+                        formatPrice="@{payableAmount}"
+                        android:layout_width="wrap_content"
+                        android:gravity="end" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/llHorizontalMatchWrap">
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/checkboxProceedToPayment"
+                        style="@style/checkboxWrapWrap"
+                        android:layout_width="wrap_content"
+                        android:checked="true"
+                        android:text="Proceed To Payment" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageViewTransactionInfo"
+                        android:layout_width="@dimen/_15mdp"
+                        android:layout_height="@dimen/_15mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/_10mdp"
+                        android:src="@drawable/ic_info"
+                        android:tint="@color/colorYellow" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPayNow"
+                    style="@style/ButtonStyle"
+                    android:layout_width="@dimen/_120mdp"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="@dimen/_5mdp"
+                    android:text="@string/btn_pay_now" />
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+
+</layout>

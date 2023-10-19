@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.MyRouteDetailsResponse.RouteItem" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/llVerticalMatchWrap"
+    >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10mdp"
+            android:layout_marginTop="@dimen/_5mdp"
+            android:layout_marginBottom="@dimen/_3mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_2mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_marginBottom="@dimen/_5mdp"
+                android:gravity="top">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/headerBackgroundColor">
+
+                    <LinearLayout
+                        android:id="@+id/llProjectName"
+                        style="@style/llVerticalWrapWrap"
+                        android:layout_weight="1"
+                        android:paddingHorizontal="@dimen/_10mdp"
+                        android:paddingVertical="@dimen/_8mdp">
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:maxLines="1"
+                            android:text="@{model.name}" />
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        setVisibility="@{model.startOrEndPoint.empty}"
+                        android:layout_width="@dimen/_90mdp"
+                        android:layout_height="@dimen/_20mdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_10mdp"
+                        app:cardElevation="@dimen/_1mdp">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchMatch"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:id="@+id/imageViewStatus"
+                                setStatusMyRouteList="@{model.status}"
+                                android:layout_width="@dimen/_12mdp"
+                                android:layout_height="@dimen/_12mdp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="@dimen/_5mdp" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_marginEnd="@dimen/_2mdp"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:maxLines="1"
+                                android:text="@{model.status}"
+                                android:textAllCaps="true" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.7"
+                        android:gravity="start"
+                        android:text="Address"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.3"
+                        android:gravity="start"
+                        android:text="@{model.address.empty?`-`:model.address}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.startOrEndPoint.empty}"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.7"
+                        android:gravity="start"
+                        android:text="Route type"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.3"
+                        android:gravity="start"
+                        android:text="@{model.routeType}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.startOrEndPoint.empty&amp;&amp;!model.scheduletime.empty}"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.7"
+                        android:gravity="start"
+                        android:text="Schedule Time"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.3"
+                        android:gravity="start"
+                        android:text="@{model.scheduletime}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.startOrEndPoint.empty}"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.7"
+                        android:gravity="start"
+                        android:text="Start Date"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.3"
+                        android:gravity="start"
+                        android:text="@{model.startTime.empty?`-`:model.startTime}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.startOrEndPoint.empty}"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.7"
+                        android:gravity="start"
+                        android:text="End Date"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.3"
+                        android:gravity="start"
+                        android:text="@{model.endTime.empty?`-`:model.endTime}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.startOrEndPoint.empty}"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:paddingVertical="@dimen/_3mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.7"
+                        android:gravity="start"
+                        android:text="Comments"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.3"
+                        android:gravity="start"
+                        android:text="@{model.comments.empty?`-`:model.comments}"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.startOrEndPoint.empty}"
+                    android:gravity="end"
+                    android:paddingVertical="@dimen/_3mdp"
+                    android:paddingStart="@dimen/_10mdp">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewStartRoute"
+                        setVisibility="@{model.isStart()==1?true:false}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20mdp"
+                        android:layout_gravity="bottom"
+                        android:padding="@dimen/_5mdp"
+                        app:cardBackgroundColor="@color/colorGreen"
+                        app:cardCornerRadius="@dimen/_10mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="@dimen/_20mdp"
+                            android:gravity="center"
+                            android:text="@string/str_start"
+                            android:textColor="@color/white" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewFinishRoute"
+                        setVisibility="@{model.status.equalsIgnoreCase(`reached`)?true:false}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20mdp"
+                        android:layout_gravity="bottom"
+                        android:padding="@dimen/_5mdp"
+                        app:cardBackgroundColor="@color/colorRed"
+                        app:cardCornerRadius="@dimen/_10mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="@dimen/_20mdp"
+                            android:gravity="center"
+                            android:text="@string/str_finish"
+                            android:textColor="@color/white" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewResumeRoute"
+                        setVisibility="@{model.status.equalsIgnoreCase(`in progress`)?true:false}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20mdp"
+                        android:layout_gravity="bottom"
+                        android:padding="@dimen/_5mdp"
+                        app:cardBackgroundColor="@color/colorYellow"
+                        app:cardCornerRadius="@dimen/_10mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="@dimen/_20mdp"
+                            android:gravity="center"
+                            android:text="@string/str_resume"
+                            android:textColor="@color/white" />
+                    </androidx.cardview.widget.CardView>
+
+
+                    <ImageView
+                        android:id="@+id/imageViewEdit"
+                        setVisibility="@{model.status.equalsIgnoreCase(`completed`)?true:false}"
+                        android:layout_width="@dimen/_25mdp"
+                        android:layout_height="@dimen/_25mdp"
+                        android:layout_gravity="end|bottom"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:padding="@dimen/_3mdp"
+                        android:src="@drawable/ic_edit_application"
+                        app:tint="#808080" />
+
+                    <ImageView
+                        android:id="@+id/imageViewCall"
+                        android:layout_width="@dimen/_25mdp"
+                        android:layout_height="@dimen/_25mdp"
+                        android:layout_gravity="end|bottom"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        android:src="@drawable/ic_phone_call" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            style="@style/llHorizontalMatchWrap"
+            setVisibility="@{!model.startOrEndPoint.equals(`1`)}"
+            android:layout_marginHorizontal="@dimen/_10mdp">
+
+            <ImageView
+                android:layout_width="@dimen/_20mdp"
+                android:layout_height="@dimen/_50mdp"
+                android:rotation="-90"
+                android:src="@drawable/ic_three_dot_horizontal"
+                app:tint="#BCBCBC" />
+
+            <LinearLayout
+                style="@style/llHorizontalMatchWrap"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                android:layout_weight="1">
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:text="Distance"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    setMeterToKm="@{``+model.distanceToNext}"
+                    android:layout_width="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5mdp" />
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5mdp"
+                    android:text="Travel Time"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5mdp"
+                    android:maxLines="1"
+                    durationInWord="@{model.durationToNext}" />
+
+            </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </LinearLayout>
+</layout>

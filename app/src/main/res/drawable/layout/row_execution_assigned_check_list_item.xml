@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.ExecutionAssignCheckListItem" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5mdp"
+        android:layout_marginBottom="@dimen/_1mdp"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8mdp"
+            android:layout_marginBottom="@dimen/_2mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_1mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:gravity="top">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/headerBackgroundColor"
+                    android:gravity="top">
+
+
+                    <TextView
+                        style="@style/headerTextStyle"
+                        android:layout_weight="1"
+                        android:padding="@dimen/_10mdp"
+                        android:text="@{model.text}" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_25mdp"
+                        android:layout_height="@dimen/_25mdp"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/_3mdp"
+                        android:src="@{model.expand?@drawable/ic_arrow_up:@drawable/ic_arrow_down}"
+                        app:tint="#BCBCBC" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchMatch"
+                    setVisibility="@{model.expand}">
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        android:padding="@dimen/_5mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.7"
+                            android:text="Internal" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.3"
+                            android:text="@{model.isExternal()==0?model.assignedCustomers:model.internalWith}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        android:padding="@dimen/_5mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.7"
+                            android:text="Ext./Dealer" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.3"
+                            android:text="@{model.isExternal()==2?model.assignedCustomers:`-`}" />
+                        />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        android:padding="@dimen/_5mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.7"
+                            android:text="AHA! Reg." />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_weight="0.3"
+                            android:text="@{model.isExternal()==1?model.assignedCustomers:`-`}" />
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/headerBackgroundColor" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewCheckListInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

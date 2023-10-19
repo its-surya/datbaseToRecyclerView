@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isSinglePhase"
+            type="Boolean" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.InspectionDetailsDataModel" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:layout_margin="@dimen/_10mdp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/acdb_installation" />
+
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOutDoorACDBInstallation"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.acdbData.acdbIns.equals(`1`)}"
+                                android:text="@string/outdoor" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonInDoorACDBInstallation"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_20mdp"
+                                android:checked="@{model.acdbData.acdbIns.equals(`0`)}"
+                                android:text="@string/indoor" />
+                        </RadioGroup>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/hint_remarks">
+
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/edtRemarksACDBInstallation"
+                                style="@style/edtStyle"
+                                android:inputType="textMultiLine"
+                                android:maxLines="3"
+                                android:singleLine="false"
+                                android:text="@{model.acdbData.acdbInsRemark}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/mcb_mccb_rccb_protection" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkMcbMccbRccbProtection"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.acdbData.acdbMcb.equals(`1`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkMcbMccbRccbProtection"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_20mdp"
+                                android:checked="@{model.acdbData.acdbMcb.equals(`0`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/hint_remarks">
+
+                            <EditText
+                                android:id="@+id/edtRemarksMcbMccbRccbProtection"
+                                style="@style/edtStyle"
+                                android:inputType="textMultiLine"
+                                android:maxLines="3"
+                                android:singleLine="false"
+                                android:text="@{model.acdbData.acdbMcbRemark}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="wrap_content"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/surge_protection_device_available" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkSurgeProtectionDeviceAvailable"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.acdbData.acdbSurge.equals(`1`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkSurgeProtectionDeviceAvailable"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_20mdp"
+                                android:checked="@{model.acdbData.acdbSurge.equals(`0`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/hint_remarks">
+
+                            <EditText
+                                android:id="@+id/edtRemarksSurgeProtectionDeviceAvailable"
+                                style="@style/edtStyle"
+
+                                android:inputType="textMultiLine"
+                                android:maxLines="3"
+                                android:singleLine="false"
+                                android:text="@{model.acdbData.acdbSurgeRemark}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/acdb_installed_properly" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkAcdbInstalledProperly"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.acdbData.acdbInstalled.equals(`1`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkAcdbInstalledProperly"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_20mdp"
+                                android:checked="@{model.acdbData.acdbInstalled.equals(`0`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/hint_remarks">
+
+                            <EditText
+                                android:id="@+id/edtRemarksAcdbInstalledProperly"
+                                style="@style/edtStyle"
+
+                                android:inputType="textMultiLine"
+                                android:maxLines="3"
+                                android:singleLine="false"
+                                android:text="@{model.acdbData.acdbInstalledRemark}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="wrap_content"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/cables_terminated_properly_through_glads_on_gland_plate" />
+
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkCableTerminatedProperly"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.acdbData.acdbCables.equals(`1`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkCableTerminatedProperly"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_20mdp"
+                                android:checked="@{model.acdbData.acdbCables.equals(`0`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:hint="@string/hint_remarks">
+
+                            <EditText
+                                android:id="@+id/edtRemarksCableTerminatedProperly"
+                                style="@style/edtStyle"
+
+                                android:inputType="textMultiLine"
+                                android:maxLines="3"
+                                android:singleLine="false"
+                                android:text="@{model.acdbData.acdbCablesRemark}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginVertical="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/voltage_measurement" />
+
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonSinglePhase"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.acdbData.acdbPhase.equals(`1`)}"
+                                android:text="@string/single_phase" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonThreePhase"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_20mdp"
+                                android:checked="@{model.acdbData.acdbPhase.equals(`3`)}"
+                                android:text="@string/str_three_phase" />
+                        </RadioGroup>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:hint="@string/str_time"
+                            app:endIconDrawable="@drawable/ic_clock_time"
+                            app:endIconMode="custom">
+
+                            <EditText
+                                android:id="@+id/edtPhaseVoltageTime"
+                                style="@style/edtStyle"
+                                android:clickable="true"
+                                android:focusable="false"
+                                android:text="@{!model.acdbData.acdbTime.hour.equals(`null`)?model.acdbData.acdbTime.hour+`:`+model.acdbData.acdbTime.minute:``}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:hint="@string/phase_to_phasevoltage">
+
+                            <EditText
+                                android:id="@+id/edtPhaseToPhaseVolatage"
+                                style="@style/edtStyleNumeric"
+
+                                android:inputType="numberDecimal"
+                                android:text="@{model.acdbData.rN}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <androidx.cardview.widget.CardView
+                            setVisibility="@{!isSinglePhase}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            app:cardCornerRadius="@dimen/_5mdp">
+
+                            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_height="@dimen/_35mdp"
+                                    android:background="@color/headerBackgroundColor"
+                                    android:gravity="left|center_vertical"
+                                    android:paddingHorizontal="@dimen/_8mdp"
+                                    android:paddingVertical="@dimen/_5mdp"
+                                    android:text="@string/phase_to_phasevoltage" />
+
+
+                                <LinearLayout style="@style/llHorizontalMatchWrap">
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="R-N">
+
+                                        <EditText
+                                            android:id="@+id/edtRN"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.rN}" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Y-N">
+
+                                        <EditText
+                                            android:id="@+id/edtYN"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.yN}" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="B-N">
+
+                                        <EditText
+                                            android:id="@+id/edtBN"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.bN}" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_10mdp"
+                            app:cardCornerRadius="@dimen/_5mdp">
+
+                            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_height="@dimen/_35mdp"
+                                    android:background="@color/headerBackgroundColor"
+                                    android:gravity="left|center_vertical"
+                                    android:paddingHorizontal="@dimen/_8mdp"
+                                    android:paddingVertical="@dimen/_5mdp"
+                                    android:text="R-Phase" />
+
+
+                                <LinearLayout style="@style/llHorizontalMatchWrap">
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Irms">
+
+                                        <EditText
+                                            android:id="@+id/edtRIrms"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.rIrms}" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Power (kW)">
+
+                                        <EditText
+                                            android:id="@+id/edtRPower"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.rPower}" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout style="@style/llHorizontalMatchWrap">
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Frequency">
+
+                                        <EditText
+                                            android:id="@+id/edtRFrequency"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.rFre}" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Power Factor">
+
+                                        <EditText
+                                            android:id="@+id/edtRPowerFactor"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.rPf}" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            setVisibility="@{!isSinglePhase}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            app:cardCornerRadius="@dimen/_5mdp">
+
+                            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_height="@dimen/_35mdp"
+                                    android:background="@color/headerBackgroundColor"
+                                    android:gravity="left|center_vertical"
+                                    android:paddingHorizontal="@dimen/_8mdp"
+                                    android:paddingVertical="@dimen/_5mdp"
+                                    android:text="Y-Phase" />
+
+
+                                <LinearLayout style="@style/llHorizontalMatchWrap">
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Irms">
+
+                                        <EditText
+                                            android:id="@+id/edtYIrms"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:digits="1234567890"
+                                            android:inputType="numberDecimal"
+                                            android:text="@{model.acdbData.yIrms}" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Power (kW)">
+
+                                        <EditText
+                                            android:id="@+id/edtYPower"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.yPower}" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                </LinearLayout>
+
+                                <LinearLayout style="@style/llHorizontalMatchWrap">
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Frequency">
+
+                                        <EditText
+                                            android:id="@+id/edtYFrequency"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.yFre}" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Power Factor">
+
+                                        <EditText
+                                            android:id="@+id/edtYPowerFactor"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.yPf}" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            setVisibility="@{!isSinglePhase}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            app:cardCornerRadius="@dimen/_5mdp">
+
+                            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_height="@dimen/_35mdp"
+                                    android:background="@color/headerBackgroundColor"
+                                    android:gravity="left|center_vertical"
+                                    android:paddingHorizontal="@dimen/_8mdp"
+                                    android:paddingVertical="@dimen/_5mdp"
+                                    android:text="B-Phase" />
+
+
+                                <LinearLayout style="@style/llHorizontalMatchWrap">
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Irms">
+
+                                        <EditText
+                                            android:id="@+id/edtBIrms"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.bIrms}" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Power (kW)">
+
+                                        <EditText
+                                            android:id="@+id/edtBPower"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.bPower}" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout style="@style/llHorizontalMatchWrap">
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Frequency">
+
+                                        <EditText
+                                            android:id="@+id/edtBFrequency"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.bFre}" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Power Factor">
+
+                                        <EditText
+                                            android:id="@+id/edtBPowerFactor"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.bPf}" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            setVisibility="@{!isSinglePhase}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_10mdp"
+                            app:cardCornerRadius="@dimen/_5mdp">
+
+                            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_height="@dimen/_35mdp"
+                                    android:background="@color/headerBackgroundColor"
+                                    android:gravity="left|center_vertical"
+                                    android:paddingHorizontal="@dimen/_8mdp"
+                                    android:paddingVertical="@dimen/_5mdp"
+                                    android:text="Total" />
+
+
+                                <LinearLayout style="@style/llHorizontalMatchWrap">
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Irms">
+
+                                        <EditText
+                                            android:id="@+id/edtTotalIrms"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.tIrms}" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Power (kW)">
+
+                                        <EditText
+                                            android:id="@+id/edtTotalPower"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.tPower}" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                </LinearLayout>
+
+                                <LinearLayout style="@style/llHorizontalMatchWrap">
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Power (kW)">
+
+                                        <EditText
+                                            android:id="@+id/edtTotalFrequency"
+                                            style="@style/edtStyleNumeric"
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.tFre}" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        style="@style/textInputLayoutStyle"
+                                        android:layout_margin="@dimen/_5mdp"
+                                        android:layout_weight="1"
+                                        android:hint="Power Factor">
+
+                                        <EditText
+                                            android:id="@+id/edtTotalPowerFactor"
+                                            style="@style/edtStyleNumeric"
+
+                                            android:imeOptions="actionNext"
+                                            android:inputType="numberDecimal"
+                                            android:digits="1234567890"
+                                            android:text="@{model.acdbData.tPf}" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSave"
+            style="@style/ButtonStyle"
+            setVisibility="@{model.isEditable()>-1 &amp;&amp; model.isEditable()==1}"
+            android:layout_width="@dimen/_120mdp"
+            android:layout_marginVertical="@dimen/_10mdp"
+            android:gravity="center"
+            android:text="@string/btn_save" />
+    </LinearLayout>
+</layout>

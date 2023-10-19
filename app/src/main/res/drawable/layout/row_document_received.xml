@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.DocumentsHeaderModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10mdp"
+        android:layout_marginVertical="@dimen/_10mdp"
+        android:background="@color/white"
+        android:elevation="@dimen/_5mdp"
+        app:cardCornerRadius="@dimen/_5mdp">
+
+        <LinearLayout style="@style/llVerticalMatchWrap">
+
+            <TextView
+                style="@style/headerTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/headerBackgroundColor"
+                android:padding="@dimen/_10mdp"
+                android:text="@{model.title}" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewInnerDocuments"
+                setVisibility="@{(model.doc.size()>0)}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

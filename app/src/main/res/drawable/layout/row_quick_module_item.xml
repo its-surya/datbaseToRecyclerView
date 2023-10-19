@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.common.SpinnerOptionModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5mdp"
+        app:cardCornerRadius="@dimen/_15mdp"
+        app:cardElevation="0dp">
+
+        <TextView
+            style="@style/textViewStyleRegular"
+            setModuleColor="@{model.isSelected}"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_10mdp"
+            android:text="@{model.name}"
+            android:textColor="@color/black" />
+    </androidx.cardview.widget.CardView>
+
+</layout>

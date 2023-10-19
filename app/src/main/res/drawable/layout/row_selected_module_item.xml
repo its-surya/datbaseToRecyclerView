@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.common.SpinnerOptionModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5mdp"
+        android:backgroundTint="@color/colorGreen"
+        app:cardCornerRadius="@dimen/_15mdp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:gravity="top">
+
+            <TextView
+                style="@style/textViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="@dimen/_10mdp"
+                android:paddingEnd="@dimen/_5mdp"
+                android:text="@{model.name}"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="@dimen/_20mdp"
+                android:layout_height="@dimen/_20mdp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_5mdp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:padding="@dimen/_3mdp"
+                android:src="@drawable/ic_close"
+                app:tint="@color/white" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

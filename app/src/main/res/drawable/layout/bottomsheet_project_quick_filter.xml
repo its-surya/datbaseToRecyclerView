@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:gravity="center">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:background="@drawable/bg_bottomsheet"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/_35mdp"
+                    android:layout_height="@dimen/_30mdp"
+                    android:src="@drawable/ic_minus" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/_15mdp">
+
+                <TextView
+                    style="@style/textViewStyleExtraLarge"
+                    android:gravity="center"
+                    android:text="Interested in Project type ?"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_20mdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/textViewStyleLarge"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:gravity="center"
+                    android:text="Select your Project type" />
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/_20mdp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/row_notification_category" />
+
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50mdp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

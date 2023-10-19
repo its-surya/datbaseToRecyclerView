@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.CommercialStep1Data.CommercialCategoryList" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_5mdp"
+            android:layout_marginTop="@dimen/_8mdp"
+            android:layout_marginBottom="@dimen/_2mdp"
+            android:elevation="@dimen/_2mdp"
+            app:cardCornerRadius="@dimen/_8mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="top">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/headerBackgroundColor"
+                    android:gravity="top">
+
+                    <TextView
+                        style="@style/headerTextStyle"
+                        android:layout_weight="1"
+                        android:paddingHorizontal="@dimen/_10mdp"
+                        android:paddingVertical="@dimen/_8mdp"
+                        android:text="@{model.category}"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/imgViewCategory"
+                        android:layout_width="@dimen/_30mdp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_5mdp"
+                        android:src="@drawable/ic_arrow_down"
+                        app:tint="#bcbcbc" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSubCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_6mdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/row_commercial_module_inverter" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

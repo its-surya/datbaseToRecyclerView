@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.energy.ahasolar.viewmodel.ProjectsViewModel" />
+
+        <variable
+            name="isTyping"
+            type="Boolean" />
+
+        <variable
+            name="isLoadMore"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+
+        <FrameLayout style="@style/llVerticalMatchMatch"
+            >
+
+            <include
+                android:id="@+id/layoutNoResultFound"
+                layout="@layout/layout_no_data_found" />
+
+            <include
+                android:id="@+id/layoutProgressBar"
+                layout="@layout/layout_load_more_progress_bar"
+                setVisibility="@{isLoadMore}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom" />
+
+            <!-- android:visibility="@{viewModel.projectsRepository.isDataFound? View.GONE : View.VISIBLE}"-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewRemarks"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:fadeScrollbars="true"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_50mdp"
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_remark_item" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabAddRemarks"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="20dp"
+                android:src="@drawable/ic_add_unfilled"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabCustomSize="48dp"
+                app:tint="@color/white" />
+
+        </FrameLayout>
+    </LinearLayout>
+
+
+</layout>

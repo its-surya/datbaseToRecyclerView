@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.CoWorkerModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:layout_marginStart="@dimen/_10mdp"
+            android:gravity="top"
+            android:padding="@dimen/_2mdp">
+
+
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:text="@{model.name}" />
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="@{model.expiryDate}" />
+
+
+            <ImageView
+                android:id="@+id/imageViewIsSelected"
+                isSelected="@{model.selected}"
+                android:layout_width="@dimen/_25mdp"
+                android:layout_height="@dimen/_25mdp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_5mdp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:padding="@dimen/_4mdp" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</layout>

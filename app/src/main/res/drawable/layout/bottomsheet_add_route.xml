@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        android:background="@color/white"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/txtTitleDialog"
+                    style="@style/textViewStyleLarge"
+                    android:background="@drawable/bg_bottomsheet"
+                    android:gravity="center"
+                    android:padding="@dimen/_10mdp"
+                    android:text="@string/route_name"
+                    android:textColor="@color/buttonTextColor" />
+
+
+                <LinearLayout
+                    android:id="@+id/layoutMainContains"
+                    style="@style/llVerticalMatchWrap"
+                    android:padding="@dimen/_10mdp">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:hint="@string/str_co_worker"
+                        app:endIconDrawable="@drawable/ic_drop_down"
+                        app:endIconMode="custom">
+
+                        <EditText
+                            android:id="@+id/edtCoWorker"
+                            style="@style/edtStyle"
+                            android:clickable="true"
+                            android:focusable="false" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:hint="@string/route_name">
+
+                        <EditText
+                            android:id="@+id/edtRouteName"
+                            style="@style/edtStyle"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:maxLines="1" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSave"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_130mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="@dimen/_10mdp"
+                        android:text="@string/create_route" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

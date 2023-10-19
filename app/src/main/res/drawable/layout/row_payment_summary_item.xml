@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.PaymentSummaryModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:gravity="top"
+            android:padding="@dimen/_5mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_weight="1"
+                android:gravity="top">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:gravity="top">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:maxLines="2"
+                        android:text="@{model.key}" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:maxLines="2"
+                        android:text="@{model.text}" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

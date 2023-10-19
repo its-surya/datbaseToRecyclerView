@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isDataAvailable"
+            type="Boolean" />
+
+        <variable
+            name="selectedDate"
+            type="String" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+     <com.applandeo.materialcalendarview.CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:eventsEnabled="true"
+            app:forwardButtonSrc="@drawable/ic_baseline_arrow_right"
+            app:headerColor="@color/white"
+            app:headerLabelColor="@color/colorPrimary"
+            app:previousButtonSrc="@drawable/ic_baseline_arrow_left"
+            app:selectionColor="@color/colorPrimary"
+            app:type="one_day_picker" />
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:layout_weight="1">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:background="@color/colorPrimary">
+
+                <TextView
+                    style="@style/textViewStyleRegular"
+                    android:paddingHorizontal="@dimen/_20mdp"
+                    android:paddingVertical="@dimen/_10mdp"
+                    android:text="@{`Scheduled Visit on `+selectedDate}"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <include
+                    android:id="@+id/layoutNoResultFound"
+                    layout="@layout/layout_no_data_found"
+                    bind:isVisible="@{isDataAvailable}" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewScheduledVisit"
+                    setVisibility="@{!isDataAvailable}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floatingAddVisit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:layout_margin="@dimen/_20mdp"
+                    app:elevation="@dimen/_2mdp"
+                    app:srcCompat="@drawable/ic_add_unfilled"
+                    app:tint="@android:color/white" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</layout>

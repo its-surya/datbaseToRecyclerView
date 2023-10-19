@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.QuickSiteSurveyBuilding" />
+    </data>
+
+
+    <LinearLayout
+        style="@style/llVerticalMatchWrap"
+        android:background="@color/white">
+
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:paddingHorizontal="@dimen/_15mdp"
+            android:paddingVertical="@dimen/_10mdp">
+
+            <TextView
+                style="@style/headerTextStyle"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="@{model.buildingName}" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorFlatIcon" />
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:paddingHorizontal="@dimen/_15mdp">
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="Total Area" />
+
+            <LinearLayout
+                style="@style/llHorizontalMatchWrap"
+                android:layout_gravity="bottom"
+                android:gravity="center_vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:gravity="center_vertical"
+                    android:text="@{model.totalArea.empty?`-`:model.totalArea+` `}" />
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:layout_height="25dp"
+                    android:gravity="center_vertical"
+                    setVisibility="@{!model.totalArea.empty}"
+                    android:layout_width="wrap_content"
+                    android:text="@string/m2" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:paddingHorizontal="@dimen/_15mdp"
+            android:paddingVertical="@dimen/_2mdp">
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="Total Usable Area" />
+
+            <LinearLayout
+                style="@style/llHorizontalMatchWrap"
+                android:layout_gravity="bottom"
+                android:layout_weight="1">
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_height="25dp"
+                    android:text="@{model.totalUsableArea.empty?`-`:model.totalUsableArea+` `}" />
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:layout_height="25dp"
+                    android:gravity="center_vertical"
+                    setVisibility="@{!model.totalUsableArea.empty}"
+                    android:layout_width="wrap_content"
+                    android:text="@string/m2" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:paddingHorizontal="@dimen/_15mdp"
+            android:paddingVertical="@dimen/_2mdp">
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="Type of Roof" />
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="@{model.typeOfRoofName}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            setVisibility="@{!model.tiltAngleOfRoof.empty}"
+            android:paddingHorizontal="@dimen/_15mdp"
+            android:paddingVertical="@dimen/_2mdp">
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="Tilt Angle of Roof" />
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="@{model.tiltAngleOfRoof}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:paddingHorizontal="@dimen/_15mdp"
+            android:paddingVertical="@dimen/_2mdp">
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="Height of Parapet" />
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="@{model.heightOfParapet.empty?`-`:model.heightOfParapet+` m`}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:paddingHorizontal="@dimen/_15mdp"
+            android:paddingVertical="@dimen/_2mdp">
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="No. of floors" />
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="@{model.noOfFloor.empty?`-`:model.noOfFloor}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:paddingHorizontal="@dimen/_15mdp"
+            android:paddingVertical="@dimen/_2mdp">
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="Age of Building" />
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="@{model.ageOfBuildings.equals(`10`)?`0-10 Years`:model.ageOfBuildings.equals(`20`)?`11-20 Years`:model.ageOfBuildings.equals(`30`)?`21-30 Years`:`30+ Years`}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:paddingHorizontal="@dimen/_15mdp"
+            android:paddingVertical="@dimen/_2mdp">
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="Ladder to roof" />
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="@{model.ladderToRoof==`yes`?`Yes`:`No`}" />
+
+        </LinearLayout>
+
+        <!-- <LinearLayout
+             style="@style/llHorizontalMatchWrap"
+             android:paddingHorizontal="@dimen/_15mdp"
+             android:paddingVertical="@dimen/_2mdp">
+
+             <TextView
+                 style="@style/textViewStyleSmall"
+                 android:layout_gravity="bottom"
+                 android:layout_weight="1"
+                 android:text="Energy Consumption" />
+
+             <TextView
+                 style="@style/textViewStyleSmall"
+                 android:layout_gravity="bottom"
+                 android:layout_weight="1"
+                 android:text="@{model.energyConsumption.empty?`-`:model.energyConsumption+` (kWh/month)`}" />
+
+         </LinearLayout>-->
+
+        <!-- <LinearLayout
+             style="@style/llHorizontalMatchWrap"
+             android:paddingHorizontal="@dimen/_15mdp"
+             android:paddingVertical="@dimen/_2mdp">
+
+             <TextView
+                 style="@style/textViewStyleSmall"
+                 android:layout_gravity="bottom"
+                 android:layout_weight="1"
+                 android:text="Monthly Bill" />
+
+             <TextView
+                 style="@style/textViewStyleSmall"
+                 android:layout_gravity="bottom"
+                 android:layout_weight="1"
+                 android:text="@{model.avgMonthlyBill.empty?`-`:`₹`+model.avgMonthlyBill}" />
+
+         </LinearLayout>-->
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:paddingHorizontal="@dimen/_15mdp"
+            android:paddingVertical="@dimen/_2mdp">
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="Contract Load" />
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="@{model.sanctionedLoad.empty?`-`:model.sanctionedLoad+` (kW)`}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:paddingHorizontal="@dimen/_15mdp"
+            android:paddingVertical="@dimen/_2mdp">
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="Recommended Capacity " />
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="@{model.recommendedCapacity.empty?`-`:model.recommendedCapacity+` (kW)`}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:paddingHorizontal="@dimen/_15mdp"
+            android:paddingVertical="@dimen/_2mdp">
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="@string/str_voltage_level_phase" />
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="@{model.voltageLevelPhase}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            setVisibility="@{!model.anyOtherSpecificRequirementFromCustomer.empty}"
+            android:paddingHorizontal="@dimen/_15mdp"
+            android:paddingVertical="@dimen/_2mdp">
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="Remarks" />
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="@{model.anyOtherSpecificRequirementFromCustomer}" />
+
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclePhotos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_10mdp"
+            android:layout_marginStart="@dimen/_10mdp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorFlatIcon" />
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.CompanyProfileModel" />
+
+    </data>
+
+    <LinearLayout style="@style/llVerticalMatchMatch">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:layout_marginTop="@dimen/_10mdp"
+                android:padding="@dimen/_10mdp">
+
+                <FrameLayout
+                    android:id="@+id/flCompanyProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    android:background="@drawable/circle">
+
+                    <ImageView
+                        android:id="@+id/ivProfile"
+                        android:layout_width="@dimen/_100mdp"
+                        android:layout_height="@dimen/_100mdp"
+                        android:padding="@dimen/_3mdp"
+                        android:src="@drawable/ic_default_user" />
+
+                    <ImageView
+                        android:id="@+id/ivEditProfile"
+                        android:layout_width="@dimen/_20mdp"
+                        android:layout_height="@dimen/_20mdp"
+                        android:layout_gravity="bottom|end"
+                        android:src="@drawable/ic_select_camera" />
+                </FrameLayout>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    android:layout_marginHorizontal="@dimen/_3mdp"
+                    app:cardElevation="@dimen/_3mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap"
+                        android:padding="@dimen/_8mdp"
+                        >
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_company_name_star">
+
+                            <EditText
+                                android:id="@+id/edtCompanyName"
+                                style="@style/edtStyle"
+                                android:digits="@string/alphaNumeric"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:maxLength="100"
+                                android:text="@{model.companyName}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_installer_name_star">
+
+                            <EditText
+                                android:id="@+id/edtInstallerName"
+                                style="@style/edtStyle"
+                                android:digits="@string/contact_name_char_allowed"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:maxLength="100"
+                                android:text="@{model.installerName}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_mobile_number_star">
+
+                            <EditText
+                                android:id="@+id/edtMobileNo"
+                                style="@style/edtStyleNumeric"
+                                android:digits="0123456789"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:maxLength="10"
+                                android:text="@{model.mobile}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/str_email_id_star">
+
+                            <EditText
+                                android:id="@+id/edtEmailId"
+                                style="@style/edtStyle"
+                                android:imeOptions="actionNext"
+                                android:inputType="textEmailAddress"
+                                android:maxLength="100"
+                                android:text="@{model.email}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    android:layout_marginHorizontal="@dimen/_3mdp"
+                    app:cardElevation="@dimen/_3mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="wrap_content"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/str_list_aha_installer" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioYes"
+                                style="@style/myRadioButton"
+                                android:checked="true"
+                                android:text="@string/str_yes" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioNo"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_20mdp"
+                                android:text="@string/str_no" />
+                        </RadioGroup>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginLeft="@dimen/_5mdp"
+                    android:layout_marginTop="@dimen/_30mdp"
+                    android:layout_marginRight="@dimen/_5mdp"
+                    android:layout_marginBottom="@dimen/_10mdp"
+                    android:gravity="center">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnNext"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_150mdp"
+                        android:text="@string/str_next" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

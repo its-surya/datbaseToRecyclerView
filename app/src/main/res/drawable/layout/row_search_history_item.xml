@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="text"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        style="@style/llHorizontalMatchWrap"
+        android:background="@color/white"
+        android:padding="@dimen/_8mdp">
+
+        <ImageView
+            android:layout_width="@dimen/_15mdp"
+            android:layout_height="@dimen/_15mdp"
+            android:layout_marginHorizontal="@dimen/_5mdp"
+            android:src="@drawable/ic_search_history"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtHomeTitle"
+            style="@style/textViewStyleRegular"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/_10mdp"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:lines="2"
+            android:maxLines="2"
+            android:minLines="1"
+            android:text="@{text}" />
+    </LinearLayout>
+</layout>

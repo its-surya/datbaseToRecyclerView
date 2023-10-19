@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:gravity="center">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txtTitle"
+                    style="@style/textViewStyleLarge"
+                    android:gravity="center"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@drawable/bg_bottomsheet"
+                    android:text="Select Time"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:background="@color/white"
+                android:padding="@dimen/_15mdp">
+
+                <LinearLayout style="@style/llHorizontalMatchWrap"
+                    android:layout_marginHorizontal="@dimen/_30mdp"
+                    >
+
+                    <TextView
+                        style="@style/textViewStyleLarge"
+                        android:text="Hours"
+                        android:gravity="center"
+                        android:layout_width="@dimen/_100mdp"
+                        />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+                    <TextView
+                        style="@style/textViewStyleLarge"
+                        android:text="Minutes"
+                        android:gravity="center"
+                        android:layout_width="@dimen/_100mdp"
+                        />
+                </LinearLayout>
+
+
+                <LinearLayout style="@style/llHorizontalWrapWrap"
+                    android:layout_marginHorizontal="@dimen/_30mdp"
+                    >
+
+
+
+                    <NumberPicker
+                        android:id="@+id/numberPickerHours"
+                        style="@style/numberPickerTheme"
+                        android:layout_width="@dimen/_100mdp"
+                        android:layout_height="wrap_content" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <NumberPicker
+                        android:id="@+id/numberPickerMinute"
+                        style="@style/numberPickerTheme"
+                        android:layout_width="@dimen/_100mdp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/buttonSubmit"
+                    style="@style/ButtonStyle"
+                    android:layout_width="@dimen/_150mdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_15mdp"
+                    android:text="Set" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

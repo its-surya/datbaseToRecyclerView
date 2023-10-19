@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.CommercialStep2Response" />
+
+        <variable
+            name="isLoadApi"
+            type="Boolean" />
+
+        <variable
+            name="isStraitLineSelected"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            setVisibility="@{isLoadApi}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:padding="@dimen/_10mdp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/debt">
+
+                    <EditText
+                        android:id="@+id/edtDebt"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:text="@{``+model.debt}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/interest">
+
+                    <EditText
+                        android:id="@+id/edtInterest"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:text="@{``+model.interest}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/loan_tenure_years">
+
+                    <EditText
+                        android:id="@+id/edtLoanTenure"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:text="@{``+model.loanternure}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/o_amp_m_cost_of_project_cost">
+
+                    <EditText
+                        android:id="@+id/edtOMCost"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:text="@{``+model.omCost}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/o_amp_m_escalation_per_annum">
+
+                    <EditText
+                        android:id="@+id/edtOMEsacalation"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:text="@{``+model.escalationOm}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/moratorium_period_per_annum">
+
+                    <EditText
+                        android:id="@+id/edtMoratoriumPeriod"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:text="@{``+model.moratorium}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/depreciation_model"
+                    app:endIconDrawable="@drawable/ic_drop_down"
+                    app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtSelectDepreciationModel"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    setVisibility="@{!isStraitLineSelected}"
+                    android:hint="@string/rate_of_accelerated_deppre">
+
+                    <EditText
+                        android:id="@+id/edtRateOfAccelerateDeppre"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:text="@{``+model.rateOfAccDesp}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    setVisibility="@{isStraitLineSelected}"
+                    android:hint="@string/depreciation_for_10_years">
+
+                    <EditText
+                        android:id="@+id/edtDepreciationFor10Years"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:text="@{``+model.deprecation}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    setVisibility="@{isStraitLineSelected}"
+                    android:hint="@string/depreciation_for_15_years">
+
+                    <EditText
+                        android:id="@+id/edtDepreciationFor15Years"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:text="@{``+model.rateOfDesp15}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/cuf">
+
+                    <EditText
+                        android:id="@+id/edtCUF"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:text="@{``+model.cuf}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/annual_degradation">
+
+                    <EditText
+                        android:id="@+id/edtAnnualDegradation"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:text="@{``+model.degredation}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    android:elevation="@dimen/_2mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left"
+                            android:padding="@dimen/_10mdp"
+                            android:text="@string/tax"
+                            android:textColor="@color/black" />
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:gravity="top"
+                            android:padding="@dimen/_10mdp">
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/min_alternate_tax_rate">
+
+                                <EditText
+                                    android:id="@+id/edtMinAlternateTax"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="5"
+                                    android:text="@{``+model.minalternate}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/for_years">
+
+                                <EditText
+                                    android:id="@+id/edtMinAlternateTaxForYears"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="5"
+                                    android:text="@{``+model.alternate}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/corporate_tax_rate">
+
+                                <EditText
+                                    android:id="@+id/edtCorporateTaxRate"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="5"
+                                    android:text="@{``+model.corporate}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/increase_in_electricity_bill_per_annum">
+
+                                <EditText
+                                    android:id="@+id/edtIncreaseInElectricityBill"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="5"
+                                    android:text="@{``+model.bill}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/energy_consumption_increase">
+
+                                <EditText
+                                    android:id="@+id/edtEnergyConsumptionIncrease"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="5"
+                                    android:text="@{``+model.energy}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/insurance_cost">
+
+                                <EditText
+                                    android:id="@+id/edtInsuranceCost"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="5"
+                                    android:text="@{``+model.insuranceCost}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/return_on_equity">
+
+                                <EditText
+                                    android:id="@+id/edtReturnOnEquity"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="5"
+                                    android:text="@{``+model.roe}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/discount_factor">
+
+                                <EditText
+                                    android:id="@+id/edtDiscountFactor"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="5"
+                                    android:text="@{``+model.discount}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/capital_subsidy">
+
+                                <EditText
+                                    android:id="@+id/edtCapitalSubsidy"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="5"
+                                    android:text="@{``+model.subsidy}" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <Space
+                    android:layout_width="@dimen/_100mdp"
+                    android:layout_height="@dimen/_100mdp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnNext"
+            style="@style/ButtonStyle"
+            setVisibility="@{isLoadApi}"
+            android:layout_width="@dimen/_100mdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_15mdp"
+            android:text="@string/str_next" />
+    </LinearLayout>
+</layout>

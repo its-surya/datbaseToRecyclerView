@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="visitingImage"
+            type="String" />
+
+        <variable
+            name="isShowAdditionalData"
+            type="Boolean" />
+
+        <variable
+            name="adapter"
+            type="com.energy.ahasolar.ui.adapter.MediaAdapter" />
+    </data>
+
+    <LinearLayout style="@style/llVerticalMatchWrap">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:padding="@dimen/_10mdp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_5mdp"
+                    android:visibility="visible"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:padding="@dimen/_10mdp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_name">
+
+                            <EditText
+                                android:id="@+id/edtName"
+                                style="@style/edtStyle"
+                                android:imeOptions="actionNext"
+                                android:inputType="textCapWords"
+                                android:maxLength="100" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_mobile_number_star">
+
+                            <EditText
+                                android:id="@+id/edtMobileNo"
+                                android:digits="0123456789"
+                                style="@style/edtStyleNumeric"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:maxLength="10" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:id="@+id/llMobileExist"
+                            android:gravity="top"
+                            android:layout_marginTop="@dimen/_2mdp"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:layout_width="@dimen/_10mdp"
+                                android:layout_height="@dimen/_10mdp"
+                                android:layout_marginTop="@dimen/_2mdp"
+                                android:layout_marginEnd="@dimen/_5mdp"
+                                android:src="@drawable/ic_warning_round"
+                                app:tint="@color/colorYellow"/>
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:id="@+id/edtMobileExist"
+                                android:layout_gravity="top"
+                                android:layout_weight="0.7"
+                                android:ellipsize="end"
+                                android:maxLines="2"
+                                android:textColor="@color/colorYellow" />
+                        </LinearLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_pv_capacity_with_at_risk">
+
+                            <EditText
+                                android:id="@+id/edtPVCapacity"
+                                style="@style/edtStyle"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:maxLength="10" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_city">
+
+                            <EditText
+                                android:id="@+id/edtCity"
+                                style="@style/edtStyle"
+                                android:digits="@string/city_digit_allowed"
+                                android:imeOptions="actionNext"
+                                android:inputType="textCapWords"
+                                android:maxLength="100" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="@dimen/_10mdp"
+                            android:paddingBottom="@dimen/_5mdp"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_1mdp"
+                                android:layout_weight="1"
+                                android:background="@color/colorEdittextHint"/>
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5mdp"
+                                android:layout_marginEnd="@dimen/_5mdp"
+                                android:background="@color/headerBackgroundColor"
+                                android:gravity="center"
+                                android:text="@string/or" />
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_1mdp"
+                                android:layout_weight="1"
+                                android:background="@color/colorEdittextHint"/>
+                        </LinearLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_state_1"
+                            app:endIconDrawable="@drawable/ic_drop_down"
+                            app:endIconMode="custom">
+
+                            <EditText
+                                android:id="@+id/edtState"
+                                style="@style/edtStyle"
+                                android:clickable="true"
+                                android:focusable="false" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:id="@+id/edtDistrictText"
+                            android:hint="@string/hint_select_district"
+                            android:visibility="gone"
+                            app:endIconDrawable="@drawable/ic_drop_down"
+                            app:endIconMode="custom">
+
+                            <EditText
+                                android:id="@+id/edtDistrict"
+                                style="@style/edtStyle"
+                                android:clickable="true"
+                                android:focusable="false" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_taluka1"
+                            android:id="@+id/edtTalukaText"
+                            android:visibility="gone"
+                            app:endIconDrawable="@drawable/ic_drop_down"
+                            app:endIconMode="custom">
+
+                            <EditText
+                                android:id="@+id/edtTaluka"
+                                style="@style/edtStyle"
+                                android:clickable="true"
+                                android:focusable="false" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvSelectPriority"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/hint_select_priority" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvEnquiryPriority"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_2mdp"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="@dimen/_10mdp"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_common_tag_selection_item" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_height="@dimen/_35mdp"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/hint_solar_loan" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:paddingStart="@dimen/_10mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioYes"
+                                style="@style/myRadioButton"
+                                android:text="@string/str_yes" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioNo"
+                                style="@style/myRadioButton"
+                                android:checked="true"
+                                android:layout_marginLeft="@dimen/_20mdp"
+                                android:text="@string/str_no" />
+                        </RadioGroup>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_8mdp"
+                    app:cardElevation="@dimen/_1mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_marginLeft="@dimen/_8mdp"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:paddingVertical="@dimen/_8mdp"
+                                android:text="@string/hint_upload_visiting_card" />
+
+                            <ImageView
+                                android:id="@+id/imgAddVisitingCard"
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:padding="@dimen/_6mdp"
+                                android:src="@drawable/ic_add" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalWrapWrap"
+                            visibilityOnString="@{visitingImage}">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvDocument"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:adapter="@{adapter}"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_5mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/row_media_item" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            android:id="@+id/llShowAdditionalData"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_height="@dimen/_35mdp"
+                                android:layout_weight="1"
+                                android:gravity="left|center_vertical"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                android:text="@string/additional_information" />
+
+                            <ImageView
+                                android:id="@+id/imageViewShowAdditionalData"
+                                android:layout_width="@dimen/_25mdp"
+                                android:layout_height="@dimen/_25mdp"
+                                android:layout_gravity="center"
+                                android:padding="@dimen/_5mdp"
+                                android:src="@{isShowAdditionalData?@drawable/ic_arrow_up:@drawable/ic_arrow_down}"
+                                app:tint="#808080" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            setVisibility="@{isShowAdditionalData}"
+                            android:paddingHorizontal="@dimen/_10mdp"
+                            android:paddingBottom="@dimen/_10mdp">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_email">
+
+                                <EditText
+                                    android:id="@+id/edtEmail"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLength="100" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilGetAddress"
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_address"
+                                app:endIconDrawable="@drawable/ic_location_small"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtAddress"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxEms="500"
+                                    android:maxLines="5"
+                                    android:singleLine="false" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_monthly_bill">
+
+                                <EditText
+                                    android:id="@+id/edtMonthly"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="number"
+                                    android:maxLength="10" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_marginEnd="@dimen/_5mdp"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hint_area_of_roof_top">
+
+                                    <EditText
+                                        android:id="@+id/edtRoofTopArea"
+                                        style="@style/edtStyle"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="15" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    android:id="@+id/txtAreaInMeter"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:layout_marginRight="@dimen/_5mdp"
+                                    android:background="@drawable/bg_textview_default"
+                                    android:gravity="center"
+                                    android:text="@string/m2"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorTextHint"
+                                    android:textSize="@dimen/_11font_mdp" />
+
+                                <TextView
+                                    android:id="@+id/txtAreaInFeet"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="@dimen/_30mdp"
+                                    android:background="@drawable/bg_textview_selected"
+                                    android:gravity="center"
+                                    android:text="@string/ft2"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_11font_mdp" />
+                            </LinearLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_select_source"
+                                app:endIconDrawable="@drawable/ic_drop_down"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtSource"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:focusable="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilOtherSource"
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_source"
+                                android:visibility="gone">
+
+                                <EditText
+                                    android:id="@+id/edtOtherSource"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxLength="250" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_category"
+                                app:endIconDrawable="@drawable/ic_drop_down"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtCategory"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:focusable="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_select_project_type"
+                                app:endIconDrawable="@drawable/ic_drop_down"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtProjectType"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:focusable="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    android:layout_marginBottom="@dimen/_5mdp"
+                    android:visibility="visible"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:padding="@dimen/_10mdp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/hint_remarks">
+
+                            <EditText
+                                android:id="@+id/edtRemarks"
+                                style="@style/edtStyle"
+                                android:imeOptions="actionNext"
+                                android:maxLines="3"
+                                android:singleLine="false" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCreate"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_150mdp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginVertical="@dimen/_5mdp"
+            android:text="@string/create" />
+
+    </LinearLayout>
+</layout>

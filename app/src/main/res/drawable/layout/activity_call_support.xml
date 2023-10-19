@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="tollFreeNumber"
+            type="String" />
+
+        <variable
+            name="phoneNumber"
+            type="String" />
+
+        <variable
+            name="otherPhoneNumber"
+            type="String" />
+
+        <variable
+            name="isWhiteLabel"
+            type="Boolean" />
+    </data>
+
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30mdp" />
+
+        <include layout="@layout/layout_company_logo" />
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <LinearLayout style="@style/llVerticalWrapWrap">
+
+
+                <LinearLayout
+                    style="@style/llHorizontalWrapWrap"
+                    setVisibility="@{!phoneNumber.empty}"
+                    android:gravity="start">
+
+                    <ImageView
+                        android:layout_width="@dimen/_15mdp"
+                        android:layout_height="@dimen/_15mdp"
+                        android:src="@drawable/ic_phone_call"
+                        app:tint="@color/colorFlatIcon" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewPhoneNumber"
+                        style="@style/textViewStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:text="@{phoneNumber}"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalWrapWrap"
+                    setVisibility="@{!tollFreeNumber.empty}"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:gravity="start">
+
+                    <ImageView
+                        android:layout_width="@dimen/_15mdp"
+                        android:layout_height="@dimen/_15mdp"
+                        android:src="@drawable/ic_phone_call"
+                        app:tint="@color/colorFlatIcon" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewTollFreeNumber"
+                        style="@style/textViewStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:text="@{`Toll free : `+tollFreeNumber}"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalWrapWrap"
+                    setVisibility="@{!otherPhoneNumber.empty}"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:gravity="start">
+
+                    <ImageView
+                        android:layout_width="@dimen/_15mdp"
+                        android:layout_height="@dimen/_15mdp"
+                        android:src="@drawable/ic_phone_call"
+                        app:tint="@color/colorFlatIcon" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewOtherPhoneNumber"
+                        style="@style/textViewStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:text="@{`Other : `+otherPhoneNumber}"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llContactUs"
+                    style="@style/llHorizontalWrapWrap"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:gravity="start">
+
+                    <ImageView
+                        android:layout_width="@dimen/_15mdp"
+                        android:layout_height="@dimen/_15mdp"
+                        android:src="@drawable/ic_email" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:text="@string/company_email"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/llVerticalWrapWrap"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/_20mdp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                setVisibility="@{isWhiteLabel}"
+                style="@style/textViewStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_5mdp"
+                android:text="Powered By" />
+
+            <ImageView
+                setVisibility="@{isWhiteLabel}"
+                android:layout_width="@dimen/_40mdp"
+                android:layout_height="@dimen/_40mdp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_powered_by_aha" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                setVisibility="@{isWhiteLabel}"
+                style="@style/textViewStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_5mdp"
+                android:text="AHA Solar" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/textViewStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_5mdp"
+                android:text="All Rights Reserved" />
+
+            <TextView
+                android:id="@+id/textViewTermsAndCondition"
+                style="@style/textViewStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_5mdp"
+                android:text="Terms and Conditions"
+                android:textColor="@color/colorLink" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

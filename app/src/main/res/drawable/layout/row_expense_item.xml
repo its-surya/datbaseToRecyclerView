@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.ExpenseModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_5mdp"
+            android:layout_marginTop="@dimen/_10mdp"
+            android:layout_marginBottom="@dimen/_2mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_2mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_marginBottom="@dimen/_5mdp"
+                android:gravity="top">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/headerBackgroundColor">
+
+                    <TextView
+                        style="@style/headerTextStyle"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_15mdp"
+                        android:paddingVertical="@dimen/_10mdp"
+                        android:text="@{model.item}" />
+
+
+                    <ImageView
+                        android:id="@+id/imageViewEdit"
+                        android:layout_width="@dimen/_30mdp"
+                        android:layout_height="@dimen/_30mdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/_5mdp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_7mdp"
+                        android:src="@drawable/ic_edit_application"
+                        app:tint="#808080" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/llHorizontalMatchWrap"
+
+                    >
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_10mdp"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:layout_marginBottom="@dimen/_3mdp"
+                        android:layout_weight="1"
+                        android:gravity="top">
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Name" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="0.4"
+                                android:text="@{model.expenseName}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Date" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="0.4"
+                                android:text="@{model.createdDate}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@string/amount_with_ruppe_symbol" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="0.4"
+                                android:text="@{``+model.amount}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="Add By" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="0.4"
+                                android:text="@{model.createdBy}" />
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewExpenseDocuments"
+                            setVisibility="@{(model.fileData.size()>0)}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_media_item" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</layout>

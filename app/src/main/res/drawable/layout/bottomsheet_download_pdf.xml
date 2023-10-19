@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorCardBack"
+            app:cardCornerRadius="@dimen/_10mdp"
+            app:cardElevation="@dimen/_10mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="center">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tvHeader"
+                        style="@style/textViewStyleLarge"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/_8mdp"
+                        android:text="DPR Report"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:background="@color/white"
+                    android:padding="@dimen/_15mdp">
+
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        style="@style/radioButtonStyle"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:paddingStart="@dimen/_1mdp"
+                        android:paddingEnd="@dimen/_1mdp"
+                        android:layout_gravity="center">
+
+                        <RadioButton
+                            android:id="@+id/radioBtn1"
+                            style="@style/radioButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="Draft"
+                            android:textAllCaps="false"
+                            android:textSize="@dimen/_13mdp" />
+
+                        <RadioButton
+                            android:id="@+id/radioBtn2"
+                            style="@style/radioButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="Final"
+                            android:textAllCaps="false"
+                            android:textSize="@dimen/_13mdp" />
+
+                    </RadioGroup>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:hint="Date"
+                        app:endIconDrawable="@drawable/ic_calendar"
+                        app:endIconMode="custom">
+
+                        <EditText
+                            android:id="@+id/edtDate"
+                            style="@style/edtStyle"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:gravity="center_vertical" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                    <Button
+                        android:id="@+id/buttonSubmit"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_150mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_15mdp"
+                        android:text="@string/download_txt" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

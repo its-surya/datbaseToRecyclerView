@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="latter"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/llVerticalMatchWrap"
+        android:background="#DFDEDE"
+        android:gravity="start">
+
+        <TextView
+            android:id="@+id/textViewHeader"
+            style="@style/textViewStyleBoldRegular"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30mdp"
+
+            android:text="@{latter}"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/_10mdp"
+            android:textColor="@color/black" />
+    </LinearLayout>
+</layout>

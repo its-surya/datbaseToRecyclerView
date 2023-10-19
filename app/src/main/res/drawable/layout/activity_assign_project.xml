@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isLoadMore"
+            type="Boolean" />
+
+        <variable
+            name="isTyping"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:focusable="true"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+
+        <LinearLayout
+            style="@style/llVerticalMatchMatch"
+            android:gravity="center">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+
+                <include
+                    android:id="@+id/layoutNoResultFound"
+                    layout="@layout/layout_no_data_found" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewAssigneeList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:fadeScrollbars="true"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/_50mdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/row_project_assign" />
+
+
+            </FrameLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSubmit"
+                style="@style/ButtonStyle"
+                android:layout_width="@dimen/_120mdp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/_20mdp"
+                android:text="Submit" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

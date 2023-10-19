@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="isEditMode"
+            type="Boolean" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.RouteProjectOrLeadModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:layout_marginStart="@dimen/_10mdp"
+            android:gravity="top"
+            android:padding="@dimen/_5mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_weight="1"
+                android:gravity="top">
+
+                <TextView
+                    style="@style/textViewStyleRegular"
+                    android:maxLines="1"
+                    android:text="@{model.name}" />
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:maxLines="1"
+                    android:text="@{model.address}" />
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:maxLines="1"
+                    android:text="@{`Schedule Time `+model.scheduleTime}" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageViewDelete"
+                setVisibility="@{isEditMode}"
+                android:layout_width="@dimen/_30mdp"
+                android:layout_height="@dimen/_30mdp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_5mdp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:padding="@dimen/_6mdp"
+                android:src="@drawable/ic_cross_rounded" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="@dimen/_20mdp"
+            android:layout_marginVertical="@dimen/_5mdp"
+            android:background="@color/colorDivider" />
+
+
+    </LinearLayout>
+</layout>

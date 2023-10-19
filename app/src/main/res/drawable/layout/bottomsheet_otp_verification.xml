@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:background="@drawable/bg_bottomsheet"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtTitleDialog"
+                        style="@style/textViewStyleLarge"
+                        android:gravity="center"
+                        android:padding="@dimen/_10mdp"
+                        android:text="OTP Verification"
+                        android:textColor="@color/buttonTextColor" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:background="@color/white"
+                    style="@style/llVerticalMatchWrap">
+
+
+                    <LinearLayout
+                        android:id="@+id/layoutMainContains"
+                        style="@style/llVerticalMatchWrap"
+
+                        android:padding="@dimen/_10mdp">
+
+
+                        <RelativeLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_height="@dimen/_40mdp"
+                            android:layout_marginLeft="@dimen/_5mdp"
+                            android:layout_marginTop="@dimen/_20mdp"
+                            android:layout_marginRight="@dimen/_5mdp"
+                            android:layout_marginBottom="@dimen/_5mdp"
+                            android:gravity="center">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/edtOtp1"
+                                    style="@style/edtOtp" />
+
+                                <EditText
+                                    android:id="@+id/edtOtp2"
+                                    style="@style/edtOtp" />
+
+                                <EditText
+                                    android:id="@+id/edtOtp3"
+                                    style="@style/edtOtp" />
+
+                                <EditText
+                                    android:id="@+id/edtOtp4"
+                                    style="@style/edtOtp" />
+
+                                <EditText
+                                    android:id="@+id/edtOtp5"
+                                    style="@style/edtOtp" />
+
+                                <EditText
+                                    android:id="@+id/edtOtp6"
+                                    style="@style/edtOtp" />
+                            </LinearLayout>
+
+                            <EditText
+                                android:id="@+id/edtOtp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorTransparent"
+                                android:cursorVisible="false"
+                                android:gravity="bottom"
+                                android:inputType="number"
+                                android:maxLength="6"
+                                android:textColor="@color/colorTransparent"
+                                android:textSize="@dimen/_1mdp" />
+                        </RelativeLayout>
+
+
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnVerifyOtp"
+                            style="@style/ButtonStyle"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_20mdp"
+                            android:layout_width="@dimen/_150mdp"
+                            android:text="@string/str_verify" />
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            android:gravity="center">
+
+                            <TextView
+                                style="@style/textViewStyleRegular"
+                                android:layout_width="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/str_otp_des1" />
+
+                            <TextView
+                                android:id="@+id/txtResendOtp"
+                                style="@style/textViewStyleRegular"
+                                android:layout_width="wrap_content"
+                                android:layout_marginLeft="@dimen/_3mdp"
+                                android:gravity="center"
+                                android:paddingLeft="@dimen/_3mdp"
+                                android:paddingTop="@dimen/_5mdp"
+                                android:paddingBottom="@dimen/_5mdp"
+                                android:text="@string/str_resend_otp"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

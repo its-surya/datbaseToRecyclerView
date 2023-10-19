@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isDataAvailable"
+            type="Boolean" />
+
+        <variable
+            name="projectModel"
+            type="com.energy.ahasolar.dataservice.model.ProjectModel" />
+    </data>
+
+
+    <LinearLayout style="@style/llVerticalMatchMatch">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+        <TextView
+            android:id="@+id/textViewConnectedInstaller"
+            style="@style/textViewStyleRegular"
+            android:layout_marginHorizontal="@dimen/_10mdp"
+            android:layout_marginTop="@dimen/_10mdp"
+            android:padding="@dimen/_5mdp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/layoutNoResultFound"
+                layout="@layout/layout_no_data_found" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewInstaller"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:fadeScrollbars="true"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_10mdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_installer_item_basic_user" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/llFindMyProject"
+            style="@style/llVerticalMatchWrap"
+            android:layout_marginHorizontal="@dimen/_10mdp"
+            android:layout_marginVertical="@dimen/_20mdp"
+            android:visibility="gone">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:hint="@string/consumer_no">
+
+
+                <EditText
+                    android:id="@+id/edtConsumerNo"
+                    style="@style/edtStyle"
+                    android:gravity="center_vertical"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llLayoutProjectRow"
+            style="@style/llVerticalMatchWrap"
+            android:visibility="gone">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewMyProject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:fadeScrollbars="true"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_10mdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_my_project_item_basic_user" />
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSelectInstaller"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_150mdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10mdp"
+            android:layout_marginBottom="@dimen/_10mdp"
+            android:text="@string/hint_select_installer" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnFindMyProject"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_150mdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10mdp"
+            android:layout_marginBottom="@dimen/_10mdp"
+            android:text="@string/find_my_project" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnConnect"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_150mdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10mdp"
+            android:layout_marginBottom="@dimen/_10mdp"
+            android:text="@string/connect"
+            android:visibility="gone" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="filterCount"
+            type="String" />
+
+        <variable
+            name="cartItemCount"
+            type="String" />
+    </data>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="1dp"
+        app:elevation="1dp"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <RelativeLayout
+            style="@style/llHorizontalMatchWrap"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/llBack"
+                style="@style/llHorizontalWrapMatch"
+                android:layout_width="?android:attr/actionBarSize"
+                android:layout_height="?android:attr/actionBarSize"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:padding="@dimen/_13mdp"
+                    android:src="@drawable/ic_action_left_arrow" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/titleToolbar"
+                style="@style/toolbarTextViewStyle"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="?android:attr/actionBarSize"
+                android:layout_marginRight="?android:attr/actionBarSize"
+                android:ellipsize="end"
+                android:gravity="start|center_vertical"
+                android:maxLines="1"
+                android:text="@string/app_name" />
+
+            <LinearLayout
+                style="@style/llHorizontalWrapWrap"
+                android:layout_alignParentRight="true">
+
+                <LinearLayout
+                    android:id="@+id/llDownload"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_13mdp"
+                        android:src="@drawable/ic_download" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llTaxInvoiceDownload"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_13mdp"
+                        android:src="@drawable/ic_tax_invoice" />
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/llEditApplication"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_10mdp"
+                        android:src="@drawable/ic_edit_application" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llMapView"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_10mdp"
+                        android:src="@drawable/ic_map_view" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llPaymentHistory"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_10mdp"
+                        android:src="@drawable/ic_rupee" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llPaymentMileStone"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_10mdp"
+                        android:src="@drawable/ic_payments_filled" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llRemarks"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_10mdp"
+                        android:src="@drawable/ic_remarks_filled"
+                        app:tint="#fff" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llMakeZip"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_10mdp"
+                        android:src="@drawable/ic_make_zip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llEmail"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_10mdp"
+                        android:src="@drawable/ic_email_rounded"
+                        app:tint="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llAdd"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_10mdp"
+                        android:src="@drawable/ic_add"
+                        app:tint="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llUndo"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_10mdp"
+                        android:src="@drawable/ic_undo"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDelete"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_10mdp"
+                        app:tint="@color/white"
+                        android:src="@drawable/ic_delete" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llUpdate"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_10mdp"
+                        android:src="@drawable/ic_check_mark_white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llClear"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_10mdp"
+                        android:src="@drawable/ic_cross_rounded_white"
+                         />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llReset"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_10mdp"
+                        android:src="@drawable/ic_reset"
+                        app:tint="@color/white" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llScan"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_5mdp"
+                        android:src="@drawable/ic_scan"
+                        app:tint="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSearch"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_12mdp"
+                        android:src="@drawable/ic_search_bar"
+                        app:tint="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llCloseTicket"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/textViewStyleBoldRegular"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/_10mdp"
+                        android:text="Close"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llApproveTicket"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/textViewStyleBoldRegular"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/_10mdp"
+                        android:text="Approve"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llFilter"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <FrameLayout
+                        android:id="@+id/frameLayoutNotification"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:padding="@dimen/_10mdp"
+                            android:src="@drawable/ic_filter" />
+
+                        <TextView
+                            android:id="@+id/textViewFilterCount"
+                            style="@style/textViewStyleExtraSmall"
+                            setVisibility="@{filterCount.empty?false:true}"
+                            android:layout_width="@dimen/_17mdp"
+                            android:layout_height="@dimen/_17mdp"
+                            android:layout_gravity="top|end"
+                            android:layout_margin="@dimen/_5mdp"
+                            android:background="@drawable/shape_round_red"
+                            android:gravity="center"
+                            android:maxLength="2"
+                            android:text="@{filterCount}"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llCart"
+                    style="@style/llHorizontalWrapMatch"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <FrameLayout
+                        android:id="@+id/frameLayoutCart"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:padding="@dimen/_10mdp"
+                            android:src="@drawable/ic_e_market_place"
+                            app:tint="#fff" />
+
+                        <TextView
+                            android:id="@+id/textViewCartItemCount"
+                            style="@style/textViewStyleExtraSmall"
+                            setVisibility="@{cartItemCount.empty?false:true}"
+                            android:layout_width="@dimen/_17mdp"
+                            android:layout_height="@dimen/_17mdp"
+                            android:layout_gravity="top|end"
+                            android:layout_margin="@dimen/_5mdp"
+                            android:background="@drawable/shape_round_red"
+                            android:gravity="center"
+                            android:maxLength="2"
+                            android:text="@{cartItemCount}"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+</layout>
+

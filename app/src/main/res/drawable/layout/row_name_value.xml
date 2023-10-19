@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.common.NameValueModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/llVerticalMatchWrap">
+
+
+        <LinearLayout
+            style="@style/llHorizontalMatchMatch"
+            android:paddingVertical="@dimen/_5mdp"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:maxLines="2"
+                android:text="@{model.name}" />
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="@{model.value}" />
+
+            <ImageView
+                android:id="@+id/imageViewCall"
+                android:layout_width="@dimen/_20mdp"
+                android:layout_height="@dimen/_20mdp"
+                android:layout_marginEnd="@dimen/_5mdp"
+                android:src="@drawable/ic_phone_call" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginHorizontal="@dimen/_5mdp"
+            android:layout_marginBottom="@dimen/_5mdp"
+            android:background="@color/colorDivider" />
+    </LinearLayout>
+</layout>

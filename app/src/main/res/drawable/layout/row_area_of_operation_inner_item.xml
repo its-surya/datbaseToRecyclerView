@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.CompanyProfileModel.RegionState.State" />
+    </data>
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/checkboxIsSelected"
+        style="@style/checkboxMatchWrap"
+        android:layout_marginTop="@dimen/_2mdp"
+        android:layout_marginHorizontal="@dimen/_10mdp"
+        android:background="@color/white"
+        android:checked="@{model.isSelect()==1}"
+        android:text="@{model.name}" />
+
+</layout>

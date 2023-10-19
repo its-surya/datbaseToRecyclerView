@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="isDataLoaded"
+            type="boolean" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorCardBack"
+            app:cardCornerRadius="@dimen/_10mdp"
+            app:cardElevation="@dimen/_10mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="center">
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center">
+
+                    <TextView
+                        style="@style/textViewStyleLarge"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/_8mdp"
+                        android:text="@string/delete_account"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:gravity="center"
+                    android:padding="@dimen/_20mdp"
+                   setVisibility="@{isDataLoaded}">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:hint="@string/str_reason"
+                        app:endIconDrawable="@drawable/ic_drop_down"
+                        app:endIconMode="custom">
+
+                        <EditText
+                            android:id="@+id/edtSelectReason"
+                            style="@style/edtStyle"
+                            android:clickable="true"
+                            android:focusable="false" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_20mdp"
+                        android:gravity="center">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnCancel"
+                            style="@style/ButtonGrayStyle"
+                            android:layout_width="@dimen/_120mdp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/_5mdp"
+                            android:text="@string/str_cancel" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnDeleteAccount"
+                            style="@style/ButtonGrayStyle"
+                            android:layout_width="@dimen/_120mdp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_5mdp"
+                            android:text="@string/delete_account"
+                            android:textColor="@color/red" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/progressBar"
+                    layout="@layout/layout_load_more_progress_bar"
+                    setVisibility="@{!isDataLoaded}" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

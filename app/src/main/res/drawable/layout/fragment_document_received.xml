@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isApiCallingForSearchProject"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.activity.ProjectDetailsBasicUserActivity">
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewSearchProject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="-1dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="@dimen/_5mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_margin="@dimen/_11mdp">
+
+                <LinearLayout style="@style/llEditText">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:hint="@string/project"
+                        />
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:gravity="center">
+
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edtProjectName"
+                            style="@style/edtStyle"
+                            android:layout_weight="1"
+                            android:layout_height="@dimen/_30mdp"
+                            android:imeOptions="actionSearch"
+                            android:inputType="text" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBarSearch"
+                            setVisibility="@{isApiCallingForSearchProject}"
+                            android:layout_width="@dimen/_20mdp"
+                            android:layout_height="@dimen/_20mdp"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:visibility="gone" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorDivider"
+                        />
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout style="@style/llVerticalMatchMatch">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                android:layout_marginVertical="@dimen/_10mdp"
+                android:background="@color/white"
+                android:elevation="@dimen/_5mdp"
+                android:visibility="gone"
+                app:cardCornerRadius="@dimen/_5mdp">
+
+                <LinearLayout style="@style/llVerticalMatchWrap">
+
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:background="@color/headerBackgroundColor">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/_10mdp"
+                            android:src="@drawable/ic_info"
+                            app:tint="#F9B120" />
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_10mdp"
+                            android:text="Applied Zip Message" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textViewMessage"
+                        style="@style/textViewStyleRegular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_20mdp"
+                        android:padding="@dimen/_10mdp"
+                        android:text="You will get your latest documents soon." />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewDocumentReceived"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="50dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_document_received" />
+
+            <include
+                android:id="@+id/layoutNoResultFound"
+                layout="@layout/layout_no_data_found" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

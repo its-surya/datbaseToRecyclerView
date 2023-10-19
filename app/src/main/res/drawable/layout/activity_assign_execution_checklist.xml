@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isShowInternal"
+            type="Boolean" />
+
+        <variable
+            name="isShowExternalOrDealer"
+            type="Boolean" />
+
+        <variable
+            name="isShowAhaRegisterInstaller"
+            type="Boolean" />
+
+        <variable
+            name="isTyping"
+            type="Boolean" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.CheckList" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:focusable="true"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:gravity="center">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:layout_marginBottom="@dimen/_5mdp"
+                    android:background="@color/white"
+                    android:elevation="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_10mdp"
+                                android:text="@{model.text}" />
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewInnerActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:layout_marginBottom="@dimen/_5mdp"
+                    android:background="@color/white"
+                    android:elevation="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_5mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_10mdp"
+                                android:text="Select Team " />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:layout_margin="@dimen/_10mdp">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/select_team_type"
+                                app:endIconDrawable="@drawable/ic_drop_down"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtCategory"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:focusable="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                setVisibility="@{isShowAhaRegisterInstaller||isShowExternalOrDealer}"
+                                android:hint="Select Internal"
+                                app:endIconDrawable="@drawable/ic_drop_down"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtInternal"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:focusable="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                setVisibility="@{isShowAhaRegisterInstaller}"
+                                android:hint="Select AHA Registered Installer"
+                                app:endIconDrawable="@drawable/ic_drop_down"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtAhaRegisterInstaller"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:focusable="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+
+                        <androidx.cardview.widget.CardView
+                            setVisibility="@{isShowInternal}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginTop="@dimen/_5mdp"
+                            android:layout_marginBottom="@dimen/_5mdp"
+                            android:background="@color/white"
+                            android:elevation="@dimen/_5mdp"
+                            app:cardCornerRadius="@dimen/_5mdp">
+
+                            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:background="@color/headerBackgroundColor"
+                                    android:gravity="center_vertical">
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/_10mdp"
+                                        android:text="Internal" />
+
+
+                                </LinearLayout>
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recyclerViewInternalMember"
+                                    setVisibility="@{isShowInternal}"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            setVisibility="@{isShowExternalOrDealer}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:layout_marginTop="@dimen/_5mdp"
+                            android:layout_marginBottom="@dimen/_5mdp"
+                            android:background="@color/white"
+                            android:elevation="@dimen/_5mdp"
+                            app:cardCornerRadius="@dimen/_5mdp">
+
+                            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:background="@color/headerBackgroundColor"
+                                    android:gravity="center_vertical">
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="@dimen/_10mdp"
+                                        android:text="External/Dealer" />
+
+                                </LinearLayout>
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recyclerViewExternalOrDealer"
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAssign"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_120mdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_20mdp"
+            android:text="Assign" />
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.R.string" />
+
+        <variable
+            name="isInstaller"
+            type="Boolean" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.PaymentRequestModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10mdp"
+            android:layout_marginTop="@dimen/_8mdp"
+            android:layout_marginBottom="@dimen/_2mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_2mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="top">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/headerBackgroundColor">
+
+                    <TextView
+                        style="@style/headerTextStyle"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_10mdp"
+                        android:paddingVertical="@dimen/_10mdp"
+                        android:text="@{model.moduleName}" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="@dimen/_80mdp"
+                        android:layout_height="@dimen/_20mdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_10mdp"
+                        app:cardElevation="@dimen/_1mdp">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchMatch"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:id="@+id/imageViewStatus"
+                                setStatusReceivedPayment="@{model.paidStatus}"
+                                android:layout_width="@dimen/_12mdp"
+                                android:layout_height="@dimen/_12mdp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="@dimen/_5mdp" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="0dp"
+                                android:layout_marginEnd="@dimen/_2mdp"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:maxLines="1"
+                                android:text="@{model.paidStatus.equalsIgnoreCase(`1`)?`Paid`:`Not Paid`}"
+                                android:textAllCaps="true" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <ImageView
+                        android:id="@+id/imageViewOption"
+                        isSelected="@{model.selected}"
+                        setVisibility="@{model.paidStatus.equals(`0`)}"
+                        android:layout_width="@dimen/_30mdp"
+                        android:layout_height="@dimen/_30mdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/_2mdp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_7mdp"
+                       />
+
+                    <ImageView
+                        android:id="@+id/imageViewDownload"
+                        setVisibility="@{model.paidStatus.equals(`1`)}"
+                        android:layout_width="@dimen/_30mdp"
+                        android:layout_height="@dimen/_30mdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_7mdp"
+                        android:src="@drawable/ic_download"
+                        android:tint="#555555" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:gravity="top"
+                    android:padding="@dimen/_10mdp">
+
+                    <LinearLayout style="@style/llHorizontalMatchWrap">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.4"
+                            android:text="P.O #" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.6"
+                            android:text="@{model.poNumber}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_3mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.4"
+                            android:text="Invoice No" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.6"
+                            android:maxLines="2"
+                            android:text="@{model.invoiceNo}" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_3mdp">
+
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.4"
+                            android:text="Amount" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.6"
+                            android:text="@{`₹`+model.amount}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_marginTop="@dimen/_3mdp">
+
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.4"
+                            android:text="Mode" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.6"
+                            android:text="@{model.paymentMode.empty?`-`:model.paymentMode}" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

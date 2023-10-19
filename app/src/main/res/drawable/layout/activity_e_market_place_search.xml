@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="isTyping"
+            type="Boolean" />
+
+        <variable
+            name="isDataAvailable"
+            type="Boolean" />
+
+        <variable
+            name="isHistoryAvailable"
+            type="Boolean" />
+
+        <variable
+            name="isLoadMore"
+            type="Boolean" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f1f1f1"
+        android:orientation="vertical"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        tools:context=".ui.activity.MainBasicUserActivity">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginHorizontal="@dimen/_5mdp"
+            android:layout_marginVertical="@dimen/_5mdp"
+            android:elevation="@dimen/_2mdp"
+            android:minHeight="@dimen/_32mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_5mdp"
+            app:cardElevation="@dimen/_1mdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                <LinearLayout style="@style/llHorizontalMatchWrap">
+
+
+                    <ImageView
+                        android:id="@+id/imageViewBack"
+                        android:layout_width="@dimen/_25mdp"
+                        android:layout_height="@dimen/_25mdp"
+                        android:layout_gravity="start|center_vertical"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        android:padding="@dimen/_3mdp"
+                        android:src="@drawable/ic_action_back"
+                        app:tint="#ACACAC" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edtSearch"
+                        style="@style/edtStyle"
+                        android:layout_height="@dimen/_35mdp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:inputType="textVisiblePassword"
+                        android:hint="Search with Brand,Category,Product Name"
+                        android:imeOptions="actionSearch"
+                        android:maxLines="1"
+                        android:paddingVertical="@dimen/_5mdp"
+                        android:paddingStart="@dimen/_10mdp"
+                        android:paddingEnd="@dimen/_20mdp"
+                        android:textSize="@dimen/_13mdp" />
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imageViewSearch"
+                            setVisibility="@{!isTyping}"
+                            android:layout_width="@dimen/_25mdp"
+                            android:layout_height="@dimen/_25mdp"
+                            android:layout_gravity="end|center_vertical"
+                            android:layout_marginEnd="@dimen/_10mdp"
+                            android:padding="@dimen/_4mdp"
+                            android:src="@drawable/ic_search_bar" />
+
+                        <ImageView
+                            android:id="@+id/imageViewCancel"
+                            setVisibility="@{isTyping}"
+                            android:layout_width="@dimen/_25mdp"
+                            android:layout_height="@dimen/_25mdp"
+                            android:layout_gravity="end|center_vertical"
+                            android:layout_marginEnd="@dimen/_10mdp"
+                            android:padding="@dimen/_4mdp"
+                            android:src="@drawable/ic_close" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <View
+                    setVisibility="@{isHistoryAvailable}"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewSearchHistory"
+                    setVisibility="@{isHistoryAvailable}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="8"
+                    tools:listitem="@layout/row_search_history_item" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_5mdp"
+            android:layout_marginTop="@dimen/_45mdp"
+            android:layout_marginBottom="@dimen/_5mdp"
+            app:cardCornerRadius="@dimen/_5mdp">
+
+            <LinearLayout style="@style/llVerticalMatchMatch">
+
+                <FrameLayout style="@style/llVerticalMatchMatch">
+
+                    <include
+                        android:id="@+id/layoutNoResultFound"
+                        layout="@layout/layout_no_data_found" />
+
+                    <include
+                        android:id="@+id/layoutProgressBar"
+                        layout="@layout/layout_load_more_progress_bar"
+                        setVisibility="@{isLoadMore}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:visibility="visible" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewSearchResult"
+                        setVisibility="@{isDataAvailable}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:fadeScrollbars="true"
+                        android:nestedScrollingEnabled="true"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/_50mdp"
+                        android:visibility="gone"
+                        app:spanCount="2"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        tools:listitem="@layout/home_top_menu_item" />
+                </FrameLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layoutSearchBarLanding"
+                style="@style/llVerticalMatchMatch"
+                android:gravity="center"
+                android:padding="@dimen/_30mdp">
+
+
+                <ImageView
+                    android:layout_width="@dimen/_80mdp"
+                    android:layout_height="@dimen/_80mdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_search_information" />
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

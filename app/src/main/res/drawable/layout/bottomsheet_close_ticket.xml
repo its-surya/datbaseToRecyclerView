@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="isDirectClose"
+            type="Boolean" />
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/txtTitleDialog"
+                    style="@style/textViewStyleLarge"
+                    android:background="@drawable/bg_bottomsheet"
+                    android:gravity="center"
+                    android:padding="@dimen/_10mdp"
+                    android:text="Close Ticket"
+                    android:textColor="@color/buttonTextColor" />
+
+
+                <LinearLayout
+                    android:id="@+id/layoutMainContains"
+                    style="@style/llVerticalMatchWrap"
+                    setVisibility="@{isDirectClose}"
+                    android:padding="@dimen/_10mdp">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:hint="@string/message">
+
+
+                        <EditText
+                            android:id="@+id/edtMessage"
+                            style="@style/edtStyle"
+                            android:singleLine="false"
+                            android:inputType="textMultiLine"
+                            android:maxLines="3" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        setVisibility="@{!isDirectClose}"
+                        android:layout_marginTop="@dimen/_10mdp">
+
+
+                        <LinearLayout style="@style/llEditText">
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:gravity="center">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/textInputLayoutStyle"
+                                    android:layout_weight="1"
+                                    android:hint="@string/str_pin"
+                                    app:helperText="@string/hint_pin_desc">
+
+                                    <EditText
+                                        android:id="@+id/edtOTP"
+                                        style="@style/edtStyleNumeric"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="6" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardViewSendOTP"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_26mdp"
+                                    android:layout_gravity="center"
+                                    app:cardBackgroundColor="@color/colorGreen"
+                                    app:cardCornerRadius="@dimen/_13mdp">
+
+                                    <TextView
+                                        android:id="@+id/textViewOTPText"
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="center"
+                                        android:layout_marginHorizontal="@dimen/_10mdp"
+                                        android:text="Resend PIN"
+                                        android:textColor="@color/white" />
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_1mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginBottom="@dimen/_2mdp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_8mdp"
+                        app:cardElevation="@dimen/_1mdp">
+
+                        <LinearLayout style="@style/llVerticalMatchWrap">
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:background="@color/headerBackgroundColor">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_weight="1"
+                                    android:maxLines="1"
+                                    android:paddingVertical="@dimen/_8mdp"
+                                    android:paddingStart="@dimen/_10mdp"
+                                    android:text="Add Document" />
+
+                                <ImageView
+                                    android:id="@+id/imgAddDocument"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center_vertical"
+                                    android:background="?selectableItemBackgroundBorderless"
+                                    android:padding="@dimen/_5mdp"
+                                    android:src="@drawable/ic_add" />
+                            </LinearLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewDocument"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/row_media_item" />
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnClose"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_120mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="@dimen/_15mdp"
+                        android:text="@{isDirectClose?@string/btn_close:@string/str_verify_close}" />
+                </LinearLayout>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llLayoutSendOTP"
+                    style="@style/llVerticalMatchWrap"
+                    setVisibility="@{!isDirectClose}"
+                    android:padding="@dimen/_10mdp">
+
+                    <TextView
+                        style="@style/textViewStyleRegular"
+                        android:gravity="left"
+                        android:text="@string/consumer_will_receive_pin_to_close_complaint_on_registered_mobile_number_pin_will_expire_in_30_minutes" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSendOTP"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_120mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="@dimen/_15mdp"
+                        android:text="@string/send_pin" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

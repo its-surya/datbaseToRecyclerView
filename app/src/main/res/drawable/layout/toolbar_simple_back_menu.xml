@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    android:elevation="0dp"
+    app:elevation="0dp"
+    app:layout_scrollFlags="scroll|enterAlways|snap"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    <RelativeLayout
+        style="@style/llHorizontalMatchWrap"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/llBack"
+            style="@style/llHorizontalWrapMatch"
+            android:gravity="center"
+            android:paddingLeft="@dimen/_5mdp"
+            android:paddingTop="@dimen/_2mdp"
+            android:paddingRight="@dimen/_5mdp"
+            android:paddingBottom="@dimen/_2mdp">
+
+            <ImageView
+                android:layout_width="@dimen/_18mdp"
+                android:layout_height="@dimen/_18mdp"
+                android:src="@drawable/ic_action_left_arrow" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/titleToolbar"
+            style="@style/toolbarTextViewStyle"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/_30mdp"
+            android:layout_marginRight="@dimen/_30mdp"
+            android:gravity="center"
+            android:text="@string/app_name" />
+    </RelativeLayout>
+</androidx.appcompat.widget.Toolbar>

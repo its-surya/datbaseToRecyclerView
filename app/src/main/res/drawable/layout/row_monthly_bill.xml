@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.SiteSurveyBillDetailModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/llMainImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_1mdp"
+        android:layout_marginVertical="@dimen/_2mdp"
+        app:cardBackgroundColor="@color/colorCardBack"
+        app:cardCornerRadius="@dimen/_8mdp"
+        app:cardElevation="@dimen/_2mdp">
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_1mdp"
+            android:paddingVertical="@dimen/_1mdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        style="@style/textViewStyleRegular"
+                        android:layout_width="0dp"
+                        android:textSize="@dimen/_11mdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_3mdp"
+                        android:layout_weight="1"
+                        android:text="@{model.month}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llYear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_1mdp"
+                    android:layout_marginLeft="@dimen/_2mdp"
+                    android:layout_marginRight="@dimen/_1mdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edt_phase"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/edtYear"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_4mdp"
+                        android:layout_marginRight="@dimen/_1mdp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:gravity="center_horizontal"
+                        android:padding="@dimen/_5mdp"
+                        android:singleLine="true"
+                        android:text="@{model.year}"
+                        android:textSize="@dimen/_10font_mdp" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_10mdp"
+                        android:layout_height="@dimen/_10mdp"
+                        android:layout_marginRight="@dimen/_4mdp"
+                        android:src="@drawable/ic_drop_down" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/edtPowerConsume"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_1mdp"
+                        android:layout_marginLeft="@dimen/_2mdp"
+                        android:layout_marginRight="@dimen/_1mdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_edt_phase"
+                        android:gravity="center_horizontal"
+                        android:hint="@string/str_power_consumption"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:padding="@dimen/_5mdp"
+                        android:text="@{model.powerConsume}"
+                        android:textSize="@dimen/_10font_mdp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/edtBill"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_1mdp"
+                        android:layout_marginLeft="@dimen/_2mdp"
+                        android:layout_marginRight="@dimen/_1mdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_edt_phase"
+                        android:gravity="center_horizontal"
+                        android:hint="@string/str_bill_in_inr"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:padding="@dimen/_5mdp"
+                        android:text="@{model.billAmount}"
+                        android:textSize="@dimen/_10font_mdp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

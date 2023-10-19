@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:background="@color/white"
+        >
+
+        <LinearLayout
+            style="@style/llVerticalMatchMatch"
+            android:gravity="center|top"
+            android:paddingHorizontal="@dimen/_20mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:layout_marginBottom="@dimen/_20mdp"
+                android:layout_weight="1"
+                android:gravity="center|top">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30mdp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/layout_company_logo" />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/textViewStyleExtraLarge"
+                    android:layout_marginVertical="@dimen/_20mdp"
+                    android:text="Login Here"
+                    android:textStyle="bold" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    android:hint="@string/hint_email">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/editTextEmail"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="100" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_password"
+                    app:endIconMode="password_toggle">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edittextPassword"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewForgotPassword"
+                    style="@style/textViewStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="end"
+                    android:layout_marginVertical="@dimen/_8mdp"
+                    android:background="@color/colorTransparent"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/_8mdp"
+                    android:text="@string/forgot_password" />
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginLeft="@dimen/_5mdp"
+                    android:layout_marginTop="@dimen/_30mdp"
+                    android:layout_marginRight="@dimen/_5mdp"
+                    android:layout_marginBottom="@dimen/_5mdp"
+                    android:gravity="center">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnLogin"
+                        style="@style/ButtonStyle"
+                        android:enabled="false"
+                        android:layout_width="@dimen/_150mdp"
+                        android:text="@string/str_login" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+
+                    <View
+                        style="@style/dividerStyleHorizontal"
+                        android:layout_marginTop="@dimen/_20mdp"
+                        android:layout_marginBottom="@dimen/_20mdp"
+                        android:layout_toLeftOf="@+id/txtOr" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtOr"
+                        style="@style/textViewStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@color/colorTransparent"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/_8mdp"
+                        android:text="@string/don_t_have_account" />
+
+                    <View
+                        style="@style/dividerStyleHorizontal"
+                        android:layout_marginTop="@dimen/_20mdp"
+                        android:layout_marginBottom="@dimen/_20mdp"
+                        android:layout_toRightOf="@+id/txtOr" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    style="@style/llVerticalMatchWrap"
+                    android:layout_marginLeft="@dimen/_5mdp"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:layout_marginRight="@dimen/_5mdp"
+                    android:layout_marginBottom="@dimen/_5mdp"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewSignUp"
+                        style="@style/textViewStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="@dimen/_8mdp"
+                        android:text="@string/sign_up" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

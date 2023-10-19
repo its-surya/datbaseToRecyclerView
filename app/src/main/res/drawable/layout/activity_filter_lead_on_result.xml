@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="filter"
+            type="com.energy.ahasolar.dataservice.model.response.SolarEnquiryFilterListResponse" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:background="@color/white">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:layout_margin="@dimen/_10mdp">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_select_common_meter"
+                    app:endIconDrawable="@drawable/ic_drop_down"
+                    app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtCommonMeter"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_select_network"
+                    app:endIconDrawable="@drawable/ic_drop_down"
+                    app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtNetwork"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_select_branch"
+                    app:endIconDrawable="@drawable/ic_drop_down"
+                    app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtBranch"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_select_status"
+                    app:endIconDrawable="@drawable/ic_drop_down"
+                    app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtStatus"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    setVisibility="@{filter.isAdmin()==1?true:false}"
+                    android:hint="@string/hint_select_co_worker"
+                    app:endIconDrawable="@drawable/ic_drop_down"
+                    app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtCoWorker"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_select_category"
+                    app:endIconDrawable="@drawable/ic_drop_down"
+                    app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtCategory"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_select_sg_lead"
+                    app:endIconDrawable="@drawable/ic_drop_down"
+                    app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtSGLead"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_select_follow_up"
+                    app:endIconDrawable="@drawable/ic_drop_down"
+                    app:endIconMode="custom">
+
+                    <EditText
+                        android:id="@+id/edtFollowUp"
+                        style="@style/edtStyle"
+                        android:clickable="true"
+                        android:focusable="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_min_capacity_kw">
+
+                    <EditText
+                        android:id="@+id/edtMinCapacity"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="9" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:hint="@string/hint_max_capacity_kw">
+
+                    <EditText
+                        android:id="@+id/edtMaxCapacity"
+                        style="@style/edtStyle"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="9" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10mdp">
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnClearFilter"
+                        style="@style/ButtonGrayStyle"
+                        android:layout_width="@dimen/_120mdp"
+                        android:text="Clear" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnApplyFilter"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_120mdp"
+                        android:text="Apply" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

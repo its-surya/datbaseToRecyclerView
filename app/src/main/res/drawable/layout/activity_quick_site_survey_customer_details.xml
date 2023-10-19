@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="surveyStep"
+            type="com.energy.ahasolar.dataservice.model.response.SiteSurveyStep2Response" />
+
+        <variable
+            name="isShowAddressField"
+            type="Boolean" />
+
+
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="left">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+        <ScrollView
+            android:id="@+id/scrollStep2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                android:padding="@dimen/_5mdp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_8mdp"
+                    app:cardElevation="@dimen/_3mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            android:id="@+id/llAdditionalInfoTitle"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_height="@dimen/_35mdp"
+                                android:layout_weight="1"
+                                android:gravity="left|center_vertical"
+                                android:paddingHorizontal="@dimen/_8mdp"
+                                android:paddingVertical="@dimen/_5mdp"
+                                android:text="Customer Details" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llAdditionalInfo"
+                            style="@style/llEditText"
+                            android:padding="@dimen/_10mdp">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_1mdp"
+                                android:visibility="visible"
+                                app:cardCornerRadius="@dimen/_8mdp">
+
+                                <LinearLayout
+                                    style="@style/llVerticalMatchWrap"
+                                    android:gravity="top">
+
+                                    <LinearLayout
+                                        style="@style/llHorizontalMatchWrap"
+                                        android:background="@color/colorPrimary">
+
+                                        <TextView
+                                            style="@style/textViewStyleRegular"
+                                            android:layout_weight="1"
+                                            android:paddingHorizontal="@dimen/_10mdp"
+                                            android:paddingVertical="@dimen/_8mdp"
+                                            android:text="@string/hint_select_category"
+                                            android:textColor="@color/white" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        style="@style/llVerticalMatchWrap"
+                                        android:layout_margin="@dimen/_1mdp">
+
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/rvCategory"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal"
+                                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                            tools:listitem="@layout/row_category_item" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_customer_name">
+
+                                <EditText
+                                    android:id="@+id/edtCustomerName"
+                                    style="@style/edtStyle"
+                                    android:digits="@string/contact_name_char_allowed"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_mobile_number_star">
+
+                                <EditText
+                                    android:id="@+id/edtMobileNo"
+                                    style="@style/edtStyleNumeric"
+                                    android:digits="1234567890"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="10" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_email">
+
+                                <EditText
+                                    android:id="@+id/edtEmail"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLength="75" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_surveyor_name">
+
+                                <EditText
+                                    android:id="@+id/edtSurveyorName"
+                                    style="@style/edtStyle"
+                                    android:digits="@string/contact_name_char_allowed"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:importantForAutofill="no"
+                                    android:maxLength="100" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:layout_marginEnd="@dimen/_5mdp"
+                                android:layout_weight="1"
+                                android:hint="@string/consumer_no">
+
+                                <EditText
+                                    android:id="@+id/edtConsumerNo"
+                                    style="@style/edtStyleNumeric"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:digits="0123456789"
+                                    android:maxLength="15" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilGetAddress"
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_address"
+                                app:endIconDrawable="@drawable/ic_location_small"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtAddress"
+                                    style="@style/edtStyle"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxEms="500"
+                                    android:maxLines="5"
+                                    android:singleLine="false" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_state_1"
+                                android:id="@+id/edtStateText"
+                                app:endIconDrawable="@drawable/ic_drop_down"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtState"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:text=''
+                                    android:focusable="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:id="@+id/edtDistrictText"
+                                android:hint="@string/district"
+                                android:visibility="gone"
+                                app:endIconDrawable="@drawable/ic_drop_down"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtDistrict"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:text=''
+                                    android:focusable="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/hint_taluka1"
+                                android:id="@+id/edtTalukaText"
+                                android:visibility="gone"
+                                app:endIconDrawable="@drawable/ic_drop_down"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtTaluka"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:text=''
+                                    android:focusable="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <LinearLayout
+                                style="@style/llVerticalMatchWrap"
+                                setVisibility="@{isShowAddressField}"
+                                android:visibility="gone">
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:layout_marginTop="@dimen/_5mdp"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        style="@style/textViewStyleRegular"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="3"
+                                        android:text="@string/city"
+                                        android:textColor="@color/black" />
+
+                                    <TextView
+                                        android:id="@+id/edtCity"
+                                        style="@style/textViewStyleRegular"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="7"
+                                        android:textColor="@color/black" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:layout_marginTop="@dimen/_5mdp"
+                                    android:visibility="gone"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        style="@style/textViewStyleRegular"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="3"
+                                        android:text="@string/hint_state"
+                                        android:textColor="@color/black" />
+
+                                    <TextView
+                                        android:id="@+id/tvState"
+                                        style="@style/textViewStyleRegular"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="7"
+
+                                        android:textColor="@color/black" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:layout_marginTop="@dimen/_5mdp"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        style="@style/textViewStyleRegular"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="3"
+                                        android:text="@string/hint_country"
+                                        android:textColor="@color/black" />
+
+                                    <TextView
+                                        android:id="@+id/edtCountry"
+                                        style="@style/textViewStyleRegular"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="7"
+
+                                        android:textColor="@color/black" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:layout_marginTop="@dimen/_5mdp"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        style="@style/textViewStyleRegular"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="3"
+                                        android:text="@string/hint_pincode1"
+                                        android:textColor="@color/black" />
+
+                                    <TextView
+                                        android:id="@+id/edtPincode"
+                                        style="@style/textViewStyleRegular"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="7"
+                                        android:textColor="@color/black" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSave"
+                style="@style/ButtonStyle"
+                android:layout_width="@dimen/_150mdp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/_5mdp"
+                android:text="@string/str_submit"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isLoadMore"
+            type="Boolean" />
+
+        <variable
+            name="isTyping"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="center">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+        <include
+            android:id="@+id/layoutSearchBar"
+            layout="@layout/layout_search_bar"
+            bind:isTyping="@{isTyping}" />
+
+
+        <LinearLayout
+            style="@style/llVerticalMatchMatch"
+            android:gravity="center">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                >
+
+
+                <include
+                    android:id="@+id/layoutNoResultFound"
+                    layout="@layout/layout_no_data_found" />
+
+                <include
+                    android:id="@+id/layoutProgressBar"
+                    layout="@layout/layout_load_more_progress_bar"
+                    setVisibility="@{isLoadMore}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:visibility="visible" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewMyProjectListBasicUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:fadeScrollbars="true"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/_50mdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/row_my_project_item_basic_user" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewMapView"
+                    setVisibility="@{!isLoadMore}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_26mdp"
+                    android:layout_gravity="center|bottom"
+                    android:layout_marginBottom="@dimen/_20mdp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="@dimen/_13mdp"
+                    app:cardElevation="@dimen/_5mdp">
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchMatch"
+                        android:layout_marginHorizontal="@dimen/_5mdp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15mdp"
+                            android:layout_height="@dimen/_15mdp"
+                            android:layout_marginStart="@dimen/_5mdp"
+                            android:src="@drawable/ic_location_small"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:text="@string/map_view"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+            </FrameLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSelectProject"
+                style="@style/ButtonStyle"
+                android:layout_width="@dimen/_150mdp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/_10mdp"
+                android:layout_marginTop="@dimen/_10mdp"
+                android:text="@string/hint_select_project" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</layout>

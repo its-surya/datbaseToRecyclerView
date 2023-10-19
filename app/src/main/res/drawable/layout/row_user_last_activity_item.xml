@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.UserLastActivityModel" />
+    </data>
+
+    <LinearLayout style="@style/llVerticalMatchWrap">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_5mdp"
+            android:layout_marginTop="@dimen/_5mdp"
+            android:layout_marginBottom="@dimen/_2mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_10mdp"
+            app:cardElevation="@dimen/_1mdp">
+
+            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:padding="@dimen/_5mdp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="@dimen/_36mdp"
+                        android:layout_height="@dimen/_36mdp"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/_2mdp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_18mdp"
+                        app:cardElevation="@dimen/_1mdp">
+
+                        <ImageView
+                            android:id="@+id/imgHomeIcon"
+                            bindImage="@{model.icon}"
+                            android:layout_width="match_parent"
+                            android:layout_height="21dp"
+                            android:layout_margin="@dimen/_8mdp" />
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_marginHorizontal="@dimen/_10mdp"
+                        android:gravity="center">
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:gravity="center">
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_gravity="center"
+                            android:maxLines="2"
+                            android:text="@{model.userName.empty?`-`:model.userName}"
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:tooltipText="@string/hint_user_name" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/colorDivider"
+                            android:text="@{``+model.time}" />
+                    </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_marginVertical="@dimen/_2mdp"
+                            android:text="@{`SRN `+model.id+`-`+model.projectName}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_marginVertical="@dimen/_2mdp"
+                            android:text="@{model.lastActivity.empty?`-`:model.lastActivity}" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+
+</layout>

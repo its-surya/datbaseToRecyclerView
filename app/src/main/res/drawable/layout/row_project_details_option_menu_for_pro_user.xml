@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.ProjectOptionMenuModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_5mdp"
+            android:layout_marginVertical="@dimen/_5mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="center">
+
+                <FrameLayout style="@style/llHorizontalWrapWrap">
+
+
+                    <LinearLayout style="@style/llHorizontalWrapWrap">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="@dimen/_54mdp"
+                            android:layout_height="@dimen/_54mdp"
+                            android:layout_gravity="center"
+                            android:layout_marginVertical="@dimen/_2mdp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="@dimen/_27mdp">
+
+                            <LinearLayout
+                                style="@style/llHorizontalWrapWrap"
+                                android:layout_margin="@dimen/_3mdp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/shape_round_lightgray">
+
+                                <ImageView
+                                    android:id="@+id/imgHomeIcon"
+                                    loadImage="@{model.iconUrl}"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="@dimen/_8mdp"
+
+
+
+                                    />
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+
+                    <ImageView
+                        isSelected="@{model.status==1?true:false}"
+                        android:layout_width="@dimen/_12mdp"
+                        android:layout_height="@dimen/_12mdp"
+                        android:layout_gravity="top|start"
+                        android:layout_margin="@dimen/_3mdp"
+                        android:src="@drawable/ic_check_mark" />
+
+                </FrameLayout>
+
+                <TextView
+                    style="@style/textViewStyleExtraSmall"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_2mdp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:minLines="1"
+                    android:text="@{model.name}" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/llVerticalMatchMatch"
+                setVisibility="@{(model.executionAllowed == 0) || (!model.permissions.canAdd &amp;&amp; !model.permissions.canEdit &amp;&amp; !model.permissions.canRead) }"
+                android:background="@drawable/shape_rounded_corner_semi_transperant"
+                android:visibility="visible">
+
+
+                <ImageView
+                    android:layout_width="@dimen/_12mdp"
+                    android:layout_height="@dimen/_12mdp"
+                    android:layout_gravity="top|end"
+                    android:layout_marginHorizontal="@dimen/_5mdp"
+                    android:layout_marginTop="@dimen/_3mdp"
+                    android:src="@drawable/ic_padlock"
+                    app:tint="#808080" />
+            </LinearLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.LastComment" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:background="@color/white"
+            android:gravity="center">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:background="@drawable/bg_bottomsheet"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/textViewStyleRegular"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/_8mdp"
+                    android:text="@string/latest_comment"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                android:layout_marginBottom="@dimen/_10mdp">
+
+
+                <TextView
+                    style="@style/textViewStyleRegular"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:hint="@string/hint_comment"
+                    android:textColor="@color/black" />
+
+
+                <TextView
+                    style="@style/textViewStyleRegular"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:hint="-"
+                    android:text="@{model.message}"
+                    android:textColor="@color/black" />
+
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:layout_marginTop="@dimen/_7mdp"
+                    android:gravity="center">
+
+                    <TextView
+                        style="@style/textViewStyleRegular"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:hint="@string/comment_by"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleRegular"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:hint="-"
+                        android:text="@{model.commentBy}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:layout_marginTop="@dimen/_7mdp"
+                    android:gravity="center">
+
+                    <TextView
+                        style="@style/textViewStyleRegular"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:hint="@string/ip_address"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/textViewStyleRegular"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:hint="-"
+                        android:text="@{model.ipAddress}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/textViewStyleRegular"
+                    android:layout_marginTop="@dimen/_7mdp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="@{model.created}"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

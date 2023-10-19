@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.EMarketEnquiryList.Result" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_5mdp"
+            app:cardElevation="@dimen/_2mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:gravity="top">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/headerBackgroundColor">
+
+                    <LinearLayout
+                        style="@style/llVerticalWrapWrap"
+                        android:layout_weight="1"
+                        android:paddingHorizontal="@dimen/_10mdp"
+                        android:paddingVertical="@dimen/_8mdp">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="@{model.productName}" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout style="@style/llHorizontalMatchWrap"
+
+                    >
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="@dimen/_35mdp"
+                        android:layout_height="@dimen/_35mdp"
+                        android:layout_marginHorizontal="@dimen/_10mdp"
+                        android:layout_marginVertical="@dimen/_6mdp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_5mdp"
+                        app:cardElevation="@dimen/_1mdp">
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            loadImage="@{model.productImage}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop" />
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/textViewStyleExtraSmall"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="bottom"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:text="@{model.created}" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</layout>

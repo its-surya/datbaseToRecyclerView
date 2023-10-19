@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isTyping"
+            type="Boolean" />
+
+    </data>
+
+    <LinearLayout style="@style/llVerticalMatchMatch">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+
+        <LinearLayout
+            style="@style/llVerticalMatchMatch"
+            android:layout_weight="1">
+
+            <include
+                android:id="@+id/layoutSearchBar"
+                layout="@layout/layout_search_bar"
+                bind:isTyping="@{isTyping}" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_10mdp"
+                android:background="@color/white"
+                android:elevation="@dimen/_5mdp"
+                app:cardCornerRadius="@dimen/_5mdp">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewInnerActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSelect"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_120mdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_20mdp"
+            android:text="@string/select" />
+
+    </LinearLayout>
+
+</layout>

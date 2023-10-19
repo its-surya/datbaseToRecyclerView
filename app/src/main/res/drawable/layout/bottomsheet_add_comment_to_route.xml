@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/bottomSheetClickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/txtTitleDialog"
+                    style="@style/textViewStyleLarge"
+                    android:background="@drawable/bg_bottomsheet"
+                    android:gravity="center"
+                    android:padding="@dimen/_10mdp"
+                    android:text="@string/add_your_comment"
+                    android:textColor="@color/buttonTextColor" />
+
+
+                <LinearLayout
+                    android:id="@+id/layoutMainContains"
+                    style="@style/llVerticalMatchWrap"
+                    android:padding="@dimen/_10mdp">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:hint="@string/str_reason"
+                        app:endIconDrawable="@drawable/ic_drop_down"
+                        app:endIconMode="custom">
+
+                        <EditText
+                            android:id="@+id/edtReason"
+                            style="@style/edtStyle"
+                            android:clickable="true"
+                            android:focusable="false" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:hint="@string/hint_comment">
+
+                        <EditText
+                            android:id="@+id/edtComments"
+                            style="@style/edtStyle"
+                            android:singleLine="false"
+                            android:inputType="textMultiLine"
+                            android:maxLines="3" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_1mdp"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:layout_marginBottom="@dimen/_2mdp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_8mdp"
+                        app:cardElevation="@dimen/_1mdp">
+
+                        <LinearLayout style="@style/llVerticalMatchWrap">
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:background="@color/headerBackgroundColor">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_weight="1"
+                                    android:maxLines="1"
+                                    android:paddingVertical="@dimen/_8mdp"
+                                    android:paddingStart="@dimen/_10mdp"
+                                    android:text="Add Image" />
+
+                                <ImageView
+                                    android:id="@+id/imgAddDocument"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center_vertical"
+                                    android:background="?selectableItemBackgroundBorderless"
+                                    android:padding="@dimen/_5mdp"
+                                    android:src="@drawable/ic_add" />
+                            </LinearLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewDocument"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/row_media_item" />
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSave"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_120mdp"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="@dimen/_15mdp"
+                        android:text="@string/btn_save" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

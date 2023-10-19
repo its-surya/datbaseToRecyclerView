@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.LeadToProposalResponse.Information" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="left">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/llMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone">
+
+            <LinearLayout style="@style/llVerticalMatchMatch">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_margin="@dimen/_10mdp">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@string/project_name" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4"
+                                android:text="@{model.projectName}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@string/str_common_meter" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4"
+                                android:text="@{model.commonMeter}" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@string/lead_enhancement" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4"
+                                android:text="@{model.leadEnhancement}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            setVisibility="@{model.leadEnhancement.toLowerCase().equals(`yes`)}"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@string/pv_capacity_enhancement_in_kw" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4"
+                                android:text="@{model.existingCapacity}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@string/estimated_cost" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4"
+                                android:text="@{model.estimatedCost}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@string/subsidy_with_rs_symbol" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4"
+                                android:text="@{``+model.subsidy}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@string/project_dc_capacity_in_kw" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1.4"
+                                android:text="@{``+model.dcCapacity}" />
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_marginTop="@dimen/_5mdp"
+                            android:hint="@string/project_ac_capacity_in_kw"
+                            app:endIconMode="custom">
+
+                            <EditText
+                                android:id="@+id/edittextProjectPvCapacity"
+                                style="@style/edtStyleNumeric"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:maxLines="1"
+                                android:text="@{model.pvAcCapacity}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <LinearLayout
+                            android:id="@+id/llWarranty"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/white">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_margin="@dimen/_10mdp"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:text="@string/warranty_string" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llEditText"
+                            android:padding="@dimen/_10mdp">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/module_output">
+
+                                <EditText
+                                    android:id="@+id/edtModuleOp"
+                                    style="@style/edtStyleNumeric"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:text="@{``+model.module_output_warranty}"
+                                     />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/manufacturing_defects_warranty_in_years">
+
+                                <EditText
+                                    android:id="@+id/edtManufacturing"
+                                    style="@style/edtStyleNumeric"
+                                    android:imeOptions="actionNext"
+                                    android:text="@{model.manufacturing_defects_warranty}"
+                                    android:inputType="numberDecimal" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/inverter_warranty_in_years_new">
+
+                                <EditText
+                                    android:id="@+id/edtInverterWarranty"
+                                    style="@style/edtStyleNumeric"
+                                    android:imeOptions="actionNext"
+                                    android:text="@{model.inverter_warranty}"
+                                    android:inputType="numberDecimal" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/spv_modules_for_performance_description">
+
+                                <EditText
+                                    android:id="@+id/edtSPVModule"
+                                    style="@style/edtStyle"
+                                    android:gravity="top"
+                                    android:singleLine="false"
+                                    android:maxEms="500"
+                                    android:maxLines="5"
+                                    android:text="@{model.performance_description}"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textMultiLine" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <LinearLayout
+                            android:id="@+id/llPaymentTerms"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/white">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_margin="@dimen/_10mdp"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:text="@string/payment_terms" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            style="@style/llEditText"
+                            android:padding="@dimen/_10mdp">
+
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:hint="@string/payment_terms_description">
+
+                                <EditText
+                                    android:id="@+id/edtPaymentTerms"
+                                    style="@style/edtStyle"
+                                    android:gravity="top"
+                                    android:singleLine="false"
+                                    android:maxEms="500"
+                                    android:maxLines="5"
+                                    android:text="@{model.payment_terms}"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textMultiLine" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:gravity="top">
+
+                        <LinearLayout
+                            android:id="@+id/llPaymentReceipt"
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/white">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_margin="@dimen/_10mdp"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:text="@string/additional_items" />
+
+                            <ImageView
+                                android:id="@+id/imgAddItem"
+                                android:layout_width="@dimen/_30mdp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:padding="@dimen/_6mdp"
+                                android:src="@drawable/ic_add" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorDivider" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvAdditionalItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:nestedScrollingEnabled="false"
+                            android:orientation="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:itemCount="1"
+                            tools:listitem="@layout/row_additional_item" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_2mdp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="@dimen/_8mdp"
+                            app:cardElevation="@dimen/_3mdp">
+
+                            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                <LinearLayout
+                                    android:id="@+id/llAddModule"
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:background="@color/headerBackgroundColor">
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_weight="1"
+                                        android:maxLines="1"
+                                        android:paddingVertical="@dimen/_8mdp"
+                                        android:paddingStart="@dimen/_10mdp"
+                                        android:text="@string/str_module" />
+                                </LinearLayout>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/_5mdp"
+                                    android:layout_marginTop="@dimen/_10mdp"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    app:cardBackgroundColor="@color/white"
+                                    app:cardCornerRadius="@dimen/_8mdp"
+                                    app:cardElevation="@dimen/_3mdp">
+
+                                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                        <LinearLayout
+                                            style="@style/llHorizontalMatchWrap"
+                                            android:background="@color/headerBackgroundColor">
+
+                                            <TextView
+                                                style="@style/headerTextStyle"
+                                                android:layout_weight="1"
+                                                android:maxLines="1"
+                                                android:paddingVertical="@dimen/_8mdp"
+                                                android:paddingStart="@dimen/_10mdp"
+                                                android:text="@string/module_make" />
+
+                                        </LinearLayout>
+
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/rvQuickModule"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:orientation="horizontal"
+                                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                            tools:itemCount="3"
+                                            tools:listitem="@layout/row_quick_module_item" />
+
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/_5mdp"
+                                    android:layout_marginTop="@dimen/_10mdp"
+                                    android:layout_marginBottom="@dimen/_10mdp"
+                                    app:cardBackgroundColor="@color/white"
+                                    app:cardCornerRadius="@dimen/_8mdp"
+                                    app:cardElevation="@dimen/_3mdp">
+
+                                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                        <LinearLayout
+                                            style="@style/llHorizontalMatchWrap"
+                                            android:background="@color/headerBackgroundColor">
+
+                                            <TextView
+                                                style="@style/headerTextStyle"
+                                                android:layout_weight="1"
+                                                android:maxLines="1"
+                                                android:paddingVertical="@dimen/_8mdp"
+                                                android:paddingStart="@dimen/_10mdp"
+                                                android:text="Selected module make" />
+
+                                            <ImageView
+                                                android:id="@+id/ivAddModule"
+                                                android:layout_width="@dimen/_30mdp"
+                                                android:layout_height="match_parent"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="?selectableItemBackgroundBorderless"
+                                                android:padding="@dimen/_5mdp"
+                                                android:src="@drawable/ic_add" />
+                                        </LinearLayout>
+
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/rvSelectedModule"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:orientation="horizontal"
+                                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                            tools:itemCount="3"
+                                            tools:listitem="@layout/row_selected_module_item" />
+
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_5mdp"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:layout_marginBottom="@dimen/_10mdp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="@dimen/_8mdp"
+                            app:cardElevation="@dimen/_3mdp">
+
+                            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:background="@color/headerBackgroundColor">
+
+                                    <TextView
+                                        style="@style/headerTextStyle"
+                                        android:layout_weight="1"
+                                        android:maxLines="1"
+                                        android:paddingVertical="@dimen/_8mdp"
+                                        android:paddingStart="@dimen/_10mdp"
+                                        android:text="@string/str_inverter1" />
+                                </LinearLayout>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/_5mdp"
+                                    android:layout_marginTop="@dimen/_10mdp"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    app:cardBackgroundColor="@color/white"
+                                    app:cardCornerRadius="@dimen/_8mdp"
+                                    app:cardElevation="@dimen/_3mdp">
+
+                                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                        <LinearLayout
+                                            style="@style/llHorizontalMatchWrap"
+                                            android:background="@color/headerBackgroundColor">
+
+                                            <TextView
+                                                style="@style/headerTextStyle"
+                                                android:layout_weight="1"
+                                                android:maxLines="1"
+                                                android:paddingVertical="@dimen/_8mdp"
+                                                android:paddingStart="@dimen/_10mdp"
+                                                android:text="@string/str_inverter_make" />
+
+                                        </LinearLayout>
+
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/rvQuickInverter"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:orientation="horizontal"
+                                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                            tools:itemCount="3"
+                                            tools:listitem="@layout/row_quick_module_item" />
+
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/_5mdp"
+                                    android:layout_marginTop="@dimen/_10mdp"
+                                    android:layout_marginBottom="@dimen/_10mdp"
+                                    app:cardBackgroundColor="@color/white"
+                                    app:cardCornerRadius="@dimen/_8mdp"
+                                    app:cardElevation="@dimen/_3mdp">
+
+                                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                        <LinearLayout
+                                            style="@style/llHorizontalMatchWrap"
+                                            android:background="@color/headerBackgroundColor">
+
+                                            <TextView
+                                                style="@style/headerTextStyle"
+                                                android:layout_weight="1"
+                                                android:maxLines="1"
+                                                android:paddingVertical="@dimen/_8mdp"
+                                                android:paddingStart="@dimen/_10mdp"
+                                                android:text="Selected inverter make" />
+
+                                            <ImageView
+                                                android:id="@+id/ivAddInverter"
+                                                android:layout_width="@dimen/_30mdp"
+                                                android:layout_height="match_parent"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="?selectableItemBackgroundBorderless"
+                                                android:padding="@dimen/_5mdp"
+                                                android:src="@drawable/ic_add" />
+                                        </LinearLayout>
+
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/rvSelectedInverter"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:orientation="horizontal"
+                                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                            tools:itemCount="3"
+                                            tools:listitem="@layout/row_selected_module_item" />
+
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5mdp"
+                    app:cardCornerRadius="@dimen/_8mdp">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_margin="@dimen/_10mdp">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_weight="1"
+                                android:text="@string/total_estimated_cost" />
+
+                            <TextView
+                                android:id="@+id/tvEstimationCost"
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_8mdp"
+                            android:weightSum="2">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:layout_marginEnd="@dimen/_2mdp"
+                                android:layout_weight="1"
+                                android:hint="@string/hint_discount">
+
+                                <EditText
+                                    android:id="@+id/edtDiscount"
+                                    style="@style/edtStyleNumeric"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="12" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/textInputLayoutStyle"
+                                android:layout_marginStart="@dimen/_2mdp"
+                                android:layout_weight="1"
+                                android:hint="@string/hint_discount_type"
+                                app:endIconDrawable="@drawable/ic_drop_down"
+                                app:endIconMode="custom">
+
+                                <EditText
+                                    android:id="@+id/edtDiscountType"
+                                    style="@style/edtStyle"
+                                    android:clickable="true"
+                                    android:focusable="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_5mdp"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/tvDiscount"
+                                style="@style/textViewStyleRegular"
+                                android:layout_width="wrap_content"
+                                android:gravity="left"
+                                android:text="@string/hint_discount_new_lbl"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/edtDiscountInRupee"
+                                style="@style/textViewStyleRegular"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_5mdp"
+                            android:gravity="center">
+
+                            <TextView
+                                style="@style/textViewStyleRegular"
+                                android:layout_width="wrap_content"
+                                android:gravity="left"
+                                android:text="@string/net_payable"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/edtNetPayableAmountAfterSubsidy"
+                                style="@style/textViewStyleRegular"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:hint="@string/important_notes">
+
+                            <EditText
+                                android:id="@+id/edtImpNotes"
+                                style="@style/edtStyle"
+                                android:gravity="top"
+                                android:singleLine="false"
+                                android:maxEms="500"
+                                android:maxLines="5"
+                                android:text="@{model.important_notes}"
+                                android:imeOptions="actionNext"
+                                android:inputType="textMultiLine" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <CheckBox
+                            android:id="@+id/checkboxSendEmailToCustomer"
+                            style="@style/checkboxWrapWrap"
+                            android:text="@string/send_email_to_customer" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSubmit"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_130mdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_5mdp"
+            android:layout_marginStart="@dimen/_2mdp"
+            android:text="@string/str_submit"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</layout>

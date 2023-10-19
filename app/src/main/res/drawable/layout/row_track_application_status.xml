@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.StageList" />
+
+        <variable
+            name="isUpperStatusViewVisible"
+            type="Boolean" />
+
+        <variable
+            name="isLowerStatusViewVisible"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/llVerticalMatchWrap"
+        android:layout_marginHorizontal="@dimen/_15mdp">
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <View
+                    setVisibility="@{isUpperStatusViewVisible}"
+                    android:layout_width="2dp"
+                    android:layout_height="@dimen/_5mdp"
+                    android:background="@color/buttonBgColor" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/_22mdp"
+                    android:layout_height="@dimen/_22mdp"
+                    app:cardBackgroundColor="@color/buttonBgColor"
+                    app:cardCornerRadius="@dimen/_11mdp">
+
+                    <TextView
+                        style="@style/textViewStyleExtraSmall"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@{``+model.stageNo}"
+                        android:textColor="@color/buttonTextColor"
+                        android:textSize="@dimen/_12mdp" />
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    setVisibility="@{isLowerStatusViewVisible}"
+                    android:layout_width="2dp"
+                    android:layout_height="@dimen/_5mdp"
+                    android:background="@color/buttonBgColor" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10mdp"
+                android:layout_marginEnd="@dimen/_10mdp"
+                android:textColor="@color/black"
+                android:text="@{model.stageTitle}"
+                android:textSize="@dimen/_11mdp" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

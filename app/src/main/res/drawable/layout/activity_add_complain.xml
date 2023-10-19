@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isDocumentAvailable"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout style="@style/llVerticalMatchMatch">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:layout_weight="1">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10mdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_8mdp"
+                app:cardElevation="@dimen/_1mdp">
+
+                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:background="@color/headerBackgroundColor">
+
+                        <TextView
+                            android:id="@+id/txtProjectName"
+                            style="@style/textViewStyleRegular"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:padding="@dimen/_10mdp"
+                            android:text="Project Name" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:layout_marginHorizontal="@dimen/_10mdp"
+                        android:hint="@string/hint_subject"
+                        app:endIconDrawable="@drawable/ic_drop_down"
+                        app:endIconMode="custom">
+
+                        <EditText
+                            android:id="@+id/edtSelectSubject"
+                            style="@style/edtStyle"
+                            android:clickable="true"
+                            android:focusable="false" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:layout_marginHorizontal="@dimen/_10mdp"
+                        android:hint="@string/hint_comments_with_at_risk_mark">
+
+                        <EditText
+                            android:id="@+id/edtComments"
+                            style="@style/edtStyle"
+                            android:inputType="textMultiLine"
+                            android:maxLines="3"
+                            android:singleLine="false" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10mdp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_8mdp"
+                        app:cardElevation="@dimen/_1mdp">
+
+                        <LinearLayout style="@style/llVerticalMatchWrap">
+
+                            <LinearLayout
+                                style="@style/llHorizontalMatchWrap"
+                                android:background="@color/headerBackgroundColor">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_weight="1"
+                                    android:maxLines="1"
+                                    android:paddingVertical="@dimen/_8mdp"
+                                    android:paddingStart="@dimen/_10mdp"
+                                    android:text="@string/upload_document" />
+
+                                <ImageView
+                                    android:id="@+id/imgAddDocument"
+                                    android:layout_width="@dimen/_30mdp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center_vertical"
+                                    android:background="?selectableItemBackgroundBorderless"
+                                    android:padding="@dimen/_5mdp"
+                                    android:src="@drawable/ic_add" />
+                            </LinearLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewDocument"
+                                setVisibility="@{!isDocumentAvailable}"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:listitem="@layout/row_media_item" />
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSubmit"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_150mdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_20mdp"
+            android:text="@string/str_submit" />
+    </LinearLayout>
+</layout>

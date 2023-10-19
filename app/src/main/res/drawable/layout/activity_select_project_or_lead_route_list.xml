@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isTyping"
+            type="Boolean" />
+
+        <variable
+            name="isShowSearchInfo"
+            type="Boolean" />
+
+
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/headerBackgroundColor"
+            app:tabBackground="@drawable/tab_selected"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabMode="fixed"
+            app:tabRippleColor="@null"
+            app:tabSelectedTextColor="#ffffff"
+            app:tabTextAppearance="@style/AppTabTextAppearance">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabProject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/project" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabLead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/leads" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+
+        <include
+            android:id="@+id/layoutSearchBar"
+            layout="@layout/layout_search_bar"
+            bind:isTyping="@{isTyping}" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewSelectedProjectOrLeadList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_5mdp"
+            android:fadeScrollbars="true"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/row_selected_route_project_or_lead_tag_item" />
+
+        <FrameLayout
+            style="@style/llVerticalMatchMatch"
+            android:layout_weight="1">
+
+            <include
+                android:id="@+id/layoutNoResultFound"
+                layout="@layout/layout_no_data_found" />
+
+
+            <TextView
+                style="@style/textViewStyleRegular"
+                setVisibility="@{isShowSearchInfo}"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/_15mdp"
+                android:gravity="center"
+                android:text="@string/search_your_project_or_lead_to_select"
+                android:textColor="#808080" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewProjectOrLeadList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:fadeScrollbars="true"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_50mdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_route_project_or_lead_item" />
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSelect"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_150mdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_10mdp"
+            android:text="@string/select" />
+    </LinearLayout>
+
+
+</layout>

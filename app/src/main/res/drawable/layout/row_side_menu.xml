@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.common.HomeOption" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            setVisibility="@{!model.showDivider}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_10mdp"
+            android:paddingVertical="@dimen/_5mdp"
+            >
+
+            <ImageView
+                bindImage="@{model.icon}"
+                android:padding="@dimen/_2mdp"
+                android:layout_width="@dimen/_20mdp"
+                android:layout_height="@dimen/_20mdp" />
+
+            <TextView
+                style="@style/textViewStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15mdp"
+                android:layout_marginEnd="@dimen/_15mdp"
+                android:text="@{model.title}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11mdp" />
+        </LinearLayout>
+
+        <View
+            setVisibility="@{model.showDivider}"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDivider"
+            android:layout_marginVertical="@dimen/_10mdp"
+            android:layout_marginHorizontal="@dimen/_20mdp" />
+
+    </LinearLayout>
+</layout>

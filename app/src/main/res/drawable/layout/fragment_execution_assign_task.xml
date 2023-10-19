@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/llVerticalMatchMatch">
+
+        <FrameLayout
+            style="@style/llVerticalMatchMatch"
+            android:layout_weight="1">
+
+            <include
+                android:id="@+id/layoutNoResultFound"
+                layout="@layout/layout_no_data_found" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewAssignTask"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_10mdp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_20mdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnShowAssignedCheckList"
+            style="@style/ButtonStyle"
+            android:layout_width="@dimen/_200mdp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/_20mdp"
+            android:text="@string/btn_show_assigned_checklist" />
+    </LinearLayout>
+</layout>

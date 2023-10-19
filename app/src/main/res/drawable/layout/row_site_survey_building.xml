@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.Building" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_5mdp"
+            android:layout_marginTop="@dimen/_10mdp"
+            android:layout_marginBottom="@dimen/_1mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_1mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_marginBottom="@dimen/_5mdp"
+                android:gravity="top">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:background="@color/headerBackgroundColor">
+
+                    <TextView
+                        style="@style/headerTextStyle"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_15mdp"
+                        android:paddingVertical="@dimen/_5mdp"
+                        android:text="@{model.buildingName}"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageViewOption"
+                        android:layout_width="@dimen/_20mdp"
+                        android:layout_height="@dimen/_20mdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/_5mdp"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:padding="@dimen/_3mdp"
+                        android:src="@drawable/ic_three_dot_horizontal"
+                        />
+                </LinearLayout>
+
+                <LinearLayout style="@style/llHorizontalMatchWrap">
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:layout_marginStart="@dimen/_15mdp"
+                        android:layout_marginTop="@dimen/_5mdp"
+                        android:layout_marginBottom="@dimen/_3mdp"
+                        android:layout_weight="1"
+                        android:gravity="top">
+
+
+                            <TextView
+                                android:layout_marginTop="@dimen/_3mdp"
+                                android:gravity="top"
+                                style="@style/textViewStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:text="@{model.contactName+` (`+String.valueOf(model.capacity)+` kW) - `+model.surveyerName}" />
+
+
+
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:gravity="top">
+
+                            <ImageView
+                                android:layout_width="@dimen/_10mdp"
+                                android:layout_height="@dimen/_10mdp"
+                                android:layout_marginTop="@dimen/_3mdp"
+                                android:src="@drawable/ic_location_small" />
+
+                            <TextView
+                                style="@style/textViewStyleSmall"
+                                android:layout_marginStart="@dimen/_5mdp"
+                                android:layout_weight="0.7"
+                                android:ellipsize="end"
+                                android:maxLines="2"
+                                android:text="@{model.address}" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/txtGeoLocation"
+                            style="@style/textViewStyleSmall"
+                            android:gravity="end"
+                            android:visibility="gone"
+                            android:layout_marginTop="@dimen/_3mdp"
+                            android:text="@{model.contactName}" />
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llVerticalWrapWrap"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10mdp"
+                        >
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:id="@+id/imageViewCall"
+                            android:layout_width="@dimen/_25mdp"
+                            android:layout_height="@dimen/_25mdp"
+                            android:layout_gravity="end|bottom"
+                            android:layout_marginStart="@dimen/_5mdp"
+                            android:layout_marginEnd="@dimen/_5mdp"
+                            android:src="@drawable/ic_phone_call" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

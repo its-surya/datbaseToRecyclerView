@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="mapImage"
+            type="String" />
+
+
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:gravity="left">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_10mdp"
+            android:layout_weight="1"
+            app:cardCornerRadius="@dimen/_8mdp"
+            app:cardElevation="@dimen/_3mdp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    loadImage="@{mapImage}"
+                    setVisibility="@{!mapImage.empty}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop" />
+
+                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                    <androidx.core.widget.NestedScrollView
+                        android:id="@+id/scrollView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            style="@style/llVerticalMatchWrap"
+                            android:paddingTop="@dimen/_380mdp">
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycleBuildingHistory"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nestedScrollingEnabled="false"
+                                android:orientation="vertical"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+                            <LinearLayout
+                                style="@style/llVerticalMatchWrap"
+                                android:background="@color/white">
+
+                                <TextView
+                                    style="@style/headerTextStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_marginStart="@dimen/_5mdp"
+                                    android:maxLines="1"
+                                    android:paddingVertical="@dimen/_8mdp"
+                                    android:paddingStart="@dimen/_10mdp"
+                                    android:text="Customer Details" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:background="@color/colorFlatIcon" />
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:paddingHorizontal="@dimen/_15mdp"
+                                    android:paddingVertical="@dimen/_2mdp">
+
+                                    <TextView
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="bottom"
+                                        android:layout_weight="1"
+                                        android:text="Customer Name" />
+
+                                    <TextView
+                                        android:id="@+id/txtCustomerName"
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="bottom"
+                                        android:layout_weight="1"
+                                        android:text="" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:paddingHorizontal="@dimen/_15mdp"
+                                    android:paddingVertical="@dimen/_2mdp">
+
+                                    <TextView
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="bottom"
+                                        android:layout_weight="1"
+                                        android:text="Category" />
+
+                                    <TextView
+                                        android:id="@+id/txtCustomerCategory"
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="bottom"
+                                        android:layout_weight="1"
+                                        android:text="" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:paddingHorizontal="@dimen/_15mdp"
+                                    android:paddingVertical="@dimen/_2mdp">
+
+                                    <TextView
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="bottom"
+                                        android:layout_weight="1"
+                                        android:text="Mobile Number" />
+
+                                    <TextView
+                                        android:id="@+id/txtCustomerMobileNumber"
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="bottom"
+                                        android:layout_weight="1"
+                                        android:text="" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:paddingHorizontal="@dimen/_15mdp"
+                                    android:paddingVertical="@dimen/_2mdp">
+
+                                    <TextView
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="bottom"
+                                        android:layout_weight="1"
+                                        android:text="Email Address" />
+
+                                    <TextView
+                                        android:id="@+id/txtCustomerEmailAddress"
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="bottom"
+                                        android:layout_weight="1"
+                                        android:text="" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:paddingHorizontal="@dimen/_15mdp"
+                                    android:paddingVertical="@dimen/_2mdp">
+
+                                    <TextView
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="bottom"
+                                        android:layout_weight="1"
+                                        android:text="Surveyor Name" />
+
+                                    <TextView
+                                        android:id="@+id/txtSurveyorName"
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="bottom"
+                                        android:layout_weight="1"
+                                        android:text="" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:paddingHorizontal="@dimen/_15mdp"
+                                    android:paddingVertical="@dimen/_2mdp">
+
+                                    <TextView
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="bottom"
+                                        android:layout_weight="1"
+                                        android:text="@string/consumer_no" />
+
+                                    <TextView
+                                        android:id="@+id/txtConsumerNo"
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="bottom"
+                                        android:layout_weight="1"
+                                        android:text="" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:paddingHorizontal="@dimen/_15mdp"
+                                    android:paddingVertical="@dimen/_2mdp">
+
+                                    <LinearLayout
+                                        style="@style/llHorizontalMatchWrap"
+                                        android:layout_marginTop="@dimen/_3mdp"
+                                        android:gravity="top">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_10mdp"
+                                            android:layout_height="@dimen/_10mdp"
+                                            android:layout_marginTop="@dimen/_2mdp"
+                                            android:layout_marginEnd="@dimen/_5mdp"
+                                            android:src="@drawable/ic_location_small" />
+
+                                        <TextView
+                                            android:id="@+id/txtAddress"
+                                            style="@style/textViewStyleSmall"
+                                            android:layout_gravity="top"
+                                            android:layout_weight="0.7"
+                                            android:ellipsize="end"
+                                            android:maxLines="3" />
+                                    </LinearLayout>
+
+                                    <TextView
+                                        style="@style/textViewStyleSmall"
+                                        android:layout_gravity="bottom"
+                                        android:layout_weight="1"
+                                        android:text="" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    style="@style/llHorizontalMatchWrap"
+                                    android:layout_marginTop="@dimen/_10mdp">
+
+                                    <LinearLayout
+                                        style="@style/llVerticalMatchWrap"
+                                        android:layout_weight="1">
+
+                                        <androidx.cardview.widget.CardView
+                                            android:id="@+id/cardViewCustomerSignature"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="@dimen/_5mdp"
+
+                                            app:cardBackgroundColor="@color/white"
+                                            app:cardCornerRadius="@dimen/_8mdp"
+                                            app:cardElevation="@dimen/_1mdp">
+
+                                            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                                <LinearLayout
+                                                    style="@style/llHorizontalMatchWrap"
+                                                    android:background="@color/headerBackgroundColor">
+
+                                                    <LinearLayout
+                                                        style="@style/llHorizontalMatchWrap"
+                                                        android:gravity="center_vertical">
+
+                                                        <TextView
+                                                            style="@style/headerTextStyle"
+                                                            android:maxLines="1"
+                                                            android:gravity="center"
+                                                            android:paddingVertical="@dimen/_8mdp"
+                                                            android:text="Customer Signature" />
+
+                                                    </LinearLayout>
+
+
+                                                </LinearLayout>
+
+                                                <View
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="0.5dp"
+                                                    android:background="@color/colorFlatIcon" />
+
+                                                <FrameLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content">
+
+                                                    <TextView
+                                                        android:id="@+id/txtCustomerSignatureInfo"
+                                                        style="@style/textViewStyleSmall"
+                                                        android:hint="Tap to add signature"
+                                                        android:layout_gravity="center"
+                                                        android:gravity="center" />
+
+                                                    <ImageView
+                                                        android:id="@+id/imageViewCustomerSignature"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="@dimen/_100mdp" />
+                                                </FrameLayout>
+
+
+                                            </LinearLayout>
+                                        </androidx.cardview.widget.CardView>
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            style="@style/textInputLayoutStyle"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginHorizontal="@dimen/_10mdp"
+                                            android:layout_weight="1"
+                                            android:hint="Customer Name">
+
+                                            <com.google.android.material.textfield.TextInputEditText
+                                                android:id="@+id/edtCustomerName"
+                                                style="@style/edtStyle"
+                                                android:imeOptions="actionNext"
+                                                android:maxLines="1" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            style="@style/textInputLayoutStyle"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginHorizontal="@dimen/_10mdp"
+                                            android:layout_weight="1"
+                                            android:hint="Designation">
+
+                                            <com.google.android.material.textfield.TextInputEditText
+                                                android:id="@+id/edtCustomerDesignation"
+                                                style="@style/edtStyle"
+                                                android:imeOptions="actionNext"
+                                                android:maxLines="1" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        style="@style/llVerticalMatchWrap"
+                                        android:layout_weight="1">
+
+                                        <androidx.cardview.widget.CardView
+                                            android:id="@+id/cardViewSurveyorSignature"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="@dimen/_5mdp"
+                                            android:layout_weight="1"
+                                            app:cardBackgroundColor="@color/white"
+                                            app:cardCornerRadius="@dimen/_8mdp"
+                                            app:cardElevation="@dimen/_1mdp">
+
+                                            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                                <LinearLayout
+                                                    style="@style/llHorizontalMatchWrap"
+                                                    android:background="@color/headerBackgroundColor">
+
+                                                    <LinearLayout
+                                                        style="@style/llHorizontalMatchWrap"
+                                                        android:gravity="center_vertical">
+
+                                                        <TextView
+                                                            style="@style/headerTextStyle"
+                                                            android:gravity="center"
+                                                            android:maxLines="1"
+                                                            android:paddingVertical="@dimen/_8mdp"
+                                                            android:text="Surveyor Signature" />
+                                                    </LinearLayout>
+
+
+                                                </LinearLayout>
+
+                                                <View
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="0.5dp"
+                                                    android:background="@color/colorFlatIcon" />
+
+
+                                                <FrameLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content">
+
+                                                    <TextView
+                                                        android:id="@+id/txtSurveyorSignatureInfo"
+                                                        style="@style/textViewStyleSmall"
+                                                        android:hint="Tap to add signature"
+                                                        android:layout_gravity="center"
+                                                        android:gravity="center" />
+
+                                                    <ImageView
+                                                        android:id="@+id/imageViewSurveyorSignature"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="@dimen/_100mdp" />
+                                                </FrameLayout>
+                                            </LinearLayout>
+                                        </androidx.cardview.widget.CardView>
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            style="@style/textInputLayoutStyle"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginHorizontal="@dimen/_10mdp"
+                                            android:layout_weight="1"
+                                            android:hint="Surveyor Name">
+
+                                            <com.google.android.material.textfield.TextInputEditText
+                                                android:id="@+id/edtSurveyorName"
+                                                style="@style/edtStyle"
+                                                android:imeOptions="actionNext"
+                                                android:maxLines="1" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            style="@style/textInputLayoutStyle"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginHorizontal="@dimen/_10mdp"
+                                            android:layout_weight="1"
+                                            android:hint="Designation">
+
+                                            <com.google.android.material.textfield.TextInputEditText
+                                                android:id="@+id/edtSurveyorDesignation"
+                                                style="@style/edtStyle"
+                                                android:imeOptions="actionDone"
+                                                android:maxLines="1" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/_5mdp"
+                                    android:layout_marginTop="@dimen/_8mdp"
+                                    android:layout_marginBottom="@dimen/_2mdp"
+                                    app:cardBackgroundColor="@color/white"
+                                    app:cardCornerRadius="@dimen/_8mdp"
+                                    app:cardElevation="@dimen/_1mdp">
+
+                                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                                        <LinearLayout
+                                            style="@style/llHorizontalMatchWrap"
+                                            android:background="@color/headerBackgroundColor">
+
+                                            <LinearLayout
+                                                style="@style/llHorizontalMatchWrap"
+                                                android:layout_weight="1"
+                                                android:gravity="center_vertical">
+
+                                                <TextView
+                                                    style="@style/headerTextStyle"
+                                                    android:layout_width="wrap_content"
+                                                    android:maxLines="1"
+                                                    android:paddingVertical="@dimen/_8mdp"
+                                                    android:paddingStart="@dimen/_10mdp"
+                                                    android:text="Add More Signature" />
+
+                                            </LinearLayout>
+
+                                            <ImageView
+                                                android:id="@+id/imgAddOtherSignature"
+                                                android:layout_width="@dimen/_30mdp"
+                                                android:layout_height="match_parent"
+                                                android:layout_gravity="center_vertical"
+                                                android:background="?selectableItemBackgroundBorderless"
+                                                android:padding="@dimen/_5mdp"
+                                                android:src="@drawable/ic_add" />
+                                        </LinearLayout>
+
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/rvOtherSignature"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:nestedScrollingEnabled="false"
+                                            android:orientation="vertical"
+                                            android:padding="@dimen/_4mdp"
+                                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                            tools:listitem="@layout/row_quick_site_survey_media_item" />
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.core.widget.NestedScrollView>
+
+                    <LinearLayout
+                        style="@style/llVerticalMatchWrap"
+                        android:background="@color/white"
+                        android:gravity="center">
+
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSave"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_150mdp"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginVertical="@dimen/_5mdp"
+                        android:text="@string/str_save" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnBack"
+                        style="@style/ButtonStyle"
+                        android:layout_width="@dimen/_150mdp"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginVertical="@dimen/_5mdp"
+                        android:text="Back"
+                        android:visibility="gone" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="filter"
+            type="com.energy.ahasolar.dataservice.model.response.MyRouteDropDownResponse" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchMatch"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <include layout="@layout/toolbar_simple_back" />
+
+
+        <LinearLayout
+            style="@style/llVerticalMatchMatch"
+            android:layout_margin="@dimen/_10mdp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:hint="@string/select_route_date"
+                app:endIconDrawable="@drawable/ic_drop_down"
+                app:endIconMode="custom">
+
+                <EditText
+                    android:id="@+id/edtRouteDate"
+                    style="@style/edtStyle"
+                    android:clickable="true"
+                    android:focusable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:hint="@string/select_from_date"
+                app:endIconDrawable="@drawable/ic_calendar"
+                app:endIconMode="custom">
+
+                <EditText
+                    android:id="@+id/edtFromDate"
+                    style="@style/edtStyle"
+                    android:clickable="true"
+                    android:focusable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:hint="@string/select_to_date"
+                app:endIconDrawable="@drawable/ic_calendar"
+                app:endIconMode="custom">
+
+                <EditText
+                    android:id="@+id/edtToDate"
+                    style="@style/edtStyle"
+                    android:clickable="true"
+                    android:focusable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:hint="@string/select_route_status"
+                app:endIconDrawable="@drawable/ic_drop_down"
+                app:endIconMode="custom">
+
+                <EditText
+                    android:id="@+id/edtRouteStatus"
+                    style="@style/edtStyle"
+                    android:clickable="true"
+                    android:focusable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:hint="@string/hint_select_co_worker"
+                app:endIconDrawable="@drawable/ic_drop_down"
+                app:endIconMode="custom">
+
+                <EditText
+                    android:id="@+id/edtCoWorker"
+                    style="@style/edtStyle"
+                    android:clickable="true"
+                    android:focusable="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnClearFilter"
+                    style="@style/ButtonGrayStyle"
+                    android:layout_width="@dimen/_120mdp"
+                    android:text="Clear" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnApplyFilter"
+                    style="@style/ButtonStyle"
+                    android:layout_width="@dimen/_120mdp"
+                    android:text="Apply" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</layout>

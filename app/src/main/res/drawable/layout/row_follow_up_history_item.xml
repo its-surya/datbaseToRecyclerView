@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.FollowUpHistoryModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            style="@style/llHorizontalMatchWrap"
+            android:gravity="top"
+            android:padding="@dimen/_5mdp">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:layout_marginHorizontal="@dimen/_5mdp"
+                android:layout_weight="1"
+                android:gravity="top">
+
+                <TextView
+                    style="@style/textViewStyleSmall"
+                    android:layout_weight="1"
+                    android:text="@{model.remarks}" />
+
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:layout_marginTop="@dimen/_10mdp"
+                    android:gravity="top">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.6"
+                        android:maxLines="2"
+                        android:text="Status" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.4"
+                        android:maxLines="2"
+                        android:text="@{model.status}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:gravity="top">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.6"
+                        android:maxLines="2"
+                        android:text="Schedule Date" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.4"
+                        android:maxLines="2"
+                        android:text="@{model.scheduleDate}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:gravity="top">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.6"
+                        android:text="Schedule time slot" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.4"
+                        android:text="@{model.scheduleTimeSlot}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    android:gravity="top">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.6"
+                        android:text="Schedule By" />
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_weight="0.4"
+                        android:text="@{model.activityBy}" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_margin="@dimen/_5mdp"
+                    android:background="@color/colorDivider" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

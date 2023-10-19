@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.ProjectDetailOptionMenuResponse.ProjectOptionSection" />
+    </data>
+
+    <LinearLayout
+        style="@style/llVerticalMatchWrap"
+      android:layout_margin="@dimen/_5mdp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginBottom="@dimen/_3mdp"
+            android:elevation="@dimen/_5mdp"
+            app:cardCornerRadius="@dimen/_5mdp">
+
+
+            <LinearLayout style="@style/llVerticalMatchWrap">
+
+                <TextView
+                    style="@style/headerTextStyle"
+                    android:layout_height="@dimen/_30mdp"
+                    android:paddingHorizontal="@dimen/_10mdp"
+                    android:gravity="center_vertical"
+                    android:text="@{model.title}" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewProjectOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="4"
+                    tools:listitem="@layout/row_project_details_option_menu_for_pro_user" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+</layout>

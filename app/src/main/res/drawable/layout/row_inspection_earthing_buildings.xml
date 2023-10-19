@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isShowLightningPit"
+            type="Boolean" />
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.common.InspectionEarthingBuildingModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:gravity="top">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewRemoveView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_26mdp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/_10mdp"
+                android:padding="@dimen/_5mdp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/_13mdp">
+
+                <TextView
+                    style="@style/textViewStyleRegular"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_20mdp"
+                    android:layout_marginVertical="@dimen/_5mdp"
+                    android:gravity="center"
+                    android:text="@{`Building `+model.id}"
+                    android:textColor="@color/white" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5mdp"
+                android:layout_marginBottom="@dimen/_5mdp"
+                app:cardCornerRadius="@dimen/_5mdp">
+
+                <LinearLayout style="@style/llVerticalMatchWrap">
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_height="@dimen/_35mdp"
+                        android:background="@color/headerBackgroundColor">
+
+                        <TextView
+                            style="@style/headerTextStyle"
+                            android:layout_width="wrap_content"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="@string/earth_pit" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35mdp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            style="@style/textViewStyleRegular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_35mdp"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="Earth Strip Connection" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_height="@dimen/_35mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_35mdp"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="Body Earthing Pit-1" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35mdp"
+                            android:layout_weight="1" />
+
+                        <RadioGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkBodyEarthingPit1"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.bodyEarthingPit1.equals(`0`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkBodyEarthingPit1"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_10mdp"
+                                android:checked="@{model.bodyEarthingPit1.equals(`1`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        android:layout_height="@dimen/_35mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_35mdp"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="Body Earthing Pit-2" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35mdp"
+                            android:layout_weight="1" />
+
+                        <RadioGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkBodyEarthingPit2"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.bodyEarthingPit2.equals(`0`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkBodyEarthingPit2"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_10mdp"
+                                android:checked="@{model.bodyEarthingPit2.equals(`1`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        setVisibility="@{isShowLightningPit}"
+                        android:layout_height="@dimen/_35mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_35mdp"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="Lightning Earthing Pit-1" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35mdp"
+                            android:layout_weight="1" />
+
+                        <RadioGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkLightningEarthingPit1"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.lightningEarthingPit1.equals(`0`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkLightningEarthingPit1"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_10mdp"
+                                android:checked="@{model.lightningEarthingPit1.equals(`1`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/llHorizontalMatchWrap"
+                        setVisibility="@{isShowLightningPit}"
+                        android:layout_height="@dimen/_35mdp">
+
+                        <TextView
+                            style="@style/textViewStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_35mdp"
+                            android:gravity="left|center_vertical"
+                            android:paddingHorizontal="@dimen/_8mdp"
+                            android:paddingVertical="@dimen/_5mdp"
+                            android:text="Lightning Earthing Pit-2" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35mdp"
+                            android:layout_weight="1" />
+
+                        <RadioGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10mdp"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/_5mdp">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonOkLightningEarthingPit2"
+                                style="@style/myRadioButton"
+                                android:checked="@{model.lightningEarthingPit2.equals(`0`)}"
+                                android:text="@string/str_ok" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radioButtonNotOkLightningEarthingPit2"
+                                style="@style/myRadioButton"
+                                android:layout_marginLeft="@dimen/_10mdp"
+                                android:checked="@{model.lightningEarthingPit2.equals(`1`)}"
+                                android:text="@string/str_not_ok" />
+                        </RadioGroup>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

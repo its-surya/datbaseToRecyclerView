@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.common.InspectionPvModuleModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            style="@style/llVerticalMatchWrap"
+            android:layout_marginHorizontal="@dimen/_5mdp"
+            android:gravity="top"
+            android:padding="@dimen/_5mdp">
+
+            <FrameLayout
+                style="@style/llHorizontalMatchWrap"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/textViewStyleLarge"
+                    android:layout_width="@dimen/_25mdp"
+                    android:layout_height="@dimen/_25mdp"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="@dimen/_5mdp"
+                    android:background="@drawable/shape_round_yellow"
+                    android:gravity="center"
+                    android:text="@{``+model.id}"
+                    android:textColor="@color/white" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewRemoveView"
+                    setVisibility="@{model.id>1}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20mdp"
+                    android:layout_gravity="center|end"
+                    android:padding="@dimen/_5mdp"
+                    app:cardBackgroundColor="@color/colorRed"
+                    app:cardCornerRadius="@dimen/_10mdp">
+
+                    <TextView
+                        style="@style/textViewStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="@dimen/_10mdp"
+                        android:text="Remove"
+                        android:textColor="@color/white" />
+                </androidx.cardview.widget.CardView>
+
+            </FrameLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:hint="@string/hint_rated_capacity_of_solar_module_in_watt_peak_more_than_200wp">
+
+
+                <EditText
+                    android:id="@+id/edtModuleCapacity"
+                    style="@style/edtStyleNumeric"
+                    android:imeOptions="actionNext"
+                    android:digits="0123456789."
+                    android:inputType="numberDecimal"
+                    android:maxLength="100"
+                    android:text="@{model.moduleCapacity}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:hint="@string/hint_make_of_solar_pv_module"
+                app:endIconDrawable="@drawable/ic_drop_down"
+                app:endIconMode="custom">
+
+
+                <EditText
+                    android:id="@+id/edtModuleMakeOfSolarPvModel"
+                    style="@style/edtStyle"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:text="@{model.makeOfPvModule.empty?``:model.makeOfPvModule}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:hint="@string/hint_number_of_modules">
+
+                <EditText
+                    android:id="@+id/edtNumberOfModule"
+                    style="@style/edtStyle"
+                    android:imeOptions="actionNext"
+                    android:digits="0123456789"
+                    android:inputType="number"
+                    android:maxLength="100"
+                    android:text="@{model.numberOfPvModule}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:hint="@string/model_no">
+
+                <EditText
+                    android:id="@+id/edtModelNo"
+                    style="@style/edtStyle"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:digits="abcdegfghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_/"
+                    android:maxLength="100"
+                    android:text="@{model.modelOfPvModule}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:hint="@string/hint_select_type_of_module"
+                app:endIconDrawable="@drawable/ic_drop_down"
+                app:endIconMode="custom">
+
+                <EditText
+                    android:id="@+id/edtTypeOfModule"
+                    style="@style/edtStyle"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:text="@{model.typeOfPvModule}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:id="@+id/llOtherTypeOfModule"
+                android:hint="@string/hint_other_type_of_module"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/edtOtherTypeOfModule"
+                    style="@style/edtStyle"
+
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="100"
+
+                    android:text="@{model.otherTypeOfPvModule}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

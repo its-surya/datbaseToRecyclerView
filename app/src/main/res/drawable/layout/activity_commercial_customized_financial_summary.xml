@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.energy.ahasolar.dataservice.model.response.CommercialFinalizeReport" />
+
+        <variable
+            name="isLoadApi"
+            type="Boolean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_simple_back" />
+
+        <androidx.core.widget.NestedScrollView
+            setVisibility="@{isLoadApi}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                style="@style/llVerticalMatchWrap"
+                android:padding="@dimen/_10mdp">
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.isLumpsumcost()==1}"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:gravity="center">
+
+                    <TextView
+                        style="@style/textViewStyleRegular"
+                        android:layout_width="wrap_content"
+                        android:gravity="left"
+                        android:text="@string/project_system_cost_inc_tax"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/edtProjectSystemCost"
+                        style="@style/textViewStyleRegular"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="@{` `+model.projectSystemCost}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/llHorizontalMatchWrap"
+                    setVisibility="@{model.isLumpsumcost()==1}"
+                    android:layout_marginTop="@dimen/_5mdp"
+                    android:gravity="center">
+
+                    <TextView
+                        style="@style/textViewStyleRegular"
+                        android:layout_width="wrap_content"
+                        android:gravity="left"
+                        android:text="Total Cost(₹) (Inc. Tax) "
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/edtTotalCost"
+                        style="@style/textViewStyleRegular"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="@{``+model.totalCost}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    setVisibility="@{model.isLumpsumcost()==0}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_1mdp"
+                    android:layout_marginTop="@dimen/_20mdp"
+                    android:layout_marginBottom="@dimen/_2mdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_8mdp"
+                    app:cardElevation="@dimen/_1mdp">
+
+                    <LinearLayout style="@style/llVerticalMatchWrap">
+
+                        <LinearLayout
+                            style="@style/llHorizontalMatchWrap"
+                            android:background="@color/headerBackgroundColor"
+                            android:gravity="top"
+                            android:paddingVertical="@dimen/_10mdp">
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Category" />
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Quantity" />
+
+                            <TextView
+                                style="@style/headerTextStyle"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Cost" />
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewProduct"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:orientation="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/row_commercial_equipment_report_item" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSaveAndViewReport"
+            style="@style/ButtonStyle"
+            setVisibility="@{isLoadApi}"
+            android:layout_width="@dimen/_170mdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_15mdp"
+            android:text="@string/save_view_report" />
+    </LinearLayout>
+</layout>
