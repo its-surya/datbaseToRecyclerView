@@ -10,8 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
-        tools:layout_editor_absoluteX="181dp"
-        tools:layout_editor_absoluteY="26dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-87dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,15 +27,15 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="16dp">
 
-<!--                <TextView-->
-<!--                    android:id="@+id/pd_textView"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="#f9b11f"-->
-<!--                    android:padding="10dp"-->
-<!--                    android:text="Project Details"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textStyle="bold" />-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/pd_textView"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:background="#f9b11f"-->
+                <!--                    android:padding="10dp"-->
+                <!--                    android:text="Project Details"-->
+                <!--                    android:textColor="@color/white"-->
+                <!--                    android:textStyle="bold" />-->
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -52,7 +53,6 @@
 
                     <ImageView
                         android:id="@+id/tick1"
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignTop="@id/pd_textView"
@@ -61,7 +61,8 @@
                         android:layout_marginTop="1dp"
                         android:layout_marginEnd="2dp"
                         android:layout_marginBottom="-1dp"
-                        android:src="@drawable/black_check_24" />
+                        android:src="@drawable/black_check_24"
+                        android:visibility="gone" />
                 </RelativeLayout>
 
 
@@ -184,8 +185,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:textSize="10sp"
                                     android:text="Agricultural"
+                                    android:textSize="10sp"
                                     android:textStyle="bold" />
 
                             </LinearLayout>
@@ -236,11 +237,11 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Commercial"
-                                    android:textStyle="bold"
-                                    android:textSize="10sp"
+                                    android:layout_gravity="center"
                                     android:layout_marginRight="2dp"
-                                    android:layout_gravity="center" />
+                                    android:text="Commercial"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
 
                             </LinearLayout>
 
@@ -322,16 +323,16 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="16dp">
 
-<!--                <TextView-->
-<!--                    android:id="@+id/td_textView"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="#f9b11f"-->
-<!--                    android:backgroundTint="#f9b11f"-->
-<!--                    android:padding="10dp"-->
-<!--                    android:text="Technical Details"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textStyle="bold" />-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/td_textView"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:background="#f9b11f"-->
+                <!--                    android:backgroundTint="#f9b11f"-->
+                <!--                    android:padding="10dp"-->
+                <!--                    android:text="Technical Details"-->
+                <!--                    android:textColor="@color/white"-->
+                <!--                    android:textStyle="bold" />-->
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -349,7 +350,6 @@
 
                     <ImageView
                         android:id="@+id/tick2"
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignTop="@id/td_textView"
@@ -358,7 +358,8 @@
                         android:layout_marginTop="1dp"
                         android:layout_marginEnd="2dp"
                         android:layout_marginBottom="-1dp"
-                        android:src="@drawable/black_check_24" />
+                        android:src="@drawable/black_check_24"
+                        android:visibility="gone" />
                 </RelativeLayout>
 
 
@@ -457,7 +458,6 @@
 
                     <ImageView
                         android:id="@+id/tick3"
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignTop="@id/bd_textView"
@@ -466,7 +466,8 @@
                         android:layout_marginTop="1dp"
                         android:layout_marginEnd="2dp"
                         android:layout_marginBottom="-1dp"
-                        android:src="@drawable/black_check_24" />
+                        android:src="@drawable/black_check_24"
+                        android:visibility="gone" />
                 </RelativeLayout>
 
 
@@ -526,12 +527,11 @@
 
             <Button
                 android:id="@+id/showData"
-                android:layout_marginVertical="30dp"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Show Data"/>
-
+                android:layout_gravity="center"
+                android:layout_marginVertical="30dp"
+                android:text="Show Data" />
 
 
         </LinearLayout>

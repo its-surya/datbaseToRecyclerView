@@ -28,11 +28,11 @@ class estimationAdapter(
     }
 
     override fun onBindViewHolder(holder: estimationViewHolder, position: Int) {
-        holder.id.text = estimate[position].id.toString()
-        holder.customername.text = estimate[position].customername
-        holder.customernumber.text = estimate[position].customermobile
-        holder.address.text = estimate[position].customeraddress
-        holder.projectname.text = estimate[position].projectname
+        holder.id.text =estimate[position].id.toString()
+        holder.customername.text = "Customer Name   :   "+estimate[position].customername
+        holder.customernumber.text = "Mobile Number   :   "+estimate[position].customermobile
+        holder.address.text = "Address   :   "+estimate[position].customeraddress
+        holder.projectname.text = "Project Name   :   "+estimate[position].projectname
 
     }
 
