@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                 layoutfirst.visibility = View.GONE
                 layoutsecond.visibility = View.VISIBLE
             }
+            binding.tick1.visibility = View.VISIBLE
         }
 
         binding.next2.setOnClickListener {
@@ -74,6 +75,7 @@ class MainActivity : AppCompatActivity() {
             }else{
                 binding.rooftoparea.error="Enter the data"
             }
+            binding.tick2.visibility = View.VISIBLE
 
         }
 
@@ -114,7 +116,7 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-            dialog.setCancelable(false)
+            dialog.setCancelable(true)
 
             dialog.setContentView(view)
 
@@ -127,12 +129,10 @@ class MainActivity : AppCompatActivity() {
 
             var hoursofuse = binding.hoursofuse.text.toString()
 
-            if( backuptype.isNotEmpty() && hoursofuse.isNotEmpty() ){
+            if( backuptype.isNotEmpty() ){
                 layoutthird.visibility = View.GONE
-                layoutfirst.visibility = View.VISIBLE
                 writeData()
-                var intent = Intent(this , MainActivity2::class.java)
-                startActivity(intent)
+
 
             }else{
                 Toast.makeText(this@MainActivity, "Data should be entered" , Toast.LENGTH_SHORT).show()
@@ -161,6 +161,12 @@ class MainActivity : AppCompatActivity() {
                 layoutthird.visibility=View.GONE
             else
                 layoutthird.visibility=View.VISIBLE
+        }
+
+        binding.showData.setOnClickListener {
+
+            var intent = Intent(this , MainActivity2::class.java)
+            startActivity(intent)
         }
 
 
