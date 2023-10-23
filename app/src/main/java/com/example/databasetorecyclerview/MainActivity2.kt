@@ -1,5 +1,6 @@
 package com.example.databasetorecyclerview
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.LiveData
@@ -17,6 +18,11 @@ class MainActivity2 : AppCompatActivity() {
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
         appdatabase = estimationDatabase.getDataBase(this)
+
+        binding.back.setOnClickListener {
+            var intent = Intent(this@MainActivity2, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         updateRecyclerView()
 

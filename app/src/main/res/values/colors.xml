@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellowish">#F49B17</color>
+    <color name="clickable">#f5dce0</color>
 </resources>

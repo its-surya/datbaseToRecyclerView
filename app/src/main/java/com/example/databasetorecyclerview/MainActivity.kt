@@ -79,6 +79,27 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        binding.scroll1.setOnClickListener {
+            Toast.makeText(this@MainActivity, "residential",Toast.LENGTH_SHORT).show()
+
+        }
+        binding.scroll2.setOnClickListener {
+            Toast.makeText(this@MainActivity, "Industrial",Toast.LENGTH_SHORT).show()
+
+        }
+        binding.scroll3.setOnClickListener {
+            Toast.makeText(this@MainActivity, "Agricultural",Toast.LENGTH_SHORT).show()
+
+        }
+        binding.scroll4.setOnClickListener {
+            Toast.makeText(this@MainActivity, "Government",Toast.LENGTH_SHORT).show()
+
+        }
+        binding.scroll5.setOnClickListener {
+            Toast.makeText(this@MainActivity, "Commercial",Toast.LENGTH_SHORT).show()
+
+        }
+
 
         binding.backuptype.setOnClickListener {
 
