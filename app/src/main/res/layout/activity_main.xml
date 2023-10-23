@@ -112,13 +112,15 @@
                             android:orientation="horizontal">
 
                             <LinearLayout
+
                                 android:id="@+id/scroll1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="5dp"
                                 android:clickable="true"
                                 android:orientation="vertical"
-                                android:tag="Residential">
+                                android:tag="Residential"
+                                android:background="@drawable/click_effect">
 
                                 <ImageView
                                     android:layout_width="40sp"
@@ -144,7 +146,8 @@
                                 android:layout_margin="5dp"
                                 android:clickable="true"
                                 android:orientation="vertical"
-                                android:tag="Industrial">
+                                android:tag="Industrial"
+                                android:background="@drawable/click_effect">
 
                                 <ImageView
                                     android:layout_width="40sp"
@@ -171,7 +174,8 @@
                                 android:layout_margin="5dp"
                                 android:clickable="true"
                                 android:orientation="vertical"
-                                android:tag="Agricultural">
+                                android:tag="Agricultural"
+                                android:background="@drawable/click_effect">
 
                                 <ImageView
                                     android:layout_width="40sp"
@@ -198,7 +202,8 @@
                                 android:layout_margin="5dp"
                                 android:clickable="true"
                                 android:orientation="vertical"
-                                android:tag="Government">
+                                android:tag="Government"
+                                android:background="@drawable/click_effect">
 
                                 <ImageView
                                     android:layout_width="40sp"
@@ -224,7 +229,8 @@
                                 android:layout_margin="5dp"
                                 android:clickable="true"
                                 android:orientation="vertical"
-                                android:tag="Commercial">
+                                android:tag="Commercial"
+                                android:background="@drawable/click_effect">
 
                                 <ImageView
                                     android:layout_width="40sp"
