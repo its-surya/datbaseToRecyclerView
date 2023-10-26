@@ -78,26 +78,53 @@ class MainActivity : AppCompatActivity() {
             binding.tick2.visibility = View.VISIBLE
 
         }
+        var tick1:Boolean=false
+        var tick2:Boolean=false
+        var tick3:Boolean=false
+        var tick4:Boolean=false
+        var tick5:Boolean=false
 
         binding.scroll1.setOnClickListener {
             Toast.makeText(this@MainActivity, "residential",Toast.LENGTH_SHORT).show()
+                binding.categoryTick1.visibility=View.VISIBLE
+                binding.categoryTick2.visibility=View.GONE
+                binding.categoryTick3.visibility=View.GONE
+                binding.categoryTick4.visibility=View.GONE
+                binding.categoryTick5.visibility=View.GONE
+
 
         }
         binding.scroll2.setOnClickListener {
             Toast.makeText(this@MainActivity, "Industrial",Toast.LENGTH_SHORT).show()
-
+            binding.categoryTick2.visibility=View.VISIBLE
+            binding.categoryTick1.visibility=View.GONE
+            binding.categoryTick3.visibility=View.GONE
+            binding.categoryTick4.visibility=View.GONE
+            binding.categoryTick5.visibility=View.GONE
         }
         binding.scroll3.setOnClickListener {
             Toast.makeText(this@MainActivity, "Agricultural",Toast.LENGTH_SHORT).show()
-
+            binding.categoryTick3.visibility=View.VISIBLE
+            binding.categoryTick2.visibility=View.GONE
+            binding.categoryTick1.visibility=View.GONE
+            binding.categoryTick4.visibility=View.GONE
+            binding.categoryTick5.visibility=View.GONE
         }
         binding.scroll4.setOnClickListener {
             Toast.makeText(this@MainActivity, "Government",Toast.LENGTH_SHORT).show()
-
+            binding.categoryTick4.visibility=View.VISIBLE
+            binding.categoryTick2.visibility=View.GONE
+            binding.categoryTick3.visibility=View.GONE
+            binding.categoryTick1.visibility=View.GONE
+            binding.categoryTick5.visibility=View.GONE
         }
         binding.scroll5.setOnClickListener {
             Toast.makeText(this@MainActivity, "Commercial",Toast.LENGTH_SHORT).show()
-
+            binding.categoryTick5.visibility=View.VISIBLE
+            binding.categoryTick2.visibility=View.GONE
+            binding.categoryTick3.visibility=View.GONE
+            binding.categoryTick4.visibility=View.GONE
+            binding.categoryTick1.visibility=View.GONE
         }
 
 
