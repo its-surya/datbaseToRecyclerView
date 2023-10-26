@@ -14,13 +14,14 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var appdatabase : estimationDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
         appdatabase = estimationDatabase.getDataBase(this)
 
         binding.back.setOnClickListener {
-            var intent = Intent(this@MainActivity2, MainActivity::class.java)
+            var intent = Intent(this@MainActivity2, HomeActivity::class.java)
             startActivity(intent)
         }
 
@@ -29,8 +30,9 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     fun updateRecyclerView(){
+
         allTime = appdatabase.EstimationDao().getAll()
-        allTime!!.observe(this@MainActivity2){
+        allTime!!.observe(this@MainActivity2) {
             if(!it.isNullOrEmpty()){
                 binding?.recyclerView?.adapter = estimationAdapter(it)
                 binding.recyclerView.layoutManager = LinearLayoutManager(this)
