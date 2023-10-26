@@ -1,5 +1,22 @@
-<vector android:height="24dp" android:tint="#000000"
-    android:viewportHeight="24" android:viewportWidth="24"
-    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
-    <path android:fillColor="@android:color/white" android:pathData="M9,16.17L4.83,12l-1.42,1.41L9,19 21,7l-1.41,-1.41z"/>
+<!--<vector android:height="24dp" android:tint="#000000"-->
+<!--    android:viewportHeight="24" android:viewportWidth="24"-->
+<!--    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--    <path android:fillColor="@android:color/white" android:pathData="M9,16.17L4.83,12l-1.42,1.41L9,19 21,7l-1.41,-1.41z"/>-->
+<!--</vector>-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="15dp"
+    android:height="15dp"
+    android:viewportWidth="48.0"
+    android:viewportHeight="48.0">
+
+    <!-- Tick Shadow -->
+    <path
+        android:pathData="M24,47C12.956,47,4,38.043,4,27C4,15.956,12.956,7,24,7s20,8.956,20,20C44,38.043,35.044,47,24,47z"
+        android:fillColor="#025906" />
+
+    <!-- Tick Sign -->
+    <path
+        android:pathData="M20.53,34.38L10.62,24.47l2.12-2.12L20.53,30.15l17.65-17.65l2.12,2.12L20.53,34.38z"
+        android:fillColor="#F3D375" />
 </vector>
+
