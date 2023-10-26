@@ -100,6 +100,11 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        binding.imgGetAddress.setEndIconOnClickListener {
+            val intent = Intent(this, MapsActivity::class.java)
+            startActivity(intent)
+        }
+
 
         binding.backuptype.setOnClickListener {
 
