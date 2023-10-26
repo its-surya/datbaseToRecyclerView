@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity2"
+    android:background="@drawable/first_background"
     android:orientation="vertical">
 
     <TextView
@@ -15,6 +16,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="20dp"
+        android:textColor="@color/black"
         android:textSize="30sp"
         />
 
