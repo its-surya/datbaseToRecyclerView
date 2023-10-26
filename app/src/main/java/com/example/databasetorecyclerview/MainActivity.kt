@@ -56,13 +56,13 @@ class MainActivity : AppCompatActivity() {
 //                Toast.makeText(this, "Enter a valid mobile number", Toast.LENGTH_SHORT).show()
             }
 
-            if((customerName.isNotEmpty()  && customeraddress.isNotEmpty()
-                        && projectname.isNotEmpty()) && !check1
-            ){
+            if( ( customerName.isNotEmpty()  && customeraddress.isNotEmpty()
+                        && projectname.isNotEmpty() ) && !check1 ){
                 layoutfirst.visibility = View.GONE
                 layoutsecond.visibility = View.VISIBLE
+                binding.tick1.visibility = View.VISIBLE
             }
-            binding.tick1.visibility = View.VISIBLE
+
         }
 
         binding.next2.setOnClickListener {
@@ -104,7 +104,6 @@ class MainActivity : AppCompatActivity() {
         binding.backuptype.setOnClickListener {
 
             val dialog = BottomSheetDialog(this)
-            //again
 
 
             val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
@@ -153,6 +152,7 @@ class MainActivity : AppCompatActivity() {
 
             if( backuptype.isNotEmpty() ){
                 layoutthird.visibility = View.GONE
+                binding.tick3.visibility = View.VISIBLE
                 writeData()
 
 

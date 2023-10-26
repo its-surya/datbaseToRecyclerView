@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
         var myAnim = AnimationUtils.loadAnimation(this,R.anim.my_anim)
         splashImage.startAnimation(myAnim)
         Handler().postDelayed({
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,HomeActivity::class.java)
             startActivity(intent)
             finish()
         },2000)
