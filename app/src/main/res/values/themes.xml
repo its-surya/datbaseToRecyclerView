@@ -5,5 +5,10 @@
          <item name="colorPrimary">@color/yellowish</item>
     </style>
 
+    <style name="CustomToolbarStyle">
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:colorControlNormal">#FFFFFF</item>
+    </style>
+
     <style name="Theme.DatabaseToRecyclerView" parent="Base.Theme.DatabaseToRecyclerView" />
 </resources>
