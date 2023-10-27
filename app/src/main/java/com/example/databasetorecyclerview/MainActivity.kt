@@ -36,6 +36,9 @@ class MainActivity : AppCompatActivity() {
 
         appdatabase = estimationDatabase.getDataBase(this)
 
+        val address = intent.getStringExtra("SEARCH_ADDRESS")
+        binding.customerAddress.setText(address)
+
         var customerName : String
         var mobileNumber : String
         var customeraddress : String
@@ -222,6 +225,7 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this , MainActivity2::class.java)
             startActivity(intent)
         }
+
 
 
     }
