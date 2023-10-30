@@ -27,6 +27,27 @@ class estimationAdapter(
         return estimate.size
     }
 
+    fun getItemAtPosition(position: Int): estimation {
+        return estimate[position]
+    }
+
+    fun removeItemAtPosition(position: Int) {
+        estimate = estimate.toMutableList().apply { removeAt(position) }
+        notifyItemRemoved(position)
+    }
+    fun setData(newData: List<estimation>) {
+        estimate = newData
+        notifyDataSetChanged()
+    }
+
+    fun addItemAtPosition(position: Int, item: estimation) {
+        val updatedList = estimate.toMutableList()
+        updatedList.add(position, item)
+        estimate = updatedList
+        notifyItemInserted(position)
+    }
+
+
     override fun onBindViewHolder(holder: estimationViewHolder, position: Int) {
         holder.id.text = estimate[position].id.toString()
         holder.customername.text = "Customer Name   :   "+estimate[position].customername
@@ -35,6 +56,7 @@ class estimationAdapter(
         holder.projectname.text = "Project Name   :   "+estimate[position].projectname
 
     }
+
 
 //    fun setData(newData: List<estimation>) {
 //        estimate = newData
