@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity2 : AppCompatActivity() {
     private lateinit var binding: ActivityMain2Binding
@@ -41,49 +43,54 @@ class MainActivity2 : AppCompatActivity() {
 
         // Add swipe-to-delete functionality using ItemTouchHelper
 
-        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
-                // Get the swiped item's position
-
-                val position = viewHolder.adapterPosition
-
-                // Get the swiped item
-
-                val deletedItem = estAdapter.getItemAtPosition(position)
-                // Delete the item from your database asynchronously
-                GlobalScope.launch(Dispatchers.IO) {
-                    appdatabase.EstimationDao().delete(deletedItem)
+        val itemTouchHelper =
+            ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+                override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+                ): Boolean {
+                    return false
                 }
 
-                // Show a Snackbar with an "Undo" action
-                Snackbar.make(binding.root, "Deleted " + deletedItem.customername, Snackbar.LENGTH_LONG)
-                    .setAction(
-                        "Undo",
-                        View.OnClickListener {
-                            GlobalScope.launch(Dispatchers.Main) {
-                                // Re-insert the deleted item into the database asynchronously
-                                appdatabase.EstimationDao().insert(deletedItem)
 
-                                // Update the UI by adding the item back to the adapter
-                                estAdapter.addItemAtPosition(position, deletedItem)
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    val position = viewHolder.adapterPosition
+                    val deletedItem = estAdapter.getItemAtPosition(position)
+
+                    lifecycleScope.launch(Dispatchers.IO) {
+                        // Delete the item from the database
+                        appdatabase.EstimationDao().delete(deletedItem)
+
+                        withContext(Dispatchers.Main) {
+                            // Show Snackbar with "Undo" action
+                            Snackbar.make(
+                                binding.root,
+                                "Deleted " + deletedItem.customername,
+                                Snackbar.LENGTH_LONG
+                            )
+                                .setAction("Undo") {
+                                    lifecycleScope.launch(Dispatchers.IO) {
+                                        // Re-insert the deleted item into the database
+                                        appdatabase.EstimationDao().insert(deletedItem)
+
+                                        // Update the UI by adding the item back to the adapter
+                                        withContext(Dispatchers.Main) {
+                                            estAdapter.addItemAtPosition(position, deletedItem)
+                                        }
+                                    }
+                                }
+                                .show()
+
+                            // Remove the item from the adapter
+                            withContext(Dispatchers.Main) {
+                                estAdapter.removeItemAtPosition(position)
                             }
                         }
-                    )
-                    .show()
+                    }
+                }
+            })
 
-                // Remove the item from the adapter
-                estAdapter.removeItemAtPosition(position)
-            }
-        })
         itemTouchHelper.attachToRecyclerView(estRV)
 
 

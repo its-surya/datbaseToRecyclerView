@@ -35,7 +35,7 @@ class estimationAdapter(
         estimate = estimate.toMutableList().apply { removeAt(position) }
         notifyItemRemoved(position)
     }
-    fun setData(newData: List<estimation>) {
+    fun setData( newData: List<estimation> ) {
         estimate = newData
         notifyDataSetChanged()
     }
@@ -57,9 +57,4 @@ class estimationAdapter(
 
     }
 
-
-//    fun setData(newData: List<estimation>) {
-//        estimate = newData
-//        notifyDataSetChanged()
-//    }
 }

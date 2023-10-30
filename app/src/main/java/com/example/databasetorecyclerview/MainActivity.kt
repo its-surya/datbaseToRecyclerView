@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         hoursofuse.visibility = View.GONE
 
         appdatabase = estimationDatabase.getDataBase(this)
+
         //intent from drag marker
         if(intent.hasExtra("Title")) {
             var address = intent.getStringExtra("Title")
