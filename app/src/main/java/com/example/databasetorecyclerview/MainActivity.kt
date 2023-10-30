@@ -35,9 +35,15 @@ class MainActivity : AppCompatActivity() {
         hoursofuse.visibility = View.GONE
 
         appdatabase = estimationDatabase.getDataBase(this)
-
-        val address = intent.getStringExtra("SEARCH_ADDRESS")
-        binding.customerAddress.setText(address)
+        //intent from drag marker
+        if(intent.hasExtra("Title")) {
+            var address = intent.getStringExtra("Title")
+            binding.customerAddress.setText(address)
+        }
+        if(intent.hasExtra("SEARCH_ADDRESS")) {
+            var address = intent.getStringExtra("SEARCH_ADDRESS")
+            binding.customerAddress.setText(address)
+        }
 
         var customerName : String
         var mobileNumber : String
