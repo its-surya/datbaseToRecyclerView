@@ -21,7 +21,7 @@ class MainActivity2 : AppCompatActivity() {
         appdatabase = estimationDatabase.getDataBase(this)
 
         binding.back.setOnClickListener {
-            var intent = Intent(this@MainActivity2, HomeActivity::class.java)
+            val intent = Intent(this@MainActivity2, HomeActivity::class.java)
             startActivity(intent)
         }
 

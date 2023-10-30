@@ -49,13 +49,6 @@ class MapsActivity : FragmentActivity(), OnMapReadyCallback,GoogleMap.OnMapClick
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return
         }
         fusedLocationClient.lastLocation.addOnSuccessListener(this) { location->
@@ -96,7 +89,6 @@ class MapsActivity : FragmentActivity(), OnMapReadyCallback,GoogleMap.OnMapClick
             override fun onPlaceSelected(place: Place) {
                 val address = place.address
 //                val latLng = place.latLng
-//
 //                val latitude = latLng?.latitude
 //                val longitude = latLng?.longitude
 
@@ -114,13 +106,14 @@ class MapsActivity : FragmentActivity(), OnMapReadyCallback,GoogleMap.OnMapClick
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap!!.addMarker(
-            MarkerOptions()
-                .position(delhi)
-                .draggable(true)
 
-        )
-        mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(delhi,6f))
+//        mMap!!.addMarker(
+//            MarkerOptions()
+//                .position(delhi)
+//                .draggable(true)
+//
+//        )
+       // mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(delhi,6f))
         mMap!!.setOnMarkerDragListener(object : GoogleMap.OnMarkerDragListener{
             override fun onMarkerDrag(p0: Marker) {
             }
@@ -139,7 +132,6 @@ class MapsActivity : FragmentActivity(), OnMapReadyCallback,GoogleMap.OnMapClick
             }
 
             override fun onMarkerDragStart(p0: Marker) {
-
             }
         })
     }
