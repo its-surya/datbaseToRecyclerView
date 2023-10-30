@@ -226,7 +226,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.showData.setOnClickListener {
 
-            var intent = Intent(this , MainActivity2::class.java)
+            val intent = Intent(this , MainActivity2::class.java)
             startActivity(intent)
         }
 

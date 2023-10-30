@@ -31,7 +31,6 @@ class MainActivity2 : AppCompatActivity() {
         binding.back.setOnClickListener {
 
             val intent = Intent(this@MainActivity2, HomeActivity::class.java)
-            val intent = Intent(this@MainActivity2, HomeActivity::class.java)
             startActivity(intent)
 
         }
