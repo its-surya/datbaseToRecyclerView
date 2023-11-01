@@ -15,8 +15,8 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
-    private lateinit var appdatabase : estimationDatabase
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var appdatabase: estimationDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,21 +35,21 @@ class MainActivity : AppCompatActivity() {
         appdatabase = estimationDatabase.getDataBase(this)
 
         //intent from drag marker
-        if(intent.hasExtra("Title")) {
+        if (intent.hasExtra("Title")) {
             var address = intent.getStringExtra("Title")
             binding.customerAddress.setText(address)
         }
-        if(intent.hasExtra("SEARCH_ADDRESS")) {
+        if (intent.hasExtra("SEARCH_ADDRESS")) {
             var address = intent.getStringExtra("SEARCH_ADDRESS")
             binding.customerAddress.setText(address)
         }
 
-        var customerName : String
-        var mobileNumber : String
-        var customeraddress : String
-        var projectname : String
-        var rooftoparea : String
-        var backuptype  = "None"
+        var customerName: String
+        var mobileNumber: String
+        var customeraddress: String
+        var projectname: String
+        var rooftoparea: String
+        var backuptype = "None"
 
         binding.next1.setOnClickListener {
             customerName = binding.customerName.text.toString()
@@ -57,15 +57,16 @@ class MainActivity : AppCompatActivity() {
             customeraddress = binding.customerAddress.text.toString()
             projectname = binding.projectName.text.toString()
 
-            var check1 : Boolean = false
-            if( !checkMobile(mobileNumber) ){
+            var check1: Boolean = false
+            if (!checkMobile(mobileNumber)) {
                 check1 = true
-                binding.mobileNumber.error="Enter a valid mobile number"
+                binding.mobileNumber.error = "Enter a valid mobile number"
 //                Toast.makeText(this, "Enter a valid mobile number", Toast.LENGTH_SHORT).show()
             }
 
-            if( ( customerName.isNotEmpty()  && customeraddress.isNotEmpty()
-                        && projectname.isNotEmpty() ) && !check1 ){
+            if ((customerName.isNotEmpty() && customeraddress.isNotEmpty()
+                        && projectname.isNotEmpty()) && !check1
+            ) {
                 layoutfirst.visibility = View.GONE
                 layoutsecond.visibility = View.VISIBLE
                 binding.tick1.visibility = View.VISIBLE
@@ -76,63 +77,63 @@ class MainActivity : AppCompatActivity() {
         binding.next2.setOnClickListener {
             rooftoparea = binding.rooftoparea.text.toString()
 
-            if(rooftoparea.isNotEmpty()){
-                layoutsecond.visibility=View.GONE
+            if (rooftoparea.isNotEmpty()) {
+                layoutsecond.visibility = View.GONE
                 layoutthird.visibility = View.VISIBLE
 
-            }else{
-                binding.rooftoparea.error="Enter the data"
+            } else {
+                binding.rooftoparea.error = "Enter the data"
             }
             binding.tick2.visibility = View.VISIBLE
 
         }
-        var tick1:Boolean=false
-        var tick2:Boolean=false
-        var tick3:Boolean=false
-        var tick4:Boolean=false
-        var tick5:Boolean=false
+        var tick1: Boolean = false
+        var tick2: Boolean = false
+        var tick3: Boolean = false
+        var tick4: Boolean = false
+        var tick5: Boolean = false
 
         binding.scroll1.setOnClickListener {
 //            Toast.makeText(this@MainActivity, "residential",Toast.LENGTH_SHORT).show()
-                binding.categoryTick1.visibility=View.VISIBLE
-                binding.categoryTick2.visibility=View.GONE
-                binding.categoryTick3.visibility=View.GONE
-                binding.categoryTick4.visibility=View.GONE
-                binding.categoryTick5.visibility=View.GONE
+            binding.categoryTick1.visibility = View.VISIBLE
+            binding.categoryTick2.visibility = View.GONE
+            binding.categoryTick3.visibility = View.GONE
+            binding.categoryTick4.visibility = View.GONE
+            binding.categoryTick5.visibility = View.GONE
 
 
         }
         binding.scroll2.setOnClickListener {
 //            Toast.makeText(this@MainActivity, "Industrial",Toast.LENGTH_SHORT).show()
-            binding.categoryTick2.visibility=View.VISIBLE
-            binding.categoryTick1.visibility=View.GONE
-            binding.categoryTick3.visibility=View.GONE
-            binding.categoryTick4.visibility=View.GONE
-            binding.categoryTick5.visibility=View.GONE
+            binding.categoryTick2.visibility = View.VISIBLE
+            binding.categoryTick1.visibility = View.GONE
+            binding.categoryTick3.visibility = View.GONE
+            binding.categoryTick4.visibility = View.GONE
+            binding.categoryTick5.visibility = View.GONE
         }
         binding.scroll3.setOnClickListener {
 //            Toast.makeText(this@MainActivity, "Agricultural",Toast.LENGTH_SHORT).show()
-            binding.categoryTick3.visibility=View.VISIBLE
-            binding.categoryTick2.visibility=View.GONE
-            binding.categoryTick1.visibility=View.GONE
-            binding.categoryTick4.visibility=View.GONE
-            binding.categoryTick5.visibility=View.GONE
+            binding.categoryTick3.visibility = View.VISIBLE
+            binding.categoryTick2.visibility = View.GONE
+            binding.categoryTick1.visibility = View.GONE
+            binding.categoryTick4.visibility = View.GONE
+            binding.categoryTick5.visibility = View.GONE
         }
         binding.scroll4.setOnClickListener {
 //            Toast.makeText(this@MainActivity, "Government",Toast.LENGTH_SHORT).show()
-            binding.categoryTick4.visibility=View.VISIBLE
-            binding.categoryTick2.visibility=View.GONE
-            binding.categoryTick3.visibility=View.GONE
-            binding.categoryTick1.visibility=View.GONE
-            binding.categoryTick5.visibility=View.GONE
+            binding.categoryTick4.visibility = View.VISIBLE
+            binding.categoryTick2.visibility = View.GONE
+            binding.categoryTick3.visibility = View.GONE
+            binding.categoryTick1.visibility = View.GONE
+            binding.categoryTick5.visibility = View.GONE
         }
         binding.scroll5.setOnClickListener {
 //            Toast.makeText(this@MainActivity, "Commercial",Toast.LENGTH_SHORT).show()
-            binding.categoryTick5.visibility=View.VISIBLE
-            binding.categoryTick2.visibility=View.GONE
-            binding.categoryTick3.visibility=View.GONE
-            binding.categoryTick4.visibility=View.GONE
-            binding.categoryTick1.visibility=View.GONE
+            binding.categoryTick5.visibility = View.VISIBLE
+            binding.categoryTick2.visibility = View.GONE
+            binding.categoryTick3.visibility = View.GONE
+            binding.categoryTick4.visibility = View.GONE
+            binding.categoryTick1.visibility = View.GONE
         }
 
         binding.imgGetAddress.setEndIconOnClickListener {
@@ -151,10 +152,10 @@ class MainActivity : AppCompatActivity() {
             val btnNone = view.findViewById<Button>(R.id.None)
             val btnDeisal = view.findViewById<Button>(R.id.Deisal)
             val btnInverter = view.findViewById<Button>(R.id.Inverter)
-            
+
 
             btnNone.setOnClickListener {
-                backuptype  = "None"
+                backuptype = "None"
                 binding.backuptype.setText(backuptype)
                 hoursofuse.visibility = View.GONE
                 dialog.dismiss()
@@ -190,55 +191,54 @@ class MainActivity : AppCompatActivity() {
 
             var hoursofuse = binding.hoursofuse.text.toString()
 
-            if( backuptype.isNotEmpty() ){
+            if (backuptype.isNotEmpty()) {
                 layoutthird.visibility = View.GONE
                 binding.tick3.visibility = View.VISIBLE
                 writeData()
 
 
-            }else{
-                Toast.makeText(this@MainActivity, "Data should be entered" , Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this@MainActivity, "Data should be entered", Toast.LENGTH_SHORT)
+                    .show()
 
             }
 
 
         }
 
-        binding.pdTextView.setOnClickListener{
+        binding.pdTextView.setOnClickListener {
             if (layoutfirst.isVisible)
-            layoutfirst.visibility=View.GONE
+                layoutfirst.visibility = View.GONE
             else
                 layoutfirst.visibility = View.VISIBLE
         }
 
-        binding.tdTextView.setOnClickListener{
+        binding.tdTextView.setOnClickListener {
             if (layoutsecond.isVisible)
-                layoutsecond.visibility=View.GONE
+                layoutsecond.visibility = View.GONE
             else
-                layoutsecond.visibility=View.VISIBLE
+                layoutsecond.visibility = View.VISIBLE
         }
 
-        binding.bdTextView.setOnClickListener{
+        binding.bdTextView.setOnClickListener {
             if (layoutthird.isVisible)
-                layoutthird.visibility=View.GONE
+                layoutthird.visibility = View.GONE
             else
-                layoutthird.visibility=View.VISIBLE
+                layoutthird.visibility = View.VISIBLE
         }
 
         binding.showData.setOnClickListener {
 
-            val intent = Intent(this , MainActivity2::class.java)
+            val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
         }
-
 
 
     }
 
 
-
     private fun checkMobile(mobileNumber: String): Boolean {
-        if(mobileNumber.length < 10 ){
+        if (mobileNumber.length < 10) {
             return false
         }
         return true
@@ -251,7 +251,7 @@ class MainActivity : AppCompatActivity() {
         val mobileNumber = binding.mobileNumber.text.toString()
         val customeraddress = binding.customerAddress.text.toString()
         val projectname = binding.projectName.text.toString()
-        val data = estimation(null, mobileNumber, customerName,customeraddress,projectname)
+        val data = estimation(null, mobileNumber, customerName, customeraddress, projectname)
 
 
 //        if(intent.hasExtra()) {
@@ -266,16 +266,12 @@ class MainActivity : AppCompatActivity() {
 //        }
 
 
+        GlobalScope.launch(Dispatchers.IO) {
+            appdatabase.EstimationDao().insert(data)
 
+        }
 
-
-
-            GlobalScope.launch(Dispatchers.IO){
-                appdatabase.EstimationDao().insert(data)
-
-            }
-
-        Toast.makeText(this@MainActivity, "Data inserted" , Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@MainActivity, "Data inserted", Toast.LENGTH_SHORT).show()
 
 
 
