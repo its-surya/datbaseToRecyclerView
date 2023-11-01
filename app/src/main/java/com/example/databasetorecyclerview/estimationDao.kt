@@ -6,6 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface estimationDao {
@@ -15,6 +16,9 @@ interface estimationDao {
 
     @Delete
     fun delete(estimation: estimation)
+
+    @Update
+    fun update(estimate: estimation)
 
     @Query("SELECT * FROM estimation_details ")
     fun getAll() : LiveData<List<estimation>>

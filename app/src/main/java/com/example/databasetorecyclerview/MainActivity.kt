@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         var tick5:Boolean=false
 
         binding.scroll1.setOnClickListener {
-            Toast.makeText(this@MainActivity, "residential",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this@MainActivity, "residential",Toast.LENGTH_SHORT).show()
                 binding.categoryTick1.visibility=View.VISIBLE
                 binding.categoryTick2.visibility=View.GONE
                 binding.categoryTick3.visibility=View.GONE
@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         binding.scroll2.setOnClickListener {
-            Toast.makeText(this@MainActivity, "Industrial",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this@MainActivity, "Industrial",Toast.LENGTH_SHORT).show()
             binding.categoryTick2.visibility=View.VISIBLE
             binding.categoryTick1.visibility=View.GONE
             binding.categoryTick3.visibility=View.GONE
@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
             binding.categoryTick5.visibility=View.GONE
         }
         binding.scroll3.setOnClickListener {
-            Toast.makeText(this@MainActivity, "Agricultural",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this@MainActivity, "Agricultural",Toast.LENGTH_SHORT).show()
             binding.categoryTick3.visibility=View.VISIBLE
             binding.categoryTick2.visibility=View.GONE
             binding.categoryTick1.visibility=View.GONE
@@ -119,7 +119,7 @@ class MainActivity : AppCompatActivity() {
             binding.categoryTick5.visibility=View.GONE
         }
         binding.scroll4.setOnClickListener {
-            Toast.makeText(this@MainActivity, "Government",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this@MainActivity, "Government",Toast.LENGTH_SHORT).show()
             binding.categoryTick4.visibility=View.VISIBLE
             binding.categoryTick2.visibility=View.GONE
             binding.categoryTick3.visibility=View.GONE
@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity() {
             binding.categoryTick5.visibility=View.GONE
         }
         binding.scroll5.setOnClickListener {
-            Toast.makeText(this@MainActivity, "Commercial",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this@MainActivity, "Commercial",Toast.LENGTH_SHORT).show()
             binding.categoryTick5.visibility=View.VISIBLE
             binding.categoryTick2.visibility=View.GONE
             binding.categoryTick3.visibility=View.GONE
@@ -245,26 +245,46 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun writeData(){
+    private fun writeData() {
 
         val customerName = binding.customerName.text.toString()
         val mobileNumber = binding.mobileNumber.text.toString()
         val customeraddress = binding.customerAddress.text.toString()
         val projectname = binding.projectName.text.toString()
+        val data = estimation(null, mobileNumber, customerName,customeraddress,projectname)
 
-            val data = estimation(null, mobileNumber, customerName,customeraddress,projectname)
+
+//        if(intent.hasExtra()) {
+//
+//            GlobalScope.launch(Dispatchers.IO){
+//                appdatabase.EstimationDao().update(data)
+//
+//            }
+//
+//        }else{
+//
+//        }
+
+
+
+
+
 
             GlobalScope.launch(Dispatchers.IO){
                 appdatabase.EstimationDao().insert(data)
 
             }
 
-            binding.customerName.text?.clear()
-            binding.mobileNumber.text?.clear()
-            binding.projectName.text?.clear()
-            binding.customerAddress.text?.clear()
+        Toast.makeText(this@MainActivity, "Data inserted" , Toast.LENGTH_SHORT).show()
 
-            Toast.makeText(this@MainActivity, "Data inserted" , Toast.LENGTH_SHORT).show()
+
+
+        binding.customerName.text?.clear()
+        binding.mobileNumber.text?.clear()
+        binding.projectName.text?.clear()
+        binding.customerAddress.text?.clear()
+
+
     }
 
 }
