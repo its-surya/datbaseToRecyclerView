@@ -3,6 +3,7 @@ package com.example.databasetorecyclerview
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 
 @Entity(tableName = "estimation_details")
@@ -26,4 +27,4 @@ import androidx.room.PrimaryKey
 //    @ColumnInfo(name = "category")
 //    val category : String
 
-)
+)  : Serializable

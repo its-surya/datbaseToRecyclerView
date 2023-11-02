@@ -112,16 +112,15 @@ class MainActivity2 : AppCompatActivity() {
 
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                     val position = viewHolder.adapterPosition
-                    val deletedItem = estAdapter.getItemAtPosition(position)
+                    val editedItem = estAdapter.getItemAtPosition(position)
+//                    val edit = editedItem.projectname
 
                     lifecycleScope.launch(Dispatchers.IO) {
                         // update the item from the database
-                        var edit = deletedItem.projectname
-
-                        var intent = Intent(this@MainActivity2 , MainActivity::class.java)
-//                        intent.putExtra("edit", edit)
+                        val intent = Intent(this@MainActivity2 , MainActivity::class.java)
+                        intent.putExtra("edit", editedItem)
                         startActivity(intent)
-//                        appdatabase.EstimationDao().update(estimation())
+//                      appdatabase.EstimationDao().update(estimation())
 
 //                        withContext(Dispatchers.Main) {
 //                            // Show Snackbar with "Undo" action
@@ -135,7 +134,7 @@ class MainActivity2 : AppCompatActivity() {
 //                                    lifecycleScope.launch(Dispatchers.IO) {
 //                                        // Re-insert the deleted item into the database
 //                                        appdatabase.EstimationDao().insert(deletedItem)
-////                                        appdatabase.EstimationDao().update(estimation())
+//                                        appdatabase.EstimationDao().update(estimation())
 //
 //                                        // Update the UI by adding the item back to the adapter
 //                                        withContext(Dispatchers.Main) {
@@ -145,10 +144,10 @@ class MainActivity2 : AppCompatActivity() {
 //                                }
 //                                .show()
 
-                            // Remove the item from the adapter
-//                            withContext(Dispatchers.Main) {
-//                                estAdapter.removeItemAtPosition(position)
-//                            }
+//                             Remove the item from the adapter
+                            withContext(Dispatchers.Main) {
+                                estAdapter.editItemAtPosition(position,editedItem)
+                            }
 //                        }
                     }
                 }

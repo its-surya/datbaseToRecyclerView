@@ -6,22 +6,28 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.contextaware.withContextAvailable
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import com.example.databasetorecyclerview.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var appdatabase: estimationDatabase
-
+    private lateinit var receivedProjectName: String
+    private var editCase:estimation?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         val layoutfirst = binding.projectdetailslayout
         val layoutsecond = binding.technicaldetailslayout
@@ -50,6 +56,11 @@ class MainActivity : AppCompatActivity() {
         var projectname: String
         var rooftoparea: String
         var backuptype = "None"
+        if(intent.hasExtra("edit")){
+            editCase = intent.getSerializableExtra("edit") as estimation
+            binding.projectName.setText( editCase!!.projectname )
+
+        }
 
         binding.next1.setOnClickListener {
             customerName = binding.customerName.text.toString()
@@ -57,7 +68,7 @@ class MainActivity : AppCompatActivity() {
             customeraddress = binding.customerAddress.text.toString()
             projectname = binding.projectName.text.toString()
 
-            var check1: Boolean = false
+            var check1 = false
             if (!checkMobile(mobileNumber)) {
                 check1 = true
                 binding.mobileNumber.error = "Enter a valid mobile number"
@@ -190,13 +201,10 @@ class MainActivity : AppCompatActivity() {
 
 
             var hoursofuse = binding.hoursofuse.text.toString()
-
             if (backuptype.isNotEmpty()) {
                 layoutthird.visibility = View.GONE
                 binding.tick3.visibility = View.VISIBLE
                 writeData()
-
-
             } else {
                 Toast.makeText(this@MainActivity, "Data should be entered", Toast.LENGTH_SHORT)
                     .show()
@@ -251,29 +259,44 @@ class MainActivity : AppCompatActivity() {
         val mobileNumber = binding.mobileNumber.text.toString()
         val customeraddress = binding.customerAddress.text.toString()
         val projectname = binding.projectName.text.toString()
-        val data = estimation(null, mobileNumber, customerName, customeraddress, projectname)
+        val data = estimation(
+            editCase?.id ?: 0,
+            mobileNumber,
+            customerName,
+            customeraddress,
+            projectname)
+        //        // for edit
+//        receivedProjectName = intent.getStringExtra("edit").toString()
 
 
-//        if(intent.hasExtra()) {
-//
-//            GlobalScope.launch(Dispatchers.IO){
-//                appdatabase.EstimationDao().update(data)
-//
-//            }
-//
-//        }else{
-//
-//        }
 
 
-        GlobalScope.launch(Dispatchers.IO) {
-            appdatabase.EstimationDao().insert(data)
+        if(editCase !=null) {
+
+            lifecycleScope.launch{
+                withContext(Dispatchers.IO) {
+                    appdatabase.EstimationDao().update(data)
+                }
+            }
+            Toast.makeText(this@MainActivity, "Data Edited", Toast.LENGTH_SHORT).show()
+
+
+            val intent = Intent(this@MainActivity,MainActivity2::class.java)
+            startActivity(intent)
+
+
+
+        }else{
+            lifecycleScope.launch {
+                withContext(Dispatchers.IO) {
+                    appdatabase.EstimationDao().insert(data)
+                }
+            }
+
+            Toast.makeText(this@MainActivity, "Data inserted", Toast.LENGTH_SHORT).show()
+
 
         }
-
-        Toast.makeText(this@MainActivity, "Data inserted", Toast.LENGTH_SHORT).show()
-
-
 
         binding.customerName.text?.clear()
         binding.mobileNumber.text?.clear()

@@ -35,6 +35,16 @@ class estimationAdapter(
         estimate = estimate.toMutableList().apply { removeAt(position) }
         notifyItemRemoved(position)
     }
+
+    // function added by surya to edit-----------------------------
+    fun editItemAtPosition(position: Int, editedItem: estimation) {
+        val updatedList = estimate.toMutableList()
+        updatedList[position] = editedItem
+        estimate = updatedList
+        notifyItemChanged(position)
+    }
+
+    //---------------------------------------------------------------
     fun setData( newData: List<estimation> ) {
         estimate = newData
         notifyDataSetChanged()
