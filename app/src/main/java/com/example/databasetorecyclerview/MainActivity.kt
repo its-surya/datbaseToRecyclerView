@@ -148,6 +148,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.imgGetAddress.setEndIconOnClickListener {
+
             val intent = Intent(this, MapsActivity::class.java)
             startActivity(intent)
         }
@@ -260,12 +261,11 @@ class MainActivity : AppCompatActivity() {
         val customeraddress = binding.customerAddress.text.toString()
         val projectname = binding.projectName.text.toString()
         val data = estimation(
-            editCase?.id ?: 0,
+            editCase?.id,
             mobileNumber,
             customerName,
             customeraddress,
             projectname)
-        //        // for edit
 //        receivedProjectName = intent.getStringExtra("edit").toString()
 
 
